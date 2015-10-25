@@ -1,0 +1,462 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title><![CDATA[Shuping LIU]]></title>
+  <subtitle><![CDATA[A JavaScript and C# developer]]></subtitle>
+  <link href="/atom.xml" rel="self"/>
+  <link href="http://blog.liushuping.com/"/>
+  <updated>2015-10-25T09:23:27.000Z</updated>
+  <id>http://blog.liushuping.com/</id>
+  
+  <author>
+    <name><![CDATA[Shuping LIU]]></name>
+    <email><![CDATA[lsp.lhh@gmail.com]]></email>
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[Backbone router demo]]></title>
+    <link href="http://blog.liushuping.com/2015/08/09/Backbone-router-demo/"/>
+    <id>http://blog.liushuping.com/2015/08/09/Backbone-router-demo/</id>
+    <published>2015-08-09T14:48:36.000Z</published>
+    <updated>2015-10-25T09:23:27.000Z</updated>
+    <content type="html"><![CDATA[<p>这是一个简单的关于Backbone router的演示，下面的例子演示了，通过Backbone的router和pushState来达到省略URL中的Hash符号的目的。</p>
+<p>首先定义一个App需要的router，例如：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> AppRouter = Backbone.Router.extend(&#123;  </span><br><span class="line">    routes : &#123;  </span><br><span class="line">        <span class="string">'help'</span>: <span class="string">'help'</span>,  </span><br><span class="line">        <span class="string">'search/:query'</span>: <span class="string">'search'</span>, </span><br><span class="line">        <span class="string">'search/:query/:page'</span>: <span class="string">'search'</span></span><br><span class="line">    &#125;,   </span><br><span class="line"></span><br><span class="line">    search: <span class="function"><span class="keyword">function</span>(<span class="params">query, page</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (page == <span class="literal">null</span>) &#123;</span><br><span class="line">          alert(<span class="string">'query: '</span> + query);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          alert(<span class="string">'query: '</span> + query + <span class="string">', page: '</span> + page);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<a id="more"></a>
+<p>接下来启动<code>history</code>的状态记录：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Backbone.history.start(&#123;pushState: <span class="literal">true</span>&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>这里如果页面所在的目录不是根目录，则需要添加root参数。</p>
+<p>然后我们就可以用router来控制URL状态了：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> router = <span class="keyword">new</span> AppRouter();</span><br><span class="line">router.navigate(<span class="string">'search/myquery/123'</span>, <span class="literal">true</span>);</span><br></pre></td></tr></table></figure></p>
+<p>这很有用，然而并不是所有的状态变化都是我们通过代码来修改<code>router</code>的状态，更多的是可能交给用户去“导航”，比如<code>&lt;a&gt;</code>标签。然而不幸的是，<code>Backbone</code>并没有对<code>&lt;a&gt;</code>标签做任何的定制，也就是说如果不做任何处理的话，<code>&lt;a&gt;</code>标签的点击事件还是会触发浏览器向服务器发起HTTP请求的，这并不是我们想要的。</p>
+<p>因此，我们应该做的是阻断a标签的<code>click</code>事件，在事件里面阻止<code>&lt;a&gt;</code>标签的默认行为，修改为我们的<code>router.navigate</code>行为。例如：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="built_in">document</span>).on(<span class="string">'click'</span>, <span class="string">'a'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> href = $(<span class="keyword">this</span>).prop(<span class="string">'href'</span>);</span><br><span class="line">    href = href.slice(...) <span class="comment">// 去掉root部分</span></span><br><span class="line">    router.navigate(href, <span class="literal">true</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>如果我们并不想这样处理所有的<code>&lt;a&gt;</code>标签，比如仍保留某些向服务器发送HTTP请求的功能。这可以通过有条件的选择，一个好的方式是把所有不期望向服务器发送请求的<code>&lt;a&gt;</code>标签的href都以<code>&#39;#&#39;</code>开头，否则则认为向服务器发送请求。此时阻断代码可以写成如下的样子：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="built_in">document</span>).on(<span class="string">'click'</span>, <span class="string">'a[href*="#"]'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> href = $(<span class="keyword">this</span>).prop(<span class="string">'href'</span>);</span><br><span class="line">    href = href.slice(...) <span class="comment">// 去掉root部分</span></span><br><span class="line">    router.navigate(href, <span class="literal">true</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>点击下面的链接及浏览器的前进后退按钮查看运行效果：</p>
+<p><base href="/2015/08/09/Backbone-router-demo/"></p>
+<div id="demo"><br>  <a href="#help">help</a><br>  <a href="#search/myquery">search “myquery”</a><br>  <a href="#search/myquery/page1">search “myquery/page1”</a><br><br>  <script src="http://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script><br>  <script src="http://cdn.staticfile.org/underscore.js/1.7.0/underscore-min.js"></script><br>  <script src="http://cdn.staticfile.org/backbone.js/1.1.2/backbone-min.js"></script><br>  <script src="/assets/backbone-router-demo.js"></script><br></div>]]></content>
+    <summary type="html">
+    <![CDATA[<p>这是一个简单的关于Backbone router的演示，下面的例子演示了，通过Backbone的router和pushState来达到省略URL中的Hash符号的目的。</p>
+<p>首先定义一个App需要的router，例如：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> AppRouter = Backbone.Router.extend(&#123;  </span><br><span class="line">    routes : &#123;  </span><br><span class="line">        <span class="string">'help'</span>: <span class="string">'help'</span>,  </span><br><span class="line">        <span class="string">'search/:query'</span>: <span class="string">'search'</span>, </span><br><span class="line">        <span class="string">'search/:query/:page'</span>: <span class="string">'search'</span></span><br><span class="line">    &#125;,   </span><br><span class="line"></span><br><span class="line">    search: <span class="function"><span class="keyword">function</span>(<span class="params">query, page</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (page == <span class="literal">null</span>) &#123;</span><br><span class="line">          alert(<span class="string">'query: '</span> + query);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          alert(<span class="string">'query: '</span> + query + <span class="string">', page: '</span> + page);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>]]>
+    
+    </summary>
+    
+      <category term="Backbone" scheme="http://blog.liushuping.com/tags/Backbone/"/>
+    
+      <category term="Backbone" scheme="http://blog.liushuping.com/categories/Backbone/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[LeetCode OJ 238 Product of Array Except Self]]></title>
+    <link href="http://blog.liushuping.com/2015/07/26/LeetCode-OJ-238-Product-of-Array-Except-Self/"/>
+    <id>http://blog.liushuping.com/2015/07/26/LeetCode-OJ-238-Product-of-Array-Except-Self/</id>
+    <published>2015-07-26T14:17:39.000Z</published>
+    <updated>2015-10-22T12:59:57.000Z</updated>
+    <content type="html"><![CDATA[<p>给定一个有<code>n</code>个元素且<code>n</code>大于<code>1</code>的一维数组<code>nums</code>，计算并返回一个数组<code>output</code>，使其任一元素<code>output[i]</code>的值是数组<code>nums</code>除<code>nums[i]</code>外的其它所有元素的乘积。要求不能使用除法，且在<code>O(n)</code>的时间复杂度和常数空间复杂度内完成计算。</p>
+<p>例如，给定数组<code>[1,2,3,4]</code>，则返回数组<code>[24,12,8,6]</code></p>
+<p>注：返回数组所占空间不在本题的空间复杂度的计算范围内。</p>
+<a id="more"></a>
+<h2 id="问题分析">问题分析</h2><p>按照常规的思维，最直接的计算方式是先对所有元素乘积，然后分别除以数组中的每个元素，其复杂度也在O(n)内。不幸的是，题目要求不能使用除法。然而我们可以从这个思路中尝试分析其它的解决方案。</p>
+<p>首先，假设数组的n个元素分别为：a1, a2, a3, … an, 令P = a1 <em> a2 </em> a3 <em> … an,所以目标结果数组应为P/a1, P/a2, P/a3, … P/an。约掉分母可得：a2</em>a3<em>…an, a1</em>a3<em>…an, … a1</em>a2*…a(n-1).对结果数组的每一个元素的乘法进行分组可得如下形式：</p>
+<p>(1) <em>* (a2</em>a3*…an)</p>
+<p>(a1) <em>* (a3</em>a4*…an)</p>
+<p>(a1<em>a2) </em> (a4<em>a5</em>…an)</p>
+<p>(a1<em>a2</em>…a(n-2)) * (an)</p>
+<p>(a1<em>a2</em>…a(n-1)) * (1)</p>
+<p>以垂直方向看，左侧括号内部分是a1一直到a(n-1)的阶乘，而以垂直方向逆序来看，右侧括号内部分是an到a2的阶乘。 因此问题迎刃而解，可以用两个循环来迭代阶乘，也可以用一个循环分别从首尾迭代两组阶乘。</p>
+<h2 id="代码">代码</h2><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    vector&lt;int&gt; productExceptSelf(vector&lt;int&gt;&amp; nums) &#123;</span><br><span class="line">        // 两个迭代变量，t1从数组低位</span><br><span class="line">        // 向高位迭代；t2从数组高位</span><br><span class="line">        // 向低位迭代。</span><br><span class="line">        int t1(1), t2(1);</span><br><span class="line"></span><br><span class="line">        // 缓存数组的长度</span><br><span class="line">        int size(nums.size());</span><br><span class="line"></span><br><span class="line">        // 初始化返回数组的所有元素为 1</span><br><span class="line">        vector&lt;int&gt; result(size, 1);</span><br><span class="line"></span><br><span class="line">        // 做(数组长度-1)次数的迭代</span><br><span class="line">        for (int i(1); i &lt; size; ++i) &#123;</span><br><span class="line">            // 通过迭代来达到如下赋值</span><br><span class="line">            // result(i) &lt;- ProductOf(nums(0), nums(1) ... nums(i-1))</span><br><span class="line">            // 即返回数组的第i个元素的值等于输入数组的前i个元素的乘积。</span><br><span class="line">            t1 *= nums[i - 1];</span><br><span class="line">            result[i] *= t1;</span><br><span class="line"></span><br><span class="line">            // 在t1迭代计算的结果基础上，t2以反方向进行与t1完全类似的计算，</span><br><span class="line">            // 把计算结果累积乘积到输出数组上。</span><br><span class="line">            t2 *= nums[size - i];</span><br><span class="line">            result[size - 1 - i] *= t2;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        return result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
+    <summary type="html">
+    <![CDATA[<p>给定一个有<code>n</code>个元素且<code>n</code>大于<code>1</code>的一维数组<code>nums</code>，计算并返回一个数组<code>output</code>，使其任一元素<code>output[i]</code>的值是数组<code>nums</code>除<code>nums[i]</code>外的其它所有元素的乘积。要求不能使用除法，且在<code>O(n)</code>的时间复杂度和常数空间复杂度内完成计算。</p>
+<p>例如，给定数组<code>[1,2,3,4]</code>，则返回数组<code>[24,12,8,6]</code></p>
+<p>注：返回数组所占空间不在本题的空间复杂度的计算范围内。</p>]]>
+    
+    </summary>
+    
+      <category term="Array" scheme="http://blog.liushuping.com/tags/Array/"/>
+    
+      <category term="LeetCode" scheme="http://blog.liushuping.com/categories/LeetCode/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[NFC SIM卡的尴尬]]></title>
+    <link href="http://blog.liushuping.com/2015/07/22/NFC-SIM%E5%8D%A1%E7%9A%84%E5%B0%B4%E5%B0%AC/"/>
+    <id>http://blog.liushuping.com/2015/07/22/NFC-SIM卡的尴尬/</id>
+    <published>2015-07-22T15:50:39.000Z</published>
+    <updated>2015-10-22T12:59:57.000Z</updated>
+    <content type="html"><![CDATA[<p>近日NFC又一次出现在新闻中，如<em>今日头条</em>的<a href="http://toutiao.com/a4762553742/" target="_blank" rel="external">千万不要忽略了手机上NFC功能，你会后悔的</a>。我终于觉得有必要介绍一下自己几个月来NFC使用的体验了。</p>
+<p>首先，NFC是一项重要的技术，在我们的日常生活中扮演着重要的作用。公交，地铁，饭卡等等很多近距离通信设备都是使用的NFC技术。</p>
+<p>手机在我们的日常生活中同样扮演着越来越重要的作用，智能手机已成为大多数人时刻带在身上的设备，甚至包含上厕所的时间。因此，让手机具备NFC的功能也就是理所应该的了。在现阶段，具备NFC功能的手机还需要一张NFC SIM卡，这也是可以理解的。然而在使用了几个月的手机NFC功能后，其中的尴尬还是不少的。</p>
+<a id="more"></a>
+<h2 id="NFC标签">NFC标签</h2><p>听起来很酷炫的功能，但目前阶段看来，除了炫耀一下似乎没有什么其它务实的应用场景。然而，当把手机和钱包放在一起时，麻烦也便来了: 钱包里通常放各种银行卡，会员卡等等，或多或少的总有那么一两张卡有NFC功能。所以，当手机和钱包在一起时，手机立马会跳出对话框询问用什么程序访问当前NFC设备，并伴随着声音的提示。 然而多数时候我们并无此意，仅仅是把两者放在一起而已。什么？你问我为什么把手机和钱包放在一起？当两者变成人们寸步不离的个人物品时，放在一起的机会总是很多的。</p>
+<h2 id="NFC乘坐公交地铁">NFC乘坐公交地铁</h2><p>此处下所述都是我在北京交通的体会，不代表其它城市的状态。先来一句猜测性的话阐述观点：北京的公交和地铁读卡设备在投入生产之前可能没有对非公交卡片之外的其它设备做足够的质量验收测试(仅代表个人猜测)。</p>
+<p><strong>先说地铁</strong></p>
+<p>几个月的使用体验结论是：地铁的读卡设备比公交上的读卡设备迟钝，且容易出错。当我以帅气的姿势在闸机上刷手机并期待吸引目光的时候，通常会有很大几率(大概三分之一吧)把自己陷入尴尬的境地：机器会无情地回以尖锐的错误声音，错误通常有以下几类：</p>
+<ol>
+<li>无效的卡片</li>
+<li>错误，多张卡片</li>
+<li>错误，0x12cf02…</li>
+</ol>
+<p>此刻只能尴尬地漫无目的地在手机上操作一番，然后重试。幸运的是通常重试后会成功，且地铁内有足够的空闲闸机及时间供我重试。</p>
+<p><strong>再说公交</strong> </p>
+<p>前面说了，地铁的读卡设备没有公交的读卡设备敏感，是不是说公交上就没问题了呢？恰恰相反，公交上容易造成多扣票款(在几个月的使用中，地铁没却发生过)，粗略估计有五分之一的概率发生吧。</p>
+<p>这要从手机刷公交的“姿势”说起。不同于地铁闸机的刷卡处是一个倾斜的台面，公交的刷卡设备大多悬空且表面垂直于地面。因此，需要把公交卡贴近刷卡，这对有韧性的塑料卡来说不是难事。然而，用手机刷的体验就大不相同了。手机不具备韧性(什么？柔性屏？呵呵)，且手机有比较大的质量，比较大的体积(大屏手机变为主流), 还有手机卡在手机内部因此拉大了刷卡的距离。这些都要求手机刷公交要有一定的“姿势”，且要在人流拥挤，空间狭窄的公交车上，更要命的是后面的乘客还看着你并等着你，给你无形中造成了压力。好吧，在这些压力下，你的手在刷手机的时候抖了一下，或者是你觉得刷的“姿势”不对，微微地调节了一下。清脆的刷卡成功声音响起，然而在未来得及高兴前，你却听到了紧接着的第二声响起。这就是敏感的设备在你手抖的那一瞬间两次读取了你的卡，并扣取了你的钱。</p>
+<p>第二天，面对公交拥挤的人群，狭小的空间，担心着手机掉落的可能，颤抖着双手刷下去了手机。</p>
+<p>滴-滴。</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>近日NFC又一次出现在新闻中，如<em>今日头条</em>的<a href="http://toutiao.com/a4762553742/">千万不要忽略了手机上NFC功能，你会后悔的</a>。我终于觉得有必要介绍一下自己几个月来NFC使用的体验了。</p>
+<p>首先，NFC是一项重要的技术，在我们的日常生活中扮演着重要的作用。公交，地铁，饭卡等等很多近距离通信设备都是使用的NFC技术。</p>
+<p>手机在我们的日常生活中同样扮演着越来越重要的作用，智能手机已成为大多数人时刻带在身上的设备，甚至包含上厕所的时间。因此，让手机具备NFC的功能也就是理所应该的了。在现阶段，具备NFC功能的手机还需要一张NFC SIM卡，这也是可以理解的。然而在使用了几个月的手机NFC功能后，其中的尴尬还是不少的。</p>]]>
+    
+    </summary>
+    
+      <category term="NFC, Mobile" scheme="http://blog.liushuping.com/tags/NFC-Mobile/"/>
+    
+      <category term="New Tech" scheme="http://blog.liushuping.com/categories/New-Tech/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[LeetCode OJ 234 Palindrome Linked List]]></title>
+    <link href="http://blog.liushuping.com/2015/07/22/LeetCode-OJ-234-Palindrome-Linked-List/"/>
+    <id>http://blog.liushuping.com/2015/07/22/LeetCode-OJ-234-Palindrome-Linked-List/</id>
+    <published>2015-07-22T14:35:42.000Z</published>
+    <updated>2015-10-22T12:59:57.000Z</updated>
+    <content type="html"><![CDATA[<p>在时间复杂度为O(n),空间复杂度为O(1)的范围内，判断一个给定的单向列表是否为<a href="https://en.wikipedia.org/wiki/Palindrome" target="_blank" rel="external">回文</a>。</p>
+<h2 id="问题分析">问题分析</h2><p>O(n)时间复杂度要求对链表全遍历(即访问一次链全部元素)的次数应为固定常数次，不应随链表长度的变化而变化；O(1)的空间复杂度要求额外定义的变量应为常数个，而不应随链表长度的变化而变化。</p>
+<p>而对于回文的判定，唯一的办法是依次以中间对称的方式对比左右每个元素的值。通常在做算法题，或者有良好软件工程的程序人员都会“潜在地”去保持一些良好的习惯，或遵守某些常见的约定。比如“判断某链表是否某某结构”，“某树形数据结构是否符合某某结构”等等问题，有良好习惯的程序员会尽量保持函数不修改要判断的数据结构。然后，诸如本题目之类则是对优秀程序员的一种“伤害”，因为在不修改数据结构的前提下，可能无法在要求的复杂度内完成任务。但是，出题者一点小小的改进，例如在题目中提及一下数据结构或内容允许被修改，则既可保持程序题目的趣味性，又避免了程序员对题目要求的种种猜测。</p>
+<p>在明确了链表的结构可被修改的前提下，问题的解决方案便可很容易分析得出：主体思路是修改链表的前或后半部分，使其链表内节点指向相反方向，然后依次对比前半部分和后半部分链表各个节点。 因此关键点是如何逆序重组链表的一半？有很多方案，例如以下：</p>
+<ol>
+<li>方案一：第一遍循环定位出中间节点(注意偶数和奇数节点总数的细微差别)，然后以中间节点为起点(链表后半部分)或为终点(链表前半部分)逆序重组链表的一半。依次对比链表前后部分的各个节点。</li>
+<li>方案二：定义快慢两个指针，分别对应移动2步和1步。当快指针结束遍历链表时，慢指针位于链表中间。然后逆序重组从慢指针至链表结尾的节点。依次对比链表前后部分的各个节点。</li>
+</ol>
+<a id="more"></a>
+<p>以下示例代码采取了第二种方案.</p>
+<h2 id="代码">代码</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line"> * Definition for singly-linked list.</span><br><span class="line"> * struct ListNode &#123;</span><br><span class="line"> *     int val;</span><br><span class="line"> *     ListNode *next;</span><br><span class="line"> *     ListNode(int x) : val(x), next(NULL) &#123;&#125;</span><br><span class="line"> * &#125;;</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">class</span> Solution &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isPalindrome</span><span class="params">(ListNode* head)</span> </span>&#123;</span><br><span class="line">        ListNode *t, *t1, *t2;</span><br><span class="line">        t1 = head;</span><br><span class="line">        t2 = head; </span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 快指针遍历整个链表后，</span></span><br><span class="line">        <span class="comment">// 慢指针停留在中间节点</span></span><br><span class="line">        <span class="keyword">while</span>(t2)&#123;</span><br><span class="line">            t2 = t2-&gt;next;</span><br><span class="line">            <span class="keyword">if</span> (t2) </span><br><span class="line">                t2 = t2-&gt;next;</span><br><span class="line">            t1 = t1-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 以慢指针(中间节点)为开始</span></span><br><span class="line">        <span class="comment">// 逆序重组后续节点</span></span><br><span class="line">        <span class="comment">// t用来辅助交换指针</span></span><br><span class="line">        <span class="keyword">while</span>(t1) &#123;</span><br><span class="line">            t = t1;</span><br><span class="line">            t1 = t1-&gt;next;</span><br><span class="line">            t-&gt;next = t2;</span><br><span class="line">            t2 = t;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 重组完成后，t2指向后半部分链表</span></span><br><span class="line">        <span class="comment">// 的开始， 而重新置t1于原始链表</span></span><br><span class="line">        <span class="comment">// 的头部， 并开始比较各个节点</span></span><br><span class="line">        t1 = head;</span><br><span class="line">        <span class="keyword">while</span>(t2 &amp;&amp; t1) &#123;</span><br><span class="line">            <span class="keyword">if</span> (t1-&gt;val != t2-&gt;val)</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            t1 = t1-&gt;next;</span><br><span class="line">            t2 = t2-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>在时间复杂度为O(n),空间复杂度为O(1)的范围内，判断一个给定的单向列表是否为<a href="https://en.wikipedia.org/wiki/Palindrome">回文</a>。</p>
+<h2 id="问题分析">问题分析</h2><p>O(n)时间复杂度要求对链表全遍历(即访问一次链全部元素)的次数应为固定常数次，不应随链表长度的变化而变化；O(1)的空间复杂度要求额外定义的变量应为常数个，而不应随链表长度的变化而变化。</p>
+<p>而对于回文的判定，唯一的办法是依次以中间对称的方式对比左右每个元素的值。通常在做算法题，或者有良好软件工程的程序人员都会“潜在地”去保持一些良好的习惯，或遵守某些常见的约定。比如“判断某链表是否某某结构”，“某树形数据结构是否符合某某结构”等等问题，有良好习惯的程序员会尽量保持函数不修改要判断的数据结构。然后，诸如本题目之类则是对优秀程序员的一种“伤害”，因为在不修改数据结构的前提下，可能无法在要求的复杂度内完成任务。但是，出题者一点小小的改进，例如在题目中提及一下数据结构或内容允许被修改，则既可保持程序题目的趣味性，又避免了程序员对题目要求的种种猜测。</p>
+<p>在明确了链表的结构可被修改的前提下，问题的解决方案便可很容易分析得出：主体思路是修改链表的前或后半部分，使其链表内节点指向相反方向，然后依次对比前半部分和后半部分链表各个节点。 因此关键点是如何逆序重组链表的一半？有很多方案，例如以下：</p>
+<ol>
+<li>方案一：第一遍循环定位出中间节点(注意偶数和奇数节点总数的细微差别)，然后以中间节点为起点(链表后半部分)或为终点(链表前半部分)逆序重组链表的一半。依次对比链表前后部分的各个节点。</li>
+<li>方案二：定义快慢两个指针，分别对应移动2步和1步。当快指针结束遍历链表时，慢指针位于链表中间。然后逆序重组从慢指针至链表结尾的节点。依次对比链表前后部分的各个节点。</li>
+</ol>]]>
+    
+    </summary>
+    
+      <category term="Linked List, Two Pointers" scheme="http://blog.liushuping.com/tags/Linked-List-Two-Pointers/"/>
+    
+      <category term="LeetCode" scheme="http://blog.liushuping.com/categories/LeetCode/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[基于NodeJS的ASCII树形文本生成模块]]></title>
+    <link href="http://blog.liushuping.com/2015/07/21/generate-ascii-tree-from-input-string-with-node/"/>
+    <id>http://blog.liushuping.com/2015/07/21/generate-ascii-tree-from-input-string-with-node/</id>
+    <published>2015-07-21T14:51:16.000Z</published>
+    <updated>2015-10-22T12:59:57.000Z</updated>
+    <content type="html"><![CDATA[<p><a href="http://blog.liushuping.com/ascii-tree/">Ascii-tree</a>是一个简单的NodeJS模块，用来对指定格式的输入文本输出树形结构的ASCII文本。指定格式的输入文本要求每一个节点都要以一定数量的引导字符开始，根节点以1个引导字符开始；子节点引导字符以此类推，如下列输入文本：<br><figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="special">#</span>root node<span class="command">\r</span><span class="command">\n</span><span class="special">#</span><span class="special">#</span>node1<span class="command">\r</span><span class="command">\n</span><span class="special">#</span><span class="special">#</span><span class="special">#</span><span class="command">\r</span><span class="command">\nnode</span>1<span class="command">\r</span><span class="command">\n</span><span class="special">#</span><span class="special">#</span>node2</span><br></pre></td></tr></table></figure></p>
+<p>代表的是这样的一段ASCII树形文本：<br><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">root <span class="keyword">node</span><span class="identifier"></span><br><span class="line"></span><span class="title">├─ node1</span></span><br><span class="line">│  └─ node11</span><br><span class="line">└─ node2</span><br></pre></td></tr></table></figure></p>
+<p><a href="http://blog.liushuping.com/ascii-tree/">Ascii-tree</a>就是这样的一个基于Node的ASCII Tree生成模块。链接：<a href="http://blog.liushuping.com/ascii-tree/">http://blog.liushuping.com/ascii-tree/</a></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p><a href="http://blog.liushuping.com/ascii-tree/">Ascii-tree</a>是一个简单的NodeJS模块，用来对指定格式的输入文本输出树形结构的ASCII文本。指定格式的输入文本要求每一个节点都要以一定数量的引导字符开始，根]]>
+    </summary>
+    
+      <category term="Node, Ascii, Tree" scheme="http://blog.liushuping.com/tags/Node-Ascii-Tree/"/>
+    
+      <category term="Ascii-tree" scheme="http://blog.liushuping.com/categories/Ascii-tree/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[在Ubuntu15上用squid3部署HTTP代理]]></title>
+    <link href="http://blog.liushuping.com/2015/07/21/setup-HTTP-proxy-server-with-squid3/"/>
+    <id>http://blog.liushuping.com/2015/07/21/setup-HTTP-proxy-server-with-squid3/</id>
+    <published>2015-07-21T13:06:59.000Z</published>
+    <updated>2015-10-22T12:59:57.000Z</updated>
+    <content type="html"><![CDATA[<p>Squid3 是一个简单易用、功能强大的HTTP代理软件，本文简要介绍了在Ubuntu 15.04上安装squid3以及基本配置的步骤。</p>
+<h2 id="安装">安装</h2><p>通过命令<code>$ sudo apt-get install squid3</code>可以很方便地安装squid3,如下图：<br><img src="http://78rehp.com1.z0.glb.clouddn.com/blog/squid3-install-1.png" alt="squid 3安装"></p>
+<a id="more"></a>
+<h2 id="检查安装">检查安装</h2><p>通过<code>$ whereis squid3</code>命令来确认一下squid3是否已经安装正确：<br><img src="http://78rehp.com1.z0.glb.clouddn.com/blog/squid3-whereis.png" alt="whereis squid3"><br>正确安装后的squid3应该出现路径<code>/etc/squid3</code>。如果没有发现可以尝试重启系统后重新检查一下。</p>
+<h2 id="代理配置">代理配置</h2><p>squid3提供了丰富的配置项，<code>/etc/squid3/squid.conf</code>文件内注释有每一个选项的作用。</p>
+<h3 id="配置端口号">配置端口号</h3><p>squid3默认接受3128端口号，可以通过在文件<code>squid.conf</code>中添加<code>http_port &lt;port&gt;</code>来改变这个端口号:<br><img src="http://78rehp.com1.z0.glb.clouddn.com/blog/squid-edit-conf-2.png" alt="squid3 http_port"></p>
+<h3 id="配置信任的客户端">配置信任的客户端</h3><p>在未配置信任客户端的情况下，squid3是不接受任何连接的。最简单的方案是接受任何客户端的请求，这可以通过添加<code>http_access allow all</code>选项来实现：<br><img src="http://78rehp.com1.z0.glb.clouddn.com/blog/squid-edit-conf-3.png" alt="squid3 http_access allow all"></p>
+<h3 id="基本的访问控制配置">基本的访问控制配置</h3><p><code>http_access allow all</code>规则允许所有连接的客户端访问，不能很好地控制用户的访问权限，也存在潜在的安全问题。一种方案是通过允许一定区段的IP地址访问，这可以通过在配置文件中定义一个值为一段IP的acl的变量，并通过<code>http_access</code>选项来对其授权：<br><img src="http://78rehp.com1.z0.glb.clouddn.com/blog/squid-edit-conf-4.png" alt="squid3 acl ip group"></p>
+<p>另一种更加可靠的识别用户的方式是通过MAC地址来认证，示例命令如下：<br><img src="http://78rehp.com1.z0.glb.clouddn.com/blog/squid-edit-conf-5.png" alt="squid3 acl arp"></p>
+<h2 id="squid3的启动与关闭">squid3的启动与关闭</h2><p>squid3的启动，关闭，重新启动的命令：<br><figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>sudo service squid3 start</span><br><span class="line"><span class="variable">$ </span>sudo service squid3 stop</span><br><span class="line"><span class="variable">$ </span>sudo service squid3 restart</span><br></pre></td></tr></table></figure></p>
+<h2 id="参考引用">参考引用</h2><p>更多的squid3配置选项，及完整的说明文档，请参考：<a href="https://help.ubuntu.com/lts/serverguide/squid.html" target="_blank" rel="external">https://help.ubuntu.com/lts/serverguide/squid.html</a></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>Squid3 是一个简单易用、功能强大的HTTP代理软件，本文简要介绍了在Ubuntu 15.04上安装squid3以及基本配置的步骤。</p>
+<h2 id="安装">安装</h2><p>通过命令<code>$ sudo apt-get install squid3</code>可以很方便地安装squid3,如下图：<br><img src="http://78rehp.com1.z0.glb.clouddn.com/blog/squid3-install-1.png" alt="squid 3安装"></p>]]>
+    
+    </summary>
+    
+      <category term="Squid3, HTTP, Proxy, Ubuntu" scheme="http://blog.liushuping.com/tags/Squid3-HTTP-Proxy-Ubuntu/"/>
+    
+      <category term="Squid" scheme="http://blog.liushuping.com/categories/Squid/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[LeetCode OJ 235 Lowest Common Ancestor of a Binary Search Tree]]></title>
+    <link href="http://blog.liushuping.com/2015/07/17/LeetCode-OJ-235-Lowest-Common-Ancestor-of-a-Binary-Search-Tree/"/>
+    <id>http://blog.liushuping.com/2015/07/17/LeetCode-OJ-235-Lowest-Common-Ancestor-of-a-Binary-Search-Tree/</id>
+    <published>2015-07-17T15:24:07.000Z</published>
+    <updated>2015-10-22T12:59:57.000Z</updated>
+    <content type="html"><![CDATA[<p>对于给定的一颗二叉查找树和其中的两个节点，找出它们的最低公共祖先（LCA）</p>
+<p>根据<a href="https://en.wikipedia.org/wiki/Lowest_common_ancestor" target="_blank" rel="external">Wikipedia对LCA的定义</a>：</p>
+<blockquote>
+<p>The lowest common ancestor is defined between two nodes v and w as the lowest node in T that has both v and w as descendants (where we allow a node to be a descendant of itself).</p>
+</blockquote>
+<p>也就说：最低公共祖先指的是在一颗树中，节点v和节点w的最低的公共节点。这里允许节点可以是它本身的祖先。</p>
+<p>例如，在下面的二叉查找树中，节点2和8的最低公共祖先是6。而节点2和4的最低公共祖先是2（节点可以是它本身的祖先）。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">        ______6_____</span><br><span class="line">       /                    \</span><br><span class="line">  ___2__            ___8__</span><br><span class="line"> /          \          /          \</span><br><span class="line"><span class="number">0</span>         _4_      <span class="number">7</span>           <span class="number">9</span></span><br><span class="line">          /     \</span><br><span class="line">         <span class="number">3</span>      <span class="number">5</span></span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h2 id="问题分析">问题分析</h2><p>由于题目限定查找的范围是一颗二叉查找树，所以可以利用树的左侧值比右侧值小的这个特性来快速查找目标的最低公共祖先。具体可以分五步：</p>
+<ol>
+<li>若目标节点之一等同于root节点，则root为所求目标。</li>
+<li>若两个目标节点重合，则目标节点为所求目标。</li>
+<li>在不符合上述两种情况下，若两个目标节点的值都大于根节点值，则递归遍历右子树获得结果。</li>
+<li>在不符合上述三种情况下，若两个目标节点的值都小于根节点值，则递归遍历左子树获得结果。</li>
+<li>最后一种情况表明两个目标节点分布在根节点的左右两侧，因此根节点为最终结果。</li>
+</ol>
+<h2 id="代码">代码</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line"> * Definition for a binary tree node.</span><br><span class="line"> * struct TreeNode &#123;</span><br><span class="line"> *     int val;</span><br><span class="line"> *     TreeNode *left;</span><br><span class="line"> *     TreeNode *right;</span><br><span class="line"> *     TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125;</span><br><span class="line"> * &#125;;</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">class</span> Solution &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">TreeNode* <span class="title">lowestCommonAncestor</span><span class="params">(TreeNode* root, TreeNode* p, TreeNode* q)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (root == p || root == q) <span class="keyword">return</span> root;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> (p == q) <span class="keyword">return</span> p;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> (p-&gt;val &gt; root-&gt;val &amp;&amp; q-&gt;val &gt; root-&gt;val) </span><br><span class="line">            <span class="keyword">return</span> lowestCommonAncestor(root-&gt;right, p, q);</span><br><span class="line">            </span><br><span class="line">        <span class="keyword">if</span> (p-&gt;val &lt; root-&gt;val &amp;&amp; q-&gt;val &lt; root-&gt;val)</span><br><span class="line">            <span class="keyword">return</span> lowestCommonAncestor(root-&gt;left, p, q);</span><br><span class="line">            </span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>对于给定的一颗二叉查找树和其中的两个节点，找出它们的最低公共祖先（LCA）</p>
+<p>根据<a href="https://en.wikipedia.org/wiki/Lowest_common_ancestor">Wikipedia对LCA的定义</a>：</p>
+<blockquote>
+<p>The lowest common ancestor is defined between two nodes v and w as the lowest node in T that has both v and w as descendants (where we allow a node to be a descendant of itself).</p>
+</blockquote>
+<p>也就说：最低公共祖先指的是在一颗树中，节点v和节点w的最低的公共节点。这里允许节点可以是它本身的祖先。</p>
+<p>例如，在下面的二叉查找树中，节点2和8的最低公共祖先是6。而节点2和4的最低公共祖先是2（节点可以是它本身的祖先）。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">        ______6_____</span><br><span class="line">       /                    \</span><br><span class="line">  ___2__            ___8__</span><br><span class="line"> /          \          /          \</span><br><span class="line"><span class="number">0</span>         _4_      <span class="number">7</span>           <span class="number">9</span></span><br><span class="line">          /     \</span><br><span class="line">         <span class="number">3</span>      <span class="number">5</span></span><br></pre></td></tr></table></figure>]]>
+    
+    </summary>
+    
+      <category term="Tree" scheme="http://blog.liushuping.com/tags/Tree/"/>
+    
+      <category term="LeetCode" scheme="http://blog.liushuping.com/categories/LeetCode/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[LeetCode OJ 236 Lowest Common Ancestor of a Binary Tree]]></title>
+    <link href="http://blog.liushuping.com/2015/07/15/LeetCode-OJ-236-Lowest-Common-Ancestor-of-a-Binary-Tree/"/>
+    <id>http://blog.liushuping.com/2015/07/15/LeetCode-OJ-236-Lowest-Common-Ancestor-of-a-Binary-Tree/</id>
+    <published>2015-07-15T14:45:07.000Z</published>
+    <updated>2015-10-22T12:59:57.000Z</updated>
+    <content type="html"><![CDATA[<p>对于给定的一颗二叉树和其中的两个节点，找出它们的最低公共祖先（LCA）</p>
+<p>根据<a href="https://en.wikipedia.org/wiki/Lowest_common_ancestor" target="_blank" rel="external">Wikipedia对LCA的定义</a>：</p>
+<blockquote>
+<p>The lowest common ancestor is defined between two nodes v and w as the lowest node in T that has both v and w as descendants (where we allow a node to be a descendant of itself).</p>
+</blockquote>
+<p>也就说：最低公共祖先指的是在一颗树中，节点v和节点w的最低的公共节点。这里允许节点可以是它本身的祖先。</p>
+<p>例如，在下面的树中，节点5和1的最低公共祖先是3。而节点4和5的最低公共祖先是5（节点可以是它本身的祖先）。</p>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="cpp">     _______3______</span><br><span class="line">    /              \</span><br><span class="line"> ___5__          ___1__</span><br><span class="line">/      \        /      \</span><br><span class="line"><span class="number">6</span>      _2       <span class="number">0</span>       <span class="number">8</span></span><br><span class="line">      /  \</span><br><span class="line">      <span class="number">7</span>   <span class="number">4</span></span></span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h2 id="问题分析">问题分析</h2><p>该问题可以分为两个步骤来分析：1.遍历整棵树直到两个目标节点全部被发现； 2.从第二个节点被找到时刻开始回溯节点，一直到两个目标节点的第一个共同祖先为止。所以，问题的全部难点都集中在第二步中。</p>
+<p>难点一：如何回溯？<br>事实上，对于递归函数，函数的每一次返回(return)都是一次弹“栈”的过程，也就是一次回溯的过程。</p>
+<p>难点二：在回溯过程中，如何判断某个节点是两个目标节点的共同祖先？<br>在回溯到某一个节点时，计算该节点及所有子节点包含目标节点的个数，一旦达到两个则表明共同祖先节点找到。</p>
+<p>计算过程：如果当前节点是两个目标节点中一个，则该节点值为1，用同样的道理计算该节点左右子树的值，最后加和即是该节点为根的树所包含目标节点的个数。</p>
+<p>特殊情况：如果两个目标节点是同一个节点，那么它就是要求的最终节点。</p>
+<h2 id="代码">代码</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line"> * Definition for a binary tree node.</span><br><span class="line"> * struct TreeNode &#123;</span><br><span class="line"> *     int val;</span><br><span class="line"> *     TreeNode *left;</span><br><span class="line"> *     TreeNode *right;</span><br><span class="line"> *     TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125;</span><br><span class="line"> * &#125;;</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">class</span> Solution &#123;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="comment">// 存储最低公共祖先结果</span></span><br><span class="line">    TreeNode* result;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 记录在遍历树的过程中已经发现的目标节点个数</span></span><br><span class="line">    <span class="comment">// 当count == 2时，全部节点找到，停止遍历，</span></span><br><span class="line">    <span class="comment">// 开始回溯。计算回溯路径上每一个节点为根</span></span><br><span class="line">    <span class="comment">// 的子树所包含目标节点的个数，一旦达到2，则</span></span><br><span class="line">    <span class="comment">// 表明最低公共祖先找到。</span></span><br><span class="line">    <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">TreeNode* <span class="title">lowestCommonAncestor</span><span class="params">(TreeNode* root, TreeNode* p, TreeNode* q)</span> </span>&#123;</span><br><span class="line">        tranverse(root, p, q);</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">tranverse</span><span class="params">(TreeNode* root, TreeNode* p, TreeNode* q)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="literal">NULL</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        </span><br><span class="line">	<span class="comment">// 标识当前节点是否是目标节点之一</span></span><br><span class="line">        <span class="function"><span class="keyword">int</span> <span class="title">mark</span><span class="params">(<span class="number">0</span>)</span></span>;</span><br><span class="line">        <span class="keyword">if</span> (root == p) &#123;</span><br><span class="line">            <span class="comment">// 是目标节点之一</span></span><br><span class="line">            mark++;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> (root == q) &#123;</span><br><span class="line">            <span class="comment">// 是目标节点，且两个目标相同</span></span><br><span class="line">            mark++;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> (mark &gt; <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="comment">// 两个目标全部找到，标识LCA</span></span><br><span class="line">            <span class="keyword">if</span> (result == <span class="literal">NULL</span>) result = root;</span><br><span class="line">            <span class="keyword">return</span> mark;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 继续遍历左子树</span></span><br><span class="line">        mark += tranverse(root-&gt;left, p, q);</span><br><span class="line">        <span class="keyword">if</span> (mark &gt; <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (result == <span class="literal">NULL</span>) result = root;</span><br><span class="line">            <span class="keyword">return</span> mark;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">	<span class="comment">// 继续遍历右子树</span></span><br><span class="line">        mark += tranverse(root-&gt;right, p, q);</span><br><span class="line">        <span class="keyword">if</span> (mark &gt; <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (result == <span class="literal">NULL</span>) result = root;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> mark;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>对于给定的一颗二叉树和其中的两个节点，找出它们的最低公共祖先（LCA）</p>
+<p>根据<a href="https://en.wikipedia.org/wiki/Lowest_common_ancestor">Wikipedia对LCA的定义</a>：</p>
+<blockquote>
+<p>The lowest common ancestor is defined between two nodes v and w as the lowest node in T that has both v and w as descendants (where we allow a node to be a descendant of itself).</p>
+</blockquote>
+<p>也就说：最低公共祖先指的是在一颗树中，节点v和节点w的最低的公共节点。这里允许节点可以是它本身的祖先。</p>
+<p>例如，在下面的树中，节点5和1的最低公共祖先是3。而节点4和5的最低公共祖先是5（节点可以是它本身的祖先）。</p>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="cpp">     _______3______</span><br><span class="line">    /              \</span><br><span class="line"> ___5__          ___1__</span><br><span class="line">/      \        /      \</span><br><span class="line"><span class="number">6</span>      _2       <span class="number">0</span>       <span class="number">8</span></span><br><span class="line">      /  \</span><br><span class="line">      <span class="number">7</span>   <span class="number">4</span></span></span><br></pre></td></tr></table></figure>]]>
+    
+    </summary>
+    
+      <category term="Tree" scheme="http://blog.liushuping.com/tags/Tree/"/>
+    
+      <category term="LeetCode" scheme="http://blog.liushuping.com/categories/LeetCode/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[LeetCode OJ 237 - Delete Node in a Linked List]]></title>
+    <link href="http://blog.liushuping.com/2015/07/15/LeetCode-OJ-237-Delete-Node-in-a-Linked-List/"/>
+    <id>http://blog.liushuping.com/2015/07/15/LeetCode-OJ-237-Delete-Node-in-a-Linked-List/</id>
+    <published>2015-07-15T14:00:32.000Z</published>
+    <updated>2015-10-22T12:59:57.000Z</updated>
+    <content type="html"><![CDATA[<p>给定一个链表中的某一个非末尾节点，要求实现一个函数把该节点从链表中删除。</p>
+<p>例如有链表：1-&gt;2-&gt;3-&gt;4，且给定的是值为3的那个节点，要求调用该函数后，链表变为1-&gt;2-&gt;4</p>
+<h2 id="问题分析">问题分析</h2><p>常见的链表节点删除问题是已知某节点的前继节点，通过设置前继节点的后续节点为目标节点的后续节点来到达删除该节点的目标。该题目无法得知目标节点的前继节点，因此该方法不可行。换一种思路，可以采取把目标节点的全部内容（value, next）修改为后续节点相同的内容，从而达到从链表中“删除”该节点的目的。</p>
+<p>题目声明目标节点非末尾节点，因此函数无需对目标节点以及目标节点的直接后续节点做“非空”检查。事实上，在前继节点未知的情况下，是无法删除链表中最后一个节点的。</p>
+<a id="more"></a>
+<h2 id="代码">代码</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line"> * Definition for singly-linked list.</span><br><span class="line"> * struct ListNode &#123;</span><br><span class="line"> *     int val;</span><br><span class="line"> *     ListNode *next;</span><br><span class="line"> *     ListNode(int x) : val(x), next(NULL) &#123;&#125;</span><br><span class="line"> * &#125;;</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">class</span> Solution &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">deleteNode</span><span class="params">(ListNode* node)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 目标节点非末尾节点，因此目标节点及其后续</span></span><br><span class="line">        <span class="comment">// 节点无需做“非空”检查。</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 让目标节点的值等于其后续节点的值</span></span><br><span class="line">        node-&gt;val = node-&gt;next-&gt;val;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 让目标节点的next值等于其后续节点的next值</span></span><br><span class="line">        node-&gt;next = node-&gt;next-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>给定一个链表中的某一个非末尾节点，要求实现一个函数把该节点从链表中删除。</p>
+<p>例如有链表：1-&gt;2-&gt;3-&gt;4，且给定的是值为3的那个节点，要求调用该函数后，链表变为1-&gt;2-&gt;4</p>
+<h2 id="问题分析">问题分析</h2><p>常见的链表节点删除问题是已知某节点的前继节点，通过设置前继节点的后续节点为目标节点的后续节点来到达删除该节点的目标。该题目无法得知目标节点的前继节点，因此该方法不可行。换一种思路，可以采取把目标节点的全部内容（value, next）修改为后续节点相同的内容，从而达到从链表中“删除”该节点的目的。</p>
+<p>题目声明目标节点非末尾节点，因此函数无需对目标节点以及目标节点的直接后续节点做“非空”检查。事实上，在前继节点未知的情况下，是无法删除链表中最后一个节点的。</p>]]>
+    
+    </summary>
+    
+      <category term="Linked List" scheme="http://blog.liushuping.com/tags/Linked-List/"/>
+    
+      <category term="LeetCode" scheme="http://blog.liushuping.com/categories/LeetCode/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[javascript-how-do-you-check-types]]></title>
+    <link href="http://blog.liushuping.com/2014/08/25/javascript-how-do-you-check-types/"/>
+    <id>http://blog.liushuping.com/2014/08/25/javascript-how-do-you-check-types/</id>
+    <published>2014-08-25T15:13:17.000Z</published>
+    <updated>2015-10-22T12:59:57.000Z</updated>
+    <content type="html"><![CDATA[<p>JavaScript的数据是动态类型，运行时可以动态改变变量的数据类型。然而程序中仍然有很多情况需要判断当前变量的数据类型。那么有什么有效的方法吗？</p>
+<p>JavaScript中数据类型有<code>String</code>, <code>Number</code>, <code>Boolean</code>, <code>Array</code>, <code>Object</code> 和<code>undefined</code>类型。另外，正则表达式类型<code>RegExp</code>，<code>Function</code>类型和时间类型<code>Date</code>也是常见的类型。因此，我们希望能对一个变量正确地检查出这些类型。</p>
+<a id="more"></a>
+<h2 id="typeof">typeof</h2><p><code>typeof</code> 是JavaScript的关键字，能检查出给定变量的类型。对上述类型用<code>typeof</code>做一个测试：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typeof</span> <span class="number">123</span> <span class="comment">//"number"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typeof</span> <span class="string">'abc'</span> <span class="comment">//"string"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typeof</span> <span class="literal">true</span> <span class="comment">//"boolean"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typeof</span> [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>] <span class="comment">//"object"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typeof</span> <span class="literal">undefined</span> <span class="comment">//"undefined"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typeof</span> (<span class="keyword">new</span> <span class="built_in">Date</span>) <span class="comment">//"object"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typeof</span> <span class="built_in">Function</span> <span class="comment">//"function"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typeof</span> /abc/ <span class="comment">//"object"</span></span><br></pre></td></tr></table></figure></p>
+<p>因此，不难看出<code>typeof</code>能很好的识别出<code>Number</code>, <code>String</code>, <code>Boolean</code>和<code>undefined</code>类型（输出的类型名都为小写），而对于复合类型都输出<code>object</code>。对复合类型的输出虽然正确，但不能准确定位具体类型。</p>
+<h2 id="toString-NaN">toString</h2><p><code>toString</code>这儿指的是全局的函数，在浏览器中是<code>window.toString</code>，在node.js中指的是<code>global.toString</code>。对目标变量运行toString也能打印它的数据类型，测试如下：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">toString.call(<span class="number">123</span>); <span class="comment">//"[object Number]"</span></span><br><span class="line"></span><br><span class="line">toString.call(<span class="string">'abc'</span>); <span class="comment">//"[object String]"</span></span><br><span class="line"></span><br><span class="line">toString.call(<span class="literal">true</span>); <span class="comment">//"[object Boolean]"</span></span><br><span class="line"></span><br><span class="line">toString.call([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]); <span class="comment">//"[objet Array]"</span></span><br><span class="line"></span><br><span class="line">toString.call(<span class="literal">undefined</span>); <span class="comment">//"[object Undefined]"</span></span><br><span class="line"></span><br><span class="line">toString.call(<span class="keyword">new</span> <span class="built_in">Date</span>); <span class="comment">//"[object Date]"</span></span><br><span class="line"></span><br><span class="line">toString.call(<span class="built_in">Function</span>); <span class="comment">//"[object Function]"</span></span><br><span class="line"></span><br><span class="line">toString.call(<span class="regexp">/abc/</span>); <span class="comment">//"[object RegExp]"</span></span><br></pre></td></tr></table></figure></p>
+<p>因此，<code>toString</code>能更好地检测数据的类型。</p>
+<p>那么对于自定义的数据类型<code>typeof</code>和<code>toString</code>能给出什么结果呢？假设有如下自定义数据类型<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">MyObject</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = <span class="string">'MyObject'</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><code>typeof</code>和<code>toString</code>的检测结果是<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = <span class="keyword">new</span> MyObject;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typeof</span> obj; <span class="comment">//"object"</span></span><br><span class="line"></span><br><span class="line">toString.call(obj); <span class="comment">//"[object Object]"</span></span><br></pre></td></tr></table></figure></p>
+<p>因此，对于自定义类型， <code>typeof</code>和<code>toString</code>都不能满足我们的需求。</p>
+<h2 id="instanceof">instanceof</h2><p>对于检测自定义类型，使用<code>instanceof</code>是一个有效的方法，它能判断给定的数据是否是某一类型的一个实例。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = <span class="keyword">new</span> MyObject;</span><br><span class="line"></span><br><span class="line">obj <span class="keyword">instanceof</span> MyObject; <span class="comment">//true</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="oftype-js">oftype.js</h2><p><code>oftype.js</code>是一个简单小巧的检查JavaScript变量运行时的库，在node.js中通过命令<code>npm install oftype</code>安装。通过下面的代码来检查变量类型：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> oftype = <span class="built_in">require</span>(<span class="string">'oftype'</span>);</span><br><span class="line">oftype(some_var, EXPECTED_TYPE);</span><br></pre></td></tr></table></figure></p>
+<p>例如：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> oftype = <span class="built_in">require</span>(<span class="string">'oftype'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> x = <span class="number">123</span>;</span><br><span class="line">oftype(x, <span class="built_in">Number</span>); <span class="comment">//true;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> y = <span class="string">'abc'</span>;</span><br><span class="line">oftype(y, <span class="built_in">String</span>); <span class="comment">//true;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> z = <span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line">oftype(z, <span class="built_in">Date</span>); <span class="comment">//true;</span></span><br></pre></td></tr></table></figure></p>
+<p>对于自定义类型数据也可以检查，例如：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">MyObj</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = <span class="string">'ABC'</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> oftype = <span class="built_in">require</span>(<span class="string">'oftype'</span>);</span><br><span class="line"><span class="keyword">var</span> x = <span class="keyword">new</span> MyObj();</span><br><span class="line"></span><br><span class="line">oftype(x, MyObject); <span class="comment">//true;</span></span><br></pre></td></tr></table></figure></p>
+<p><code>undefined</code>和<code>null</code>是两个特殊的类型，<code>undefined</code>是一个类型标识符，该类型只有一个值，也就是其本身<code>undefined</code>. 因此对<code>undefined</code>的类型检查有如下代码：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> x = <span class="literal">undefined</span>;</span><br><span class="line"><span class="keyword">var</span> oftype = <span class="built_in">require</span>(<span class="string">'oftype'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 仅在x是undefined的情况下返回true</span></span><br><span class="line">oftype(x, <span class="literal">undefined</span>); <span class="comment">//true;</span></span><br></pre></td></tr></table></figure></p>
+<p><code>null</code>是一个特殊的值，不属于任何类型，所以检查它的代码应该是如下：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> x = <span class="literal">null</span>;</span><br><span class="line"><span class="keyword">var</span> oftype = <span class="built_in">require</span>(<span class="string">'oftype'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 仅在x是null的情况下返回true</span></span><br><span class="line">oftype(x, <span class="literal">null</span>); <span class="comment">//true;</span></span><br></pre></td></tr></table></figure></p>
+<p>然而，有时我们希望null是Object类型的一个特殊值，因此可以加一个参数<code>nullAsObject: true</code>到函数调用中：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> x = <span class="literal">null</span>;</span><br><span class="line"><span class="keyword">var</span> oftype = <span class="built_in">require</span>(<span class="string">'oftype'</span>);</span><br><span class="line"></span><br><span class="line">oftype(x, <span class="built_in">Object</span>); <span class="comment">//false;</span></span><br><span class="line">oftye(x, <span class="built_in">Object</span>, &#123;nullAsObject: <span class="literal">true</span>&#125;); <span class="comment">//true;</span></span><br></pre></td></tr></table></figure></p>
+<p>更多的时候，我们可能希望一次设置参数后，整个程序能检测<code>null</code>为<code>Object</code>类型，而不需要每次函数调用都给传参数。这时，可以通过设置<code>oftype</code>的全局参数来实现:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> oftype = <span class="built_in">require</span>(<span class="string">'oftype'</span>);</span><br><span class="line">oftype.nullAsObject = <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> x = <span class="literal">null</span>;</span><br><span class="line"><span class="keyword">var</span> y = <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line">oftype(x, <span class="built_in">Object</span>); <span class="comment">//true;</span></span><br><span class="line">oftype(y, <span class="built_in">Object</span>); <span class="comment">//true;</span></span><br></pre></td></tr></table></figure></p>
+<p>参数<code>nullAsObject</code>的默认值是<code>false</code></p>
+<p>值得一提的是，原始数据类型（primitive types）的声明有两种方式：字面量（literal）和构造函数方式。理论上，通过构造函数构造的原始类型归属Object类型。然而这种情况下我们仍然期望它是原始数据类型。这时可以通过<code>primitiveObject</code>参数来控制：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> oftype = <span class="built_in">require</span>(<span class="string">'oftype'</span>);</span><br><span class="line"><span class="keyword">var</span> x = <span class="keyword">new</span> <span class="built_in">Number</span>(<span class="number">123</span>);</span><br><span class="line"></span><br><span class="line">oftype(x, <span class="built_in">Number</span>, &#123;primitiveObject: <span class="literal">true</span>&#125;); <span class="comment">//true;</span></span><br></pre></td></tr></table></figure></p>
+<p>同<code>nullObject</code>参数类似，这个参数也可以全局设置。这个参数的默认值是<code>true</code>。</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>JavaScript的数据是动态类型，运行时可以动态改变变量的数据类型。然而程序中仍然有很多情况需要判断当前变量的数据类型。那么有什么有效的方法吗？</p>
+<p>JavaScript中数据类型有<code>String</code>, <code>Number</code>, <code>Boolean</code>, <code>Array</code>, <code>Object</code> 和<code>undefined</code>类型。另外，正则表达式类型<code>RegExp</code>，<code>Function</code>类型和时间类型<code>Date</code>也是常见的类型。因此，我们希望能对一个变量正确地检查出这些类型。</p>]]>
+    
+    </summary>
+    
+      <category term="JavaScript, Type" scheme="http://blog.liushuping.com/tags/JavaScript-Type/"/>
+    
+      <category term="JavaScript" scheme="http://blog.liushuping.com/categories/JavaScript/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[抽象的思考]]></title>
+    <link href="http://blog.liushuping.com/2014/08/19/think-in-abstraction/"/>
+    <id>http://blog.liushuping.com/2014/08/19/think-in-abstraction/</id>
+    <published>2014-08-19T13:12:02.000Z</published>
+    <updated>2015-10-22T12:59:57.000Z</updated>
+    <content type="html"><![CDATA[<p>抽象是人类在解决复杂问题，尤其是逻辑相关问题时的一个强有力的工具。在今天，在计算机科学和软件工程领域里，抽象更是解决复杂系统的有力方法之一。没有抽象，就不可能有今天众多复杂软件的产生。</p>
+<p>人类文明的发展，少不了抽象的重要作用。比如人类数字的发明就是一个重要的抽象。数字是什么？是一种物体吗？当然不是。那么是一种精神状态吗？也不是。它是一个符号，一个代表了某种抽象逻辑的符号。那么这种抽象逻辑是什么？不难得出，代表的是对某种事物的数量计数的一种逻辑。之所以叫抽象逻辑，是因为它并不关心被计数的是什么具体事物，事实上它更像一种“模板”可以应用到任何事物上。</p>
+<p>近日学习<a href="http://book.douban.com/subject/1148282/" target="_blank" rel="external">《计算机程序的构造和解释》</a>一书，对抽象有了些许进一步的理解，在此从计算机程序的角度上，以数字的表示这个例子对抽象的力量做一下不全面的分析。</p>
+<a id="more"></a>
+<h2 id="由数数想到的">由数数想到的</h2><p>在中文里对事物的计数过程叫做“数数”。其中第一个“数”指的是计数这个动作；第二个“数”指的是标识事物量的一个符号。前后是两个相同的“数”字，难道是在“暗示”着什么吗？仔细思考，不禁感叹汉字的博大精神及其蕴含的深刻思想。</p>
+<p>以计算机程序的观点来看，计数的这个动作可以叫做过程，而标识事物量的这个数可以叫做数字或数据。那么从两个“数”子相同的这个现象来看，过程和数据是两个完全不同的概念吗？两者有严格的界限吗？或者是一者可以表示另一者？</p>
+<h2 id="再回到“数”上">再回到“数”上</h2><p>姑且不论这里讨论的“数”是计数还是“数量”，先看一下这个概念被提出的原因。人类祖先为了解决统计同类事物量的难题，使用了很多方法，比如可以堆石块，或者用树枝在地面上画线。其目的都是为了使人看到它后还能还原做同样的“数”的过程。因此，是否可以说“数”的过程就在一定范畴内代表了“数”这个数据的意思？或者说过程和数据本来界限就很模糊？</p>
+<h2 id="“数”在程序中的过程表示">“数”在程序中的过程表示</h2><p>应该是所有的计算机语言都有内在的对数字的符号表示，即默认都识别1，2，100 等符号。现在假如程序语言本身没定义数字，那么有什么方法表示吗？假如讨论的范围是非负整数。</p>
+<p>让我们抛弃过程和数据之间有明显界限的偏见。根据前面的分析，为实现表示一个数字的目的，只要能达到还原一个“计数”的过程即可。现在令“计数”的这个过程叫<code>f</code>，假如某个事物是<code>x</code>，因此<code>1</code>可以表示为如下对事物<code>x</code>的一次计数过程：<br><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">f</span> x</span><br></pre></td></tr></table></figure></p>
+<p>以此类推，<code>5</code>可表示为如下对事物<code>x</code>的五次计数过程：<br><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">f</span> f f f f x</span><br></pre></td></tr></table></figure></p>
+<p>用程序语言来表示，它的形式应该是这个样子：<code>f(f(f(f(f(x)))))</code>。值得强调的是，<code>5</code>是指的这5个<code>f</code>对x的求值的过程，而不是求值后的结果。</p>
+<p>现在给<code>1</code>起一个名字叫<code>one</code>。因此用JavaScript来表示，它的定义应该是这个样子：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// one 是一个过程</span></span><br><span class="line"><span class="keyword">var</span> one = <span class="function"><span class="keyword">function</span> (<span class="params">f</span>) </span>&#123;  <span class="comment">//给定f为计数过程</span></span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params">x</span>) </span>&#123;   <span class="comment">//1则表示为一次计数过程</span></span><br><span class="line">        <span class="keyword">return</span> f(x);  <span class="comment">//x的任意性代表了计数过程的抽象性</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>因此，只要再定义一个对某个数字加一的过程我们就可以表示所有的正整数。给定这个过程名字叫<code>inc</code>，则它的定义可以表示为：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> inc = <span class="function"><span class="keyword">function</span> (<span class="params">n</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params">f</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params">x</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> f(n(f)(x)); <span class="comment">//在给定数字n的基础上，做额外一次的同样计数(f)动作。</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>所以，<code>2</code>就可以这样来实现：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> two = inc(one);</span><br></pre></td></tr></table></figure></p>
+<p>至此，抽象正整数的定义完成。也许您会觉得这有点儿过于抽象，作为一个具体的例子，我们就来模拟一下我们祖先计数（比如羊皮skin)的例子。假定每数一张羊皮就画一个<code>*</code>的符号，则这个计数的过程<code>f</code>应该表示为：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params">x</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'*'</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>所以数一张羊皮的代码应该是这个样子：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">one(f)(<span class="string">'skin'</span>);</span><br></pre></td></tr></table></figure></p>
+<p>输出：<br><figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">*</span></span><br></pre></td></tr></table></figure></p>
+<p>数两张羊皮的代码应该是这个样子：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">two(f)(<span class="string">'skin'</span>);</span><br></pre></td></tr></table></figure></p>
+<p>输出：<br><figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">*</span></span><br><span class="line"><span class="keyword">*</span></span><br></pre></td></tr></table></figure></p>
+<p><code>0</code>是一个特殊的数字，它代表“无”或“没有”，或者我们可以从另一个角度去理解：<code>0</code>代表没有去做计数过程。基于这样的理解，<code>0</code>就可以用下面的过程代码表示：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> zero = <span class="function"><span class="keyword">function</span> (<span class="params">f</span>) </span>&#123; </span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params">x</span>) </span>&#123; </span><br><span class="line">        <span class="keyword">return</span> x;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这样，<code>one</code>的表示就可以替换为<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> one = inc(zero);</span><br></pre></td></tr></table></figure></p>
+<h2 id="总结">总结</h2><p>抽象是强有力的工具，能帮助我们看到现象后面的本质。然而，抽象本身又是一个复杂的思考过程，辅助性的工具符号等能帮助我们简化抽象过程的掌控，比如数字符号的发明大大简化了人类对计数这样一抽象过程的使用。</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>抽象是人类在解决复杂问题，尤其是逻辑相关问题时的一个强有力的工具。在今天，在计算机科学和软件工程领域里，抽象更是解决复杂系统的有力方法之一。没有抽象，就不可能有今天众多复杂软件的产生。</p>
+<p>人类文明的发展，少不了抽象的重要作用。比如人类数字的发明就是一个重要的抽象。数字是什么？是一种物体吗？当然不是。那么是一种精神状态吗？也不是。它是一个符号，一个代表了某种抽象逻辑的符号。那么这种抽象逻辑是什么？不难得出，代表的是对某种事物的数量计数的一种逻辑。之所以叫抽象逻辑，是因为它并不关心被计数的是什么具体事物，事实上它更像一种“模板”可以应用到任何事物上。</p>
+<p>近日学习<a href="http://book.douban.com/subject/1148282/">《计算机程序的构造和解释》</a>一书，对抽象有了些许进一步的理解，在此从计算机程序的角度上，以数字的表示这个例子对抽象的力量做一下不全面的分析。</p>]]>
+    
+    </summary>
+    
+      <category term="Abstract, Think" scheme="http://blog.liushuping.com/tags/Abstract-Think/"/>
+    
+      <category term="Abstract" scheme="http://blog.liushuping.com/categories/Abstract/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[Web API 的URL和HTTP Verb 的使用]]></title>
+    <link href="http://blog.liushuping.com/2014/07/03/http-url-verb-usage-in-web-api/"/>
+    <id>http://blog.liushuping.com/2014/07/03/http-url-verb-usage-in-web-api/</id>
+    <published>2014-07-03T05:52:43.000Z</published>
+    <updated>2015-10-22T12:59:57.000Z</updated>
+    <content type="html"><![CDATA[<p>根据<a href="http://en.m.wikipedia.org/wiki/Web_API" target="_blank" rel="external">维基百科的定义</a>：Web API是指面向Web服务器或者Web浏览器以及其它HTTP客户端的API(应用程序编程接口)。Web API有不同的实现风格，比如常见的RPC和REST风格。而任何一种实现都是在HTTP基础之上的，HTTP消息的结构是Web API构成的主要元素，如HTTP URL，状态码(Status Code)和HTTP 方法(Verb)等。 </p>
+<p>随着Web的蓬勃发展，大量的信息和数据出现在网络。因此，基于资源(Resource)的RESTful Web API变的异常流行。数量众多的关于如何设计优秀的REST API的文章等层出不穷。比如阮一峰的<a href="http://www.ruanyifeng.com/blog/2014/05/restful_api.html" target="_blank" rel="external">RESTful API 设计指南</a> ，其中也提到了一篇不错的文章<a href="http://codeplanet.io/principles-good-restful-api-design/" target="_blank" rel="external">Principle of good RESTful API design</a>。文章都提到了很多关于RESTful API的实用方法和原则。遗憾的是，有一些关于URL和HTTP Verb使用中容易误解的细节都没有被提及。 </p>
+<p>结合我在学习和使用Web API的过程中的一些心得，我想就URL和HTTP Verb的几个小细节谈一下。由于讨论不局限在REST上，因此是Web API的讨论。 </p>
+<a id="more"></a>
+<h2 id="关于URL">关于URL</h2><p>在按照RESTful来设计的Web API中，URL所代表的正是它字面上所描述的意思：统一资源定位。也就是说URL在RESTful Web API中是对资源的位置标识。 </p>
+<p>因此一条规则是：<em>在RESTful  Web API的URL中尽量不要附加跟资源定位无关的信息</em>  </p>
+<p>比如下面示例都是良好的RESTful Web API可能的URL，URL中的所有信息都是用来定位资源的。 </p>
+<pre><code><span class="regexp">/api/</span>books 
+<span class="regexp">/api/</span>books/book-id 
+<span class="regexp">/api/</span>books?author=crockford
+</code></pre><p>而下面的这个例子则可能不是一些优秀的RESTful Web API所具备的URL，因为books资源的定位完全不依赖于访问这个API的用户登录时间。 </p>
+<pre><code>/api/books?user_login_on=<span class="number">2014</span>-<span class="number">07</span>-<span class="number">1</span>
+</code></pre><p>然而以RPC风格设计的Web API中，URL失去了它字面所描述的意思。这时设计者期望的URL更是一个过程(procedure)名字，一个存在于服务器上的过程的名字。这种情况下，过程需要的”参数”都放在HTTP请求的body中。如下面的示例： </p>
+<pre><code>/api/<span class="preprocessor">get</span>-all-<span class="keyword">books </span>
+/api/<span class="preprocessor">get</span>-<span class="keyword">book </span>
+/api/update-<span class="keyword">book</span>
+</code></pre><p>“过程”需要的参数都建议放在HTTP body中。参数若放到URL中，便会破坏以URL来描述过程名的目的。比如下面的代码： </p>
+<pre><code>/api/<span class="keyword">get</span>-book?<span class="property">id</span>=<span class="number">123</span>
+</code></pre><p>从URL的整体来看，这已经不能算是一个过程的描述了，它带有了一些多余的干扰信息。 </p>
+<h2 id="关于HTTP_Verb">关于HTTP Verb</h2><p>合理地配合URL使用HTTP Verb(动词)则可以定义语义良好的Web API。语义良好是用户能直观从API名本身了解其用途的基础，而不需过多地依赖相关解释性文档。 </p>
+<p>在RESTful的Web API中，HTTP Verb的使用是应该尽量按照每一个Verb本身字面的意思来使用的。这样CRUD的做操作很容易映射到POST，GET，PUT，DELETE。当然还有一些其它的Verb也都可以映射到一些相关的操作，比如PATCH可以映射到Resource的局部更新。这儿需要提及一点的是，REST的使用一定要做到实用主义，而不是教条主义。教条主义也许会要求所有的Verb都严格地映射到相关指定的操作，然而受到各种实际情况的限制，这样的要求通常很难达到。比如限制读取操作一定要用GET方法，那么当Resource的描述超过浏览器对URL长度限制的情况时，API的实现就陷入两难境地。因此做为实用主义的RESTful Web API，我们首选RESTful的相关规则，然而在特殊情况下允许变通。 </p>
+<p>下面的示例URL是一下良好的RESTful Web API的URL和Verb组合： </p>
+<pre><code>HTTP <span class="number">1.1</span> GET /api/books  
+HTTP <span class="number">1.1</span> POST /api/books 
+HTTP <span class="number">1.1</span> GET /api/books/<span class="number">123</span> 
+HTTP <span class="number">1.1</span> PUT /api/books/<span class="number">123</span> 
+HTTP <span class="number">1.1</span> DELETE /api/books/<span class="number">123</span>
+</code></pre><p>那么在RPC风格的Web API中Verb的使用有什么规则呢？在前面介绍了，RPC风格的Web API中URL用做描述一个过程的名字，过程就代表了一个“动作”或“方法”。因此，HTTP Verb本身所表示的意思在RPC风格的Web API中也便不再重要，或者说是与URL所描述的“过程”有些冲突。然而，HTTP要求请求中必须有Verb，因此在实现RPC风格的Web API中只要选取一致的Verb即可。 </p>
+<p>下面的示例就是一些不合适的URL和Verb组合，容易给使用者造成困惑： </p>
+<pre><code><span class="label">HTTP</span> <span class="number">1</span>.<span class="number">1</span> <span class="preprocessor">GET</span> /api/<span class="preprocessor">get</span>-<span class="keyword">books </span>
+<span class="label">HTTP</span> <span class="number">1</span>.<span class="number">1</span> <span class="preprocessor">GET</span> /api/<span class="preprocessor">get</span>-<span class="keyword">book </span>
+<span class="label">HTTP</span> <span class="number">1</span>.<span class="number">1</span> PUT /api/update-<span class="keyword">book </span>
+<span class="label">HTTP</span> <span class="number">1</span>.<span class="number">1</span> DELETE /api/delete-<span class="keyword">book</span>
+</code></pre><p>那么选取那个Verb呢？还是在前面的介绍中，建议把“过程”需要的参数放在HTTP body中。因此GET verb就被排除在外了（因为HTTP标准定义GET类型的HTTP请求不带body）。综合分析一下其它Verb后，POST便是一个不错的选择。PUT和DELETE都具有明显的意义，容易让用户产生一定误解。在RPC风格的Web API中，就可以把POST理解成“执行”。发一个HTTP请求就可理解为：执行一个由URL所描述的存在于服务器的远程过程。 </p>
+<p>下面的示例URL就是一些不错的RPC风格的Web API例子： </p>
+<pre><code><span class="label">HTTP</span> <span class="number">1</span>.<span class="number">1</span> POST /api/<span class="preprocessor">get</span>-<span class="keyword">books </span>
+<span class="label">HTTP</span> <span class="number">1</span>.<span class="number">1</span> POST /api/<span class="preprocessor">get</span>-<span class="keyword">book </span>
+<span class="label">HTTP</span> <span class="number">1</span>.<span class="number">1</span> POST /api/update-<span class="keyword">book </span>
+<span class="label">HTTP</span> <span class="number">1</span>.<span class="number">1</span> POST /api/delete-<span class="keyword">book</span>
+</code></pre><h2 id="总结">总结</h2><p>总结有如下几点： </p>
+<ul>
+<li>在RESTful Web API的URL中尽量不要附加跟资源定位无关的信息。</li>
+<li>在RPC风格的Web API中，URL用来描述“过程”的名字，过程需要的参数建议放在HTTP body中。</li>
+<li>在RESTful Web API中，HTTP Verb的使用要尽量保持其本身的语义性，把不同Verb映射到CRUD操作上。</li>
+<li>在RPC风格的Web API中，POST方法是一个不错的选择。可以把POST理解为“执行”。因此一次请求可以理解为：“执行”（POST）一个由URL所描述的存在于服务器的“远程过程”。 </li>
+</ul>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>根据<a href="http://en.m.wikipedia.org/wiki/Web_API">维基百科的定义</a>：Web API是指面向Web服务器或者Web浏览器以及其它HTTP客户端的API(应用程序编程接口)。Web API有不同的实现风格，比如常见的RPC和REST风格。而任何一种实现都是在HTTP基础之上的，HTTP消息的结构是Web API构成的主要元素，如HTTP URL，状态码(Status Code)和HTTP 方法(Verb)等。 </p>
+<p>随着Web的蓬勃发展，大量的信息和数据出现在网络。因此，基于资源(Resource)的RESTful Web API变的异常流行。数量众多的关于如何设计优秀的REST API的文章等层出不穷。比如阮一峰的<a href="http://www.ruanyifeng.com/blog/2014/05/restful_api.html">RESTful API 设计指南</a> ，其中也提到了一篇不错的文章<a href="http://codeplanet.io/principles-good-restful-api-design/">Principle of good RESTful API design</a>。文章都提到了很多关于RESTful API的实用方法和原则。遗憾的是，有一些关于URL和HTTP Verb使用中容易误解的细节都没有被提及。 </p>
+<p>结合我在学习和使用Web API的过程中的一些心得，我想就URL和HTTP Verb的几个小细节谈一下。由于讨论不局限在REST上，因此是Web API的讨论。 </p>]]>
+    
+    </summary>
+    
+      <category term="Web API, REST, HTTP" scheme="http://blog.liushuping.com/tags/Web-API-REST-HTTP/"/>
+    
+      <category term="Web API" scheme="http://blog.liushuping.com/categories/Web-API/"/>
+    
+  </entry>
+  
+</feed>

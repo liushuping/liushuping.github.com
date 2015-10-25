@@ -1,0 +1,767 @@
+<!doctype html>
+<html class="theme-next use-motion theme-next-mist">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+  <meta name="google-site-verification" content="NekLujUw5AZHPurxCGrWs3pBw0xKPJ_6vDxBVTt5txU" />
+
+
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+
+  
+    <link href='//fonts.lug.ustc.edu.cn/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+  
+
+
+<link rel="stylesheet" type="text/css" href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" />
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.2"/>
+
+
+
+
+  <meta name="keywords" content="Web API, REST, HTTP," />
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Shuping LIU" type="application/atom+xml" />
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.2" />
+
+
+<meta name="description" content="根据维基百科的定义：Web API是指面向Web服务器或者Web浏览器以及其它HTTP客户端的API(应用程序编程接口)。Web API有不同的实现风格，比如常见的RPC和REST风格。而任何一种实现都是在HTTP基础之上的，HTTP消息的结构是Web API构成的主要元素，如HTTP URL，状态码(Status Code)和HTTP 方法(Verb)等。 
+随着Web的蓬勃发展，大量的信息和数">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Web API 的URL和HTTP Verb 的使用">
+<meta property="og:url" content="http://blog.liushuping.com/2014/07/03/http-url-verb-usage-in-web-api/index.html">
+<meta property="og:site_name" content="Shuping LIU">
+<meta property="og:description" content="根据维基百科的定义：Web API是指面向Web服务器或者Web浏览器以及其它HTTP客户端的API(应用程序编程接口)。Web API有不同的实现风格，比如常见的RPC和REST风格。而任何一种实现都是在HTTP基础之上的，HTTP消息的结构是Web API构成的主要元素，如HTTP URL，状态码(Status Code)和HTTP 方法(Verb)等。 
+随着Web的蓬勃发展，大量的信息和数">
+<meta property="og:updated_time" content="2015-10-22T12:59:57.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Web API 的URL和HTTP Verb 的使用">
+<meta name="twitter:description" content="根据维基百科的定义：Web API是指面向Web服务器或者Web浏览器以及其它HTTP客户端的API(应用程序编程接口)。Web API有不同的实现风格，比如常见的RPC和REST风格。而任何一种实现都是在HTTP基础之上的，HTTP消息的结构是Web API构成的主要元素，如HTTP URL，状态码(Status Code)和HTTP 方法(Verb)等。 
+随着Web的蓬勃发展，大量的信息和数">
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: 'post'
+  };
+</script>
+
+
+
+  <title> Web API 的URL和HTTP Verb 的使用 | Shuping LIU </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?28c1fa0265e22dd8d0beebc1f74";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Shuping LIU</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">A JavaScript and C# developer</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content"> 
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Web API 的URL和HTTP Verb 的使用
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2014-07-03T13:52:43+08:00" content="2014-07-03">
+              2014-07-03
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Web-API/" itemprop="url" rel="index">
+                    <span itemprop="name">Web API</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2014/07/03/http-url-verb-usage-in-web-api/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2014/07/03/http-url-verb-usage-in-web-api/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><p>根据<a href="http://en.m.wikipedia.org/wiki/Web_API" target="_blank" rel="external">维基百科的定义</a>：Web API是指面向Web服务器或者Web浏览器以及其它HTTP客户端的API(应用程序编程接口)。Web API有不同的实现风格，比如常见的RPC和REST风格。而任何一种实现都是在HTTP基础之上的，HTTP消息的结构是Web API构成的主要元素，如HTTP URL，状态码(Status Code)和HTTP 方法(Verb)等。 </p>
+<p>随着Web的蓬勃发展，大量的信息和数据出现在网络。因此，基于资源(Resource)的RESTful Web API变的异常流行。数量众多的关于如何设计优秀的REST API的文章等层出不穷。比如阮一峰的<a href="http://www.ruanyifeng.com/blog/2014/05/restful_api.html" target="_blank" rel="external">RESTful API 设计指南</a> ，其中也提到了一篇不错的文章<a href="http://codeplanet.io/principles-good-restful-api-design/" target="_blank" rel="external">Principle of good RESTful API design</a>。文章都提到了很多关于RESTful API的实用方法和原则。遗憾的是，有一些关于URL和HTTP Verb使用中容易误解的细节都没有被提及。 </p>
+<p>结合我在学习和使用Web API的过程中的一些心得，我想就URL和HTTP Verb的几个小细节谈一下。由于讨论不局限在REST上，因此是Web API的讨论。 </p>
+<a id="more"></a>
+<h2 id="关于URL">关于URL</h2><p>在按照RESTful来设计的Web API中，URL所代表的正是它字面上所描述的意思：统一资源定位。也就是说URL在RESTful Web API中是对资源的位置标识。 </p>
+<p>因此一条规则是：<em>在RESTful  Web API的URL中尽量不要附加跟资源定位无关的信息</em>  </p>
+<p>比如下面示例都是良好的RESTful Web API可能的URL，URL中的所有信息都是用来定位资源的。 </p>
+<pre><code><span class="regexp">/api/</span>books 
+<span class="regexp">/api/</span>books/book-id 
+<span class="regexp">/api/</span>books?author=crockford
+</code></pre><p>而下面的这个例子则可能不是一些优秀的RESTful Web API所具备的URL，因为books资源的定位完全不依赖于访问这个API的用户登录时间。 </p>
+<pre><code>/api/books?user_login_on=<span class="number">2014</span>-<span class="number">07</span>-<span class="number">1</span>
+</code></pre><p>然而以RPC风格设计的Web API中，URL失去了它字面所描述的意思。这时设计者期望的URL更是一个过程(procedure)名字，一个存在于服务器上的过程的名字。这种情况下，过程需要的”参数”都放在HTTP请求的body中。如下面的示例： </p>
+<pre><code>/api/<span class="preprocessor">get</span>-all-<span class="keyword">books </span>
+/api/<span class="preprocessor">get</span>-<span class="keyword">book </span>
+/api/update-<span class="keyword">book</span>
+</code></pre><p>“过程”需要的参数都建议放在HTTP body中。参数若放到URL中，便会破坏以URL来描述过程名的目的。比如下面的代码： </p>
+<pre><code>/api/<span class="keyword">get</span>-book?<span class="property">id</span>=<span class="number">123</span>
+</code></pre><p>从URL的整体来看，这已经不能算是一个过程的描述了，它带有了一些多余的干扰信息。 </p>
+<h2 id="关于HTTP_Verb">关于HTTP Verb</h2><p>合理地配合URL使用HTTP Verb(动词)则可以定义语义良好的Web API。语义良好是用户能直观从API名本身了解其用途的基础，而不需过多地依赖相关解释性文档。 </p>
+<p>在RESTful的Web API中，HTTP Verb的使用是应该尽量按照每一个Verb本身字面的意思来使用的。这样CRUD的做操作很容易映射到POST，GET，PUT，DELETE。当然还有一些其它的Verb也都可以映射到一些相关的操作，比如PATCH可以映射到Resource的局部更新。这儿需要提及一点的是，REST的使用一定要做到实用主义，而不是教条主义。教条主义也许会要求所有的Verb都严格地映射到相关指定的操作，然而受到各种实际情况的限制，这样的要求通常很难达到。比如限制读取操作一定要用GET方法，那么当Resource的描述超过浏览器对URL长度限制的情况时，API的实现就陷入两难境地。因此做为实用主义的RESTful Web API，我们首选RESTful的相关规则，然而在特殊情况下允许变通。 </p>
+<p>下面的示例URL是一下良好的RESTful Web API的URL和Verb组合： </p>
+<pre><code>HTTP <span class="number">1.1</span> GET /api/books  
+HTTP <span class="number">1.1</span> POST /api/books 
+HTTP <span class="number">1.1</span> GET /api/books/<span class="number">123</span> 
+HTTP <span class="number">1.1</span> PUT /api/books/<span class="number">123</span> 
+HTTP <span class="number">1.1</span> DELETE /api/books/<span class="number">123</span>
+</code></pre><p>那么在RPC风格的Web API中Verb的使用有什么规则呢？在前面介绍了，RPC风格的Web API中URL用做描述一个过程的名字，过程就代表了一个“动作”或“方法”。因此，HTTP Verb本身所表示的意思在RPC风格的Web API中也便不再重要，或者说是与URL所描述的“过程”有些冲突。然而，HTTP要求请求中必须有Verb，因此在实现RPC风格的Web API中只要选取一致的Verb即可。 </p>
+<p>下面的示例就是一些不合适的URL和Verb组合，容易给使用者造成困惑： </p>
+<pre><code><span class="label">HTTP</span> <span class="number">1</span>.<span class="number">1</span> <span class="preprocessor">GET</span> /api/<span class="preprocessor">get</span>-<span class="keyword">books </span>
+<span class="label">HTTP</span> <span class="number">1</span>.<span class="number">1</span> <span class="preprocessor">GET</span> /api/<span class="preprocessor">get</span>-<span class="keyword">book </span>
+<span class="label">HTTP</span> <span class="number">1</span>.<span class="number">1</span> PUT /api/update-<span class="keyword">book </span>
+<span class="label">HTTP</span> <span class="number">1</span>.<span class="number">1</span> DELETE /api/delete-<span class="keyword">book</span>
+</code></pre><p>那么选取那个Verb呢？还是在前面的介绍中，建议把“过程”需要的参数放在HTTP body中。因此GET verb就被排除在外了（因为HTTP标准定义GET类型的HTTP请求不带body）。综合分析一下其它Verb后，POST便是一个不错的选择。PUT和DELETE都具有明显的意义，容易让用户产生一定误解。在RPC风格的Web API中，就可以把POST理解成“执行”。发一个HTTP请求就可理解为：执行一个由URL所描述的存在于服务器的远程过程。 </p>
+<p>下面的示例URL就是一些不错的RPC风格的Web API例子： </p>
+<pre><code><span class="label">HTTP</span> <span class="number">1</span>.<span class="number">1</span> POST /api/<span class="preprocessor">get</span>-<span class="keyword">books </span>
+<span class="label">HTTP</span> <span class="number">1</span>.<span class="number">1</span> POST /api/<span class="preprocessor">get</span>-<span class="keyword">book </span>
+<span class="label">HTTP</span> <span class="number">1</span>.<span class="number">1</span> POST /api/update-<span class="keyword">book </span>
+<span class="label">HTTP</span> <span class="number">1</span>.<span class="number">1</span> POST /api/delete-<span class="keyword">book</span>
+</code></pre><h2 id="总结">总结</h2><p>总结有如下几点： </p>
+<ul>
+<li>在RESTful Web API的URL中尽量不要附加跟资源定位无关的信息。</li>
+<li>在RPC风格的Web API中，URL用来描述“过程”的名字，过程需要的参数建议放在HTTP body中。</li>
+<li>在RESTful Web API中，HTTP Verb的使用要尽量保持其本身的语义性，把不同Verb映射到CRUD操作上。</li>
+<li>在RPC风格的Web API中，POST方法是一个不错的选择。可以把POST理解为“执行”。因此一次请求可以理解为：“执行”（POST）一个由URL所描述的存在于服务器的“远程过程”。 </li>
+</ul>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Web-API-REST-HTTP/" rel="tag">#Web API, REST, HTTP</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2014/08/19/think-in-abstraction/" rel="prev" title="抽象的思考">
+                抽象的思考 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2014/07/03/http-url-verb-usage-in-web-api/"
+     data-title="Web API 的URL和HTTP Verb 的使用"
+     data-content=""
+     data-url="http://blog.liushuping.com/2014/07/03/http-url-verb-usage-in-web-api/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+ </div>
+
+        
+
+        
+          <div class="comments" id="comments">
+            
+              <div class="ds-thread" data-thread-key="2014/07/03/http-url-verb-usage-in-web-api/"
+                   data-title="Web API 的URL和HTTP Verb 的使用" data-url="http://blog.liushuping.com/2014/07/03/http-url-verb-usage-in-web-api/">
+              </div>
+            
+          </div>
+        
+      </div>
+
+      
+        
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="https://avatars2.githubusercontent.com/u/2476783?v=3&s=460" alt="Shuping LIU" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">Shuping LIU</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description"></p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">12</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">8</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">11</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="menu-item-icon icon-next-feed"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/liushuping" target="_blank">
+                  <i class="fa fa-github fa-fw"></i> GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#关于URL"><span class="nav-number">1.</span> <span class="nav-text">关于URL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关于HTTP_Verb"><span class="nav-number">2.</span> <span class="nav-text">关于HTTP Verb</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+      
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner"> <div class="copyright" >
+  
+  &copy;  2014 - 
+  <span itemprop="copyrightYear">2015</span>
+  <span class="with-love">
+    <i class="icon-next-heart fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Shuping LIU</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+ </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+    
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"liushuping"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+    
+     
+
+
+    
+  
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.2"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.2"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.2" id="motion.global"></script>
+
+
+
+
+  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.2"></script>
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.2" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 0.4 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    motionMiddleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+      if (CONFIG.sidebar === 'post') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+
+      isMobile() && FastClick.attach(document.body);
+
+      // Define Motion Sequence.
+      motionIntegrator
+        .add(motionMiddleWares.logo)
+        .add(motionMiddleWares.menu)
+        .add(motionMiddleWares.backToTop)
+        .add(motionMiddleWares.postList)
+        .add(motionMiddleWares.sidebar);
+
+      // Bootstrap Motion.
+      motionIntegrator.bootstrap();
+    });
+  </script>
+
+  
+  
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/lazyload.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#posts").find('img').lazyload({
+        placeholder: "/images/loading.gif",
+        effect: "fadeIn"
+      });
+    });
+  </script>
+</body>
+</html>
