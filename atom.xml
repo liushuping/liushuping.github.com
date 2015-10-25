@@ -4,7 +4,7 @@
   <subtitle><![CDATA[A JavaScript and C# developer]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://blog.liushuping.com/"/>
-  <updated>2015-10-25T09:23:27.000Z</updated>
+  <updated>2015-10-25T10:40:14.000Z</updated>
   <id>http://blog.liushuping.com/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://blog.liushuping.com/2015/08/09/Backbone-router-demo/"/>
     <id>http://blog.liushuping.com/2015/08/09/Backbone-router-demo/</id>
     <published>2015-08-09T14:48:36.000Z</published>
-    <updated>2015-10-25T09:23:27.000Z</updated>
+    <updated>2015-10-25T10:40:14.000Z</updated>
     <content type="html"><![CDATA[<p>这是一个简单的关于Backbone router的演示，下面的例子演示了，通过Backbone的router和pushState来达到省略URL中的Hash符号的目的。</p>
 <p>首先定义一个App需要的router，例如：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> AppRouter = Backbone.Router.extend(&#123;  </span><br><span class="line">    routes : &#123;  </span><br><span class="line">        <span class="string">'help'</span>: <span class="string">'help'</span>,  </span><br><span class="line">        <span class="string">'search/:query'</span>: <span class="string">'search'</span>, </span><br><span class="line">        <span class="string">'search/:query/:page'</span>: <span class="string">'search'</span></span><br><span class="line">    &#125;,   </span><br><span class="line"></span><br><span class="line">    search: <span class="function"><span class="keyword">function</span>(<span class="params">query, page</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (page == <span class="literal">null</span>) &#123;</span><br><span class="line">          alert(<span class="string">'query: '</span> + query);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          alert(<span class="string">'query: '</span> + query + <span class="string">', page: '</span> + page);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
 <a id="more"></a>
@@ -40,6 +40,8 @@
     
       <category term="Backbone" scheme="http://blog.liushuping.com/tags/Backbone/"/>
     
+      <category term="Route" scheme="http://blog.liushuping.com/tags/Route/"/>
+    
       <category term="Backbone" scheme="http://blog.liushuping.com/categories/Backbone/"/>
     
   </entry>
@@ -49,7 +51,7 @@
     <link href="http://blog.liushuping.com/2015/07/26/LeetCode-OJ-238-Product-of-Array-Except-Self/"/>
     <id>http://blog.liushuping.com/2015/07/26/LeetCode-OJ-238-Product-of-Array-Except-Self/</id>
     <published>2015-07-26T14:17:39.000Z</published>
-    <updated>2015-10-22T12:59:57.000Z</updated>
+    <updated>2015-10-25T10:41:23.000Z</updated>
     <content type="html"><![CDATA[<p>给定一个有<code>n</code>个元素且<code>n</code>大于<code>1</code>的一维数组<code>nums</code>，计算并返回一个数组<code>output</code>，使其任一元素<code>output[i]</code>的值是数组<code>nums</code>除<code>nums[i]</code>外的其它所有元素的乘积。要求不能使用除法，且在<code>O(n)</code>的时间复杂度和常数空间复杂度内完成计算。</p>
 <p>例如，给定数组<code>[1,2,3,4]</code>，则返回数组<code>[24,12,8,6]</code></p>
 <p>注：返回数组所占空间不在本题的空间复杂度的计算范围内。</p>
@@ -74,6 +76,8 @@
     
       <category term="LeetCode" scheme="http://blog.liushuping.com/categories/LeetCode/"/>
     
+      <category term="Algorithm" scheme="http://blog.liushuping.com/categories/LeetCode/Algorithm/"/>
+    
   </entry>
   
   <entry>
@@ -81,7 +85,7 @@
     <link href="http://blog.liushuping.com/2015/07/22/NFC-SIM%E5%8D%A1%E7%9A%84%E5%B0%B4%E5%B0%AC/"/>
     <id>http://blog.liushuping.com/2015/07/22/NFC-SIM卡的尴尬/</id>
     <published>2015-07-22T15:50:39.000Z</published>
-    <updated>2015-10-22T12:59:57.000Z</updated>
+    <updated>2015-10-25T10:41:38.000Z</updated>
     <content type="html"><![CDATA[<p>近日NFC又一次出现在新闻中，如<em>今日头条</em>的<a href="http://toutiao.com/a4762553742/" target="_blank" rel="external">千万不要忽略了手机上NFC功能，你会后悔的</a>。我终于觉得有必要介绍一下自己几个月来NFC使用的体验了。</p>
 <p>首先，NFC是一项重要的技术，在我们的日常生活中扮演着重要的作用。公交，地铁，饭卡等等很多近距离通信设备都是使用的NFC技术。</p>
 <p>手机在我们的日常生活中同样扮演着越来越重要的作用，智能手机已成为大多数人时刻带在身上的设备，甚至包含上厕所的时间。因此，让手机具备NFC的功能也就是理所应该的了。在现阶段，具备NFC功能的手机还需要一张NFC SIM卡，这也是可以理解的。然而在使用了几个月的手机NFC功能后，其中的尴尬还是不少的。</p>
@@ -109,7 +113,9 @@
     
     </summary>
     
-      <category term="NFC, Mobile" scheme="http://blog.liushuping.com/tags/NFC-Mobile/"/>
+      <category term="Mobile" scheme="http://blog.liushuping.com/tags/Mobile/"/>
+    
+      <category term="NFC" scheme="http://blog.liushuping.com/tags/NFC/"/>
     
       <category term="New Tech" scheme="http://blog.liushuping.com/categories/New-Tech/"/>
     
@@ -120,7 +126,7 @@
     <link href="http://blog.liushuping.com/2015/07/22/LeetCode-OJ-234-Palindrome-Linked-List/"/>
     <id>http://blog.liushuping.com/2015/07/22/LeetCode-OJ-234-Palindrome-Linked-List/</id>
     <published>2015-07-22T14:35:42.000Z</published>
-    <updated>2015-10-22T12:59:57.000Z</updated>
+    <updated>2015-10-25T10:40:01.000Z</updated>
     <content type="html"><![CDATA[<p>在时间复杂度为O(n),空间复杂度为O(1)的范围内，判断一个给定的单向列表是否为<a href="https://en.wikipedia.org/wiki/Palindrome" target="_blank" rel="external">回文</a>。</p>
 <h2 id="问题分析">问题分析</h2><p>O(n)时间复杂度要求对链表全遍历(即访问一次链全部元素)的次数应为固定常数次，不应随链表长度的变化而变化；O(1)的空间复杂度要求额外定义的变量应为常数个，而不应随链表长度的变化而变化。</p>
 <p>而对于回文的判定，唯一的办法是依次以中间对称的方式对比左右每个元素的值。通常在做算法题，或者有良好软件工程的程序人员都会“潜在地”去保持一些良好的习惯，或遵守某些常见的约定。比如“判断某链表是否某某结构”，“某树形数据结构是否符合某某结构”等等问题，有良好习惯的程序员会尽量保持函数不修改要判断的数据结构。然后，诸如本题目之类则是对优秀程序员的一种“伤害”，因为在不修改数据结构的前提下，可能无法在要求的复杂度内完成任务。但是，出题者一点小小的改进，例如在题目中提及一下数据结构或内容允许被修改，则既可保持程序题目的趣味性，又避免了程序员对题目要求的种种猜测。</p>
@@ -145,9 +151,13 @@
     
     </summary>
     
-      <category term="Linked List, Two Pointers" scheme="http://blog.liushuping.com/tags/Linked-List-Two-Pointers/"/>
+      <category term="Linked List" scheme="http://blog.liushuping.com/tags/Linked-List/"/>
+    
+      <category term="Two Pointers" scheme="http://blog.liushuping.com/tags/Two-Pointers/"/>
     
       <category term="LeetCode" scheme="http://blog.liushuping.com/categories/LeetCode/"/>
+    
+      <category term="Algorithm" scheme="http://blog.liushuping.com/categories/LeetCode/Algorithm/"/>
     
   </entry>
   
@@ -156,7 +166,7 @@
     <link href="http://blog.liushuping.com/2015/07/21/generate-ascii-tree-from-input-string-with-node/"/>
     <id>http://blog.liushuping.com/2015/07/21/generate-ascii-tree-from-input-string-with-node/</id>
     <published>2015-07-21T14:51:16.000Z</published>
-    <updated>2015-10-22T12:59:57.000Z</updated>
+    <updated>2015-10-25T10:38:56.000Z</updated>
     <content type="html"><![CDATA[<p><a href="http://blog.liushuping.com/ascii-tree/">Ascii-tree</a>是一个简单的NodeJS模块，用来对指定格式的输入文本输出树形结构的ASCII文本。指定格式的输入文本要求每一个节点都要以一定数量的引导字符开始，根节点以1个引导字符开始；子节点引导字符以此类推，如下列输入文本：<br><figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="special">#</span>root node<span class="command">\r</span><span class="command">\n</span><span class="special">#</span><span class="special">#</span>node1<span class="command">\r</span><span class="command">\n</span><span class="special">#</span><span class="special">#</span><span class="special">#</span><span class="command">\r</span><span class="command">\nnode</span>1<span class="command">\r</span><span class="command">\n</span><span class="special">#</span><span class="special">#</span>node2</span><br></pre></td></tr></table></figure></p>
 <p>代表的是这样的一段ASCII树形文本：<br><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">root <span class="keyword">node</span><span class="identifier"></span><br><span class="line"></span><span class="title">├─ node1</span></span><br><span class="line">│  └─ node11</span><br><span class="line">└─ node2</span><br></pre></td></tr></table></figure></p>
 <p><a href="http://blog.liushuping.com/ascii-tree/">Ascii-tree</a>就是这样的一个基于Node的ASCII Tree生成模块。链接：<a href="http://blog.liushuping.com/ascii-tree/">http://blog.liushuping.com/ascii-tree/</a></p>
@@ -165,7 +175,11 @@
     <![CDATA[<p><a href="http://blog.liushuping.com/ascii-tree/">Ascii-tree</a>是一个简单的NodeJS模块，用来对指定格式的输入文本输出树形结构的ASCII文本。指定格式的输入文本要求每一个节点都要以一定数量的引导字符开始，根]]>
     </summary>
     
-      <category term="Node, Ascii, Tree" scheme="http://blog.liushuping.com/tags/Node-Ascii-Tree/"/>
+      <category term="ASCII" scheme="http://blog.liushuping.com/tags/ASCII/"/>
+    
+      <category term="Node" scheme="http://blog.liushuping.com/tags/Node/"/>
+    
+      <category term="Tree" scheme="http://blog.liushuping.com/tags/Tree/"/>
     
       <category term="Ascii-tree" scheme="http://blog.liushuping.com/categories/Ascii-tree/"/>
     
@@ -176,7 +190,7 @@
     <link href="http://blog.liushuping.com/2015/07/21/setup-HTTP-proxy-server-with-squid3/"/>
     <id>http://blog.liushuping.com/2015/07/21/setup-HTTP-proxy-server-with-squid3/</id>
     <published>2015-07-21T13:06:59.000Z</published>
-    <updated>2015-10-22T12:59:57.000Z</updated>
+    <updated>2015-10-25T10:42:14.000Z</updated>
     <content type="html"><![CDATA[<p>Squid3 是一个简单易用、功能强大的HTTP代理软件，本文简要介绍了在Ubuntu 15.04上安装squid3以及基本配置的步骤。</p>
 <h2 id="安装">安装</h2><p>通过命令<code>$ sudo apt-get install squid3</code>可以很方便地安装squid3,如下图：<br><img src="http://78rehp.com1.z0.glb.clouddn.com/blog/squid3-install-1.png" alt="squid 3安装"></p>
 <a id="more"></a>
@@ -195,9 +209,17 @@
     
     </summary>
     
-      <category term="Squid3, HTTP, Proxy, Ubuntu" scheme="http://blog.liushuping.com/tags/Squid3-HTTP-Proxy-Ubuntu/"/>
+      <category term="HTTP" scheme="http://blog.liushuping.com/tags/HTTP/"/>
     
-      <category term="Squid" scheme="http://blog.liushuping.com/categories/Squid/"/>
+      <category term="Proxy" scheme="http://blog.liushuping.com/tags/Proxy/"/>
+    
+      <category term="Squid3" scheme="http://blog.liushuping.com/tags/Squid3/"/>
+    
+      <category term="Ubuntu" scheme="http://blog.liushuping.com/tags/Ubuntu/"/>
+    
+      <category term="HTTP" scheme="http://blog.liushuping.com/categories/HTTP/"/>
+    
+      <category term="Proxy" scheme="http://blog.liushuping.com/categories/HTTP/Proxy/"/>
     
   </entry>
   
@@ -206,7 +228,7 @@
     <link href="http://blog.liushuping.com/2015/07/17/LeetCode-OJ-235-Lowest-Common-Ancestor-of-a-Binary-Search-Tree/"/>
     <id>http://blog.liushuping.com/2015/07/17/LeetCode-OJ-235-Lowest-Common-Ancestor-of-a-Binary-Search-Tree/</id>
     <published>2015-07-17T15:24:07.000Z</published>
-    <updated>2015-10-22T12:59:57.000Z</updated>
+    <updated>2015-10-25T10:40:43.000Z</updated>
     <content type="html"><![CDATA[<p>对于给定的一颗二叉查找树和其中的两个节点，找出它们的最低公共祖先（LCA）</p>
 <p>根据<a href="https://en.wikipedia.org/wiki/Lowest_common_ancestor" target="_blank" rel="external">Wikipedia对LCA的定义</a>：</p>
 <blockquote>
@@ -242,6 +264,8 @@
     
       <category term="LeetCode" scheme="http://blog.liushuping.com/categories/LeetCode/"/>
     
+      <category term="Algorithm" scheme="http://blog.liushuping.com/categories/LeetCode/Algorithm/"/>
+    
   </entry>
   
   <entry>
@@ -249,7 +273,7 @@
     <link href="http://blog.liushuping.com/2015/07/15/LeetCode-OJ-236-Lowest-Common-Ancestor-of-a-Binary-Tree/"/>
     <id>http://blog.liushuping.com/2015/07/15/LeetCode-OJ-236-Lowest-Common-Ancestor-of-a-Binary-Tree/</id>
     <published>2015-07-15T14:45:07.000Z</published>
-    <updated>2015-10-22T12:59:57.000Z</updated>
+    <updated>2015-10-25T10:40:56.000Z</updated>
     <content type="html"><![CDATA[<p>对于给定的一颗二叉树和其中的两个节点，找出它们的最低公共祖先（LCA）</p>
 <p>根据<a href="https://en.wikipedia.org/wiki/Lowest_common_ancestor" target="_blank" rel="external">Wikipedia对LCA的定义</a>：</p>
 <blockquote>
@@ -282,6 +306,8 @@
     
       <category term="LeetCode" scheme="http://blog.liushuping.com/categories/LeetCode/"/>
     
+      <category term="Algorithm" scheme="http://blog.liushuping.com/categories/LeetCode/Algorithm/"/>
+    
   </entry>
   
   <entry>
@@ -289,7 +315,7 @@
     <link href="http://blog.liushuping.com/2015/07/15/LeetCode-OJ-237-Delete-Node-in-a-Linked-List/"/>
     <id>http://blog.liushuping.com/2015/07/15/LeetCode-OJ-237-Delete-Node-in-a-Linked-List/</id>
     <published>2015-07-15T14:00:32.000Z</published>
-    <updated>2015-10-22T12:59:57.000Z</updated>
+    <updated>2015-10-25T10:41:11.000Z</updated>
     <content type="html"><![CDATA[<p>给定一个链表中的某一个非末尾节点，要求实现一个函数把该节点从链表中删除。</p>
 <p>例如有链表：1-&gt;2-&gt;3-&gt;4，且给定的是值为3的那个节点，要求调用该函数后，链表变为1-&gt;2-&gt;4</p>
 <h2 id="问题分析">问题分析</h2><p>常见的链表节点删除问题是已知某节点的前继节点，通过设置前继节点的后续节点为目标节点的后续节点来到达删除该节点的目标。该题目无法得知目标节点的前继节点，因此该方法不可行。换一种思路，可以采取把目标节点的全部内容（value, next）修改为后续节点相同的内容，从而达到从链表中“删除”该节点的目的。</p>
@@ -309,6 +335,8 @@
     
       <category term="LeetCode" scheme="http://blog.liushuping.com/categories/LeetCode/"/>
     
+      <category term="Algorithm" scheme="http://blog.liushuping.com/categories/LeetCode/Algorithm/"/>
+    
   </entry>
   
   <entry>
@@ -316,7 +344,7 @@
     <link href="http://blog.liushuping.com/2014/08/25/javascript-how-do-you-check-types/"/>
     <id>http://blog.liushuping.com/2014/08/25/javascript-how-do-you-check-types/</id>
     <published>2014-08-25T15:13:17.000Z</published>
-    <updated>2015-10-22T12:59:57.000Z</updated>
+    <updated>2015-10-25T10:36:18.000Z</updated>
     <content type="html"><![CDATA[<p>JavaScript的数据是动态类型，运行时可以动态改变变量的数据类型。然而程序中仍然有很多情况需要判断当前变量的数据类型。那么有什么有效的方法吗？</p>
 <p>JavaScript中数据类型有<code>String</code>, <code>Number</code>, <code>Boolean</code>, <code>Array</code>, <code>Object</code> 和<code>undefined</code>类型。另外，正则表达式类型<code>RegExp</code>，<code>Function</code>类型和时间类型<code>Date</code>也是常见的类型。因此，我们希望能对一个变量正确地检查出这些类型。</p>
 <a id="more"></a>
@@ -345,7 +373,7 @@
     
     </summary>
     
-      <category term="JavaScript, Type" scheme="http://blog.liushuping.com/tags/JavaScript-Type/"/>
+      <category term="JavaScript" scheme="http://blog.liushuping.com/tags/JavaScript/"/>
     
       <category term="JavaScript" scheme="http://blog.liushuping.com/categories/JavaScript/"/>
     
@@ -356,7 +384,7 @@
     <link href="http://blog.liushuping.com/2014/08/19/think-in-abstraction/"/>
     <id>http://blog.liushuping.com/2014/08/19/think-in-abstraction/</id>
     <published>2014-08-19T13:12:02.000Z</published>
-    <updated>2015-10-22T12:59:57.000Z</updated>
+    <updated>2015-10-25T10:35:56.000Z</updated>
     <content type="html"><![CDATA[<p>抽象是人类在解决复杂问题，尤其是逻辑相关问题时的一个强有力的工具。在今天，在计算机科学和软件工程领域里，抽象更是解决复杂系统的有力方法之一。没有抽象，就不可能有今天众多复杂软件的产生。</p>
 <p>人类文明的发展，少不了抽象的重要作用。比如人类数字的发明就是一个重要的抽象。数字是什么？是一种物体吗？当然不是。那么是一种精神状态吗？也不是。它是一个符号，一个代表了某种抽象逻辑的符号。那么这种抽象逻辑是什么？不难得出，代表的是对某种事物的数量计数的一种逻辑。之所以叫抽象逻辑，是因为它并不关心被计数的是什么具体事物，事实上它更像一种“模板”可以应用到任何事物上。</p>
 <p>近日学习<a href="http://book.douban.com/subject/1148282/" target="_blank" rel="external">《计算机程序的构造和解释》</a>一书，对抽象有了些许进一步的理解，在此从计算机程序的角度上，以数字的表示这个例子对抽象的力量做一下不全面的分析。</p>
@@ -387,7 +415,7 @@
     
     </summary>
     
-      <category term="Abstract, Think" scheme="http://blog.liushuping.com/tags/Abstract-Think/"/>
+      <category term="Abstract" scheme="http://blog.liushuping.com/tags/Abstract/"/>
     
       <category term="Abstract" scheme="http://blog.liushuping.com/categories/Abstract/"/>
     
@@ -398,7 +426,7 @@
     <link href="http://blog.liushuping.com/2014/07/03/http-url-verb-usage-in-web-api/"/>
     <id>http://blog.liushuping.com/2014/07/03/http-url-verb-usage-in-web-api/</id>
     <published>2014-07-03T05:52:43.000Z</published>
-    <updated>2015-10-22T12:59:57.000Z</updated>
+    <updated>2015-10-25T10:39:15.000Z</updated>
     <content type="html"><![CDATA[<p>根据<a href="http://en.m.wikipedia.org/wiki/Web_API" target="_blank" rel="external">维基百科的定义</a>：Web API是指面向Web服务器或者Web浏览器以及其它HTTP客户端的API(应用程序编程接口)。Web API有不同的实现风格，比如常见的RPC和REST风格。而任何一种实现都是在HTTP基础之上的，HTTP消息的结构是Web API构成的主要元素，如HTTP URL，状态码(Status Code)和HTTP 方法(Verb)等。 </p>
 <p>随着Web的蓬勃发展，大量的信息和数据出现在网络。因此，基于资源(Resource)的RESTful Web API变的异常流行。数量众多的关于如何设计优秀的REST API的文章等层出不穷。比如阮一峰的<a href="http://www.ruanyifeng.com/blog/2014/05/restful_api.html" target="_blank" rel="external">RESTful API 设计指南</a> ，其中也提到了一篇不错的文章<a href="http://codeplanet.io/principles-good-restful-api-design/" target="_blank" rel="external">Principle of good RESTful API design</a>。文章都提到了很多关于RESTful API的实用方法和原则。遗憾的是，有一些关于URL和HTTP Verb使用中容易误解的细节都没有被提及。 </p>
 <p>结合我在学习和使用Web API的过程中的一些心得，我想就URL和HTTP Verb的几个小细节谈一下。由于讨论不局限在REST上，因此是Web API的讨论。 </p>
@@ -453,7 +481,11 @@ HTTP <span class="number">1.1</span> DELETE /api/books/<span class="number">123<
     
     </summary>
     
-      <category term="Web API, REST, HTTP" scheme="http://blog.liushuping.com/tags/Web-API-REST-HTTP/"/>
+      <category term="HTTP" scheme="http://blog.liushuping.com/tags/HTTP/"/>
+    
+      <category term="REST" scheme="http://blog.liushuping.com/tags/REST/"/>
+    
+      <category term="Web API" scheme="http://blog.liushuping.com/tags/Web-API/"/>
     
       <category term="Web API" scheme="http://blog.liushuping.com/categories/Web-API/"/>
     
