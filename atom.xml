@@ -4,7 +4,7 @@
   <subtitle><![CDATA[A JavaScript and C# developer]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://blog.liushuping.com/"/>
-  <updated>2015-10-28T16:08:33.000Z</updated>
+  <updated>2015-10-28T16:13:05.000Z</updated>
   <id>http://blog.liushuping.com/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://blog.liushuping.com/2015/10/28/C-%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0-%E5%9F%BA%E6%9C%AC%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA/"/>
     <id>http://blog.liushuping.com/2015/10/28/C-算法笔记-基本输入输出/</id>
     <published>2015-10-28T15:24:51.000Z</published>
-    <updated>2015-10-28T16:08:33.000Z</updated>
+    <updated>2015-10-28T16:13:05.000Z</updated>
     <content type="html"><![CDATA[<p>算法题目都是要求对于给定的输入，在规定时间内把结果输出到指定的设备上。因此输入输出是做算法的最基本条件。</p>
 <h1 id="输入">输入</h1><p>C++中输入有两种常见的形式：标准输入设备<code>stdin</code>和来自文件。</p>
 <h2 id="标准输入设备stdin">标准输入设备stdin</h2><h3 id="输入重定向">输入重定向</h3><p>默认情况下<code>stdin</code>来自于键盘的输入，然而我们可以把它重定向到任何其它可用的设备，比如常见的文件。在常见的系统中，对于一个控制台程序，我们可以用输入重定向来把标准输入重定向到文件设备，例如下列代码把程序<code>test</code>的标准输入重定向到了文件<code>file1.txt</code>:<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">test &lt; file1.txt</span><br></pre></td></tr></table></figure></p>
@@ -64,7 +64,7 @@
 <p>上面所列模式都是以文本方式打开文件，这也是大多数算法程序常见的输入模式。若需要以二进制的方式读取文件，在模式中添加一个<code>b</code>字符即可，该字符可处于任何位置，如：”rb”, “bw”。<br>作为良好的习惯，在文件使用完毕后应该将其关闭：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">freopen(“file1.txt”, “r”, <span class="built_in">stdin</span>);</span><br><span class="line"><span class="built_in">string</span> s;</span><br><span class="line"><span class="built_in">cin</span> &gt;&gt; s;</span><br><span class="line">fclose(<span class="built_in">stdin</span>);</span><br></pre></td></tr></table></figure></p>
 <p>关于<code>freopen</code>的信息，请参考<a href="http://www.cplusplus.com/reference/cstdio/freopen/" target="_blank" rel="external">链接</a>。</p>
 <h3 id="读取标准输入设备stdin">读取标准输入设备stdin</h3><h4 id="cin">cin</h4><p><code>std::cin</code>是指向标准输入设备<code>stdin</code>的流对象，通过流输入运算符<code>&gt;&gt;</code>可以从标准输入设备中读取内容到指定的内存变量中。例如下面的代码是从标准输入设备中读取一个整数：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> x;</span><br><span class="line"><span class="built_in">cin</span> &gt;&gt; x;</span><br></pre></td></tr></table></figure></p>
-<p>默认的读取方式是按照空格或换行符号的。假如输入设备中有内容 <code>“10 20 abc”</code>，可以方便的用以下代码读取：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a, b;</span><br><span class="line"><span class="built_in">string</span> c;</span><br><span class="line"><span class="built_in">cin</span> &gt;&gt; a &gt;&gt; b &gt;&gt; c;</span><br></pre></td></tr></table></figure></p>
+<p>默认的读取方式是按照空格或换行符号的。假如输入设备中有内容 <code>10 20 abc</code>，可以方便的用以下代码读取：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a, b;</span><br><span class="line"><span class="built_in">string</span> c;</span><br><span class="line"><span class="built_in">cin</span> &gt;&gt; a &gt;&gt; b &gt;&gt; c;</span><br></pre></td></tr></table></figure></p>
 <h4 id="cin读取空格或换行符">cin读取空格或换行符</h4><p>如果确需要读取空格或换行字符，则需要用到<code>std::cin.get();</code>函数：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> s;</span><br><span class="line">s = <span class="built_in">cin</span>.get();</span><br></pre></td></tr></table></figure></p>
 <h4 id="cin读取整行">cin读取整行</h4><p>可以通过<code>std::cin.getline()</code>或<code>std::getline()</code>来实现读取一行内容。实际使用中<code>std::getline()</code>更长用一些，因为它直接支持字符串类型，更加方便：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">string</span> s;</span><br><span class="line"><span class="built_in">std</span>::getline(<span class="built_in">cin</span>, s);</span><br></pre></td></tr></table></figure></p>
 <p>更多的关于<code>std::getline()</code>的内容，参考<a href="http://www.cplusplus.com/reference/string/string/getline/?kw=getline" target="_blank" rel="external">链接</a>。<br>关于<code>cin.getline()</code>的内容，参考<a href="http://www.cplusplus.com/reference/istream/istream/getline/" target="_blank" rel="external">链接</a>。</p>
@@ -144,7 +144,7 @@
 </tbody>
 </table>
 <p>除<code>n</code>之外，其它任何的标识符都至少会触发读取一个字符，否则匹配失败，读取扫描结束。</p>
-<p>参数格式中的<code>*</code>，<code>width</code>及<code>length</code>的解释如下：<br>|*|可选参数，表示数据会被读取并被忽略，不会存储到某个地址中|<br>|width|可选参数，指定了读取字符的最大个数|<br>|length|可选参数，可以是hh, h, l, ll, j, z, t, L中的任一值，表明了对存储地址的期望类型|</p>
+<p>参数格式中的<code>*</code>，<code>width</code>及<code>length</code>的解释如下：<br>|*|可选参数，表示数据会被读取并被忽略，不会存储到某个地址中|<br>|width|可选参数，指定了读取字符的最大个数|<br>|length|可选参数，可以是<code>hh</code>, <code>h</code>, <code>l</code>, <code>ll</code>, <code>j</code>, <code>z</code>, <code>t</code>, <code>L</code>中的任一值，表明了对存储地址的期望类型|</p>
 <p>下表列出了不同<code>length</code>对不同标识符的类型期望：</p>
 <table>
 <thead>
