@@ -57,7 +57,7 @@
 <meta property="og:description" content="算法题目都是要求对于给定的输入，在规定时间内把结果输出到指定的设备上。因此输入输出是做算法的最基本条件。
 输入C++中输入有两种常见的形式：标准输入设备stdin和来自文件。
 标准输入设备stdin输入重定向默认情况下stdin来自于键盘的输入，然而我们可以把它重定向到任何其它可用的设备，比如常见的文件。在常见的系统中，对于一个控制台程序，我们可以用输入重定向来把标准输入重定向到文件设备，例如下列">
-<meta property="og:updated_time" content="2015-10-28T16:13:05.000Z">
+<meta property="og:updated_time" content="2015-10-31T13:22:26.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C++算法笔记-基本输入输出">
 <meta name="twitter:description" content="算法题目都是要求对于给定的输入，在规定时间内把结果输出到指定的设备上。因此输入输出是做算法的最基本条件。
@@ -319,12 +319,13 @@
 </table>
 <p>上面所列模式都是以文本方式打开文件，这也是大多数算法程序常见的输入模式。若需要以二进制的方式读取文件，在模式中添加一个<code>b</code>字符即可，该字符可处于任何位置，如：”rb”, “bw”。<br>作为良好的习惯，在文件使用完毕后应该将其关闭：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">freopen(“file1.txt”, “r”, <span class="built_in">stdin</span>);</span><br><span class="line"><span class="built_in">string</span> s;</span><br><span class="line"><span class="built_in">cin</span> &gt;&gt; s;</span><br><span class="line">fclose(<span class="built_in">stdin</span>);</span><br></pre></td></tr></table></figure></p>
 <p>关于<code>freopen</code>的信息，请参考<a href="http://www.cplusplus.com/reference/cstdio/freopen/" target="_blank" rel="external">链接</a>。</p>
-<h3 id="读取标准输入设备stdin">读取标准输入设备stdin</h3><h4 id="cin">cin</h4><p><code>std::cin</code>是指向标准输入设备<code>stdin</code>的流对象，通过流输入运算符<code>&gt;&gt;</code>可以从标准输入设备中读取内容到指定的内存变量中。例如下面的代码是从标准输入设备中读取一个整数：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> x;</span><br><span class="line"><span class="built_in">cin</span> &gt;&gt; x;</span><br></pre></td></tr></table></figure></p>
-<p>默认的读取方式是按照空格或换行符号的。假如输入设备中有内容 <code>10 20 abc</code>，可以方便的用以下代码读取：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a, b;</span><br><span class="line"><span class="built_in">string</span> c;</span><br><span class="line"><span class="built_in">cin</span> &gt;&gt; a &gt;&gt; b &gt;&gt; c;</span><br></pre></td></tr></table></figure></p>
-<h4 id="cin读取空格或换行符">cin读取空格或换行符</h4><p>如果确需要读取空格或换行字符，则需要用到<code>std::cin.get();</code>函数：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> s;</span><br><span class="line">s = <span class="built_in">cin</span>.get();</span><br></pre></td></tr></table></figure></p>
-<h4 id="cin读取整行">cin读取整行</h4><p>可以通过<code>std::cin.getline()</code>或<code>std::getline()</code>来实现读取一行内容。实际使用中<code>std::getline()</code>更长用一些，因为它直接支持字符串类型，更加方便：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">string</span> s;</span><br><span class="line"><span class="built_in">std</span>::getline(<span class="built_in">cin</span>, s);</span><br></pre></td></tr></table></figure></p>
-<p>更多的关于<code>std::getline()</code>的内容，参考<a href="http://www.cplusplus.com/reference/string/string/getline/?kw=getline" target="_blank" rel="external">链接</a>。<br>关于<code>cin.getline()</code>的内容，参考<a href="http://www.cplusplus.com/reference/istream/istream/getline/" target="_blank" rel="external">链接</a>。</p>
-<h4 id="cin其它相关">cin其它相关</h4><p>事实上，<code>cin</code>是<code>istream</code>的一个实例，因此<code>istream</code>的所有公开方法都可以通过cin调用。比如流读取位置定位，<code>peek</code>以及忽略当前字符等等功能。这些高级功能在算法程序中应用的比较少，就不赘述了，具体内容可参考<a href="http://www.cnblogs.com/pegasus923/archive/2011/04/22/2024418.html" target="_blank" rel="external">链接</a>。</p>
+<h3 id="读取标准输入设备stdin">读取标准输入设备stdin</h3><h4 id="std::cin">std::cin</h4><p><code>std::cin</code>是指向标准输入设备<code>stdin</code>的流对象，通过流输入运算符<code>&gt;&gt;</code>可以从标准输入设备中读取内容到指定的内存变量中。例如下面的代码是从标准输入设备中读取一个整数：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> x;</span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">cin</span> &gt;&gt; x;</span><br></pre></td></tr></table></figure></p>
+<p>默认的读取方式是按照空格或换行符号的。假如输入设备中有内容 <code>10 20 abc</code>，可以方便的用以下代码读取：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a, b;</span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">string</span> c;</span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">cin</span> &gt;&gt; a &gt;&gt; b &gt;&gt; c;</span><br></pre></td></tr></table></figure></p>
+<h4 id="std::cin读取空格或换行符">std::cin读取空格或换行符</h4><p>如果确需要读取空格或换行字符，则需要用到<code>std::cin.get();</code>函数：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> s;</span><br><span class="line">s = <span class="built_in">std</span>::<span class="built_in">cin</span>.get();</span><br></pre></td></tr></table></figure></p>
+<h4 id="std::cin读取非十进制数字">std::cin读取非十进制数字</h4><p>如果要读取的字符是非十进制数字，则需要告诉<code>std::cin</code>按照指定的进制读取，可以通过<code>std::setbase()</code>来指定：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> x;</span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">cin</span> &gt;&gt; <span class="built_in">std</span>::setbase(<span class="number">16</span>);</span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">cin</span> &gt;&gt; x;</span><br></pre></td></tr></table></figure></p>
+<h4 id="cin读取整行">cin读取整行</h4><p>可以通过<code>std::cin.getline()</code>或<code>std::getline()</code>来实现读取一行内容。实际使用中<code>std::getline()</code>更长用一些，因为它直接支持字符串类型，更加方便：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">std</span>::<span class="built_in">string</span> s;</span><br><span class="line"><span class="built_in">std</span>::getline(<span class="built_in">cin</span>, s);</span><br></pre></td></tr></table></figure></p>
+<p>更多的关于<code>std::getline()</code>的内容，参考<a href="http://www.cplusplus.com/reference/string/string/getline/?kw=getline" target="_blank" rel="external">链接</a>。<br>关于<code>std::cin.getline()</code>的内容，参考<a href="http://www.cplusplus.com/reference/istream/istream/getline/" target="_blank" rel="external">链接</a>。</p>
+<h4 id="std::cin其它相关">std::cin其它相关</h4><p>事实上，<code>std::cin</code>是<code>std::istream</code>的一个实例，因此<code>std::istream</code>的所有公开方法都可以通过cin调用。比如流读取位置定位，<code>peek</code>以及忽略当前字符等等功能。这些高级功能在算法程序中应用的比较少，就不赘述了，具体内容可参考<a href="http://www.cnblogs.com/pegasus923/archive/2011/04/22/2024418.html" target="_blank" rel="external">链接</a>。</p>
 <h3 id="scanf">scanf</h3><p><code>scanf</code>是C风格的从标准输入设备读取格式化数据的强有力的方法，它从<code>stdin</code>中读取内容，其参数类型丰富强大，但也不容易记忆。<code>scanf</code>接受至少一个参数的变长参数，第一个参数是以C类型字符串表示的输入参数格式。后面的其它参数应该是一系列一经预先配好的变量，依次对应参数格式字符串内的标识符。例如下面代码表示从<code>stdin</code>中读取一个整型数字到变量<code>x</code>中：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> x;</span><br><span class="line"><span class="built_in">scanf</span>(“%i”, &amp;x);</span><br></pre></td></tr></table></figure></p>
 <p>其中参数格式字符串的格式是：<br><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">%[<span class="link_label">*</span>][<span class="link_reference">width</span>][<span class="link_label">length</span>]specifier</span><br></pre></td></tr></table></figure></p>
 <p>这其中的的<code>specifier</code>有如下的定义：</p>
@@ -343,7 +344,7 @@
 <td>整数，有符号的(singed)，可以以<code>+</code>或<code>-</code>开头。默认是十进制，若以0开头则认为是8进制，以0x开头则认为是16进制</td>
 </tr>
 <tr>
-<td>d或u</td>
+<td>d, u</td>
 <td>Decimal Integer</td>
 <td>十进制整数，可以以<code>+</code>或<code>-</code>开头。<code>d</code>代表由符号的，<code>u</code>代表无符号的</td>
 </tr>
@@ -358,7 +359,7 @@
 <td>十六进制整数，可以以<code>0x</code>或<code>0X</code>开头，同时也可以以<code>+</code>或<code>-</code>开头。无符号参数</td>
 </tr>
 <tr>
-<td>f,e,g</td>
+<td>f, e, g</td>
 <td>Floating Point Number</td>
 <td>浮点数，可带小数点，开头可以包含<code>+</code>或<code>-</code>，可以用科学记数法。C99标准支持以<code>0x</code>或<code>0X</code>开头的十六进制数</td>
 </tr>
@@ -506,14 +507,102 @@
 <h2 id="标准输出设备stdout">标准输出设备stdout</h2><h3 id="输出重定向">输出重定向</h3><p>默认情况下，<code>stdout</code>指向的是显示器，然而我们可以把它重定向到任何其它可用的设备，例如文件。在常见的系统中，对于一个控制台程序，我们可以用输出重定向来让<code>stdout</code>指向文件，例如下面的代码把<code>test</code>程序的输出重定向到了文件<code>file1.txt</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">test</span> &gt; file1.txt</span><br></pre></td></tr></table></figure></p>
 <p>输出重定向是一个非常使用的功能，当程序输出内容很多的时候，显示器会翻屏甚至清除掉前面输出的内容，不方便人工查看。因此，可以把内容输出重定向到文件内，方便人工查看和备份。</p>
 <p>除了输出重定向外，海可以通过<code>freopen</code>来使一个已经存在的<code>stream</code>指向指定的目标文件。它的使用方式已经在<a href="#输入重定向">输入重定向</a>中详细介绍了，这里不在赘述，区别是输出的时候文件打开模式要是<code>&quot;w&quot;</code>。</p>
-<h3 id="写入到标准输出设备stdout">写入到标准输出设备stdout</h3><h4 id="cout">cout</h4><p><code>std::cout</code>是指向标准输出设备<code>stdout</code>的流对象，通过流运算符<code>&lt;&lt;</code>可以输出内容到标准输出设备中。例如下面的代码是向标准设备输出整数<code>x</code>:<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> x;</span><br><span class="line">x = <span class="number">123</span>;</span><br><span class="line"><span class="built_in">cout</span> &lt;&lt; x;</span><br></pre></td></tr></table></figure></p>
-<h4 id="cout输出空行">cout输出空行</h4><p>当需要输出空行是，可以用<code>\n</code>或者<code>endl</code>的方式：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cout</span> &lt;&lt; <span class="string">"\n"</span>;</span><br><span class="line"><span class="built_in">cout</span> &lt;&lt; endl;</span><br></pre></td></tr></table></figure></p>
-<h4 id="std::cout输出指定宽度">std::cout输出指定宽度</h4><p>当需要对输出内容置顶宽度时，可以使用<code>std::setw()</code>函数：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="built_in">std</span>::setw(<span class="number">5</span>) &lt;&lt; <span class="number">11</span> &lt;&lt; endl;</span><br></pre></td></tr></table></figure></p>
+<h3 id="写入到标准输出设备stdout">写入到标准输出设备stdout</h3><h4 id="std::cout">std::cout</h4><p><code>std::cout</code>是指向标准输出设备<code>stdout</code>的流对象，通过流运算符<code>&lt;&lt;</code>可以输出内容到标准输出设备中。例如下面的代码是向标准设备输出整数<code>x</code>:<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> x;</span><br><span class="line">x = <span class="number">123</span>;</span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; x;</span><br></pre></td></tr></table></figure></p>
+<h4 id="std::cout输出空行">std::cout输出空行</h4><p>当需要输出空行是，可以用<code>\n</code>或者<code>std::endl</code>的方式：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"\n"</span>;</span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="built_in">std</span>::endl;</span><br></pre></td></tr></table></figure></p>
+<h4 id="std::cout输出指定宽度">std::cout输出指定宽度</h4><p>当需要对输出内容置顶宽度时，可以使用<code>std::setw()</code>函数：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="built_in">std</span>::setw(<span class="number">5</span>) &lt;&lt; <span class="number">11</span> &lt;&lt; <span class="built_in">std</span>::endl;</span><br></pre></td></tr></table></figure></p>
 <p>输出时，数字<code>11</code>的左侧会填充三个空格。值得注意的是，<code>std::setw()</code>只会影响下一次输出，并不会影响后续的输出。<code>std::set()</code>来自于头文件<code>&lt;iomanip&gt;</code>。</p>
-<h4 id="std::cout指定输出的填充字符">std::cout指定输出的填充字符</h4><p>当对输出内容指定输出宽度单内容不够宽度是，会在左侧以空格字符填充。如果需要指定不同的填充字符，则使用<code>std::setfill()</code>，如下代码则用字符<code>x</code>做为填充：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="built_in">std</span>::setfill(<span class="string">'x'</span>) &lt;&lt; <span class="built_in">std</span>::setw(<span class="number">5</span>);</span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="number">11</span> &lt;&lt; endl;</span><br></pre></td></tr></table></figure></p>
-<h4 id="std::cout读取非十进制数字">std::cout读取非十进制数字</h4><p>当读取的内容是非十进制时，可以通过<code>std::setbase()</code>来指定：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="built_in">std</span>::setbase(<span class="number">16</span>);</span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="number">0xff</span> &lt;&lt; endl;</span><br></pre></td></tr></table></figure></p>
+<h4 id="std::cout指定输出的填充字符">std::cout指定输出的填充字符</h4><p>当对输出内容指定输出宽度单内容不够宽度是，会在左侧以空格字符填充。如果需要指定不同的填充字符，则使用<code>std::setfill()</code>，如下代码则用字符<code>x</code>做为填充：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="built_in">std</span>::setfill(<span class="string">'x'</span>) &lt;&lt; <span class="built_in">std</span>::setw(<span class="number">5</span>);</span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="number">11</span> &lt;&lt; <span class="built_in">std</span>::endl;</span><br></pre></td></tr></table></figure></p>
+<h4 id="std::cout输出非十进制数字">std::cout输出非十进制数字</h4><p>当需要输出的内容是非十进制时，可以通过<code>std::setbase()</code>来指定：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="built_in">std</span>::setbase(<span class="number">16</span>);</span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="number">0xff</span> &lt;&lt; <span class="built_in">std</span>::endl;</span><br></pre></td></tr></table></figure></p>
 <p>STL预定义了一些紧致标识符可以用做<code>std::setbase()</code>的参数，他们是：<code>std::dec</code>，<code>std::hex</code>和<code>std::oct</code>。</p>
-<h3 id="printf">printf</h3><p><code>printf</code>是C风格的往标准输出设备输出格式化字符串的强有力方法，它有同<code>scanf</code>类似的参数定义，但对参数格式字符串的定义有略微的不同，其定义是：<br><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">%[<span class="link_label">flags</span>][<span class="link_reference">width</span>][<span class="link_label">.precision</span>][<span class="link_reference">length</span>]specifier</span><br></pre></td></tr></table></figure></p>
+<h4 id="std::cout设置流的格式">std::cout设置流的格式</h4><p>通过<code>std::setbase()</code>可以设置下一次数的输出进制，然而如果需要多次输出则需要多次设置。<code>std::cout</code>支持全局设置格式，直到取消前该格式会一直影响输出设置。STL定义了一系列的基于位运算的格式，详细信息如下表所列：</p>
+<table>
+<thead>
+<tr>
+<th>分类</th>
+<th>常量</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>独立标志位</td>
+<td>boolalpha</td>
+<td>以字符串的形式(true，false)读取布尔变量</td>
+</tr>
+<tr>
+<td>独立标志位</td>
+<td>showbase</td>
+<td>在输出整数之前输出其进制标识符</td>
+</tr>
+<tr>
+<td>独立标志位</td>
+<td>showpoint</td>
+<td>输出浮点数时，总是输出小书店</td>
+</tr>
+<tr>
+<td>独立标志位</td>
+<td>showpos</td>
+<td>输出非负数时，以+号开始</td>
+</tr>
+<tr>
+<td>独立标志位</td>
+<td>skipws</td>
+<td>这个参数用在输入时，作用时忽略某些输入操作的开头部分的空格</td>
+</tr>
+<tr>
+<td>独立标志位</td>
+<td>unitbuf</td>
+<td>每次插入操作后，都进行一次写出(flush)操作</td>
+</tr>
+<tr>
+<td>独立标志位</td>
+<td>uppercase</td>
+<td>在某些插入操作，以大些字母代替消息字幕</td>
+</tr>
+<tr>
+<td>进制(basefield)</td>
+<td>dec</td>
+<td>以十进制读取或写入整数</td>
+</tr>
+<tr>
+<td>进制(basefield)｜hex</td>
+<td>以十六进制读取或写入整数</td>
+</tr>
+<tr>
+<td>进制(basefield)</td>
+<td>oct</td>
+<td>以八进制读取或写入整数</td>
+</tr>
+<tr>
+<td>浮点数格式(floatfield)</td>
+<td>fixed</td>
+<td>以固定小数点的形式输出浮点数</td>
+</tr>
+<tr>
+<td>浮点数格式(floatfield)</td>
+<td>scientific</td>
+<td>以科学计数法的形式输出浮点数</td>
+</tr>
+<tr>
+<td>对齐方式(adjustfield)</td>
+<td>internal</td>
+<td>通过在指定位置插入填充字符的方式来使输出达到指定宽度</td>
+</tr>
+<tr>
+<td>对齐方式(adjustfield)</td>
+<td>left</td>
+<td>通过在末尾追加填充字符的方式来使输出达到指定宽度</td>
+</tr>
+<tr>
+<td>对齐方式(adjustfield)</td>
+<td>right</td>
+<td>通过在开头添加填充字符的方式来使输出达到指定宽度</td>
+</tr>
+</tbody>
+</table>
+<p>格式可以是上述任意一种或是它们任意多个的组合。<code>basefield</code>，<code>floatfield</code>和<code>adjustfield</code>是三个预定义的组合，它们分别对应的值如下表所列：<br>组合|组合形式<br>basefield|dec|hex|oct<br>floatfield|fixed|scientific<br>adjustfield|internal|left|right</p>
+<p>这些常量值都定义在<code>ios_base</code>类中，因此可以通过<code>ios_base</code>及其子类，或任何其实例来访问这些常量。例如：<code>std::ios_base::hex</code>，<code>std::ios::hex</code>或<code>std::cout.hex</code></p>
+<h4 id="std::cout其它相关">std::cout其它相关</h4><h3 id="printf">printf</h3><p><code>printf</code>是C风格的往标准输出设备输出格式化字符串的强有力方法，它有同<code>scanf</code>类似的参数定义，但对参数格式字符串的定义有略微的不同，其定义是：<br><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">%[<span class="link_label">flags</span>][<span class="link_reference">width</span>][<span class="link_label">.precision</span>][<span class="link_reference">length</span>]specifier</span><br></pre></td></tr></table></figure></p>
 <h3 id="写入文件内容">写入文件内容</h3><p>当需要输出内容到文件时，对于编写算法程序，推荐的做法是通过输出重定向或<code>freopen</code>把<code>stdout</code>指向输出文件。然而如果确需要直接写入文件，可以使用<code>fopen</code>以写入的方式打开文件并进行写入，例如：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">FILE *file;</span><br><span class="line">file = fopen(<span class="string">"test.txt"</span>, <span class="string">"wt"</span>);</span><br><span class="line">putc(<span class="string">'a'</span>, file);</span><br><span class="line">fclose(file);</span><br></pre></td></tr></table></figure></p>
 <p>上面代码中，<code>putc</code>的作用是往文件<code>test.txt</code>中输出一个指定的字符。除此之外，还有写入文件内容的函数，如<code>fputc</code>，<code>fputs</code>，<code>fprintf</code>等。由于算法程序大多是顺序的输出，因此通过输出重定向然而通过标准输出设备的写入方式更实用。文件的写入方式便不再赘述，有关详细内容可参考<a href="http://www.cplusplus.com/reference/cstdio/" target="_blank" rel="external">链接</a>。</p>
 <h1 id="输出的效率">输出的效率</h1><p>算法程序的一个重要考量因素是程序的运行效率。除去程序逻辑本身是算法效率高低的主要因素之外，输出的效率也是一个应该考虑的因素，尤其是当输出的数据量非常大时。例如在一个非常大的循环内输出数据，而输出又被定向到文件内，这样多次的文件写入必然会造成效率的损失。因此，把要输出的数据缓存在一个内存空间内，待所有数据准备完毕后，一次性输出到文件内，则可提高一定的效率。</p>
@@ -690,7 +779,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#输入"><span class="nav-number">1.</span> <span class="nav-text">输入</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#标准输入设备stdin"><span class="nav-number">1.1.</span> <span class="nav-text">标准输入设备stdin</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#输入重定向"><span class="nav-number">1.1.1.</span> <span class="nav-text">输入重定向</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#读取标准输入设备stdin"><span class="nav-number">1.1.2.</span> <span class="nav-text">读取标准输入设备stdin</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#cin"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">cin</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#cin读取空格或换行符"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">cin读取空格或换行符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#cin读取整行"><span class="nav-number">1.1.2.3.</span> <span class="nav-text">cin读取整行</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#cin其它相关"><span class="nav-number">1.1.2.4.</span> <span class="nav-text">cin其它相关</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#scanf"><span class="nav-number">1.1.3.</span> <span class="nav-text">scanf</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#读取文件内容"><span class="nav-number">1.1.4.</span> <span class="nav-text">读取文件内容</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#输出"><span class="nav-number">2.</span> <span class="nav-text">输出</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#标准输出设备stdout"><span class="nav-number">2.1.</span> <span class="nav-text">标准输出设备stdout</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#输出重定向"><span class="nav-number">2.1.1.</span> <span class="nav-text">输出重定向</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#写入到标准输出设备stdout"><span class="nav-number">2.1.2.</span> <span class="nav-text">写入到标准输出设备stdout</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#cout"><span class="nav-number">2.1.2.1.</span> <span class="nav-text">cout</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#cout输出空行"><span class="nav-number">2.1.2.2.</span> <span class="nav-text">cout输出空行</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#std::cout输出指定宽度"><span class="nav-number">2.1.2.3.</span> <span class="nav-text">std::cout输出指定宽度</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#std::cout指定输出的填充字符"><span class="nav-number">2.1.2.4.</span> <span class="nav-text">std::cout指定输出的填充字符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#std::cout读取非十进制数字"><span class="nav-number">2.1.2.5.</span> <span class="nav-text">std::cout读取非十进制数字</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#printf"><span class="nav-number">2.1.3.</span> <span class="nav-text">printf</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#写入文件内容"><span class="nav-number">2.1.4.</span> <span class="nav-text">写入文件内容</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#输出的效率"><span class="nav-number">3.</span> <span class="nav-text">输出的效率</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#头文件"><span class="nav-number">4.</span> <span class="nav-text">头文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#TL;DR"><span class="nav-number">5.</span> <span class="nav-text">TL;DR</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#输入"><span class="nav-number">1.</span> <span class="nav-text">输入</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#标准输入设备stdin"><span class="nav-number">1.1.</span> <span class="nav-text">标准输入设备stdin</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#输入重定向"><span class="nav-number">1.1.1.</span> <span class="nav-text">输入重定向</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#读取标准输入设备stdin"><span class="nav-number">1.1.2.</span> <span class="nav-text">读取标准输入设备stdin</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#std::cin"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">std::cin</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#std::cin读取空格或换行符"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">std::cin读取空格或换行符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#std::cin读取非十进制数字"><span class="nav-number">1.1.2.3.</span> <span class="nav-text">std::cin读取非十进制数字</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#cin读取整行"><span class="nav-number">1.1.2.4.</span> <span class="nav-text">cin读取整行</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#std::cin其它相关"><span class="nav-number">1.1.2.5.</span> <span class="nav-text">std::cin其它相关</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#scanf"><span class="nav-number">1.1.3.</span> <span class="nav-text">scanf</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#读取文件内容"><span class="nav-number">1.1.4.</span> <span class="nav-text">读取文件内容</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#输出"><span class="nav-number">2.</span> <span class="nav-text">输出</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#标准输出设备stdout"><span class="nav-number">2.1.</span> <span class="nav-text">标准输出设备stdout</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#输出重定向"><span class="nav-number">2.1.1.</span> <span class="nav-text">输出重定向</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#写入到标准输出设备stdout"><span class="nav-number">2.1.2.</span> <span class="nav-text">写入到标准输出设备stdout</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#std::cout"><span class="nav-number">2.1.2.1.</span> <span class="nav-text">std::cout</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#std::cout输出空行"><span class="nav-number">2.1.2.2.</span> <span class="nav-text">std::cout输出空行</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#std::cout输出指定宽度"><span class="nav-number">2.1.2.3.</span> <span class="nav-text">std::cout输出指定宽度</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#std::cout指定输出的填充字符"><span class="nav-number">2.1.2.4.</span> <span class="nav-text">std::cout指定输出的填充字符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#std::cout输出非十进制数字"><span class="nav-number">2.1.2.5.</span> <span class="nav-text">std::cout输出非十进制数字</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#std::cout设置流的格式"><span class="nav-number">2.1.2.6.</span> <span class="nav-text">std::cout设置流的格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#std::cout其它相关"><span class="nav-number">2.1.2.7.</span> <span class="nav-text">std::cout其它相关</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#printf"><span class="nav-number">2.1.3.</span> <span class="nav-text">printf</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#写入文件内容"><span class="nav-number">2.1.4.</span> <span class="nav-text">写入文件内容</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#输出的效率"><span class="nav-number">3.</span> <span class="nav-text">输出的效率</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#头文件"><span class="nav-number">4.</span> <span class="nav-text">头文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#TL;DR"><span class="nav-number">5.</span> <span class="nav-text">TL;DR</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
