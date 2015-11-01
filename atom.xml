@@ -4,7 +4,7 @@
   <subtitle><![CDATA[A JavaScript and C# developer]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://blog.liushuping.com/"/>
-  <updated>2015-11-01T10:05:07.000Z</updated>
+  <updated>2015-11-01T10:31:12.000Z</updated>
   <id>http://blog.liushuping.com/</id>
   
   <author>
@@ -15,11 +15,88 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title><![CDATA[C++算法笔记-基本输入输出]]></title>
-    <link href="http://blog.liushuping.com/2015/10/28/C-%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0-%E5%9F%BA%E6%9C%AC%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA/"/>
-    <id>http://blog.liushuping.com/2015/10/28/C-算法笔记-基本输入输出/</id>
+    <title><![CDATA[证明：只要沿着右手边的墙往前走就一定能走出迷宫]]></title>
+    <link href="http://blog.liushuping.com/2015/11/01/%E8%AF%81%E6%98%8E%EF%BC%9A%E5%8F%AA%E8%A6%81%E6%B2%BF%E7%9D%80%E5%8F%B3%E6%89%8B%E8%BE%B9%E7%9A%84%E5%A2%99%E5%BE%80%E5%89%8D%E8%B5%B0%E5%B0%B1%E4%B8%80%E5%AE%9A%E8%83%BD%E8%B5%B0%E5%87%BA%E8%BF%B7%E5%AE%AB/"/>
+    <id>http://blog.liushuping.com/2015/11/01/证明：只要沿着右手边的墙往前走就一定能走出迷宫/</id>
+    <published>2015-11-01T10:25:27.000Z</published>
+    <updated>2015-11-01T10:31:12.000Z</updated>
+    <content type="html"></content>
+    <summary type="html">
+    
+    </summary>
+    
+      <category term="几何" scheme="http://blog.liushuping.com/tags/%E5%87%A0%E4%BD%95/"/>
+    
+      <category term="逻辑" scheme="http://blog.liushuping.com/tags/%E9%80%BB%E8%BE%91/"/>
+    
+      <category term="逻辑" scheme="http://blog.liushuping.com/categories/%E9%80%BB%E8%BE%91/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[C++算法笔记－算法的思维之鸡兔同笼问题的分析]]></title>
+    <link href="http://blog.liushuping.com/2015/11/01/C++%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0%EF%BC%8D%E7%AE%97%E6%B3%95%E7%9A%84%E6%80%9D%E7%BB%B4%E4%B9%8B%E9%B8%A1%E5%85%94%E5%90%8C%E7%AC%BC%E9%97%AE%E9%A2%98%E7%9A%84%E5%88%86%E6%9E%90/"/>
+    <id>http://blog.liushuping.com/2015/11/01/C++算法笔记－算法的思维之鸡兔同笼问题的分析/</id>
+    <published>2015-11-01T10:24:25.000Z</published>
+    <updated>2015-11-01T14:24:23.000Z</updated>
+    <content type="html"><![CDATA[<p>约1500年前，《孙子算经》中有如下的问题描述：</p>
+<blockquote>
+<p>今有雉兔同笼，上有三十五头，下有九十四足，问雉兔各几何？</p>
+</blockquote>
+<p>首先科普一下，《孙子算经》的作者不详，且同《孙子兵法》不是一个作者。</p>
+<p>进入正题：在数学发展到今天的水平来看，这是个很简单的问题，是一个初中问题或是小学奥数问题。然而用一些简单的问题去说明一些道理还是更容易让人接受的，毕竟如果直接拿哥德巴赫猜想（我也不会）这种世界性难题来说明道理是很难让人理解的，因为门槛太高。当然，这里要介绍的内容跟任何计算机程序语言都没有关系，只是统一分类到我的C++算法笔记作为一个子类别而已。</p>
+<a id="more"></a>
+<h1 id="思考的目的">思考的目的</h1><p>这里，我想通过这个简单的例子来尝试介绍一下算法的思维。个人认为，狭义上的算法思维就是按照能用计算机实现的方式来去思考问题的解决办法，当然这还需考虑解决办法的复杂度。这是一个很抽象的问题，我想还是通过这样一个简单的例子来给亲爱的读者一个直观的感觉吧。</p>
+<h1 id="思考的方式">思考的方式</h1><p>这要从我还上小学的时候说起，那时就有长者考我这个问题，而当时的我觉得除了暴力穷举（知道这个方法的名字已经是好多年后的事了）外实在没有什么思路。等上了初中，学习了代数后才认识到它是人类发明的多么强大的数学工具，好多之前完全没有思路的问题顷刻间变的异常简单！</p>
+<p>可是为什么会这样？这个问题我思考了很久，可以简单的总结为以下几点个人观点：</p>
+<ol>
+<li>有很多的问题我们很难分析出正面解决问题的思路办法</li>
+<li>而在大量的问题分析过程中人们已经分析总结出了大量的恒等变化，例如交换律、结合律等等</li>
+<li>代数的发明为人类提供了强有力的工具，让人们把正向难以分析的问题转化为反向的问题，从而使问题变得异常简单</li>
+</ol>
+<h1 id="思考的意义">思考的意义</h1><p>然而，很多情况下似乎正面分析得出的思路更容易通过计算机算法程序去实现。事实上，通过代数结合等式的恒等变化而解决问题的方式，如果不加深入的思考，很容易陷入知道如何解决问题，却不明白解决方式背后所隐含的真实思路的境况。</p>
+<h1 id="以更加算法的方式去思考">以更加算法的方式去思考</h1><p>鸡兔同笼问题如果从正面思考，应该是简单的数论问题，是关于整数的加减乘除及取余的相关操作，而这些都跟计算机程序的算法息息相关。既然当鸡和兔子都已经站在笼子里时去正面分析比较困难，需要代数的帮忙，那么我们把顺序反过来，先让它们都站在笼子外面，然后从正面去分析让它们在逐步满足条件的前提下如何分步骤进入笼子。</p>
+<p>在问题有解的前提下，腿的总数量应该介于全部是鸡时的腿的数量和全部是兔时腿的数量之间。那么在这个思路下，问题可以划分为多个子问题，而大问题划分为子问题的方法是计算机算法的一个重要工具：</p>
+<ol>
+<li>让全部的鸡进入笼子，然后计算一下全部腿的数量，如若等于问题给定的腿的数量，那么笼子内全是鸡；否则，进入第二个子问题</li>
+<li>把多余的腿分配到笼子内的鸡身上。怎么分配？不能每只鸡分配一条腿，因为三条腿既不是鸡也不是兔子。所以要每只鸡分配两条腿，这样就神奇地让这只鸡变成兔子了。</li>
+<li>问题得到了解决：变成兔子了的就是兔子，而没变的仍是鸡。</li>
+</ol>
+<h1 id="从反向思维推正向思维">从反向思维推正向思维</h1><p>代数、等式以及等价变换等都是数学对问题高度的抽象，可以脱离于物理量而存在。然而对于具体的问题，还是能通过对其问题的计算过程赋以具体物理意义而推导正向思维的。鸡兔问题，可以通过一元一次或二元一次方程来解决。而二元一次方程可以转化为一元一次方程，所以我们就以一元一次方程来分析（因为给二元赋以物理量比给一元赋以物理量难得多）：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">4</span>x + (<span class="number">35</span> - x) * <span class="number">2</span> = <span class="number">94</span></span><br></pre></td></tr></table></figure></p>
+<p>这代表了<code>x</code>只兔子和<code>35 - x</code>只鸡总共有94条腿。然后，可以用数学工具把它变化为：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">2</span>x = <span class="number">94</span> - <span class="number">70</span></span><br></pre></td></tr></table></figure></p>
+<p>这代表了什么意思呢？一种可行的理解方式是：假如把<code>35</code>全部分配为鸡的话<code>(35 * 2)</code>，剩余的腿<code>(94 - 70)</code>如何去分配呢？分配的限制条件是只能分配成兔子，也就是说要以两个两个的方式去分配，而被分配到的就变成了兔子，这就是<code>2x</code>所表示的意义。那么这个正向思路也就倒着推出来了。</p>
+<h1 id="总结">总结</h1><p>思维的方式是决定或影响算法的一个重要因素。有时候从正反两个方面去分析问题，能更容易地找到思路。本文的目的不是告诉大家鸡兔同笼这个问题如何去解，而是通过分析解这道题的思路去认识和了解算法的思维。</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>约1500年前，《孙子算经》中有如下的问题描述：</p>
+<blockquote>
+<p>今有雉兔同笼，上有三十五头，下有九十四足，问雉兔各几何？</p>
+</blockquote>
+<p>首先科普一下，《孙子算经》的作者不详，且同《孙子兵法》不是一个作者。</p>
+<p>进入正题：在数学发展到今天的水平来看，这是个很简单的问题，是一个初中问题或是小学奥数问题。然而用一些简单的问题去说明一些道理还是更容易让人接受的，毕竟如果直接拿哥德巴赫猜想（我也不会）这种世界性难题来说明道理是很难让人理解的，因为门槛太高。当然，这里要介绍的内容跟任何计算机程序语言都没有关系，只是统一分类到我的C++算法笔记作为一个子类别而已。</p>]]>
+    
+    </summary>
+    
+      <category term="数学" scheme="http://blog.liushuping.com/tags/%E6%95%B0%E5%AD%A6/"/>
+    
+      <category term="数论" scheme="http://blog.liushuping.com/tags/%E6%95%B0%E8%AE%BA/"/>
+    
+      <category term="算法" scheme="http://blog.liushuping.com/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="逻辑" scheme="http://blog.liushuping.com/tags/%E9%80%BB%E8%BE%91/"/>
+    
+      <category term="逻辑" scheme="http://blog.liushuping.com/categories/%E9%80%BB%E8%BE%91/"/>
+    
+      <category term="数学" scheme="http://blog.liushuping.com/categories/%E9%80%BB%E8%BE%91/%E6%95%B0%E5%AD%A6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[C++算法笔记－基本输入输出]]></title>
+    <link href="http://blog.liushuping.com/2015/10/28/C++%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0%EF%BC%8D%E5%9F%BA%E6%9C%AC%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA/"/>
+    <id>http://blog.liushuping.com/2015/10/28/C++算法笔记－基本输入输出/</id>
     <published>2015-10-28T15:24:51.000Z</published>
-    <updated>2015-11-01T10:05:07.000Z</updated>
+    <updated>2015-11-01T12:38:21.000Z</updated>
     <content type="html"><![CDATA[<p>算法题目都是要求对于给定的输入，在规定时间内把结果输出到指定的设备上。因此输入输出是做算法的最基本条件。</p>
 <h1 id="输入">输入</h1><p>C++中输入有两种常见的形式：来自标准输入设备<code>stdin</code>和来自文件。</p>
 <h2 id="标准输入设备stdin">标准输入设备stdin</h2><h3 id="输入重定向">输入重定向</h3><p>默认情况下<code>stdin</code>来自于键盘的输入，然而我们可以把它重定向到任何其它可用的设备，比如常见的文件。在常见的系统中，对于一个控制台程序，我们可以用输入重定向来把标准输入重定向到文件设备。例如下列代码把程序<code>test</code>的标准输入重定向到了文件<code>file1.txt</code>:<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">test &lt; file1.txt</span><br></pre></td></tr></table></figure></p>

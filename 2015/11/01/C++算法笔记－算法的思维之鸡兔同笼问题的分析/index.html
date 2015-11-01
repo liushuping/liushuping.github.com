@@ -1,0 +1,782 @@
+<!doctype html>
+<html class="theme-next use-motion theme-next-mist">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+  <meta name="google-site-verification" content="NekLujUw5AZHPurxCGrWs3pBw0xKPJ_6vDxBVTt5txU" />
+
+
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+
+  
+    <link href='//fonts.lug.ustc.edu.cn/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+  
+
+
+<link rel="stylesheet" type="text/css" href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" />
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.2"/>
+
+
+
+
+  <meta name="keywords" content="数学,数论,算法,逻辑," />
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Shuping LIU" type="application/atom+xml" />
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.2" />
+
+
+<meta name="description" content="约1500年前，《孙子算经》中有如下的问题描述：
+
+今有雉兔同笼，上有三十五头，下有九十四足，问雉兔各几何？
+
+首先科普一下，《孙子算经》的作者不详，且同《孙子兵法》不是一个作者。
+进入正题：在数学发展到今天的水平来看，这是个很简单的问题，是一个初中问题或是小学奥数问题。然而用一些简单的问题去说明一些道理还是更容易让人接受的，毕竟如果直接拿哥德巴赫猜想（我也不会）这种世界性难题来说明道理是很难让人">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C++算法笔记－算法的思维之鸡兔同笼问题的分析">
+<meta property="og:url" content="http://blog.liushuping.com/2015/11/01/C++算法笔记－算法的思维之鸡兔同笼问题的分析/index.html">
+<meta property="og:site_name" content="Shuping LIU">
+<meta property="og:description" content="约1500年前，《孙子算经》中有如下的问题描述：
+
+今有雉兔同笼，上有三十五头，下有九十四足，问雉兔各几何？
+
+首先科普一下，《孙子算经》的作者不详，且同《孙子兵法》不是一个作者。
+进入正题：在数学发展到今天的水平来看，这是个很简单的问题，是一个初中问题或是小学奥数问题。然而用一些简单的问题去说明一些道理还是更容易让人接受的，毕竟如果直接拿哥德巴赫猜想（我也不会）这种世界性难题来说明道理是很难让人">
+<meta property="og:updated_time" content="2015-11-01T14:24:23.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="C++算法笔记－算法的思维之鸡兔同笼问题的分析">
+<meta name="twitter:description" content="约1500年前，《孙子算经》中有如下的问题描述：
+
+今有雉兔同笼，上有三十五头，下有九十四足，问雉兔各几何？
+
+首先科普一下，《孙子算经》的作者不详，且同《孙子兵法》不是一个作者。
+进入正题：在数学发展到今天的水平来看，这是个很简单的问题，是一个初中问题或是小学奥数问题。然而用一些简单的问题去说明一些道理还是更容易让人接受的，毕竟如果直接拿哥德巴赫猜想（我也不会）这种世界性难题来说明道理是很难让人">
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: 'post'
+  };
+</script>
+
+
+
+  <title> C++算法笔记－算法的思维之鸡兔同笼问题的分析 | Shuping LIU </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?28c1fa0265e22dd8d0beebc1f74";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Shuping LIU</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">A JavaScript and C# developer</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content"> 
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                C++算法笔记－算法的思维之鸡兔同笼问题的分析
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2015-11-01T18:24:25+08:00" content="2015-11-01">
+              2015-11-01
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/逻辑/" itemprop="url" rel="index">
+                    <span itemprop="name">逻辑</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/逻辑/数学/" itemprop="url" rel="index">
+                    <span itemprop="name">数学</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/11/01/C++算法笔记－算法的思维之鸡兔同笼问题的分析/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/01/C++算法笔记－算法的思维之鸡兔同笼问题的分析/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><p>约1500年前，《孙子算经》中有如下的问题描述：</p>
+<blockquote>
+<p>今有雉兔同笼，上有三十五头，下有九十四足，问雉兔各几何？</p>
+</blockquote>
+<p>首先科普一下，《孙子算经》的作者不详，且同《孙子兵法》不是一个作者。</p>
+<p>进入正题：在数学发展到今天的水平来看，这是个很简单的问题，是一个初中问题或是小学奥数问题。然而用一些简单的问题去说明一些道理还是更容易让人接受的，毕竟如果直接拿哥德巴赫猜想（我也不会）这种世界性难题来说明道理是很难让人理解的，因为门槛太高。当然，这里要介绍的内容跟任何计算机程序语言都没有关系，只是统一分类到我的C++算法笔记作为一个子类别而已。</p>
+<a id="more"></a>
+<h1 id="思考的目的">思考的目的</h1><p>这里，我想通过这个简单的例子来尝试介绍一下算法的思维。个人认为，狭义上的算法思维就是按照能用计算机实现的方式来去思考问题的解决办法，当然这还需考虑解决办法的复杂度。这是一个很抽象的问题，我想还是通过这样一个简单的例子来给亲爱的读者一个直观的感觉吧。</p>
+<h1 id="思考的方式">思考的方式</h1><p>这要从我还上小学的时候说起，那时就有长者考我这个问题，而当时的我觉得除了暴力穷举（知道这个方法的名字已经是好多年后的事了）外实在没有什么思路。等上了初中，学习了代数后才认识到它是人类发明的多么强大的数学工具，好多之前完全没有思路的问题顷刻间变的异常简单！</p>
+<p>可是为什么会这样？这个问题我思考了很久，可以简单的总结为以下几点个人观点：</p>
+<ol>
+<li>有很多的问题我们很难分析出正面解决问题的思路办法</li>
+<li>而在大量的问题分析过程中人们已经分析总结出了大量的恒等变化，例如交换律、结合律等等</li>
+<li>代数的发明为人类提供了强有力的工具，让人们把正向难以分析的问题转化为反向的问题，从而使问题变得异常简单</li>
+</ol>
+<h1 id="思考的意义">思考的意义</h1><p>然而，很多情况下似乎正面分析得出的思路更容易通过计算机算法程序去实现。事实上，通过代数结合等式的恒等变化而解决问题的方式，如果不加深入的思考，很容易陷入知道如何解决问题，却不明白解决方式背后所隐含的真实思路的境况。</p>
+<h1 id="以更加算法的方式去思考">以更加算法的方式去思考</h1><p>鸡兔同笼问题如果从正面思考，应该是简单的数论问题，是关于整数的加减乘除及取余的相关操作，而这些都跟计算机程序的算法息息相关。既然当鸡和兔子都已经站在笼子里时去正面分析比较困难，需要代数的帮忙，那么我们把顺序反过来，先让它们都站在笼子外面，然后从正面去分析让它们在逐步满足条件的前提下如何分步骤进入笼子。</p>
+<p>在问题有解的前提下，腿的总数量应该介于全部是鸡时的腿的数量和全部是兔时腿的数量之间。那么在这个思路下，问题可以划分为多个子问题，而大问题划分为子问题的方法是计算机算法的一个重要工具：</p>
+<ol>
+<li>让全部的鸡进入笼子，然后计算一下全部腿的数量，如若等于问题给定的腿的数量，那么笼子内全是鸡；否则，进入第二个子问题</li>
+<li>把多余的腿分配到笼子内的鸡身上。怎么分配？不能每只鸡分配一条腿，因为三条腿既不是鸡也不是兔子。所以要每只鸡分配两条腿，这样就神奇地让这只鸡变成兔子了。</li>
+<li>问题得到了解决：变成兔子了的就是兔子，而没变的仍是鸡。</li>
+</ol>
+<h1 id="从反向思维推正向思维">从反向思维推正向思维</h1><p>代数、等式以及等价变换等都是数学对问题高度的抽象，可以脱离于物理量而存在。然而对于具体的问题，还是能通过对其问题的计算过程赋以具体物理意义而推导正向思维的。鸡兔问题，可以通过一元一次或二元一次方程来解决。而二元一次方程可以转化为一元一次方程，所以我们就以一元一次方程来分析（因为给二元赋以物理量比给一元赋以物理量难得多）：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">4</span>x + (<span class="number">35</span> - x) * <span class="number">2</span> = <span class="number">94</span></span><br></pre></td></tr></table></figure></p>
+<p>这代表了<code>x</code>只兔子和<code>35 - x</code>只鸡总共有94条腿。然后，可以用数学工具把它变化为：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">2</span>x = <span class="number">94</span> - <span class="number">70</span></span><br></pre></td></tr></table></figure></p>
+<p>这代表了什么意思呢？一种可行的理解方式是：假如把<code>35</code>全部分配为鸡的话<code>(35 * 2)</code>，剩余的腿<code>(94 - 70)</code>如何去分配呢？分配的限制条件是只能分配成兔子，也就是说要以两个两个的方式去分配，而被分配到的就变成了兔子，这就是<code>2x</code>所表示的意义。那么这个正向思路也就倒着推出来了。</p>
+<h1 id="总结">总结</h1><p>思维的方式是决定或影响算法的一个重要因素。有时候从正反两个方面去分析问题，能更容易地找到思路。本文的目的不是告诉大家鸡兔同笼这个问题如何去解，而是通过分析解这道题的思路去认识和了解算法的思维。</p>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/数学/" rel="tag">#数学</a>
+          
+            <a href="/tags/数论/" rel="tag">#数论</a>
+          
+            <a href="/tags/算法/" rel="tag">#算法</a>
+          
+            <a href="/tags/逻辑/" rel="tag">#逻辑</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/10/28/C++算法笔记－基本输入输出/" rel="next" title="C++算法笔记－基本输入输出">
+                <i class="fa fa-chevron-left"></i> C++算法笔记－基本输入输出
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/11/01/证明：只要沿着右手边的墙往前走就一定能走出迷宫/" rel="prev" title="证明：只要沿着右手边的墙往前走就一定能走出迷宫">
+                证明：只要沿着右手边的墙往前走就一定能走出迷宫 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2015/11/01/C++算法笔记－算法的思维之鸡兔同笼问题的分析/"
+     data-title="C++算法笔记－算法的思维之鸡兔同笼问题的分析"
+     data-content=""
+     data-url="http://blog.liushuping.com/2015/11/01/C++算法笔记－算法的思维之鸡兔同笼问题的分析/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+ </div>
+
+        
+
+        
+          <div class="comments" id="comments">
+            
+              <div class="ds-thread" data-thread-key="2015/11/01/C++算法笔记－算法的思维之鸡兔同笼问题的分析/"
+                   data-title="C++算法笔记－算法的思维之鸡兔同笼问题的分析" data-url="http://blog.liushuping.com/2015/11/01/C++算法笔记－算法的思维之鸡兔同笼问题的分析/">
+              </div>
+            
+          </div>
+        
+      </div>
+
+      
+        
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="https://avatars2.githubusercontent.com/u/2476783?v=3&s=460" alt="Shuping LIU" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">Shuping LIU</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description"></p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">15</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">14</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">24</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="menu-item-icon icon-next-feed"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/liushuping" target="_blank">
+                  <i class="fa fa-github fa-fw"></i> GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#思考的目的"><span class="nav-number">1.</span> <span class="nav-text">思考的目的</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#思考的方式"><span class="nav-number">2.</span> <span class="nav-text">思考的方式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#思考的意义"><span class="nav-number">3.</span> <span class="nav-text">思考的意义</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#以更加算法的方式去思考"><span class="nav-number">4.</span> <span class="nav-text">以更加算法的方式去思考</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#从反向思维推正向思维"><span class="nav-number">5.</span> <span class="nav-text">从反向思维推正向思维</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">6.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+      
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner"> <div class="copyright" >
+  
+  &copy;  2014 - 
+  <span itemprop="copyrightYear">2015</span>
+  <span class="with-love">
+    <i class="icon-next-heart fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Shuping LIU</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+ </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+    
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"liushuping"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+    
+     
+
+
+    
+  
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.2"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.2"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.2" id="motion.global"></script>
+
+
+
+
+  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.2"></script>
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.2" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 0.4 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    motionMiddleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+      if (CONFIG.sidebar === 'post') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+
+      isMobile() && FastClick.attach(document.body);
+
+      // Define Motion Sequence.
+      motionIntegrator
+        .add(motionMiddleWares.logo)
+        .add(motionMiddleWares.menu)
+        .add(motionMiddleWares.backToTop)
+        .add(motionMiddleWares.postList)
+        .add(motionMiddleWares.sidebar);
+
+      // Bootstrap Motion.
+      motionIntegrator.bootstrap();
+    });
+  </script>
+
+  
+  
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/lazyload.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#posts").find('img').lazyload({
+        placeholder: "/images/loading.gif",
+        effect: "fadeIn"
+      });
+    });
+  </script>
+</body>
+</html>
