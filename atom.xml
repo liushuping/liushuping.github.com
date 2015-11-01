@@ -4,7 +4,7 @@
   <subtitle><![CDATA[A JavaScript and C# developer]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://blog.liushuping.com/"/>
-  <updated>2015-11-01T09:36:32.000Z</updated>
+  <updated>2015-11-01T10:05:07.000Z</updated>
   <id>http://blog.liushuping.com/</id>
   
   <author>
@@ -19,14 +19,14 @@
     <link href="http://blog.liushuping.com/2015/10/28/C-%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0-%E5%9F%BA%E6%9C%AC%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA/"/>
     <id>http://blog.liushuping.com/2015/10/28/C-算法笔记-基本输入输出/</id>
     <published>2015-10-28T15:24:51.000Z</published>
-    <updated>2015-11-01T09:36:32.000Z</updated>
+    <updated>2015-11-01T10:05:07.000Z</updated>
     <content type="html"><![CDATA[<p>算法题目都是要求对于给定的输入，在规定时间内把结果输出到指定的设备上。因此输入输出是做算法的最基本条件。</p>
 <h1 id="输入">输入</h1><p>C++中输入有两种常见的形式：来自标准输入设备<code>stdin</code>和来自文件。</p>
 <h2 id="标准输入设备stdin">标准输入设备stdin</h2><h3 id="输入重定向">输入重定向</h3><p>默认情况下<code>stdin</code>来自于键盘的输入，然而我们可以把它重定向到任何其它可用的设备，比如常见的文件。在常见的系统中，对于一个控制台程序，我们可以用输入重定向来把标准输入重定向到文件设备。例如下列代码把程序<code>test</code>的标准输入重定向到了文件<code>file1.txt</code>:<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">test &lt; file1.txt</span><br></pre></td></tr></table></figure></p>
-<p>这是一个非常实用的功能：在程序算法题中常见的输入是一个文件，如果把文件内容粘贴到控制台程序来实现输入会很不方便，尤其是当文件内容非常大的时候。</p>
+<p>这是一个非常实用的功能：在程序算法题中常见的输入是一个文件，如果通过把文件内容粘贴到控制台程序来实现输入会很不方便，尤其是当文件内容非常大的时候。</p>
 <p>除输入重定向之外，还可以通过<code>freopen</code>来使一个已经存在的流<code>stream</code>指向目标文件。当然，<code>stdin</code>，<code>stdout</code>，以及<code>stderr</code>都是流的一种，因此我们可以用该函数来实现输入的重定向。下面的代码实现了把标准输入重定向到文件<code>file1.txt</code>:<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">freopen(“file1.txt”, “r”, <span class="built_in">stdin</span>);</span><br></pre></td></tr></table></figure></p>
 <a id="more"></a>
-<p>函数<code>rfreopen</code>的第二个参数表示了文件的访问模式，有下面的几种可能的取值：</p>
+<p>函数<code>freopen</code>的第二个参数表示了文件的访问模式，有下面的几种可能的取值：</p>
 <table>
 <thead>
 <tr>
@@ -41,7 +41,7 @@
 </tr>
 <tr>
 <td>”w”</td>
-<td>创建一个空文件用来写入。如果文件内容存在，则忽略文件内容，按照空文件的方式对待并写入内容</td>
+<td>创建一个空文件用来写入。如果文件内容存在，则忽略文件内容并按照空文件的方式写入内容</td>
 </tr>
 <tr>
 <td>”a”</td>
@@ -53,7 +53,7 @@
 </tr>
 <tr>
 <td>”w+”</td>
-<td>以写入并更新的模式创建一个文件。如果文件存在，则忽略内容，按照空文件的方式对待</td>
+<td>以写入并更新的模式创建一个文件。如果文件存在，则忽略内容并按照空文件的方式对待</td>
 </tr>
 <tr>
 <td>”a+”</td>
@@ -67,10 +67,10 @@
 <p>默认的读取方式是以空格或换行符号为分隔的。假如输入设备中有内容 <code>10 20 abc</code>，可以方便的用以下代码读取：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a, b;</span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">string</span> c;</span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">cin</span> &gt;&gt; a &gt;&gt; b &gt;&gt; c;</span><br></pre></td></tr></table></figure></p>
 <h4 id="std::cin读取空格或换行符">std::cin读取空格或换行符</h4><p>如果确需要读取空格或换行字符，则需要用到<code>std::cin.get();</code>函数：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> s;</span><br><span class="line">s = <span class="built_in">std</span>::<span class="built_in">cin</span>.get();</span><br></pre></td></tr></table></figure></p>
 <h4 id="std::cin读取非十进制数字">std::cin读取非十进制数字</h4><p>如果要读取的字符是非十进制数字，则需要告诉<code>std::cin</code>按照指定的进制读取，可以通过<code>std::setbase()</code>来指定：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> x;</span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">cin</span> &gt;&gt; <span class="built_in">std</span>::setbase(<span class="number">16</span>);</span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">cin</span> &gt;&gt; x;</span><br></pre></td></tr></table></figure></p>
-<h4 id="cin读取整行">cin读取整行</h4><p>可以通过<code>std::cin.getline()</code>或<code>std::getline()</code>来实现读取一行内容。实际使用中<code>std::getline()</code>更常用一些，因为它直接支持STL字符串类型，更加方便：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">std</span>::<span class="built_in">string</span> s;</span><br><span class="line"><span class="built_in">std</span>::getline(<span class="built_in">cin</span>, s);</span><br></pre></td></tr></table></figure></p>
+<h4 id="cin读取整行">cin读取整行</h4><p>可以通过<code>std::cin.getline()</code>或<code>std::getline()</code>来实现读取一行内容。实际使用中，<code>std::getline()</code>更常用一些，因为它直接支持STL字符串类型，更加方便：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">std</span>::<span class="built_in">string</span> s;</span><br><span class="line"><span class="built_in">std</span>::getline(<span class="built_in">cin</span>, s);</span><br></pre></td></tr></table></figure></p>
 <p>更多的关于<code>std::getline()</code>的内容，参考<a href="http://www.cplusplus.com/reference/string/string/getline/?kw=getline" target="_blank" rel="external">链接</a>。<br>关于<code>std::cin.getline()</code>的内容，参考<a href="http://www.cplusplus.com/reference/istream/istream/getline/" target="_blank" rel="external">链接</a>。</p>
 <h4 id="std::cin其它相关">std::cin其它相关</h4><p>事实上，<code>std::cin</code>是<code>std::istream</code>的一个实例，因此<code>std::istream</code>的所有公开方法都可以通过<code>std::cin</code>调用。比如流读取位置定位，<code>peek</code>以及忽略当前字符等等功能。这些高级功能在算法程序中应用的比较少，就不赘述了，具体内容可参考<a href="http://www.cnblogs.com/pegasus923/archive/2011/04/22/2024418.html" target="_blank" rel="external">链接</a>。</p>
-<h3 id="scanf">scanf</h3><p><code>scanf</code>是C风格的从标准输入设备读取格式化数据的强有力的方法，它从<code>stdin</code>中读取内容，其参数类型丰富强大，但也不容易记忆。<code>scanf</code>接受至少一个参数的变长参数，第一个参数是以C类型字符串表示的输入参数格式。后面的其它参数应该是一系列预先配好的变量，依次对应参数格式字符串内的标识符。例如下面代码表示从<code>stdin</code>中读取一个整型数字到变量<code>x</code>中：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> x;</span><br><span class="line"><span class="built_in">scanf</span>(“%i”, &amp;x);</span><br></pre></td></tr></table></figure></p>
+<h3 id="scanf">scanf</h3><p><code>scanf</code>是C风格的从标准输入设备读取格式化数据的强有力的方法，它从<code>stdin</code>中读取内容，其参数类型丰富强大，但也不容易记忆。<code>scanf</code>接受至少一个参数的变长参数，第一个参数是以C类型字符串表示的输入参数格式。后面的其它参数应该是一系列预先分配好的变量，依次对应参数格式字符串内的标识符。例如下面代码表示从<code>stdin</code>中读取一个整型数字到变量<code>x</code>中：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> x;</span><br><span class="line"><span class="built_in">scanf</span>(“%i”, &amp;x);</span><br></pre></td></tr></table></figure></p>
 <p>其中参数格式字符串的格式是：<br><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">%[<span class="link_label">*</span>][<span class="link_reference">width</span>][<span class="link_label">length</span>]specifier</span><br></pre></td></tr></table></figure></p>
 <p>这其中的的<code>specifier</code>有如下的定义：</p>
 <table>
@@ -110,7 +110,7 @@
 <tr>
 <td>c</td>
 <td>Character</td>
-<td>读取下一个字符。如果<code>width</code>是大于<code>1</code>的数，则读取相应数量的字符，并把它们放在指定的数组连续空间内，但不会在结尾处添加<code>null</code>字符。</td>
+<td>读取下一个字符。如果<code>width</code>是大于<code>1</code>的数，则读取相应数量的字符，并把它们放在指定的内存连续空间内，但不会在结尾处添加<code>null</code>字符。</td>
 </tr>
 <tr>
 <td>s</td>
@@ -270,9 +270,9 @@
 <h3 id="读取文件内容">读取文件内容</h3><p>当输入内容来自于文件时，对于编写算法程序，推荐的做法是通过输入重定向或<code>freopen</code>让<code>stdin</code>指向输入文件。然而如果确需要直接读取文件，可以使用<code>fopen</code>打开文件然后配合多种文件的读取函数来实现期望的对输入文件的读取，例如：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">FILE *file;</span><br><span class="line">file = fopen(<span class="string">"stdinout.cpp"</span>, <span class="string">"r"</span>);</span><br><span class="line"><span class="keyword">char</span> c = getc(file);</span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; c;</span><br><span class="line">fclose(file);</span><br></pre></td></tr></table></figure></p>
 <p>上面代码中，<code>getc</code>的作用是从指定的文件中读取下一个字符。除此之外，还有很多从文件读取内容的函数，如<code>fgetc</code>，<code>fgets</code>，<code>fscanf</code>等。由于算法程序中输入大多是顺序的文本文件读取操作，因此输入重定向结合读取标准输入设备的方式更实用。文件的读取方式便不再赘述，有关详细内容可参考<a href="http://www.cplusplus.com/reference/cstdio/" target="_blank" rel="external">链接</a>。</p>
 <h1 id="输出">输出</h1><p>C++中输出有两种常见的形式：标准输出设备<code>stdout</code>和文件。</p>
-<h2 id="标准输出设备stdout">标准输出设备stdout</h2><h3 id="输出重定向">输出重定向</h3><p>默认情况下，<code>stdout</code>指向的是显示器，然而我们可以把它重定向到任何其它可用的设备，例如文件。在常见的系统中，对于一个控制台程序，我们可以用输出重定向来让<code>stdout</code>指向文件，例如下面的代码把<code>test</code>程序的输出重定向到了文件<code>file1.txt</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">test</span> &gt; file1.txt</span><br></pre></td></tr></table></figure></p>
+<h2 id="标准输出设备stdout">标准输出设备stdout</h2><h3 id="输出重定向">输出重定向</h3><p>默认情况下，<code>stdout</code>指向的是显示器，然而我们可以把它重定向到任何其它可用的设备，例如文件。在常见的系统中，对于一个控制台程序，我们可以通过输出重定向来让<code>stdout</code>指向文件，例如下面的代码把<code>test</code>程序的输出重定向到了文件<code>file1.txt</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">test</span> &gt; file1.txt</span><br></pre></td></tr></table></figure></p>
 <p>输出重定向是一个非常实用的功能：当程序输出内容很多的时候，显示器会翻屏甚至清除掉前面输出的内容，不方便人工查看。因此，可以把内容输出重定向到文件内，方便人工查看和备份。</p>
-<p>除了输出重定向外，还可以通过<code>freopen</code>来使一个已经存在的<code>stream</code>指向指定的目标文件。它的使用方式已经在<a href="#输入重定向">输入重定向</a>中详细介绍了，这里不在赘述，区别是输出的时候文件打开模式要是<code>&quot;w&quot;</code>。</p>
+<p>除了输出重定向外，还可以通过<code>freopen</code>来让一个已经存在的<code>stream</code>指向指定的目标文件。它的使用方式已经在<a href="#输入重定向">输入重定向</a>中详细介绍了，这里不在赘述，区别是输出的时候文件打开模式要是<code>&quot;w&quot;</code>。</p>
 <h3 id="写入到标准输出设备stdout">写入到标准输出设备stdout</h3><h4 id="std::cout">std::cout</h4><p><code>std::cout</code>是指向标准输出设备<code>stdout</code>的流对象，通过流运算符<code>&lt;&lt;</code>可以输出内容到标准输出设备中。例如下面的代码是向标准设备输出整数<code>x</code>:<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> x;</span><br><span class="line">x = <span class="number">123</span>;</span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; x;</span><br></pre></td></tr></table></figure></p>
 <h4 id="std::cout输出空行">std::cout输出空行</h4><p>当需要输出空行是，可以用<code>\n</code>或者<code>std::endl</code>的方式：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"\n"</span>;</span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="built_in">std</span>::endl;</span><br></pre></td></tr></table></figure></p>
 <h4 id="std::cout输出指定宽度">std::cout输出指定宽度</h4><p>当需要对输出内容指定宽度时，可以使用<code>std::setw()</code>函数：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="built_in">std</span>::setw(<span class="number">5</span>) &lt;&lt; <span class="number">11</span> &lt;&lt; <span class="built_in">std</span>::endl;</span><br></pre></td></tr></table></figure></p>
@@ -391,7 +391,7 @@
 </tbody>
 </table>
 <p>这些常量值都定义在<code>ios_base</code>类中，因此可以通过<code>ios_base</code>及其子类，或任何其实例来访问这些常量。例如：<code>std::ios_base::hex</code>，<code>std::ios::hex</code>或<code>std::cout.hex</code>。可以通过<code>std::cout.setf()</code>函数来设置这些值：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">std</span>::<span class="built_in">cout</span>.setf(<span class="built_in">std</span>::<span class="built_in">cout</span>.hex);</span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">cout</span>.setf(<span class="built_in">std</span>::ios_base::hex);</span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">cout</span>.setf(<span class="built_in">std</span>::ios::hex);</span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">cout</span>.setf(<span class="built_in">std</span>::out.hex, <span class="built_in">std</span>::<span class="built_in">cout</span>.basefield)</span><br></pre></td></tr></table></figure></p>
-<p>从代码中可以看出，<code>std::cout.setf()</code>有重载，可以是给定一个参数，相当于只设置这个标志位而不影响其它标志位；也可以是两个参数，其作用是设置第二个参数所影响范围内的标志位，把其值设置为第一个参数和第二个参数的逻辑与之后的值，而第二个参数标志位以外的标志位不受影响。关于<code>std::cout.setf()</code>的更多信息请参考：<a href="http://www.cplusplus.com/reference/ios/ios_base/setf/" target="_blank" rel="external">链接</a></p>
+<p>从代码中可以看出，<code>std::cout.setf()</code>有重载，可以是给定一个参数，相当于只设置这个标志位而不影响其它标志位；也可以是两个参数，其作用是设置第二个参数所影响范围内的标志位，把其值设置为第一个参数和第二个参数的逻辑与之后的值，而第二个参数标志位以外的标志位不受影响。关于<code>std::cout.setf()</code>的更多信息请参考<a href="http://www.cplusplus.com/reference/ios/ios_base/setf/" target="_blank" rel="external">链接</a></p>
 <p>另外，<code>std::cout.setiosflags()</code>等同于<code>std::cout.setf()</code>的两参数版本；<code>std:cout.resetiosflags()</code>等同于<code>std::cout.unsetf()</code>的两参数版本。</p>
 <p>任何时刻可以通过<code>std::cout.unsetf()</code>来取消之前所设置的任何标志位。</p>
 <p>任何时刻都可以通过<code>std::cout.flags()</code>来获取当前已经设置的所有标志位。<code>std::cout.flags()</code>还有一个重载，接受一个标志位参数，不同于<code>std::cout.setf()</code>的是，它会清除所有其它的标志位，只保留所设置的标志位。</p>
@@ -579,7 +579,7 @@
     <![CDATA[<p>算法题目都是要求对于给定的输入，在规定时间内把结果输出到指定的设备上。因此输入输出是做算法的最基本条件。</p>
 <h1 id="输入">输入</h1><p>C++中输入有两种常见的形式：来自标准输入设备<code>stdin</code>和来自文件。</p>
 <h2 id="标准输入设备stdin">标准输入设备stdin</h2><h3 id="输入重定向">输入重定向</h3><p>默认情况下<code>stdin</code>来自于键盘的输入，然而我们可以把它重定向到任何其它可用的设备，比如常见的文件。在常见的系统中，对于一个控制台程序，我们可以用输入重定向来把标准输入重定向到文件设备。例如下列代码把程序<code>test</code>的标准输入重定向到了文件<code>file1.txt</code>:<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">test &lt; file1.txt</span><br></pre></td></tr></table></figure></p>
-<p>这是一个非常实用的功能：在程序算法题中常见的输入是一个文件，如果把文件内容粘贴到控制台程序来实现输入会很不方便，尤其是当文件内容非常大的时候。</p>
+<p>这是一个非常实用的功能：在程序算法题中常见的输入是一个文件，如果通过把文件内容粘贴到控制台程序来实现输入会很不方便，尤其是当文件内容非常大的时候。</p>
 <p>除输入重定向之外，还可以通过<code>freopen</code>来使一个已经存在的流<code>stream</code>指向目标文件。当然，<code>stdin</code>，<code>stdout</code>，以及<code>stderr</code>都是流的一种，因此我们可以用该函数来实现输入的重定向。下面的代码实现了把标准输入重定向到文件<code>file1.txt</code>:<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">freopen(“file1.txt”, “r”, <span class="built_in">stdin</span>);</span><br></pre></td></tr></table></figure></p>]]>
     
     </summary>
