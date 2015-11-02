@@ -36,7 +36,7 @@
 
 
 
-  <meta name="keywords" content="几何,逻辑," />
+  <meta name="keywords" content="几何,算法,逻辑," />
 
 
 
@@ -47,16 +47,19 @@
   <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.2" />
 
 
-<meta name="description">
+<meta name="description" content="迷宫是一种老少咸宜的游戏，可以是画在纸上的迷宫游戏，也可以是公园或游乐场的通过隔墙或树木修建的迷宫游戏。
+迷宫游戏的基本思路解决迷宫游戏的思路很简单：任意挑一条面前没有走过的路，一旦发现当前所走的路是死胡同则记住当前路不可行并退回到上一个路口选择下一条未走过的路，以此类推直到走到出口位置。这里有个很大的难点：当迷宫足够大的时候，人很难记住哪些路是走过的，于是很有可能就在绕圈子。当用计算机来解决迷宫">
 <meta property="og:type" content="article">
-<meta property="og:title" content="证明：只要沿着右手边的墙往前走就一定能走出迷宫">
-<meta property="og:url" content="http://blog.liushuping.com/2015/11/01/证明：只要沿着右手边的墙往前走就一定能走出迷宫/index.html">
+<meta property="og:title" content="C++算法笔记－算法的思维之证明只要沿着右手边的墙往前走就一定能走出迷宫">
+<meta property="og:url" content="http://blog.liushuping.com/2015/11/01/C++算法笔记－算法的思维之证明只要沿着右手边的墙往前走就一定能走出迷宫/index.html">
 <meta property="og:site_name" content="Shuping LIU">
-<meta property="og:description">
-<meta property="og:updated_time" content="2015-11-01T10:31:12.000Z">
+<meta property="og:description" content="迷宫是一种老少咸宜的游戏，可以是画在纸上的迷宫游戏，也可以是公园或游乐场的通过隔墙或树木修建的迷宫游戏。
+迷宫游戏的基本思路解决迷宫游戏的思路很简单：任意挑一条面前没有走过的路，一旦发现当前所走的路是死胡同则记住当前路不可行并退回到上一个路口选择下一条未走过的路，以此类推直到走到出口位置。这里有个很大的难点：当迷宫足够大的时候，人很难记住哪些路是走过的，于是很有可能就在绕圈子。当用计算机来解决迷宫">
+<meta property="og:updated_time" content="2015-11-02T16:39:15.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="证明：只要沿着右手边的墙往前走就一定能走出迷宫">
-<meta name="twitter:description">
+<meta name="twitter:title" content="C++算法笔记－算法的思维之证明只要沿着右手边的墙往前走就一定能走出迷宫">
+<meta name="twitter:description" content="迷宫是一种老少咸宜的游戏，可以是画在纸上的迷宫游戏，也可以是公园或游乐场的通过隔墙或树木修建的迷宫游戏。
+迷宫游戏的基本思路解决迷宫游戏的思路很简单：任意挑一条面前没有走过的路，一旦发现当前所走的路是死胡同则记住当前路不可行并退回到上一个路口选择下一条未走过的路，以此类推直到走到出口位置。这里有个很大的难点：当迷宫足够大的时候，人很难记住哪些路是走过的，于是很有可能就在绕圈子。当用计算机来解决迷宫">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -68,7 +71,7 @@
 
 
 
-  <title> 证明：只要沿着右手边的墙往前走就一定能走出迷宫 | Shuping LIU </title>
+  <title> C++算法笔记－算法的思维之证明只要沿着右手边的墙往前走就一定能走出迷宫 | Shuping LIU </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -203,7 +206,7 @@
             
             
               
-                证明：只要沿着右手边的墙往前走就一定能走出迷宫
+                C++算法笔记－算法的思维之证明只要沿着右手边的墙往前走就一定能走出迷宫
               
             
           </h1>
@@ -229,6 +232,18 @@
 
                 
                 
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/逻辑/算法/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
 
               
             </span>
@@ -238,8 +253,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/11/01/证明：只要沿着右手边的墙往前走就一定能走出迷宫/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/01/证明：只要沿着右手边的墙往前走就一定能走出迷宫/" itemprop="commentsCount"></span>
+                <a href="/2015/11/01/C++算法笔记－算法的思维之证明只要沿着右手边的墙往前走就一定能走出迷宫/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/01/C++算法笔记－算法的思维之证明只要沿着右手边的墙往前走就一定能走出迷宫/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -258,7 +273,57 @@
       
 
       
-        <span itemprop="articleBody"></span>
+        <span itemprop="articleBody"><p>迷宫是一种老少咸宜的游戏，可以是画在纸上的迷宫游戏，也可以是公园或游乐场的通过隔墙或树木修建的迷宫游戏。</p>
+<h1 id="迷宫游戏的基本思路">迷宫游戏的基本思路</h1><p>解决迷宫游戏的思路很简单：任意挑一条面前没有走过的路，一旦发现当前所走的路是死胡同则记住当前路不可行并退回到上一个路口选择下一条未走过的路，以此类推直到走到出口位置。这里有个很大的难点：当迷宫足够大的时候，人很难记住哪些路是走过的，于是很有可能就在绕圈子。当用计算机来解决迷宫问题时，通常就简单很多了，因为计算机能“记忆”非常大的路径。计算机解决迷宫问题，可以归结为两种方案：深度优先搜索和广度优先搜索。</p>
+<a id="more"></a>
+<h1 id="深度优先">深度优先</h1><h2 id="算法">算法</h2><p>深度优先方案的思路是：每到一个分岔路口时，按照特定的顺序（例如顺时针）选取一个路口走下去，接下来的分岔路口继续按照这个思路走。一旦发现某一条路是死胡同则回到之前的岔路口，按照之前的顺序选取下一个路口走下去。如果发现当前的岔路口的所有选择都走不通，则退回到再之前的一个岔路口继续选择下去。</p>
+<h2 id="数据结构">数据结构</h2><p>为了实现上面的算法，需要一定的数据结构来存储发现的路径，从而保证：</p>
+<ol>
+<li>路径的顺序是按照计划的方式存储的</li>
+<li>要及时从数据结构中删除已经走过的路径，以确保不走重复的路</li>
+<li>确保路径是沿着先深度后广度的的方案进行的</li>
+</ol>
+<p>基于这样的特征，很容易把栈对应到这个数据结构上来：</p>
+<ol>
+<li>把岔路口的所有选择逆序压到栈顶</li>
+<li>然后选取栈顶的路径作为下一条路径</li>
+<li>如果选择的路径走不通，则弹出栈顶的路径作为下一个选择</li>
+<li>如果选择的路径继续有岔路口，则重复这几个步骤直到发现出口为止。</li>
+</ol>
+<p>因此这个方案所需要的栈存储空间跟入口到出口间的岔路口的多少成正比关系。</p>
+<h1 id="广度优先">广度优先</h1><h2 id="算法-1">算法</h2><p>广度优先方案的思路是：每到一个分岔路口时，按照特定的顺序遍访所有的路口来确认其是否就是出口。如果没有找到出口，则以同样的思路遍访当前岔路口每一个路口所通向的下一个岔路口。如此进行下去，直到发现出口。</p>
+<h2 id="数据结构-1">数据结构</h2><p>要实现上面的算法，需要一种数据结构来存储发现的岔路口，以保证：</p>
+<ol>
+<li>路径的顺序是按照计划的方式存取的</li>
+<li>要及时从数据结构中删除已经访问过的岔路口，以确保不走重复的路</li>
+<li>确保路径是演着广度优先——层层向外扩展的方向进行的</li>
+</ol>
+<p>基于上面的特征，很容易把队列对应到这个数据结构上来：</p>
+<ol>
+<li>把当前碰到的所有岔路口追加到队列的尾部</li>
+<li>取队列头部的岔路口，并检查其通向的所有路口是否为出口</li>
+<li>如若不是，且检查的路口能通向下一个岔路口则把这个岔路口追加到队尾</li>
+<li>如此循环进行直到发现出口为止。</li>
+</ol>
+<p>因此这个方案所需的队列存储空间也跟入口到出口之间的岔路口的多少成正比关系。</p>
+<h1 id="必须存储走过的路吗？">必须存储走过的路吗？</h1><p>为了避免让程序陷入死循环或是不必要的重复，需要记住走过的路，以便不再去走。是否需要这样做取决于采取的方案在没有其它干预下是否存在可重复的可能。事实上，只要迷宫有岔路口，前面介绍的广度优先和深度优先的方案都确定存在这样的重复。</p>
+<p>那么是否存在某种特殊的沿路径行走的方式，它们保证所走过的路一定是未走过的，不会重复走已经走过的呢？要回答这个问题，我们必须重新审视看待走迷宫的方式。</p>
+<h1 id="如何看待迷宫某条路径的行走方式？">如何看待迷宫某条路径的行走方式？</h1><p>对同一个问题，不同的思考方式可能产生完全不同的解决方案，不同方案之间在复杂度以及效率上可能存在巨大的差异。因此思维方式是人对算法理解的核心。</p>
+<p>按照惯性思维，面对迷宫内的一条通道，最容易想到的是只有两种走法：进去和出来。然而基于这样的思维，解决方案也只能是前面介绍的广度或是深度优先的搜索，且都需要存储空间来标记已经走过的路。然而，简单的把迷宫通道的走法划分为进去和出来的方式使路径丢失了很多方向性信息，而丢失的信息正好可以用来“标记”走过的道路。事实上，迷宫的任意一条通道都是由左右两侧的两面墙组成而成的，沿着这两面墙分别有进入和出来的走法，这样一条通道就有4种走法了。</p>
+<h1 id="无需额外记忆的迷宫走法">无需额外记忆的迷宫走法</h1><p>对迷宫通道走法的思维转变后，问题就容易分析了。先从直线分析，要保证不走重复的路很简单，只要沿着一个方向向前走即可。迷宫的路径是曲线，是否也可以用同样的方案？答案是肯定的：沿着曲线朝一个方向行走，若是发生回到原点的情况，只有下面两种可能：</p>
+<ol>
+<li>曲线是闭合的，在闭合区域内部，沿着曲线行走。</li>
+<li>曲线是闭合的，在闭合区域的外沿，沿着曲线行走。</li>
+</ol>
+<p>然而，在入口到出口之间确定有通道的情况下（也即迷宫有解）的情况下，采取沿着迷宫墙壁朝一个方向行走的方式，是永远不会进入上面两种区域的。因为：</p>
+<ol>
+<li>不可能从一个闭合区域的外部进入其内部，因为没有”门”。而如果一开始就在内部，说明迷宫无解。</li>
+<li>第二种是一个孤岛的情况，而从入口开始沿着墙行走的方式行走，是不可能进入孤岛的。因为孤岛不可能接触人所在的墙，否则它就不是孤岛了。</li>
+</ol>
+<p>因此，我们把所有重复行走路线的可能都排除了，方案的正确性得到了证明。当然，沿着一个方向行走，既可是右侧，也可是左侧。</p>
+<p>无需额外记忆的前提是迷宫确定有能通向出口的通道，否则会进入到上面介绍的两种重复行走路线的情况。</p>
+<h1 id="总结">总结</h1><p>本文继续介绍了思维方式在算法中的重要性。通过分析解决迷宫问题的两种思路，阐述了思维方式的多样性以及不同思维方式会对算法产生的不同效果的影响。</p>
+</span>
       
     </div>
 
@@ -267,6 +332,8 @@
         <div class="post-tags">
           
             <a href="/tags/几何/" rel="tag">#几何</a>
+          
+            <a href="/tags/算法/" rel="tag">#算法</a>
           
             <a href="/tags/逻辑/" rel="tag">#逻辑</a>
           
@@ -298,10 +365,10 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2015/11/01/证明：只要沿着右手边的墙往前走就一定能走出迷宫/"
-     data-title="证明：只要沿着右手边的墙往前走就一定能走出迷宫"
+        <div class="ds-share flat" data-thread-key="2015/11/01/C++算法笔记－算法的思维之证明只要沿着右手边的墙往前走就一定能走出迷宫/"
+     data-title="C++算法笔记－算法的思维之证明只要沿着右手边的墙往前走就一定能走出迷宫"
      data-content=""
-     data-url="http://blog.liushuping.com/2015/11/01/证明：只要沿着右手边的墙往前走就一定能走出迷宫/">
+     data-url="http://blog.liushuping.com/2015/11/01/C++算法笔记－算法的思维之证明只要沿着右手边的墙往前走就一定能走出迷宫/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -327,8 +394,8 @@
         
           <div class="comments" id="comments">
             
-              <div class="ds-thread" data-thread-key="2015/11/01/证明：只要沿着右手边的墙往前走就一定能走出迷宫/"
-                   data-title="证明：只要沿着右手边的墙往前走就一定能走出迷宫" data-url="http://blog.liushuping.com/2015/11/01/证明：只要沿着右手边的墙往前走就一定能走出迷宫/">
+              <div class="ds-thread" data-thread-key="2015/11/01/C++算法笔记－算法的思维之证明只要沿着右手边的墙往前走就一定能走出迷宫/"
+                   data-title="C++算法笔记－算法的思维之证明只要沿着右手边的墙往前走就一定能走出迷宫" data-url="http://blog.liushuping.com/2015/11/01/C++算法笔记－算法的思维之证明只要沿着右手边的墙往前走就一定能走出迷宫/">
               </div>
             
           </div>
@@ -378,7 +445,7 @@
 
           <div class="site-state-item site-state-categories">
             <a href="/categories">
-              <span class="site-state-item-count">14</span>
+              <span class="site-state-item-count">15</span>
               <span class="site-state-item-name">分类</span>
               </a>
           </div>
@@ -428,7 +495,7 @@
           <div class="post-toc">
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#迷宫游戏的基本思路"><span class="nav-number">1.</span> <span class="nav-text">迷宫游戏的基本思路</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#深度优先"><span class="nav-number">2.</span> <span class="nav-text">深度优先</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#算法"><span class="nav-number">2.1.</span> <span class="nav-text">算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据结构"><span class="nav-number">2.2.</span> <span class="nav-text">数据结构</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#广度优先"><span class="nav-number">3.</span> <span class="nav-text">广度优先</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#算法-1"><span class="nav-number">3.1.</span> <span class="nav-text">算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据结构-1"><span class="nav-number">3.2.</span> <span class="nav-text">数据结构</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#必须存储走过的路吗？"><span class="nav-number">4.</span> <span class="nav-text">必须存储走过的路吗？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#如何看待迷宫某条路径的行走方式？"><span class="nav-number">5.</span> <span class="nav-text">如何看待迷宫某条路径的行走方式？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#无需额外记忆的迷宫走法"><span class="nav-number">6.</span> <span class="nav-text">无需额外记忆的迷宫走法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">7.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
