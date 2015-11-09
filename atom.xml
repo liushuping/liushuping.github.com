@@ -4,7 +4,7 @@
   <subtitle><![CDATA[A JavaScript and C# developer]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://blog.liushuping.com/"/>
-  <updated>2015-11-02T16:53:24.000Z</updated>
+  <updated>2015-11-09T13:41:26.000Z</updated>
   <id>http://blog.liushuping.com/</id>
   
   <author>
@@ -15,11 +15,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title><![CDATA[C++算法笔记－算法的思维之证明只要沿着右手边的墙往前走就一定能走出迷宫]]></title>
-    <link href="http://blog.liushuping.com/2015/11/01/C++%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0%EF%BC%8D%E7%AE%97%E6%B3%95%E7%9A%84%E6%80%9D%E7%BB%B4%E4%B9%8B%E8%AF%81%E6%98%8E%E5%8F%AA%E8%A6%81%E6%B2%BF%E7%9D%80%E5%8F%B3%E6%89%8B%E8%BE%B9%E7%9A%84%E5%A2%99%E5%BE%80%E5%89%8D%E8%B5%B0%E5%B0%B1%E4%B8%80%E5%AE%9A%E8%83%BD%E8%B5%B0%E5%87%BA%E8%BF%B7%E5%AE%AB/"/>
-    <id>http://blog.liushuping.com/2015/11/01/C++算法笔记－算法的思维之证明只要沿着右手边的墙往前走就一定能走出迷宫/</id>
+    <title><![CDATA[算法的思维之证明只要沿着右手边的墙往前走就一定能走出迷宫]]></title>
+    <link href="http://blog.liushuping.com/2015/11/01/%E7%AE%97%E6%B3%95%E7%9A%84%E6%80%9D%E7%BB%B4%E4%B9%8B%E8%AF%81%E6%98%8E%E5%8F%AA%E8%A6%81%E6%B2%BF%E7%9D%80%E5%8F%B3%E6%89%8B%E8%BE%B9%E7%9A%84%E5%A2%99%E5%BE%80%E5%89%8D%E8%B5%B0%E5%B0%B1%E4%B8%80%E5%AE%9A%E8%83%BD%E8%B5%B0%E5%87%BA%E8%BF%B7%E5%AE%AB/"/>
+    <id>http://blog.liushuping.com/2015/11/01/算法的思维之证明只要沿着右手边的墙往前走就一定能走出迷宫/</id>
     <published>2015-11-01T10:25:27.000Z</published>
-    <updated>2015-11-02T16:53:24.000Z</updated>
+    <updated>2015-11-09T13:41:26.000Z</updated>
     <content type="html"><![CDATA[<p>迷宫是一种老少咸宜的游戏，可以是画在纸上的迷宫游戏，也可以是以隔墙或树木修建在公园或游乐场的迷宫游戏。</p>
 <h1 id="迷宫游戏的基本思路">迷宫游戏的基本思路</h1><p>解决迷宫游戏的思路很简单：任意挑一条面前没有走过的路，一旦发现当前所走的路是死胡同则记住当前路不可行并退回到上一个路口选择下一条未走过的路，以此类推直到走到出口位置。这里有个很大的难点：当迷宫足够大的时候，人很难记住哪些路是走过的，于是很有可能就在绕圈子。当用计算机来解决迷宫问题时，通常就简单很多了，因为计算机能“记忆”非常大的路径。计算机解决迷宫问题，可以归结为两种方案：深度优先搜索和广度优先搜索。</p>
 <a id="more"></a>
@@ -83,18 +83,16 @@
     
       <category term="逻辑" scheme="http://blog.liushuping.com/tags/%E9%80%BB%E8%BE%91/"/>
     
-      <category term="逻辑" scheme="http://blog.liushuping.com/categories/%E9%80%BB%E8%BE%91/"/>
-    
-      <category term="算法" scheme="http://blog.liushuping.com/categories/%E9%80%BB%E8%BE%91/%E7%AE%97%E6%B3%95/"/>
+      <category term="C++算法笔记" scheme="http://blog.liushuping.com/categories/C-%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
   <entry>
-    <title><![CDATA[C++算法笔记－算法的思维之鸡兔同笼问题的分析]]></title>
-    <link href="http://blog.liushuping.com/2015/11/01/C++%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0%EF%BC%8D%E7%AE%97%E6%B3%95%E7%9A%84%E6%80%9D%E7%BB%B4%E4%B9%8B%E9%B8%A1%E5%85%94%E5%90%8C%E7%AC%BC%E9%97%AE%E9%A2%98%E7%9A%84%E5%88%86%E6%9E%90/"/>
-    <id>http://blog.liushuping.com/2015/11/01/C++算法笔记－算法的思维之鸡兔同笼问题的分析/</id>
+    <title><![CDATA[算法的思维之鸡兔同笼问题的分析]]></title>
+    <link href="http://blog.liushuping.com/2015/11/01/%E7%AE%97%E6%B3%95%E7%9A%84%E6%80%9D%E7%BB%B4%E4%B9%8B%E9%B8%A1%E5%85%94%E5%90%8C%E7%AC%BC%E9%97%AE%E9%A2%98%E7%9A%84%E5%88%86%E6%9E%90/"/>
+    <id>http://blog.liushuping.com/2015/11/01/算法的思维之鸡兔同笼问题的分析/</id>
     <published>2015-11-01T10:24:25.000Z</published>
-    <updated>2015-11-01T14:33:30.000Z</updated>
+    <updated>2015-11-09T13:41:21.000Z</updated>
     <content type="html"><![CDATA[<p>约1500年前，《孙子算经》中有如下的问题描述：</p>
 <blockquote>
 <p>今有雉兔同笼，上有三十五头，下有九十四足，问雉兔各几何？</p>
@@ -141,9 +139,7 @@
     
       <category term="逻辑" scheme="http://blog.liushuping.com/tags/%E9%80%BB%E8%BE%91/"/>
     
-      <category term="逻辑" scheme="http://blog.liushuping.com/categories/%E9%80%BB%E8%BE%91/"/>
-    
-      <category term="数学" scheme="http://blog.liushuping.com/categories/%E9%80%BB%E8%BE%91/%E6%95%B0%E5%AD%A6/"/>
+      <category term="C++算法笔记" scheme="http://blog.liushuping.com/categories/C-%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
@@ -152,7 +148,7 @@
     <link href="http://blog.liushuping.com/2015/10/28/C++%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0%EF%BC%8D%E5%9F%BA%E6%9C%AC%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA/"/>
     <id>http://blog.liushuping.com/2015/10/28/C++算法笔记－基本输入输出/</id>
     <published>2015-10-28T15:24:51.000Z</published>
-    <updated>2015-11-01T12:38:21.000Z</updated>
+    <updated>2015-11-09T13:40:23.000Z</updated>
     <content type="html"><![CDATA[<p>算法题目都是要求对于给定的输入，在规定时间内把结果输出到指定的设备上。因此输入输出是做算法的最基本条件。</p>
 <h1 id="输入">输入</h1><p>C++中输入有两种常见的形式：来自标准输入设备<code>stdin</code>和来自文件。</p>
 <h2 id="标准输入设备stdin">标准输入设备stdin</h2><h3 id="输入重定向">输入重定向</h3><p>默认情况下<code>stdin</code>来自于键盘的输入，然而我们可以把它重定向到任何其它可用的设备，比如常见的文件。在常见的系统中，对于一个控制台程序，我们可以用输入重定向来把标准输入重定向到文件设备。例如下列代码把程序<code>test</code>的标准输入重定向到了文件<code>file1.txt</code>:<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">test &lt; file1.txt</span><br></pre></td></tr></table></figure></p>
@@ -721,9 +717,7 @@
     
       <category term="算法" scheme="http://blog.liushuping.com/tags/%E7%AE%97%E6%B3%95/"/>
     
-      <category term="算法" scheme="http://blog.liushuping.com/categories/%E7%AE%97%E6%B3%95/"/>
-    
-      <category term="C++" scheme="http://blog.liushuping.com/categories/%E7%AE%97%E6%B3%95/C/"/>
+      <category term="C++算法笔记" scheme="http://blog.liushuping.com/categories/C-%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
