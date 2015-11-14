@@ -36,7 +36,7 @@
 
 
 
-  <meta name="keywords" content="Backbone,Route," />
+  <meta name="keywords" content="C++,算法," />
 
 
 
@@ -47,19 +47,16 @@
   <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.2" />
 
 
-<meta name="description" content="这是一个简单的关于Backbone router的演示，下面的例子演示了，通过Backbone的router和pushState来达到省略URL中的Hash符号的目的。
-首先定义一个App需要的router，例如：123456789101112131415var AppRouter = Backbone.Router.extend(&amp;#123;      routes : &amp;#123;">
+<meta name="description" content="C＋+有非常非常多的库文件，很多常见的功能都可在其中找到了解常用的库文件可以让我们清楚地知道有哪些系统已有功能可以使用，有哪些功能是我们需要实现的。本文列出了算法程序常用库的头文件。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Backbone router demo">
-<meta property="og:url" content="http://blog.liushuping.com/2015/08/09/Backbone-router-demo/index.html">
+<meta property="og:title" content="C++算法笔记－常用头文件">
+<meta property="og:url" content="http://blog.liushuping.com/2015/11/09/C-算法笔记－常用头文件/index.html">
 <meta property="og:site_name" content="Shuping LIU">
-<meta property="og:description" content="这是一个简单的关于Backbone router的演示，下面的例子演示了，通过Backbone的router和pushState来达到省略URL中的Hash符号的目的。
-首先定义一个App需要的router，例如：123456789101112131415var AppRouter = Backbone.Router.extend(&amp;#123;      routes : &amp;#123;">
-<meta property="og:updated_time" content="2015-10-25T10:40:14.000Z">
+<meta property="og:description" content="C＋+有非常非常多的库文件，很多常见的功能都可在其中找到了解常用的库文件可以让我们清楚地知道有哪些系统已有功能可以使用，有哪些功能是我们需要实现的。本文列出了算法程序常用库的头文件。">
+<meta property="og:updated_time" content="2015-11-14T15:16:58.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Backbone router demo">
-<meta name="twitter:description" content="这是一个简单的关于Backbone router的演示，下面的例子演示了，通过Backbone的router和pushState来达到省略URL中的Hash符号的目的。
-首先定义一个App需要的router，例如：123456789101112131415var AppRouter = Backbone.Router.extend(&amp;#123;      routes : &amp;#123;">
+<meta name="twitter:title" content="C++算法笔记－常用头文件">
+<meta name="twitter:description" content="C＋+有非常非常多的库文件，很多常见的功能都可在其中找到了解常用的库文件可以让我们清楚地知道有哪些系统已有功能可以使用，有哪些功能是我们需要实现的。本文列出了算法程序常用库的头文件。">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -71,7 +68,7 @@
 
 
 
-  <title> Backbone router demo | Shuping LIU </title>
+  <title> C++算法笔记－常用头文件 | Shuping LIU </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -206,7 +203,7 @@
             
             
               
-                Backbone router demo
+                C++算法笔记－常用头文件
               
             
           </h1>
@@ -215,8 +212,8 @@
         <div class="post-meta">
           <span class="post-time">
             发表于
-            <time itemprop="dateCreated" datetime="2015-08-09T22:48:36+08:00" content="2015-08-09">
-              2015-08-09
+            <time itemprop="dateCreated" datetime="2015-11-09T21:53:43+08:00" content="2015-11-09">
+              2015-11-09
             </time>
           </span>
 
@@ -225,8 +222,8 @@
               &nbsp; | &nbsp; 分类于
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Backbone/" itemprop="url" rel="index">
-                    <span itemprop="name">Backbone</span>
+                  <a href="/categories/C-算法笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">C++算法笔记</span>
                   </a>
                 </span>
 
@@ -241,8 +238,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/08/09/Backbone-router-demo/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/08/09/Backbone-router-demo/" itemprop="commentsCount"></span>
+                <a href="/2015/11/09/C-算法笔记－常用头文件/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/09/C-算法笔记－常用头文件/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -261,18 +258,315 @@
       
 
       
-        <span itemprop="articleBody"><p>这是一个简单的关于Backbone router的演示，下面的例子演示了，通过Backbone的router和pushState来达到省略URL中的Hash符号的目的。</p>
-<p>首先定义一个App需要的router，例如：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> AppRouter = Backbone.Router.extend(&#123;  </span><br><span class="line">    routes : &#123;  </span><br><span class="line">        <span class="string">'help'</span>: <span class="string">'help'</span>,  </span><br><span class="line">        <span class="string">'search/:query'</span>: <span class="string">'search'</span>, </span><br><span class="line">        <span class="string">'search/:query/:page'</span>: <span class="string">'search'</span></span><br><span class="line">    &#125;,   </span><br><span class="line"></span><br><span class="line">    search: <span class="function"><span class="keyword">function</span>(<span class="params">query, page</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (page == <span class="literal">null</span>) &#123;</span><br><span class="line">          alert(<span class="string">'query: '</span> + query);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          alert(<span class="string">'query: '</span> + query + <span class="string">', page: '</span> + page);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+        <span itemprop="articleBody"><p>C＋+有非常非常多的库文件，很多常见的功能都可在其中找到了解常用的库文件可以让我们清楚地知道有哪些系统已有功能可以使用，有哪些功能是我们需要实现的。本文列出了算法程序常用库的头文件。</p>
 <a id="more"></a>
-<p>接下来启动<code>history</code>的状态记录：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Backbone.history.start(&#123;pushState: <span class="literal">true</span>&#125;);</span><br></pre></td></tr></table></figure></p>
-<p>这里如果页面所在的目录不是根目录，则需要添加root参数。</p>
-<p>然后我们就可以用router来控制URL状态了：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> router = <span class="keyword">new</span> AppRouter();</span><br><span class="line">router.navigate(<span class="string">'search/myquery/123'</span>, <span class="literal">true</span>);</span><br></pre></td></tr></table></figure></p>
-<p>这很有用，然而并不是所有的状态变化都是我们通过代码来修改<code>router</code>的状态，更多的是可能交给用户去“导航”，比如<code>&lt;a&gt;</code>标签。然而不幸的是，<code>Backbone</code>并没有对<code>&lt;a&gt;</code>标签做任何的定制，也就是说如果不做任何处理的话，<code>&lt;a&gt;</code>标签的点击事件还是会触发浏览器向服务器发起HTTP请求的，这并不是我们想要的。</p>
-<p>因此，我们应该做的是阻断a标签的<code>click</code>事件，在事件里面阻止<code>&lt;a&gt;</code>标签的默认行为，修改为我们的<code>router.navigate</code>行为。例如：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="built_in">document</span>).on(<span class="string">'click'</span>, <span class="string">'a'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> href = $(<span class="keyword">this</span>).prop(<span class="string">'href'</span>);</span><br><span class="line">    href = href.slice(...) <span class="comment">// 去掉root部分</span></span><br><span class="line">    router.navigate(href, <span class="literal">true</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>如果我们并不想这样处理所有的<code>&lt;a&gt;</code>标签，比如仍保留某些向服务器发送HTTP请求的功能。这可以通过有条件的选择，一个好的方式是把所有不期望向服务器发送请求的<code>&lt;a&gt;</code>标签的href都以<code>&#39;#&#39;</code>开头，否则则认为向服务器发送请求。此时阻断代码可以写成如下的样子：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="built_in">document</span>).on(<span class="string">'click'</span>, <span class="string">'a[href*="#"]'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> href = $(<span class="keyword">this</span>).prop(<span class="string">'href'</span>);</span><br><span class="line">    href = href.slice(...) <span class="comment">// 去掉root部分</span></span><br><span class="line">    router.navigate(href, <span class="literal">true</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>点击下面的链接及浏览器的前进后退按钮查看运行效果：</p>
-<p><base href="/2015/08/09/Backbone-router-demo/"></p>
-<div id="demo"><br>  <a href="#help">help</a><br>  <a href="#search/myquery">search “myquery”</a><br>  <a href="#search/myquery/page1">search “myquery/page1”</a><br><br>  <script src="http://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script><br>  <script src="http://cdn.staticfile.org/underscore.js/1.7.0/underscore-min.js"></script><br>  <script src="http://cdn.staticfile.org/backbone.js/1.1.2/backbone-min.js"></script><br>  <script src="/assets/backbone-router-demo.js"></script><br></div></span>
+<h1 id="输入输出">输入输出</h1><table>
+<thead>
+<tr>
+<th>头文件</th>
+<th>主要功能</th>
+<th>主要的类及函数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>iostream</td>
+<td>标准流输入输出对象</td>
+<td>cin, cout, cerr, clog</td>
+</tr>
+<tr>
+<td>cstdio或stdio.h</td>
+<td>C语言的输入输出函数库</td>
+<td>printf, scanf, fprintf, fscanf, fopen以及fclose等</td>
+</tr>
+<tr>
+<td>iomanip</td>
+<td>包含了一系列输入输出格式化的功能</td>
+<td>setiosflags, setbase, setfill, setw, get_money, put_money, get_time, put_time等</td>
+</tr>
+<tr>
+<td>ios</td>
+<td>包含了输入输出的基类及相关函数</td>
+<td>ios, ios_base, dec, hex, oct, fixed, left, right, uppercase等</td>
+</tr>
+<tr>
+<td>istream</td>
+<td>包含了标准输入和结合了输入输出相关的功能</td>
+<td>istream, iostream</td>
+</tr>
+<tr>
+<td>ostream</td>
+<td>包含了标准输出和结合了输入输出相关的功能</td>
+<td>ostream, endl, ends, flush等。</td>
+</tr>
+<tr>
+<td>sstream</td>
+<td>包含了以流操作符方式操作字符串的相关功能</td>
+<td>istringstream, ostringstream, stringstream, stringbuf等。</td>
+</tr>
+</tbody>
+</table>
+<h1 id="数值">数值</h1><table>
+<thead>
+<tr>
+<th>头文件</th>
+<th>主要功能</th>
+<th>主要的类及函数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>limits</td>
+<td>包含了所有数值的边界值</td>
+<td>numeric_limits</td>
+</tr>
+<tr>
+<td>climits或limits.h</td>
+<td>一系列极值相关的宏</td>
+<td>INT_MIN, INT_MAX, LONG_MIN, LONG_MAX等。</td>
+</tr>
+<tr>
+<td>numeric</td>
+<td>包含了对数列元素的一些函数</td>
+<td>accumulate, adjacent_difference, inner_product, partial_sum和iota</td>
+</tr>
+<tr>
+<td>random</td>
+<td>包含了随机数产生的相关功能</td>
+<td>random_device等非常多的随机数相关功能</td>
+</tr>
+</tbody>
+</table>
+<h1 id="数学计算">数学计算</h1><table>
+<thead>
+<tr>
+<th>头文件</th>
+<th>主要功能</th>
+<th>主要的类及函数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cmath或math.h</td>
+<td>C语言的数学函数和宏的库，有三角函数，指数函数，比较的宏等。</td>
+<td>sin, cos, exp, pow, sqrt, ceil, floor, nextafter等非常多的数学函数</td>
+</tr>
+<tr>
+<td>complex</td>
+<td>复数运算相关的功能</td>
+<td>real, imag以及各数学函数的复数版重载</td>
+</tr>
+<tr>
+<td>ratio</td>
+<td>分数计算相关功能</td>
+<td>ratio, ratio_add, ratio_substract, ratio_multiply, ratio_divide, ratio_equal, ratio_less等</td>
+</tr>
+</tbody>
+</table>
+<h1 id="字符串操作">字符串操作</h1><table>
+<thead>
+<tr>
+<th>头文件</th>
+<th>主要功能</th>
+<th>主要的类及函数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>string</td>
+<td>字符串转换的相关功能</td>
+<td>string, to_string等</td>
+</tr>
+<tr>
+<td>regex</td>
+<td>正则表达式</td>
+<td>regex_match, regex_search, regex_replace, basic_regex, match_results, sub_match及reg等</td>
+</tr>
+</tbody>
+</table>
+<h1 id="内存操作">内存操作</h1><table>
+<thead>
+<tr>
+<th>头文件</th>
+<th>主要功能</th>
+<th>主要的类及函数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>memory</td>
+<td>动态内存管理的相关功能</td>
+<td>auto_ptr, shared_ptr, weak_ptr, make_shared等</td>
+</tr>
+<tr>
+<td>new</td>
+<td>重载了new、delete等动态内存操作符</td>
+<td>operator new, operator new[], operator delete, operator delete[], set_new_handler, get_new_handler等</td>
+</tr>
+<tr>
+<td>cstring或string.h</td>
+<td>操作C类型的字符串或数组的功能</td>
+<td>memcpy, memmove, strcpy, strncpy, memcmp, memset, strlen, size_t, strstr等</td>
+</tr>
+</tbody>
+</table>
+<h1 id="数据结构">数据结构</h1><table>
+<thead>
+<tr>
+<th>头文件</th>
+<th>主要功能</th>
+<th>主要的类</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>vector</td>
+<td>C++中使用频率最高、可以动态改变大小的类似数组的数据结构</td>
+<td>vector    </td>
+</tr>
+<tr>
+<td>set</td>
+<td>集合相关的数据结构</td>
+<td>set和multiset</td>
+</tr>
+<tr>
+<td>unordered_map</td>
+<td>跟无序映射相关的功能</td>
+<td>unordered_map和unordered_multimap</td>
+</tr>
+<tr>
+<td>map</td>
+<td>跟有序映射相关的功能</td>
+<td>map和multimap</td>
+</tr>
+<tr>
+<td>queue</td>
+<td>FIFO队列和优先队列</td>
+<td>queue和priority_queue</td>
+</tr>
+<tr>
+<td>stack</td>
+<td>栈</td>
+<td>stack</td>
+</tr>
+<tr>
+<td>array</td>
+<td>固定长度数组类array，因此它的灵活性比vector差一些</td>
+<td>array</td>
+</tr>
+<tr>
+<td>list</td>
+<td>具有常数时间复杂度的任意未知元素的插入删除操作，以及支持正反方向遍历操作的list</td>
+<td>list</td>
+</tr>
+<tr>
+<td>forward_list</td>
+<td>前向链表</td>
+<td>forward_list, begin, end</td>
+</tr>
+<tr>
+<td>deque</td>
+<td>可以从头尾分别访问的队列</td>
+<td>deque</td>
+</tr>
+<tr>
+<td>tuple</td>
+<td>元组的相关功能</td>
+<td>tuple, tuple_size, make_tuple, tuple_cat, get等</td>
+</tr>
+</tbody>
+</table>
+<h1 id="算法">算法</h1><table>
+<thead>
+<tr>
+<th>头文件</th>
+<th>主要功能</th>
+<th>主要的类及函数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>algorithm</td>
+<td>来自于STL的算法库，有排序、二分搜索、归并、最值、分区、查找以及数列的操作等</td>
+<td>all_of, any_of, none_of, for_each, count, count_if, search, search_n, find, find_if, copy, swap, reverse, sort, lower_bound, make_heap等非常多的算法相关功能</td>
+</tr>
+<tr>
+<td>iterator</td>
+<td>迭代器相关的功能</td>
+<td>begin, end, prev, next, advance, distance, iterator, istream_iterator, ostream_iterator等</td>
+</tr>
+</tbody>
+</table>
+<h1 id="时间">时间</h1><table>
+<thead>
+<tr>
+<th>头文件</th>
+<th>主要功能</th>
+<th>主要的类及函数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>chrono</td>
+<td>处理时刻、时间以及系统无力时间等</td>
+<td>duration, time_point, system_clock, steady_clock, high_resolution_clock, duration_cast, time_point_cast, duration_values等</td>
+</tr>
+<tr>
+<td>ctime或time.h</td>
+<td>C语言的时间相关功能</td>
+<td>clock, difftime, time, ctime, clock_t, size_t, time_t等</td>
+</tr>
+</tbody>
+</table>
+<h1 id="位操作">位操作</h1><table>
+<thead>
+<tr>
+<th>头文件</th>
+<th>主要功能</th>
+<th>主要的类及函数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bitset</td>
+<td>比特位的集合，适合进行位数超出最大整数的位操作</td>
+<td>bitset</td>
+</tr>
+</tbody>
+</table>
+<h1 id="函数对象">函数对象</h1><table>
+<thead>
+<tr>
+<th>头文件</th>
+<th>主要功能</th>
+<th>主要的类及函数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>functional</td>
+<td>函数对象，主要包含数字计算、比较、逻辑运算等函数对象，以及一些转换函数</td>
+<td>plus, minus, multiplies, equal_to, greater, logical_and, not1, not2等非常多的函数对象</td>
+</tr>
+</tbody>
+</table>
+<h1 id="Utility">Utility</h1><table>
+<thead>
+<tr>
+<th>头文件</th>
+<th>主要功能</th>
+<th>主要的类及函数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>utility</td>
+<td>多种工具集合</td>
+<td>swap, make_pair, forward, move, pair等</td>
+</tr>
+</tbody>
+</table>
+</span>
       
     </div>
 
@@ -280,9 +574,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Backbone/" rel="tag">#Backbone</a>
+            <a href="/tags/C/" rel="tag">#C++</a>
           
-            <a href="/tags/Route/" rel="tag">#Route</a>
+            <a href="/tags/算法/" rel="tag">#算法</a>
           
         </div>
       
@@ -291,17 +585,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/07/26/LeetCode-OJ-238-Product-of-Array-Except-Self/" rel="next" title="LeetCode OJ 238 Product of Array Except Self">
-                <i class="fa fa-chevron-left"></i> LeetCode OJ 238 Product of Array Except Self
+              <a href="/2015/11/01/算法的思维之沿着右手边的墙往前走就一定能走出迷宫/" rel="next" title="算法的思维之沿着右手边的墙往前走就一定能走出迷宫">
+                <i class="fa fa-chevron-left"></i> 算法的思维之沿着右手边的墙往前走就一定能走出迷宫
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2015/10/28/C++算法笔记－基本输入输出/" rel="prev" title="C++算法笔记－基本输入输出">
-                C++算法笔记－基本输入输出 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -316,10 +606,10 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2015/08/09/Backbone-router-demo/"
-     data-title="Backbone router demo"
+        <div class="ds-share flat" data-thread-key="2015/11/09/C-算法笔记－常用头文件/"
+     data-title="C++算法笔记－常用头文件"
      data-content=""
-     data-url="http://blog.liushuping.com/2015/08/09/Backbone-router-demo/">
+     data-url="http://blog.liushuping.com/2015/11/09/C-算法笔记－常用头文件/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -345,8 +635,8 @@
         
           <div class="comments" id="comments">
             
-              <div class="ds-thread" data-thread-key="2015/08/09/Backbone-router-demo/"
-                   data-title="Backbone router demo" data-url="http://blog.liushuping.com/2015/08/09/Backbone-router-demo/">
+              <div class="ds-thread" data-thread-key="2015/11/09/C-算法笔记－常用头文件/"
+                   data-title="C++算法笔记－常用头文件" data-url="http://blog.liushuping.com/2015/11/09/C-算法笔记－常用头文件/">
               </div>
             
           </div>
@@ -446,7 +736,7 @@
           <div class="post-toc">
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#输入输出"><span class="nav-number">1.</span> <span class="nav-text">输入输出</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数值"><span class="nav-number">2.</span> <span class="nav-text">数值</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数学计算"><span class="nav-number">3.</span> <span class="nav-text">数学计算</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#字符串操作"><span class="nav-number">4.</span> <span class="nav-text">字符串操作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#内存操作"><span class="nav-number">5.</span> <span class="nav-text">内存操作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数据结构"><span class="nav-number">6.</span> <span class="nav-text">数据结构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#算法"><span class="nav-number">7.</span> <span class="nav-text">算法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#时间"><span class="nav-number">8.</span> <span class="nav-text">时间</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#位操作"><span class="nav-number">9.</span> <span class="nav-text">位操作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#函数对象"><span class="nav-number">10.</span> <span class="nav-text">函数对象</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Utility"><span class="nav-number">11.</span> <span class="nav-text">Utility</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
