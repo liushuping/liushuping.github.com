@@ -4,7 +4,7 @@
   <subtitle><![CDATA[A JavaScript and C# developer]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://blog.liushuping.com/"/>
-  <updated>2015-11-14T15:16:58.000Z</updated>
+  <updated>2016-01-02T05:30:33.000Z</updated>
   <id>http://blog.liushuping.com/</id>
   
   <author>
@@ -13,6 +13,70 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[nanopi2系统配置]]></title>
+    <link href="http://blog.liushuping.com/2016/01/02/nanopi2%E7%B3%BB%E7%BB%9F%E9%85%8D%E7%BD%AE/"/>
+    <id>http://blog.liushuping.com/2016/01/02/nanopi2系统配置/</id>
+    <published>2016-01-02T03:58:04.000Z</published>
+    <updated>2016-01-02T05:30:33.000Z</updated>
+    <content type="html"><![CDATA[<p>本文介绍了在nanopi2上安装Debian系统的简要步骤以及安装后的必要配置。</p>
+<p>#烧录Debian系统<br>Nanopi2 wiki上you详细如何安装系统的介绍，这里以在Windows系统上安装Debian系统到TF卡为例（安装Android请参考wiki：<a href="http://wiki.friendlyarm.com/wiki/index.php/NanoPi_2/zh）" target="_blank" rel="external">http://wiki.friendlyarm.com/wiki/index.php/NanoPi_2/zh）</a></p>
+<ul>
+<li>首先到<a href="http://wiki.friendlyarm.com/wiki/nanopi2/download/" target="_blank" rel="external">http://wiki.friendlyarm.com/wiki/nanopi2/download/</a> 下载需要的固件例如nanopi2-debian-sd4g.img.zip以及烧写工具win32diskimager.rar</li>
+<li>下载完成后运行win32diskimager.exe,选取下载的Debian固件，并指定正确的TF卡盘符，然后烧写即可。</li>
+</ul>
+<p>写入完成后，在Windows上看到的卡容量是64M，这是因为64M是Boot分区，是Windows能识别的分区，而其它分区是Linux分区，Windows并不能识别。</p>
+<p>把TF卡插入Nanopi2的卡位1（靠近电源输入的一端），接入电源即可启动Nanopi2了。</p>
+<a id="more"></a>
+<p>#扩展磁盘分区<br>通过diskimager写的SD／TF卡是不能很好的直接使用的，此时的系统只占用了大约3GB的空间，并没有足够的空间来安装必要的软件，因此无法用来做开发。在使用之前需要扩展分区空间到整个SD/TF卡空间。</p>
+<p>网上介绍的方法是把SD／TF卡接入到一个Linux系统的电脑，并之行一下命令：<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo umount /dev/sdx&#10;sudo parted /dev/sdx unit % resizepart 2 100 unit MB print&#10;sudo resize2fs -f /dev/sdx2</span><br></pre></td></tr></table></figure></p>
+<p>其中<code>sdx</code>的<code>x</code>要替换成实际的挂载点，通常是<code>sdb</code>。然而，多次常识后，系统提示各种错误。因此，我尝试了图形化的分区工具<code>gparted</code>，并正确的扩展了分区空间。<br>首先在一台Linux电脑上安装<code>gparted</code><br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install gparted</span><br></pre></td></tr></table></figure></p>
+<p>运行<code>gparted</code>图形化分区程序，选取接入的SD／TF卡，会看到有两个分区，选择第二个分区，然后选择卸载，检查。之行操作，分区扩展就完成了。</p>
+<p>#配置无线连接<br>Nanopi2 wiki上有无线配置的详细步骤：<a href="http://wiki.friendlyarm.com/wiki/index.php/NanoPi_2/zh" target="_blank" rel="external">http://wiki.friendlyarm.com/wiki/index.php/NanoPi_2/zh</a> 这儿简要重复一下步骤：</p>
+<ol>
+<li>查看WiFi的网络接口：<code>ifconfig -a</code>，以<code>wlan</code>开头的就是<code>wifi</code>，通常是<code>wlan0</code></li>
+<li>创建一个以WiFi接口命名的文件<code>vi /etc/network/interfaces.d/wlan0</code>,这儿用的是<code>vi</code>编辑器</li>
+<li><p>在<code>wlan0</code>文件中输入一下内容：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">auto wlan0&#10;iface wlan0 inet dhcp&#10;wpa-driver nl80211&#10;wpa-ssid &#60;YourWiFiESSID&#62;&#10;wpa-ap-scan 1&#10;wpa-psk &#60;YourWiFiPassword&#62;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>完成编辑后，reboot后即可自动连接无线。</p>
+</li>
+</ol>
+<p>#SSH连接<br>配置好无线连接后，可以通过SSH连接的方式连接到nanopi2。需要知道无线分配给nanopi2的IP地址，有两种方式：</p>
+<ul>
+<li>通过HDMI把nanopi2连接到显示器或电视，然后之行命令<code>ifconfig -a</code>来查看</li>
+<li>或者在一台属于同一个无线网络的电脑之行命令<code>arp -a</code>来查看所有IP地址。</li>
+</ul>
+<p>获取IP地址后通过<code>ssh root@&lt;ip address&gt;</code>即可连接。</p>
+<p>#修改时区及同步时间</p>
+<p>##修改时区<br>初次装的系统并没有设置时区，因此时间是UTC的方式显示。可以通过下面的命令来修改时区：<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$sudo dpkg-reconfigure tzdata</span><br></pre></td></tr></table></figure></p>
+<p>命令执行后，系统会以图形化的方式引导修改时区。</p>
+<p>##网络同步时间<br>由于nanopi2本身并不自带时钟电池，因此断电后时间设置就会丢失，因此通过NTP服务器动态获取时间的方式可以很好的确保时间的正确性。国内常用的NTP服务器有：<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">ntp<span class="class">.sjtu</span><span class="class">.edu</span><span class="class">.cn</span> <span class="number">202.120</span>.<span class="number">2.101</span> (上海交通大学网络中心NTP服务器地址）</span><br><span class="line">s1a<span class="class">.time</span><span class="class">.edu</span><span class="class">.cn</span>	北京邮电大学</span><br><span class="line">s1b<span class="class">.time</span><span class="class">.edu</span><span class="class">.cn</span>	清华大学</span><br><span class="line">s1c<span class="class">.time</span><span class="class">.edu</span><span class="class">.cn</span>	北京大学</span><br><span class="line">s1d<span class="class">.time</span><span class="class">.edu</span><span class="class">.cn</span>	东南大学</span><br><span class="line">s1e<span class="class">.time</span><span class="class">.edu</span><span class="class">.cn</span>	清华大学</span><br><span class="line">s2a<span class="class">.time</span><span class="class">.edu</span><span class="class">.cn</span>	清华大学</span><br><span class="line">s2b<span class="class">.time</span><span class="class">.edu</span><span class="class">.cn</span>	清华大学</span><br><span class="line">s2c<span class="class">.time</span><span class="class">.edu</span><span class="class">.cn</span>	北京邮电大学</span><br><span class="line">s2d<span class="class">.time</span><span class="class">.edu</span><span class="class">.cn</span>	西南地区网络中心</span><br><span class="line">s2e<span class="class">.time</span><span class="class">.edu</span><span class="class">.cn</span>	西北地区网络中心</span><br><span class="line">s2f<span class="class">.time</span><span class="class">.edu</span><span class="class">.cn</span>	东北地区网络中心</span><br><span class="line">s2g<span class="class">.time</span><span class="class">.edu</span><span class="class">.cn</span>	华东南地区网络中心</span><br><span class="line">s2h<span class="class">.time</span><span class="class">.edu</span><span class="class">.cn</span>	四川大学网络管理中心</span><br><span class="line">s2j<span class="class">.time</span><span class="class">.edu</span><span class="class">.cn</span>	大连理工大学网络中心</span><br><span class="line">s2k<span class="class">.time</span><span class="class">.edu</span><span class="class">.cn</span> CERNET桂林主节点</span><br><span class="line">s2m<span class="class">.time</span><span class="class">.edu</span><span class="class">.cn</span> 北京大学</span><br></pre></td></tr></table></figure></p>
+<p>要通过NTP服务器同步时间，需要用到ntpdate包，通过下面命令安装:<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$sudo apt-get update ntpdate</span><br></pre></td></tr></table></figure></p>
+<p>安装后，通过ntpdate命令指定一个NTP服务器就可以同步时间了:<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ntpdate ntp.sjtu.edu.cn</span><br></pre></td></tr></table></figure></p>
+<p>如果需要定期同步时间，可以通过<code>crontab -e</code>命令并在打开的文件中添加类似下面的一行：<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">*/30 * * * * /usr/sbin/ntpdate time.cuit.edu.cn</span><br></pre></td></tr></table></figure></p>
+<p>表示系统每30分钟同步一次时间。</p>
+<p>#修改hostname<br>nanopi设备默认的名字是nanopi2，例如用ssh以root身份登录系统后的显示如下：<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root@nanopi2:~#</span><br></pre></td></tr></table></figure></p>
+<p>可以通过修改<code>/etc/hostname</code>文件内容来修改设备名字。<br>此外，在<code>apt-get install</code>命令安装包时，系统会提示类似<code>cannot resolve hostname nanopi2</code>之类的消息，可以通过修改<code>/etc/host</code>文件，在其中加入一条<code>nanopi2</code>(或是修改后的hostname)记录来解决，例如：<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">27.0.0.1       localhost&#10;127.0.0.1      nanopi2&#10;::1            localhost ip6-localhost ip6-loopback&#10;ff02::1        ip6-allnodes&#10;ff02::2        ip6-allrouters</span><br></pre></td></tr></table></figure></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>本文介绍了在nanopi2上安装Debian系统的简要步骤以及安装后的必要配置。</p>
+<p>#烧录Debian系统<br>Nanopi2 wiki上you详细如何安装系统的介绍，这里以在Windows系统上安装Debian系统到TF卡为例（安装Android请参考wiki：<a href="http://wiki.friendlyarm.com/wiki/index.php/NanoPi_2/zh）">http://wiki.friendlyarm.com/wiki/index.php/NanoPi_2/zh）</a></p>
+<ul>
+<li>首先到<a href="http://wiki.friendlyarm.com/wiki/nanopi2/download/">http://wiki.friendlyarm.com/wiki/nanopi2/download/</a> 下载需要的固件例如nanopi2-debian-sd4g.img.zip以及烧写工具win32diskimager.rar</li>
+<li>下载完成后运行win32diskimager.exe,选取下载的Debian固件，并指定正确的TF卡盘符，然后烧写即可。</li>
+</ul>
+<p>写入完成后，在Windows上看到的卡容量是64M，这是因为64M是Boot分区，是Windows能识别的分区，而其它分区是Linux分区，Windows并不能识别。</p>
+<p>把TF卡插入Nanopi2的卡位1（靠近电源输入的一端），接入电源即可启动Nanopi2了。</p>]]>
+    
+    </summary>
+    
+      <category term="nanopi2" scheme="http://blog.liushuping.com/tags/nanopi2/"/>
+    
+      <category term="nanopi2" scheme="http://blog.liushuping.com/categories/nanopi2/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[C++算法笔记－常用头文件]]></title>
