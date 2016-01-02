@@ -4,7 +4,7 @@
   <subtitle><![CDATA[A JavaScript and C# developer]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://blog.liushuping.com/"/>
-  <updated>2016-01-02T05:46:01.000Z</updated>
+  <updated>2016-01-02T05:49:30.000Z</updated>
   <id>http://blog.liushuping.com/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://blog.liushuping.com/2016/01/02/nanopi2%E7%B3%BB%E7%BB%9F%E9%85%8D%E7%BD%AE/"/>
     <id>http://blog.liushuping.com/2016/01/02/nanopi2系统配置/</id>
     <published>2016-01-02T03:58:04.000Z</published>
-    <updated>2016-01-02T05:46:01.000Z</updated>
+    <updated>2016-01-02T05:49:30.000Z</updated>
     <content type="html"><![CDATA[<p>本文介绍了在nanopi2上安装Debian系统的简要步骤以及安装后的必要配置。</p>
 <h1 id="烧录Debian系统">烧录Debian系统</h1><p><a href="http://wiki.friendlyarm.com/wiki/index.php/NanoPi_2/zh" target="_blank" rel="external">Nanopi2 wiki</a>上有对如何安装系统的详细介绍，这里以在Windows系统上安装Debian系统到SD/TF卡为例（安装Android请参考<a href="http://wiki.friendlyarm.com/wiki/index.php/NanoPi_2/zh" target="_blank" rel="external">wiki</a>)</p>
 <ul>
@@ -31,18 +31,17 @@
 <a id="more"></a>
 <h1 id="扩展磁盘分区">扩展磁盘分区</h1><p>通过<code>diskimager</code>写的SD／TF卡是不能很好地直接使用的，此时的系统只占用了大约3GB的空间，并没有足够的空间来安装必要的软件，因此无法用来做开发。在使用之前需要扩展分区空间到整个SD/TF卡空间。</p>
 <p>网上介绍的方法是把SD／TF卡接入到一个Linux系统的电脑，并执行以下命令：<br><figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo umount <span class="regexp">/dev/</span>sdx</span><br><span class="line">sudo parted <span class="regexp">/dev/</span>sdx unit % resizepart <span class="number">2</span> <span class="number">100</span> unit MB <span class="keyword">print</span></span><br><span class="line">sudo resize2fs -f <span class="regexp">/dev/</span>sdx2</span><br></pre></td></tr></table></figure></p>
-<p>其中<code>sdx</code>的<code>x</code>要替换成实际的挂载点，通常是<code>sdb</code>。然而，多次常识后，系统提示各种错误。因此，我尝试了图形化的分区工具<code>gparted</code>，并正确地扩展了分区空间。<br>首先在一台Linux电脑上安装<code>gparted</code></p>
-<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-<span class="keyword">get</span> install gparted</span><br></pre></td></tr></table></figure>
-<p>运行<code>gparted</code>图形化分区程序，选取接入的SD／TF卡，会看到有两个分区，选择第二个分区，然后选择卸载，检查。执行操作，分区扩展就完成了。</p>
-<h1 id="配置无线连接">配置无线连接</h1><p>Nanopi2 wiki上有无线配置的详细步骤：<a href="http://wiki.friendlyarm.com/wiki/index.php/NanoPi_2/zh" target="_blank" rel="external">http://wiki.friendlyarm.com/wiki/index.php/NanoPi_2/zh</a> 这儿简要重复一下步骤：</p>
+<p>其中<code>sdx</code>的<code>x</code>要替换成实际的挂载点，通常是<code>sdb</code>。然而多次尝试后，系统提示各种错误。因此，我尝试了图形化的分区工具<code>gparted</code>，并正确地扩展了分区空间。<br>首先在一台Linux电脑上安装<code>gparted</code><br><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-<span class="keyword">get</span> install gparted</span><br></pre></td></tr></table></figure></p>
+<p>然后运行<code>gparted</code>图形化分区程序，选取接入的SD／TF卡，会看到有两个分区，选择第二个分区，然后选择卸载，检查。执行操作，分区扩展就完成了。</p>
+<h1 id="配置无线连接">配置无线连接</h1><p>Nanopi2 wiki上有无线配置的详细步骤：<a href="http://wiki.friendlyarm.com/wiki/index.php/NanoPi_2/zh" target="_blank" rel="external">http://wiki.friendlyarm.com/wiki/index.php/NanoPi_2/zh</a> 这儿做简要重复：</p>
 <ol>
 <li>查看WiFi的网络接口：<code>ifconfig -a</code>，以<code>wlan</code>开头的就是<code>wifi</code>，通常是<code>wlan0</code></li>
 <li>创建一个以WiFi接口命名的文件<code>vi /etc/network/interfaces.d/wlan0</code>,这儿用的是<code>vi</code>编辑器</li>
-<li>在<code>wlan0</code>文件中输入以下内容：</li>
-</ol>
+<li><p>在<code>wlan0</code>文件中输入以下内容：</p>
 <figure class="highlight pf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">auto wlan0</span><br><span class="line">iface wlan0 <span class="keyword">inet</span> dhcp</span><br><span class="line">wpa-driver nl80211</span><br><span class="line">wpa-ssid <span class="variable">&lt;YourWiFiESSID&gt;</span></span><br><span class="line">wpa-ap-scan <span class="number">1</span></span><br><span class="line">wpa-psk <span class="variable">&lt;YourWiFiPassword&gt;</span></span><br></pre></td></tr></table></figure>
-<ol>
-<li>完成编辑后，reboot后即可自动连接无线。</li>
+</li>
+<li><p>完成编辑后，reboot后即可自动连接无线。</p>
+</li>
 </ol>
 <h1 id="SSH连接">SSH连接</h1><p>配置好无线连接后，可以通过SSH连接的方式连接到nanopi2。需要知道无线分配给nanopi2的IP地址，有两种方式：</p>
 <ul>
@@ -50,8 +49,7 @@
 <li>或者在一台属于同一个无线网络的电脑之行命令<code>arp -a</code>来查看所有IP地址。</li>
 </ul>
 <p>获取IP地址后通过<code>ssh root@&lt;ip address&gt;</code>即可连接。</p>
-<h1 id="修改时区及同步时间">修改时区及同步时间</h1><h2 id="修改时区">修改时区</h2><p>初次装的系统并没有设置时区，因此时间是UTC的方式显示。可以通过下面的命令来修改时区：</p>
-<figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$sudo</span> dpkg-reconfigure tzdata</span><br></pre></td></tr></table></figure>
+<h1 id="修改时区及同步时间">修改时区及同步时间</h1><h2 id="修改时区">修改时区</h2><p>初次装的系统并没有设置时区，因此时间是UTC的方式显示。可以通过下面的命令来修改时区：<br><figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$sudo</span> dpkg-reconfigure tzdata</span><br></pre></td></tr></table></figure></p>
 <p>命令执行后，系统会以图形化的方式引导修改时区。</p>
 <h2 id="网络同步时间">网络同步时间</h2><p>由于nanopi2本身并不自带时钟电池，断电后时间设置就会丢失。因此通过NTP服务器动态获取时间的方式可以很好地确保时间的正确性。国内常用的NTP服务器有：<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">ntp<span class="class">.sjtu</span><span class="class">.edu</span><span class="class">.cn</span> <span class="number">202.120</span>.<span class="number">2.101</span> (上海交通大学网络中心NTP服务器地址）</span><br><span class="line">s1a<span class="class">.time</span><span class="class">.edu</span><span class="class">.cn</span>	北京邮电大学</span><br><span class="line">s1b<span class="class">.time</span><span class="class">.edu</span><span class="class">.cn</span>	清华大学</span><br><span class="line">s1c<span class="class">.time</span><span class="class">.edu</span><span class="class">.cn</span>	北京大学</span><br><span class="line">s1d<span class="class">.time</span><span class="class">.edu</span><span class="class">.cn</span>	东南大学</span><br><span class="line">s1e<span class="class">.time</span><span class="class">.edu</span><span class="class">.cn</span>	清华大学</span><br><span class="line">s2a<span class="class">.time</span><span class="class">.edu</span><span class="class">.cn</span>	清华大学</span><br><span class="line">s2b<span class="class">.time</span><span class="class">.edu</span><span class="class">.cn</span>	清华大学</span><br><span class="line">s2c<span class="class">.time</span><span class="class">.edu</span><span class="class">.cn</span>	北京邮电大学</span><br><span class="line">s2d<span class="class">.time</span><span class="class">.edu</span><span class="class">.cn</span>	西南地区网络中心</span><br><span class="line">s2e<span class="class">.time</span><span class="class">.edu</span><span class="class">.cn</span>	西北地区网络中心</span><br><span class="line">s2f<span class="class">.time</span><span class="class">.edu</span><span class="class">.cn</span>	东北地区网络中心</span><br><span class="line">s2g<span class="class">.time</span><span class="class">.edu</span><span class="class">.cn</span>	华东南地区网络中心</span><br><span class="line">s2h<span class="class">.time</span><span class="class">.edu</span><span class="class">.cn</span>	四川大学网络管理中心</span><br><span class="line">s2j<span class="class">.time</span><span class="class">.edu</span><span class="class">.cn</span>	大连理工大学网络中心</span><br><span class="line">s2k<span class="class">.time</span><span class="class">.edu</span><span class="class">.cn</span> CERNET桂林主节点</span><br><span class="line">s2m<span class="class">.time</span><span class="class">.edu</span><span class="class">.cn</span> 北京大学</span><br></pre></td></tr></table></figure></p>
 <p>要通过NTP服务器同步时间，需要用到ntpdate包，通过下面命令安装:<br><figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$sudo</span> apt-get <span class="keyword">update</span> ntpdate</span><br></pre></td></tr></table></figure></p>
