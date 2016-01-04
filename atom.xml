@@ -4,7 +4,7 @@
   <subtitle><![CDATA[A JavaScript and C# developer]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://blog.liushuping.com/"/>
-  <updated>2016-01-02T12:36:11.000Z</updated>
+  <updated>2016-01-04T14:34:51.000Z</updated>
   <id>http://blog.liushuping.com/</id>
   
   <author>
@@ -13,6 +13,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[数据正规化]]></title>
+    <link href="http://blog.liushuping.com/2016/01/04/%E6%95%B0%E6%8D%AE%E6%AD%A3%E8%A7%84%E5%8C%96/"/>
+    <id>http://blog.liushuping.com/2016/01/04/数据正规化/</id>
+    <published>2016-01-04T14:23:06.000Z</published>
+    <updated>2016-01-04T14:34:51.000Z</updated>
+    <content type="html"><![CDATA[<p>当对包含不同指标数据的数据样本进行分析时，数值较高的指标容易在分析中突显作用，而数值较低的指标的作用易被削弱。因此在对数据进行分析之前，需要对数据进行去量纲的正规化处理，是数据分布在相同的区间内。正规化的方法有很多，本文列出三种常用的方法。</p>
+<a id="more"></a>
+<h1 id="z-score_(zero-mean)_正规化">z-score (zero-mean) 正规化</h1><p>这是最常用的一种正规化方法，从名字中可以看出，经过z-score正规化的数据平均值是0.</p>
+<h1 id="min-max_正规化">min-max 正规化</h1><h1 id="归一化">归一化</h1>]]></content>
+    <summary type="html">
+    <![CDATA[<p>当对包含不同指标数据的数据样本进行分析时，数值较高的指标容易在分析中突显作用，而数值较低的指标的作用易被削弱。因此在对数据进行分析之前，需要对数据进行去量纲的正规化处理，是数据分布在相同的区间内。正规化的方法有很多，本文列出三种常用的方法。</p>]]>
+    
+    </summary>
+    
+      <category term="Data" scheme="http://blog.liushuping.com/tags/Data/"/>
+    
+      <category term="Machine Learning" scheme="http://blog.liushuping.com/tags/Machine-Learning/"/>
+    
+      <category term="Data" scheme="http://blog.liushuping.com/categories/Data/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[nanopi2系统配置]]></title>
