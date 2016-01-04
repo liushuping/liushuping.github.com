@@ -53,8 +53,12 @@
 <meta property="og:url" content="http://blog.liushuping.com/2016/01/04/数据正规化/index.html">
 <meta property="og:site_name" content="Shuping LIU">
 <meta property="og:description" content="当对包含不同指标数据的数据样本进行分析时，数值较高的指标容易在分析中突显作用，而数值较低的指标的作用易被削弱。因此在对数据进行分析之前，需要对数据进行去量纲的正规化处理，是数据分布在相同的区间内。正规化的方法有很多，本文列出三种常用的方法。">
-<meta property="og:image" content="http://78rehp.com1.z0.glb.clouddn.com/blog%2Fz-score.png">
-<meta property="og:updated_time" content="2016-01-04T15:09:34.000Z">
+<meta property="og:image" content="http://78rehp.com1.z0.glb.clouddn.com/blog%2Fzero-mean.png">
+<meta property="og:image" content="http://78rehp.com1.z0.glb.clouddn.com/blog%2Fzero-mean-mu.png">
+<meta property="og:image" content="http://78rehp.com1.z0.glb.clouddn.com/blog%2Fzero-mean-sigma.png">
+<meta property="og:image" content="http://78rehp.com1.z0.glb.clouddn.com/blog%2Fmin-max-norm.png">
+<meta property="og:image" content="http://78rehp.com1.z0.glb.clouddn.com/blog%2Fnorm-to-1.png">
+<meta property="og:updated_time" content="2016-01-04T15:55:44.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据正规化">
 <meta name="twitter:description" content="当对包含不同指标数据的数据样本进行分析时，数值较高的指标容易在分析中突显作用，而数值较低的指标的作用易被削弱。因此在对数据进行分析之前，需要对数据进行去量纲的正规化处理，是数据分布在相同的区间内。正规化的方法有很多，本文列出三种常用的方法。">
@@ -261,8 +265,19 @@
       
         <span itemprop="articleBody"><p>当对包含不同指标数据的数据样本进行分析时，数值较高的指标容易在分析中突显作用，而数值较低的指标的作用易被削弱。因此在对数据进行分析之前，需要对数据进行去量纲的正规化处理，是数据分布在相同的区间内。正规化的方法有很多，本文列出三种常用的方法。</p>
 <a id="more"></a>
-<h1 id="z-score_(zero-mean)_正规化">z-score (zero-mean) 正规化</h1><p>这是最常用的一种正规化方法，从名字中可以看出，经过z-score正规化的数据平均值是0。<br><img src="http://78rehp.com1.z0.glb.clouddn.com/blog%2Fz-score.png" alt="z-score image"></p>
-<h1 id="min-max_正规化">min-max 正规化</h1><h1 id="归一化">归一化</h1></span>
+<h1 id="z-score_(zero-mean)_正规化">z-score (zero-mean) 正规化</h1><p>这是最常用的一种正规化方法，从名字中可以看出，经过z-score正规化的数据平均值是0。<br>z-score的公式是：</p>
+<p><img src="http://78rehp.com1.z0.glb.clouddn.com/blog%2Fzero-mean.png" alt="z-score image"></p>
+<p>其中μ是样本的平均值（数学期望）</p>
+<p><img src="http://78rehp.com1.z0.glb.clouddn.com/blog%2Fzero-mean-mu.png" alt="z-score mu image"></p>
+<p>而σ是样本的标准差(standard deviation)</p>
+<p><img src="http://78rehp.com1.z0.glb.clouddn.com/blog%2Fzero-mean-sigma.png" alt="z-score sigma image"></p>
+<p>在数据是全部样本的情况下，标准差的计算中根号内的分母是n；但是在抽样数据的情况下，标准差的计算中的根号内的分母是n-1。因为大多数分析数据是抽样数据，所以计算中取n-1。</p>
+<p>z-score正规化适合指标的最大最小值未知或有数据超出数据范围的情况。</p>
+<h1 id="min-max_正规化">min-max 正规化</h1><p>min-max正规化是把原始数据映射到[0-1]的无量纲区间内，该方法也叫离差标准化。公式：</p>
+<p><img src="http://78rehp.com1.z0.glb.clouddn.com/blog%2Fmin-max-norm.png" alt="min-max morm image"></p>
+<h1 id="归一化">归一化</h1><p>归一化要求分析数据是非负数，该方法把数据映射到[0,1]的无量纲区间内，且所有正规化后的数据综合为1</p>
+<p><img src="http://78rehp.com1.z0.glb.clouddn.com/blog%2Fnorm-to-1.png" alt="归一化公式"></p>
+</span>
       
     </div>
 
