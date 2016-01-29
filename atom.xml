@@ -4,7 +4,7 @@
   <subtitle><![CDATA[A JavaScript and C# developer]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://blog.liushuping.com/"/>
-  <updated>2016-01-04T16:00:13.000Z</updated>
+  <updated>2016-01-25T14:54:37.000Z</updated>
   <id>http://blog.liushuping.com/</id>
   
   <author>
@@ -13,6 +13,68 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[微软跨平台及开源的执行力之我见]]></title>
+    <link href="http://blog.liushuping.com/2016/01/23/%E5%BE%AE%E8%BD%AF%E8%B7%A8%E5%B9%B3%E5%8F%B0%E5%8F%8A%E5%BC%80%E6%BA%90%E7%9A%84%E6%89%A7%E8%A1%8C%E5%8A%9B%E4%B9%8B%E6%88%91%E8%A7%81/"/>
+    <id>http://blog.liushuping.com/2016/01/23/微软跨平台及开源的执行力之我见/</id>
+    <published>2016-01-23T13:18:04.000Z</published>
+    <updated>2016-01-25T14:54:37.000Z</updated>
+    <content type="html"><![CDATA[<p>首先说明的是，本文不是给微软写的软文，而是对微软近些年在跨平台以及开源社区等领域所做努力的一些个人所见。好多人说微软做的越来越不行了，好多产品越来越不好用或者不明白为啥那样做等等。然而，我却看到了不一样的微软。</p>
+<p>科技公司在经历长期的发展壮大后会变成老牌企业，而老牌的IT企业在面对新兴的互联网领域时经常会表现出转型、创新困难，抓不住机会的状况。IBM是一个典型的代表，微软也已经归位IT老牌企业的行列了。然而，个人所见微软在面对互联网的浪潮时在跨平台及开源领域的执行力以及紧张还是有卓越成果的。</p>
+<a id="more"></a>
+<h1 id="-NET">.NET</h1><p>.NET 是微软在开发领域的一个主力产品，是Java等其它基于虚拟机的产品的有力竞争对手。长期以来.NET是闭源的，而它所声称的跨平台性在其它平台如Linux上也只能靠其它产品来实现，如Mono。近几年微软也意识到了开源社区的力量，因此也对.NET 的Runtime(CLR)和Framework做了开源：</p>
+<ul>
+<li>CoreClr: <a href="https://github.com/dotnet/coreclr" target="_blank" rel="external">https://github.com/dotnet/coreclr</a></li>
+<li>ColreFx: <a href="https://github.com/dotnet/corefx" target="_blank" rel="external">https://github.com/dotnet/corefx</a></li>
+</ul>
+<p>在.NET领域，除Clr和Framework之外编译器是另一个重要的角色。微软在多年前启动了<a href="http://www.eweek.com/c/a/Application-Development/Microsoft-Delivers-Roslyn-Compiler-as-a-Service-Preview-455946" target="_blank" rel="external">Compiler as a Service</a>的Roslyn项目。之后整个Roslyn的源代码也开源在Github上(<a href="https://github.com/dotnet/roslyn)。" target="_blank" rel="external">https://github.com/dotnet/roslyn)。</a></p>
+<p>虽然说.NET Clr+Framework+Compiler(Roslyn)几乎是.NET的全部，有了它们就可以做完全的.NET研究和开发，然而.NET的工程构建还是一套负责的系统，微软是通过msbuild来管理它的。微软也毫无保留的开源了它：<a href="https://github.com/Microsoft/msbuild/" target="_blank" rel="external">https://github.com/Microsoft/msbuild/</a></p>
+<p>做了这些工作后，可以说微软已经完全拥抱开源和跨平台了，通过<a href="http://dotnet.github.io/" target="_blank" rel="external">http://dotnet.github.io/</a> 你可以找到.NET Core的很多信息，从中可以看到.NET现在官方支持下列平台：</p>
+<ul>
+<li>Windows </li>
+<li>Debian</li>
+<li>Ubuntu</li>
+<li>CentOS</li>
+<li>OpenSuSE</li>
+<li>Mac OS</li>
+<li>Free BSD</li>
+</ul>
+<p>最后考虑到了在不同平台上配置不同的.NET Runtime，Framework以及编译等工作的复杂性，微软又推出了一揽子的服务，.NET的执行环境(Execution Environment)－－DNX。通过它，开发人员可以快速简单的在任何支持的平台上配置好.NET开发及运行环境。当然，它从一开始就是开源的:<a href="https://github.com/aspnet/dnx" target="_blank" rel="external">https://github.com/aspnet/dnx</a></p>
+<h1 id="Web">Web</h1><p>Web是互联网的关键字之一，在微软这里就是IIS，ASP.NET和MVC了。把ASP.NET以及MVC开源出来是第一步：</p>
+<ul>
+<li>ASP.NET: <a href="https://github.com/aspnet/home" target="_blank" rel="external">https://github.com/aspnet/home</a></li>
+<li>MVC: <a href="https://github.com/aspnet/Mvc" target="_blank" rel="external">https://github.com/aspnet/Mvc</a></li>
+</ul>
+<p>ASP.NET是一个集合，除MVC之外还包含了EntityFramework和Identity等诸多库。然后在.NET开源及跨平台的基础上，ASP.NET和MVC在其它平台上的开发和运行就变成了可能。当然这里有个障碍需要清除：ASP.NET及MVC运行所依赖的环境IIS是不存在于其它平台（如Linux）的。因此微软大刀阔斧的对其Web生态(Ecosystem)做了重大的变革－－IIS已经不是必须的运行环境，取而代之的是微软重新实现了一个开源跨平台的Web服务器Kestrel（<a href="https://github.com/aspnet/KestrelHttpServer），" target="_blank" rel="external">https://github.com/aspnet/KestrelHttpServer），</a> 为ASP.NET的跨平台扫清了障碍。值得一提的是，在实现Kestrel时，微软拥抱社区，采取了基于社区的成熟组件的架构－－Kestrel是基于<a href="https://github.com/libuv/libuv" target="_blank" rel="external">libuv</a>的，而libuv又是Node.js的HTTP请求处理引擎。</p>
+<h1 id="浏览器与JavaScript">浏览器与JavaScript</h1><p>IE浏览器由于历史包袱太沉重，一直受到前端开发者的诟病。微软也是壮士断腕决定<a href="http://tech.qq.com/a/20150802/004144.htm" target="_blank" rel="external">停止IE</a>这个产品，要想在互联网上走的远，一定要做出一些革命性的变革。微软推出的下一代浏览器<a href="http://www.microsoft.com/en-us/windows/microsoft-edge" target="_blank" rel="external">Edge</a>以全新的面貌出现，从终端用户角度来看，虽不完美但值的期待。但从开发者角度来看，这绝对是革命性的，因为Edge浏览器引擎代码Chakra开源了：<a href="https://github.com/Microsoft/ChakraCore。" target="_blank" rel="external">https://github.com/Microsoft/ChakraCore。</a></p>
+<p>开放Chakra源代码意味着在服务器端JavaScript引擎不只有Google V8引擎了，Node.js或许可以运行在Chakara上了。事实上，截止日期2016-01-23，已经有人实现了在Chakra上运行Node了，并给Node.js提了一个<a href="https://github.com/nodejs/node/pull/4765" target="_blank" rel="external">Pull Request</a></p>
+<p>在语言层面上，微软的大神，Techinical Fewllo, Anders Hejlsberg很早就对JavaScript做了全面的分析，并以开源的形式推出JavaScript的超集(super set) －－ TypeScript (<a href="https://github.com/Microsoft/TypeScript)。" target="_blank" rel="external">https://github.com/Microsoft/TypeScript)。</a> 之后，微软的另一个大神Erich Gamma（Design Pattern作者GoF之一）领导了一个团队用TypeScript开发了非常好用的编辑器<a href="https://code.visualstudio.com/" target="_blank" rel="external">VSCode</a>。VSCode也并不是微软从0开始开发的一个新编辑器，而是在已有的开源产品基础上开发的，它是基于<a href="https://github.com/atom/electron" target="_blank" rel="external">Electron</a>的，Github自家的编辑器<a href="https://github.com/atom/atom" target="_blank" rel="external">Atom</a>也是基于它的。</p>
+<h1 id="标准">标准</h1><p>开发工具的跨平台和开源之外，微软还不遗余力的参与或主导很多标准及协议的定制。例如.NET的开放Web接口<a href="http://owin.org/。" target="_blank" rel="external">http://owin.org/。</a> AMQP(<a href="http://www.amqp.org/" target="_blank" rel="external">http://www.amqp.org/</a>) 也是微软积极参与的一个协议，在微软的Azure云中，AMQP是一个重要的协议。类似的微软主导或参与的协议和标准还有很多，通过这样微软既提高了行业领导力，又增加了产品的跨平台性。</p>
+<h1 id="社区">社区</h1><p>近些年来微软既积极地参与各类社区活动又从社区中学到不少做法。这儿列几个仅作为例子：</p>
+<ul>
+<li>Nuget(<a href="http://www.nuget.org/)。" target="_blank" rel="external">http://www.nuget.org/)。</a> 其包的管理方式完全类似于Ruby，Node等社区的包管理方式。Nuget使.NET的开发模式变的类似其它社区的开发模式，这样大大降低了其它社区开发者参与.NET社区开发或.NET社区开发者参与其它社区开发的学习曲线。</li>
+<li>基于<code>.json</code>的项目管理文件。不同社区使用同样的项目管理文件，这又是一个降低开发人员进入到不同社区时的学习曲线的有效举措。</li>
+<li>社区参与的文档开发。对Azure有了解的开发人员会意识到Azure的文档不在按照传统的方式以MSDN来管理了，取而代之的是微软完全把Azure的文档放在GitHub上，任何人都可以对文档，当然包含所有微软开源的代码，进行贡献。</li>
+<li>积极参与社区的线上和线下的技术活动。不管是微软官方举办的，还是各种第三方举办的活动，不论活动级别大小，总能见到微软。比如说，<a href="http://www.huodongxing.com/" target="_blank" rel="external">活动行</a> 中就有很多微软参与的活动。比如我去年参加的物联网开发者大会 (<a href="http://www.eepw.com.cn/event/action/IOT2015/schedule.html" target="_blank" rel="external">http://www.eepw.com.cn/event/action/IOT2015/schedule.html</a>) 就有微软也积极的参与，其目的自然是宣传其Azure产品，但也足以说明微软对社区的重视和参与度。</li>
+</ul>
+<h1 id="其它">其它</h1><p>在跨平台上，微软还有其它很多很多的工具或是行动，比如<a href="https://blog.docker.com/2014/10/docker-microsoft-partner-distributed-applications/" target="_blank" rel="external">Windows和Docker的合作</a>，这样分布式系统就可以更容易的跨不同操作系统平台了。</p>
+<p>在C/C++的跨平台上，<a href="http://blogs.msdn.com/b/vcblog/archive/2015/12/04/introducing-clang-with-microsoft-codegen-in-vs-2015-update-1.aspx" target="_blank" rel="external">Visual Studio 2015开始支持CLang</a></p>
+<p>在云平台上，相对于其它产品，Azure有更全面的跨平台开发支持，无论是Windows，Mac，Linux还是ARM，都能找到相关的SDK。</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>首先说明的是，本文不是给微软写的软文，而是对微软近些年在跨平台以及开源社区等领域所做努力的一些个人所见。好多人说微软做的越来越不行了，好多产品越来越不好用或者不明白为啥那样做等等。然而，我却看到了不一样的微软。</p>
+<p>科技公司在经历长期的发展壮大后会变成老牌企业，而老牌的IT企业在面对新兴的互联网领域时经常会表现出转型、创新困难，抓不住机会的状况。IBM是一个典型的代表，微软也已经归位IT老牌企业的行列了。然而，个人所见微软在面对互联网的浪潮时在跨平台及开源领域的执行力以及紧张还是有卓越成果的。</p>]]>
+    
+    </summary>
+    
+      <category term="Microsoft" scheme="http://blog.liushuping.com/tags/Microsoft/"/>
+    
+      <category term="OSS" scheme="http://blog.liushuping.com/tags/OSS/"/>
+    
+      <category term="Microsoft" scheme="http://blog.liushuping.com/categories/Microsoft/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[数据正规化]]></title>
