@@ -58,7 +58,7 @@
 <meta property="og:image" content="http://78rehp.com1.z0.glb.clouddn.com/blog%2Fhollywood.jpg">
 <meta property="og:image" content="http://78rehp.com1.z0.glb.clouddn.com/blog%2F3_pigs.jpg">
 <meta property="og:image" content="http://78rehp.com1.z0.glb.clouddn.com/blog%2Fxiaohongmao.png">
-<meta property="og:updated_time" content="2016-02-23T16:55:35.000Z">
+<meta property="og:updated_time" content="2016-02-23T16:59:20.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="I will call you back">
 <meta name="twitter:description" content="春节前夕，一个偶然的机会我粗略地研究了一下ES6里异步代码的实现方式－－生成器（Generator），过程很是烧脑。决定首先重新审视一下JavaScript原有的异步代码实现方式－－回调（CallBack）。审视之初，大脑不由自主地发挥想象，滑稽却有趣。
@@ -283,7 +283,7 @@
 <p>从前，有两个好朋友，他们都很喜欢钓鱼。一天，他们像往常一样来到大海边开始钓鱼，不一会儿其中的一个小朋友就发现了鱼竿的晃动。于是他使劲往岸上拉，然而鱼竿似乎比往常重很多。终于在小伙伴的帮忙下，他把鱼钩拉上来了。猜：他们钓上什么来了？我对着侄女和闺女问。</p>
 <p>侄女和闺女马上回答说是鱼。我提示我之前讲了一个《白巧克力和黑巧克力》的故事。话音未落，侄女马上回答说“钓上来的是黑巧克力”。我问为什么？她说，因为黑巧克力讲的笑话没使白巧克力笑，就被扔进大海里了，所以就被钓上来了。此刻，我可以验证，那次JavaScript会议上那位演讲者所讲的这个关于Callback的故事是成功的。</p>
 <p>之后，小侄女又两次要求我重复讲述了《两个小朋友钓鱼》的故事，因为她说这个故事很好听！</p>
-<h1 id="I_call_you_back!">I call you back!</h1><p>在不少影视剧中，经常能看到这样的剧情：一个人在接电话，在简短的交谈后他会说一句“I’ll call you back”（或者国产剧的“我再打给你”），然后结束通话。这应该就是Callback的最初起源。</p>
+<h1 id="I’ll_call_you_back!">I’ll call you back!</h1><p>在不少影视剧中，经常能看到这样的剧情：一个人在接电话，在简短的交谈后他会说一句“I’ll call you back”（或者国产剧的“我再打给你”），然后结束通话。这应该就是Callback的最初起源。</p>
 <p>通话开始的简短交谈应该是Callback的“初始化”过程，它提供了足够的信息给Callback，以保证Callback能在正确的时刻以正确的方式发生。</p>
 <p>一句“I’ll call you back”之后通话被结束，这是异步的本质。整个事情的处理过程尚未结束，当前过程挂起（hang up），后续过程等待由被呼叫者主动唤醒。唤醒过程被称之为Callback。</p>
 <p>被呼叫者在完成相关任务后，呼叫主呼叫者，这是Callback的执行过程。被呼叫者呼叫主呼叫者的过程通常是以“我是谁谁谁”，“我们之前说的什么事”等等方式来提醒主呼叫者回忆起要处理的事情。这个过程叫Context restore。</p>
@@ -409,14 +409,14 @@
 
           <div class="site-state-item site-state-categories">
             <a href="/categories">
-              <span class="site-state-item-count">16</span>
+              <span class="site-state-item-count">15</span>
               <span class="site-state-item-name">分类</span>
               </a>
           </div>
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">32</span>
+              <span class="site-state-item-count">30</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>
@@ -459,7 +459,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#好莱坞原则"><span class="nav-number">1.</span> <span class="nav-text">好莱坞原则</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#一个故事"><span class="nav-number">2.</span> <span class="nav-text">一个故事</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#I_call_you_back!"><span class="nav-number">3.</span> <span class="nav-text">I call you back!</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Call_back"><span class="nav-number">4.</span> <span class="nav-text">Call back</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#好莱坞原则"><span class="nav-number">1.</span> <span class="nav-text">好莱坞原则</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#一个故事"><span class="nav-number">2.</span> <span class="nav-text">一个故事</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#I’ll_call_you_back!"><span class="nav-number">3.</span> <span class="nav-text">I’ll call you back!</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Call_back"><span class="nav-number">4.</span> <span class="nav-text">Call back</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
