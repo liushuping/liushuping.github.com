@@ -36,7 +36,7 @@
 
 
 
-  <meta name="keywords" content="Array," />
+  <meta name="keywords" content="Async,JavaScript," />
 
 
 
@@ -47,22 +47,22 @@
   <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.2" />
 
 
-<meta name="description" content="给定一个有n个元素且n大于1的一维数组nums，计算并返回一个数组output，使其任一元素output[i]的值是数组nums除nums[i]外的其它所有元素的乘积。要求不能使用除法，且在O(n)的时间复杂度和常数空间复杂度内完成计算。
-例如，给定数组[1,2,3,4]，则返回数组[24,12,8,6]
-注：返回数组所占空间不在本题的空间复杂度的计算范围内。">
+<meta name="description" content="春节前夕，一个偶然的机会我粗略地研究了一下ES6里异步代码的实现方式－－生成器（Generator），过程很是烧脑。决定首先重新审视一下JavaScript原有的异步代码实现方式－－回调（CallBack）。审视之初，大脑不由自主地发挥想象，滑稽却有趣。
+好莱坞原则Callback这个词几乎会出在现每日的工作中，平淡无奇，而此刻多年前的一个概念却突然浮现－－好莱坞原则：“Don’t call us">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LeetCode OJ 238 Product of Array Except Self">
-<meta property="og:url" content="http://blog.liushuping.com/2015/07/26/LeetCode-OJ-238-Product-of-Array-Except-Self/index.html">
+<meta property="og:title" content="I will call you back">
+<meta property="og:url" content="http://blog.liushuping.com/2016/02/23/I-will-call-you-back/index.html">
 <meta property="og:site_name" content="Shuping LIU">
-<meta property="og:description" content="给定一个有n个元素且n大于1的一维数组nums，计算并返回一个数组output，使其任一元素output[i]的值是数组nums除nums[i]外的其它所有元素的乘积。要求不能使用除法，且在O(n)的时间复杂度和常数空间复杂度内完成计算。
-例如，给定数组[1,2,3,4]，则返回数组[24,12,8,6]
-注：返回数组所占空间不在本题的空间复杂度的计算范围内。">
-<meta property="og:updated_time" content="2015-10-25T10:41:23.000Z">
+<meta property="og:description" content="春节前夕，一个偶然的机会我粗略地研究了一下ES6里异步代码的实现方式－－生成器（Generator），过程很是烧脑。决定首先重新审视一下JavaScript原有的异步代码实现方式－－回调（CallBack）。审视之初，大脑不由自主地发挥想象，滑稽却有趣。
+好莱坞原则Callback这个词几乎会出在现每日的工作中，平淡无奇，而此刻多年前的一个概念却突然浮现－－好莱坞原则：“Don’t call us">
+<meta property="og:image" content="http://78rehp.com1.z0.glb.clouddn.com/blog%2Fhollywood.jpg">
+<meta property="og:image" content="http://78rehp.com1.z0.glb.clouddn.com/blog%2F3_pigs.jpg">
+<meta property="og:image" content="http://78rehp.com1.z0.glb.clouddn.com/blog%2Fxiaohongmao.png">
+<meta property="og:updated_time" content="2016-02-23T16:55:35.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="LeetCode OJ 238 Product of Array Except Self">
-<meta name="twitter:description" content="给定一个有n个元素且n大于1的一维数组nums，计算并返回一个数组output，使其任一元素output[i]的值是数组nums除nums[i]外的其它所有元素的乘积。要求不能使用除法，且在O(n)的时间复杂度和常数空间复杂度内完成计算。
-例如，给定数组[1,2,3,4]，则返回数组[24,12,8,6]
-注：返回数组所占空间不在本题的空间复杂度的计算范围内。">
+<meta name="twitter:title" content="I will call you back">
+<meta name="twitter:description" content="春节前夕，一个偶然的机会我粗略地研究了一下ES6里异步代码的实现方式－－生成器（Generator），过程很是烧脑。决定首先重新审视一下JavaScript原有的异步代码实现方式－－回调（CallBack）。审视之初，大脑不由自主地发挥想象，滑稽却有趣。
+好莱坞原则Callback这个词几乎会出在现每日的工作中，平淡无奇，而此刻多年前的一个概念却突然浮现－－好莱坞原则：“Don’t call us">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -74,7 +74,7 @@
 
 
 
-  <title> LeetCode OJ 238 Product of Array Except Self | Shuping LIU </title>
+  <title> I will call you back | Shuping LIU </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -209,7 +209,7 @@
             
             
               
-                LeetCode OJ 238 Product of Array Except Self
+                I will call you back
               
             
           </h1>
@@ -218,8 +218,8 @@
         <div class="post-meta">
           <span class="post-time">
             发表于
-            <time itemprop="dateCreated" datetime="2015-07-26T22:17:39+08:00" content="2015-07-26">
-              2015-07-26
+            <time itemprop="dateCreated" datetime="2016-02-23T23:05:38+08:00" content="2016-02-23">
+              2016-02-23
             </time>
           </span>
 
@@ -228,20 +228,8 @@
               &nbsp; | &nbsp; 分类于
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/LeetCode/" itemprop="url" rel="index">
-                    <span itemprop="name">LeetCode</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/LeetCode/Algorithm/" itemprop="url" rel="index">
-                    <span itemprop="name">Algorithm</span>
+                  <a href="/categories/Software/" itemprop="url" rel="index">
+                    <span itemprop="name">Software</span>
                   </a>
                 </span>
 
@@ -256,8 +244,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/07/26/LeetCode-OJ-238-Product-of-Array-Except-Self/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/26/LeetCode-OJ-238-Product-of-Array-Except-Self/" itemprop="commentsCount"></span>
+                <a href="/2016/02/23/I-will-call-you-back/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/23/I-will-call-you-back/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -276,19 +264,32 @@
       
 
       
-        <span itemprop="articleBody"><p>给定一个有<code>n</code>个元素且<code>n</code>大于<code>1</code>的一维数组<code>nums</code>，计算并返回一个数组<code>output</code>，使其任一元素<code>output[i]</code>的值是数组<code>nums</code>除<code>nums[i]</code>外的其它所有元素的乘积。要求不能使用除法，且在<code>O(n)</code>的时间复杂度和常数空间复杂度内完成计算。</p>
-<p>例如，给定数组<code>[1,2,3,4]</code>，则返回数组<code>[24,12,8,6]</code></p>
-<p>注：返回数组所占空间不在本题的空间复杂度的计算范围内。</p>
+        <span itemprop="articleBody"><p>春节前夕，一个偶然的机会我粗略地研究了一下ES6里异步代码的实现方式－－生成器（Generator），过程很是烧脑。决定首先重新审视一下JavaScript原有的异步代码实现方式－－回调（CallBack）。审视之初，大脑不由自主地发挥想象，滑稽却有趣。</p>
+<h1 id="好莱坞原则">好莱坞原则</h1><p>Callback这个词几乎会出在现每日的工作中，平淡无奇，而此刻多年前的一个概念却突然浮现－－好莱坞原则：“Don’t call us, We will call you”。第一次了解到这个原则还是多年前学习设计模式时，那时好莱坞原则被用来说明观察者(Observer)等模式。当然，这个原则的本意是说“不要轮询来问我们，我们会通知你消息的”，这也很好地解释了观察者模式。</p>
+<p><img src="http://78rehp.com1.z0.glb.clouddn.com/blog%2Fhollywood.jpg" alt="image"></p>
 <a id="more"></a>
-<h2 id="问题分析">问题分析</h2><p>按照常规的思维，最直接的计算方式是先对所有元素乘积，然后分别除以数组中的每个元素，其复杂度也在O(n)内。不幸的是，题目要求不能使用除法。然而我们可以从这个思路中尝试分析其它的解决方案。</p>
-<p>首先，假设数组的n个元素分别为：a1, a2, a3, … an, 令P = a1 <em> a2 </em> a3 <em> … an,所以目标结果数组应为P/a1, P/a2, P/a3, … P/an。约掉分母可得：a2</em>a3<em>…an, a1</em>a3<em>…an, … a1</em>a2*…a(n-1).对结果数组的每一个元素的乘法进行分组可得如下形式：</p>
-<p>(1) <em>* (a2</em>a3*…an)</p>
-<p>(a1) <em>* (a3</em>a4*…an)</p>
-<p>(a1<em>a2) </em> (a4<em>a5</em>…an)</p>
-<p>(a1<em>a2</em>…a(n-2)) * (an)</p>
-<p>(a1<em>a2</em>…a(n-1)) * (1)</p>
-<p>以垂直方向看，左侧括号内部分是a1一直到a(n-1)的阶乘，而以垂直方向逆序来看，右侧括号内部分是an到a2的阶乘。 因此问题迎刃而解，可以用两个循环来迭代阶乘，也可以用一个循环分别从首尾迭代两组阶乘。</p>
-<h2 id="代码">代码</h2><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    vector&lt;int&gt; productExceptSelf(vector&lt;int&gt;&amp; nums) &#123;</span><br><span class="line">        // 两个迭代变量，t1从数组低位</span><br><span class="line">        // 向高位迭代；t2从数组高位</span><br><span class="line">        // 向低位迭代。</span><br><span class="line">        int t1(1), t2(1);</span><br><span class="line"></span><br><span class="line">        // 缓存数组的长度</span><br><span class="line">        int size(nums.size());</span><br><span class="line"></span><br><span class="line">        // 初始化返回数组的所有元素为 1</span><br><span class="line">        vector&lt;int&gt; result(size, 1);</span><br><span class="line"></span><br><span class="line">        // 做(数组长度-1)次数的迭代</span><br><span class="line">        for (int i(1); i &lt; size; ++i) &#123;</span><br><span class="line">            // 通过迭代来达到如下赋值</span><br><span class="line">            // result(i) &lt;- ProductOf(nums(0), nums(1) ... nums(i-1))</span><br><span class="line">            // 即返回数组的第i个元素的值等于输入数组的前i个元素的乘积。</span><br><span class="line">            t1 *= nums[i - 1];</span><br><span class="line">            result[i] *= t1;</span><br><span class="line"></span><br><span class="line">            // 在t1迭代计算的结果基础上，t2以反方向进行与t1完全类似的计算，</span><br><span class="line">            // 把计算结果累积乘积到输出数组上。</span><br><span class="line">            t2 *= nums[size - i];</span><br><span class="line">            result[size - 1 - i] *= t2;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        return result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></span>
+<p>Callback让我回忆起了好莱坞原则，而好莱坞原则却貌似跟Callback没有直接关系。大脑接着想到了几年前参加的一个JavaScript会议中某演讲者讲的一个关于Callback的冷故事。我决定再一次地尝试对不同听众讲这个故事，并观察其反应。</p>
+<p>除夕，看晚会，放烟花，没抢红包，当然更没咻。</p>
+<h1 id="一个故事">一个故事</h1><p>春节后的一个下午，陪着闺女还有一个侄女玩耍。侄女提议讲故事玩，我和闺女都高兴地答应了。同时我也不怀好意地想到了那个关于Callback的故事，或者说是个笑话吧。</p>
+<p>三个人依次按照顺序讲故事，侄女首先讲了一个《三只小猪》的故事，我们鼓掌表示鼓励。</p>
+<p><img src="http://78rehp.com1.z0.glb.clouddn.com/blog%2F3_pigs.jpg" alt="image"></p>
+<p>然后是我，讲了一个《白巧克力和黑巧克力》的故事，内容大致如下：</p>
+<p>从前，有一块白巧克力和一块黑巧克力，他们在一起玩儿。白巧克力对黑巧克力说：“我们每人讲一个笑话给对方听吧，如果不能令对方发笑，就要被扔进大海里”。黑巧克力先讲了一个笑话，白巧克力没有笑，把黑巧克力扔进了大海。</p>
+<p>侄女鼓掌表示故事好听，闺女像理解了我的套路似的（我之前没有跟闺女讲过该故事），仅仅象征性地拍了一下手掌。</p>
+<p>接下来是闺女讲故事，她没有按套路出牌，而是给我们背了一首幼儿园学到的儿歌。当然，我和侄女也给了热烈的掌声。</p>
+<p>故事进行到了第二轮，侄女又讲了一个《小红帽》的故事。</p>
+<p><img src="http://78rehp.com1.z0.glb.clouddn.com/blog%2Fxiaohongmao.png" alt="image"></p>
+<p>然后又是我，讲了一个《两个小朋友钓鱼》的故事，内容大致如下：</p>
+<p>从前，有两个好朋友，他们都很喜欢钓鱼。一天，他们像往常一样来到大海边开始钓鱼，不一会儿其中的一个小朋友就发现了鱼竿的晃动。于是他使劲往岸上拉，然而鱼竿似乎比往常重很多。终于在小伙伴的帮忙下，他把鱼钩拉上来了。猜：他们钓上什么来了？我对着侄女和闺女问。</p>
+<p>侄女和闺女马上回答说是鱼。我提示我之前讲了一个《白巧克力和黑巧克力》的故事。话音未落，侄女马上回答说“钓上来的是黑巧克力”。我问为什么？她说，因为黑巧克力讲的笑话没使白巧克力笑，就被扔进大海里了，所以就被钓上来了。此刻，我可以验证，那次JavaScript会议上那位演讲者所讲的这个关于Callback的故事是成功的。</p>
+<p>之后，小侄女又两次要求我重复讲述了《两个小朋友钓鱼》的故事，因为她说这个故事很好听！</p>
+<h1 id="I_call_you_back!">I call you back!</h1><p>在不少影视剧中，经常能看到这样的剧情：一个人在接电话，在简短的交谈后他会说一句“I’ll call you back”（或者国产剧的“我再打给你”），然后结束通话。这应该就是Callback的最初起源。</p>
+<p>通话开始的简短交谈应该是Callback的“初始化”过程，它提供了足够的信息给Callback，以保证Callback能在正确的时刻以正确的方式发生。</p>
+<p>一句“I’ll call you back”之后通话被结束，这是异步的本质。整个事情的处理过程尚未结束，当前过程挂起（hang up），后续过程等待由被呼叫者主动唤醒。唤醒过程被称之为Callback。</p>
+<p>被呼叫者在完成相关任务后，呼叫主呼叫者，这是Callback的执行过程。被呼叫者呼叫主呼叫者的过程通常是以“我是谁谁谁”，“我们之前说的什么事”等等方式来提醒主呼叫者回忆起要处理的事情。这个过程叫Context restore。</p>
+<p>如果你清楚了这个过程，就应该不难理解C# async里面的ConfigureAwait(boold)的作用了；也会更加清楚为什么有时代码会出现Context(如ASP.NET Context)丢失的问题了。</p>
+<h1 id="Call_back">Call back</h1><p>好吧，思绪就飞这么远吧。</p>
+</span>
       
     </div>
 
@@ -296,7 +297,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Array/" rel="tag">#Array</a>
+            <a href="/tags/Async/" rel="tag">#Async</a>
+          
+            <a href="/tags/JavaScript/" rel="tag">#JavaScript</a>
           
         </div>
       
@@ -305,17 +308,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/07/22/NFC-SIM卡的尴尬/" rel="next" title="NFC SIM卡的尴尬">
-                <i class="fa fa-chevron-left"></i> NFC SIM卡的尴尬
+              <a href="/2016/01/23/微软跨平台及开源的执行力之我见/" rel="next" title="微软跨平台及开源的执行力之我见">
+                <i class="fa fa-chevron-left"></i> 微软跨平台及开源的执行力之我见
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2015/08/09/Backbone-router-demo/" rel="prev" title="Backbone router demo">
-                Backbone router demo <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -330,10 +329,10 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2015/07/26/LeetCode-OJ-238-Product-of-Array-Except-Self/"
-     data-title="LeetCode OJ 238 Product of Array Except Self"
+        <div class="ds-share flat" data-thread-key="2016/02/23/I-will-call-you-back/"
+     data-title="I will call you back"
      data-content=""
-     data-url="http://blog.liushuping.com/2015/07/26/LeetCode-OJ-238-Product-of-Array-Except-Self/">
+     data-url="http://blog.liushuping.com/2016/02/23/I-will-call-you-back/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -359,8 +358,8 @@
         
           <div class="comments" id="comments">
             
-              <div class="ds-thread" data-thread-key="2015/07/26/LeetCode-OJ-238-Product-of-Array-Except-Self/"
-                   data-title="LeetCode OJ 238 Product of Array Except Self" data-url="http://blog.liushuping.com/2015/07/26/LeetCode-OJ-238-Product-of-Array-Except-Self/">
+              <div class="ds-thread" data-thread-key="2016/02/23/I-will-call-you-back/"
+                   data-title="I will call you back" data-url="http://blog.liushuping.com/2016/02/23/I-will-call-you-back/">
               </div>
             
           </div>
@@ -460,7 +459,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#问题分析"><span class="nav-number">1.</span> <span class="nav-text">问题分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码"><span class="nav-number">2.</span> <span class="nav-text">代码</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#好莱坞原则"><span class="nav-number">1.</span> <span class="nav-text">好莱坞原则</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#一个故事"><span class="nav-number">2.</span> <span class="nav-text">一个故事</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#I_call_you_back!"><span class="nav-number">3.</span> <span class="nav-text">I call you back!</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Call_back"><span class="nav-number">4.</span> <span class="nav-text">Call back</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
