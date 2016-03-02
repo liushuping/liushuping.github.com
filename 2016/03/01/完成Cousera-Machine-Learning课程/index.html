@@ -1,0 +1,765 @@
+<!doctype html>
+<html class="theme-next use-motion theme-next-mist">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+  <meta name="google-site-verification" content="NekLujUw5AZHPurxCGrWs3pBw0xKPJ_6vDxBVTt5txU" />
+
+
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+
+  
+    <link href='//fonts.lug.ustc.edu.cn/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+  
+
+
+<link rel="stylesheet" type="text/css" href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" />
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.2"/>
+
+
+
+
+  <meta name="keywords" content="Coursera,Machine Learning,Stanford," />
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Shuping LIU" type="application/atom+xml" />
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.2" />
+
+
+<meta name="description" content="完成了一个目标经过了十周多的奋斗，我终于完成了Andrew Ng的Machine Learning课程并获得证书，这也是2016年我完成的第一个个人目标。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="完成Coursera Machine Learning课程">
+<meta property="og:url" content="http://blog.liushuping.com/2016/03/01/完成Cousera-Machine-Learning课程/index.html">
+<meta property="og:site_name" content="Shuping LIU">
+<meta property="og:description" content="完成了一个目标经过了十周多的奋斗，我终于完成了Andrew Ng的Machine Learning课程并获得证书，这也是2016年我完成的第一个个人目标。">
+<meta property="og:image" content="http://78rehp.com1.z0.glb.clouddn.com/coursera-machine-learning-logo.png">
+<meta property="og:updated_time" content="2016-03-02T16:31:32.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="完成Coursera Machine Learning课程">
+<meta name="twitter:description" content="完成了一个目标经过了十周多的奋斗，我终于完成了Andrew Ng的Machine Learning课程并获得证书，这也是2016年我完成的第一个个人目标。">
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: 'post'
+  };
+</script>
+
+
+
+  <title> 完成Coursera Machine Learning课程 | Shuping LIU </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?28c1fa0265e22dd8d0beebc1f74";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Shuping LIU</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">A JavaScript and C# developer</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content"> 
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                完成Coursera Machine Learning课程
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2016-03-01T22:40:57+08:00" content="2016-03-01">
+              2016-03-01
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Machine-Learning/" itemprop="url" rel="index">
+                    <span itemprop="name">Machine Learning</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/03/01/完成Cousera-Machine-Learning课程/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/01/完成Cousera-Machine-Learning课程/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+        <div class="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
+          
+          
+            <div class="post-gallery-row">
+              <a class="post-gallery-img fancybox"
+                 href="http://78rehp.com1.z0.glb.clouddn.com/coursera-machine-learning-logo.png" rel="gallery_cil9mgvi30010qxcnpdt7v7zl"
+                 itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
+                <img src="http://78rehp.com1.z0.glb.clouddn.com/coursera-machine-learning-logo.png" itemprop="contentUrl"/>
+              </a>
+            
+          
+
+          
+          </div>
+        </div>
+      
+
+      
+        <span itemprop="articleBody"><h1 id="完成了一个目标">完成了一个目标</h1><p>经过了十周多的奋斗，我终于完成了<a href="http://baike.baidu.com/view/10853998.htm?fromtitle=Andrew+Ng" target="_blank" rel="external">Andrew Ng</a>的<a href="https://www.coursera.org/learn/machine-learning" target="_blank" rel="external">Machine Learning</a>课程并获得证书，这也是2016年我完成的第一个个人目标。<br><a id="more"></a></p>
+<p><img src="http://78rehp.com1.z0.glb.clouddn.com/blog%2Fcoursera-machine-learning-cert" alt="cert"></p>
+<h1 id="过程值的回忆">过程值的回忆</h1><p>过去的十周内，有多少个夜深人静的夜晚，当他人已经进入梦乡，我仍在观看着视频、调试着程序。期间也经历了突击课程进度的艰难过程，为的是能提前完成春节期间的课程。大多数的课程都开始于下班回家，且给闺女讲完睡前故事之后，通常是晚上9点以后了。</p>
+<p>课程注册之初，大致预测了一下可能会遇到的困难，总结有：数学的障碍，<a href="http://www.gnu.org/software/octave/" target="_blank" rel="external">Octave</a>陌生的语言，时间问题（晚上要先陪闺女玩儿）等等。然而最终的事实证明，这些都不是问题。而最大的问题是：宽带通！（此处预留一个<a href="http://blog.liushuping.com/2016/02/23/I-will-call-you-back/">Callback</a>，待以后详解。）</p>
+<h1 id="目标要以总结结束">目标要以总结结束</h1><p>学完一门课程，做一些简单的总结，总是有好处的。喜欢对一件复杂的事情做一些通俗易懂的描述，让尽可能多的人理解（显然，我无法做到让隔壁的老奶奶也能听懂的极致）。数学公式是尽量避免去用的，虽然它是Machine Learning的灵魂，但是概念性的普及介绍却不必使用它。</p>
+<p>Machine Learning很有趣，很有用，也很有挑战性。它又依赖于系统的软件工程。</p>
+<ul>
+<li>有趣：<a href="http://www.msxiaoice.com/DesktopLanding" target="_blank" rel="external">微软小冰</a>等有趣应用都是Machine Learning的具体应用</li>
+<li>有用：照片、文字识别，自动驾驶等等极大地方便了生活</li>
+<li>挑战：参考Google的<a href="http://baike.baidu.com/item/%E9%98%BF%E5%B0%94%E6%B3%95%E5%9B%B4%E6%A3%8B?fromtitle=AlphaGo" target="_blank" rel="external">阿尔法狗(AlphaGo)</a></li>
+<li>软件工程：只有良好的系统架构、编码才能实现真正的Machine Learning应用</li>
+</ul>
+<p>用简短的话介绍<a href="https://www.coursera.org/" target="_blank" rel="external">Coursera</a>上<a href="http://baike.baidu.com/view/10853998.htm?fromtitle=Andrew+Ng" target="_blank" rel="external">Andrew Ng</a>的<a href="https://www.coursera.org/learn/machine-learning" target="_blank" rel="external">Machine Learning</a>课程。我的片面总结如下：</p>
+<h2 id="Machine_Learning之基本思路">Machine Learning之基本思路</h2><p>Machine Learning用大量的数据，通过一定的学习算法让计算机具有一定的“智能”，比如预测、分类等。在面对大量数据时，计算机不可能一次完成学习任务，因此我们需要设计一个“渐进”的学习方式，让计算机逐渐完善其“智能”水平。这个“渐进”的过程，在程序代码的领域来讲，就是“迭代”。不断地迭代，调整参数，从而达到提高机器“学习”效果的目的。</p>
+<h2 id="Machine_Learning“之学习效果”的评估">Machine Learning“之学习效果”的评估</h2><p>如何在迭代的基本框架下，来评价当前参数下的“学习”效果呢？我们很容易想到的是建立一个误差方程，对已知的输入数据，应用当前的学习算法，得到预测的结果。根据预测的结果和实际结果，计算<a href="http://baike.baidu.com/view/172036.htm" target="_blank" rel="external">方差</a>或<a href="http://baike.baidu.com/view/78339.htm" target="_blank" rel="external">标准差</a>，即可以作为我们的误差方程。这种以已知数据作为参考的“学习”过程被称为<a href="http://baike.baidu.com/view/2759226.htm" target="_blank" rel="external">“监督学习”</a>或<a href="https://en.wikipedia.org/wiki/Supervised_learning" target="_blank" rel="external">“Supervised Learning”</a>。而<a href="http://baike.baidu.com/view/2759226.htm" target="_blank" rel="external">“监督学习”</a>又可分为<a href="http://baike.baidu.com/view/449540.htm" target="_blank" rel="external">“线性回归”</a>(<a href="https://en.wikipedia.org/wiki/Linear_regression" target="_blank" rel="external">“Linear Regression”</a>)和<a href="http://baike.baidu.com/item/logistic%E5%9B%9E%E5%BD%92?fromtitle=%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92&amp;type=syn" target="_blank" rel="external">“逻辑回归”</a>(<a href="https://en.wikipedia.org/wiki/Logistic_regression" target="_blank" rel="external">“Logistic Regression”</a>)等常见类别。</p>
+<h2 id="Machine_Learning之“学习方法”的改善">Machine Learning之“学习方法”的改善</h2><p>通常我们从随机化学习算法的参数开始，因为参数是我们最终要得到的，而开始之初我们并不知道它。因此我们希望每一步迭代都对参数做微小的改动，以使算法结果不断<a href="http://baike.baidu.com/subview/513233/8059330.htm" target="_blank" rel="external">“收敛”</a>，又或者说是使误差方程产生的结果越来越小。那么怎么做呢？</p>
+<p>假如我们把误差方程画出来，以三维的一个曲面为例（高维空间无法绘制，但是具有相同的性质），误差方差结果最小的点就是三维曲面的最低点。我们的目标就是采取一种有效的措施来改变参数使误差方程的结果沿着三维空间坡度最陡的方向向下移动。用数学的概念来介绍，就是<a href="http://baike.baidu.com/view/30958.htm" target="_blank" rel="external">导数</a>，或者更准确一点，<a href="http://baike.baidu.com/view/1029405.htm" target="_blank" rel="external">偏导数</a>。因此，迭代过程内对参数做的微小改动就是对每个参数减去该参数所对应“特征”的<a href="http://baike.baidu.com/view/1029405.htm" target="_blank" rel="external">偏导数</a>。</p>
+<p>参数的这种改变方式从本质上来说是<a href="http://baike.baidu.com/view/150456.htm" target="_blank" rel="external">连续</a>的，它适合被用在<a href="http://baike.baidu.com/view/449540.htm" target="_blank" rel="external">“线性回归”</a>问题上。但当一个问题是<a href="http://baike.baidu.com/item/logistic%E5%9B%9E%E5%BD%92?fromtitle=%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92&amp;type=syn" target="_blank" rel="external">“逻辑回归”</a>（如根据某些数据判断某个操作是否来自于人或机器等这种是非问题的判断）时怎么办呢？其实很简单：只需对<a href="http://baike.baidu.com/view/449540.htm" target="_blank" rel="external">“线性回归”</a>问题的学习方程进行一次转换，使其输出结果只有两种可能：0或1。适合这个问题的一个常用函数是<a href="http://baike.baidu.com/view/1176976.htm" target="_blank" rel="external">sigmoid函数</a>。关于<a href="http://baike.baidu.com/view/1176976.htm" target="_blank" rel="external">sigmoid函数</a>，此处也留一个<a href="http://blog.liushuping.com/2016/02/23/I-will-call-you-back/">Callback</a>。</p>
+<h2 id="Machine_Learning之人工神经网络">Machine Learning之人工神经网络</h2><p><a href="http://baike.baidu.com/view/449540.htm" target="_blank" rel="external">“线性回归”</a>和<a href="http://baike.baidu.com/item/logistic%E5%9B%9E%E5%BD%92" target="_blank" rel="external">“逻辑回归”</a>都是通过建立一个<a href="http://baike.baidu.com/view/6156797.htm" target="_blank" rel="external">多项式函数</a>来实现对训练数据最大程度的拟合，比如最简单的函数 <code>y = ax + b</code>。<a href="http://baike.baidu.com/view/449540.htm" target="_blank" rel="external">“线性回归”</a>和<a href="http://baike.baidu.com/item/logistic%E5%9B%9E%E5%BD%92" target="_blank" rel="external">“逻辑回归”</a>的任务都是通过迭代来不断优化参数<code>a</code>和<code>b</code>(对于一阶方程来说)来实现最大程度地减少误差。然而，有很多问题我们很难找到一个合适的<a href="http://baike.baidu.com/view/6156797.htm" target="_blank" rel="external">多项式函数</a>来对数据进行<a href="http://baike.baidu.com/subview/133261/5033269.htm" target="_blank" rel="external">数学建模</a>，或者是<a href="http://baike.baidu.com/view/6156797.htm" target="_blank" rel="external">多项式函数</a>过于复杂，带来的计算量非常大。这时可以考虑使用<a href="http://baike.baidu.com/view/19743.htm" target="_blank" rel="external">人工神经网络</a>。</p>
+<p>概括地来说，<a href="http://baike.baidu.com/view/19743.htm" target="_blank" rel="external">人工神经网络</a>的<a href="http://baike.baidu.com/subview/133261/5033269.htm" target="_blank" rel="external">数学模型</a>是一个由很多节点组成的网状结构。每个节点都是一个处理单元，能对接收到的数据做计算，其输出结果将是下层网络节点的计算输入。通过调节网络的层数、每层上计算节点的个数，以及对每个节点的参数等来优化<a href="http://baike.baidu.com/subview/133261/5033269.htm" target="_blank" rel="external">数学模型</a>，从而实现对训练数据的模拟，以及对未来数据的分析预测。<a href="http://baike.baidu.com/view/19743.htm" target="_blank" rel="external">人工神经网络</a>是一个很大的话题，本文仅做一般认识性介绍。</p>
+<h2 id="Machine_Learning之聚类分析">Machine Learning之聚类分析</h2><p>然而，并不是所有的问题都是根据历史数据预测未来结果。还有一类问题是：给定一些数据，让计算机智能地对数据进行分类。这类问题叫<a href="http://baike.baidu.com/view/903740.htm" target="_blank" rel="external">“聚类分析”</a>，解决这类问题的一个重要算法是“<a href="http://baike.baidu.com/view/3066906.htm" target="_blank" rel="external">K均数</a>”算法。这个算法是如此简单而有效地应用了基本的数学知识对数据进行了分类！我强烈推荐您了解一下。</p>
+<h2 id="Machine_Learning之主成份分析">Machine Learning之主成份分析</h2><p>对于给定的数据，在有些情况下数据所包涵的众多特征中，仅有几个特征起主导作用。此时，我们可以对数据进行<a href="http://baike.baidu.com/view/45376.htm" target="_blank" rel="external">主成分分析(Principle Component Analysis)</a>，选取几个主要成份来代表数据，从而达到数据压缩的目的。比如，要对某大量数据做Machine Learning分析，但发现由于数据太大，计算过程非常耗时，此时可以尝试用主成份分析来对数据进行压缩。<a href="http://baike.baidu.com/view/45376.htm" target="_blank" rel="external">主成分分析</a>的另外一个应用是图像的压缩，可以通过分析图像的前16种主颜色成份，把图像从256色压缩到16色。</p>
+<h2 id="Machine_Learning之性能优化">Machine Learning之性能优化</h2><p>性能优化永远是Machine Learning领域的一个重要话题，因为数据容量是如此之大，每一点计算过程的优化都有可能带来整体效率上的显著提高。在<a href="http://baike.baidu.com/view/10853998.htm?fromtitle=Andrew+Ng" target="_blank" rel="external">Andrew Ng</a>的<a href="https://www.coursera.org/learn/machine-learning" target="_blank" rel="external">Machine Learning</a>课程中最让人拍案叫绝的一段数学证明是<a href="https://en.wikipedia.org/wiki/Support_vector_machine" target="_blank" rel="external">Support Vector Machine</a>如何有效地改善了<a href="http://baike.baidu.com/view/2759226.htm" target="_blank" rel="external">“监督学习”</a>中的分类算法。</p>
+<p>另一个重要的性能优化则完全来自于计算机科学，那就是<a href="https://en.wikipedia.org/wiki/Array_programming" target="_blank" rel="external">Vectorization</a>。最擅长做<a href="https://en.wikipedia.org/wiki/Array_programming" target="_blank" rel="external">Vectorization</a>的是<a href="https://en.wikipedia.org/wiki/Graphics_processing_unit" target="_blank" rel="external">GPU</a>，当然现如今的大多数<a href="https://en.wikipedia.org/wiki/Central_processing_unit" target="_blank" rel="external">CPU</a>也已经支持<a href="https://en.wikipedia.org/wiki/Array_programming" target="_blank" rel="external">Vectorization</a>了。因此，在代码的实现上，软件工程师时刻牢记<a href="https://en.wikipedia.org/wiki/Array_programming" target="_blank" rel="external">Vectorization</a>的实现方式是至关重要的。</p>
+<p>然而无论如何，超大规模的Machine Learning是不可能在一台机器上完成的，当需要在多台甚至成千上万台机运行时，就需要<a href="http://baike.baidu.com/view/2902.htm" target="_blank" rel="external">MapReduce</a>等类似的分布式框架来帮忙了。</p>
+<h1 id="结论">结论</h1><p>Machine Learning很有趣，它需要一些数学知识、算法和软件工程思想来实现。<a href="http://baike.baidu.com/view/10853998.htm?fromtitle=Andrew+Ng" target="_blank" rel="external">Andrew Ng</a>的<a href="https://www.coursera.org/learn/machine-learning" target="_blank" rel="external">Machine Learning</a>课程深入浅出，循序渐进，有趣，有料！</p>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Coursera/" rel="tag">#Coursera</a>
+          
+            <a href="/tags/Machine-Learning/" rel="tag">#Machine Learning</a>
+          
+            <a href="/tags/Stanford/" rel="tag">#Stanford</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/02/23/I-will-call-you-back/" rel="next" title="I will call you back">
+                <i class="fa fa-chevron-left"></i> I will call you back
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2016/03/01/完成Cousera-Machine-Learning课程/"
+     data-title="完成Coursera Machine Learning课程"
+     data-content=""
+     data-url="http://blog.liushuping.com/2016/03/01/完成Cousera-Machine-Learning课程/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+ </div>
+
+        
+
+        
+          <div class="comments" id="comments">
+            
+              <div class="ds-thread" data-thread-key="2016/03/01/完成Cousera-Machine-Learning课程/"
+                   data-title="完成Coursera Machine Learning课程" data-url="http://blog.liushuping.com/2016/03/01/完成Cousera-Machine-Learning课程/">
+              </div>
+            
+          </div>
+        
+      </div>
+
+      
+        
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="https://avatars2.githubusercontent.com/u/2476783?v=3&s=460" alt="Shuping LIU" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">Shuping LIU</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description"></p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">21</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">16</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">33</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="menu-item-icon icon-next-feed"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/liushuping" target="_blank">
+                  <i class="fa fa-github fa-fw"></i> GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#完成了一个目标"><span class="nav-number">1.</span> <span class="nav-text">完成了一个目标</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#过程值的回忆"><span class="nav-number">2.</span> <span class="nav-text">过程值的回忆</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#目标要以总结结束"><span class="nav-number">3.</span> <span class="nav-text">目标要以总结结束</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Machine_Learning之基本思路"><span class="nav-number">3.1.</span> <span class="nav-text">Machine Learning之基本思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Machine_Learning“之学习效果”的评估"><span class="nav-number">3.2.</span> <span class="nav-text">Machine Learning“之学习效果”的评估</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Machine_Learning之“学习方法”的改善"><span class="nav-number">3.3.</span> <span class="nav-text">Machine Learning之“学习方法”的改善</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Machine_Learning之人工神经网络"><span class="nav-number">3.4.</span> <span class="nav-text">Machine Learning之人工神经网络</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Machine_Learning之聚类分析"><span class="nav-number">3.5.</span> <span class="nav-text">Machine Learning之聚类分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Machine_Learning之主成份分析"><span class="nav-number">3.6.</span> <span class="nav-text">Machine Learning之主成份分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Machine_Learning之性能优化"><span class="nav-number">3.7.</span> <span class="nav-text">Machine Learning之性能优化</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#结论"><span class="nav-number">4.</span> <span class="nav-text">结论</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+      
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner"> <div class="copyright" >
+  
+  &copy;  2014 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="icon-next-heart fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Shuping LIU</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+ </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+    
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"liushuping"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+    
+     
+
+
+    
+  
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.2"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.2"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.2" id="motion.global"></script>
+
+
+
+
+  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.2"></script>
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.2" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 0.4 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    motionMiddleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+      if (CONFIG.sidebar === 'post') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+
+      isMobile() && FastClick.attach(document.body);
+
+      // Define Motion Sequence.
+      motionIntegrator
+        .add(motionMiddleWares.logo)
+        .add(motionMiddleWares.menu)
+        .add(motionMiddleWares.backToTop)
+        .add(motionMiddleWares.postList)
+        .add(motionMiddleWares.sidebar);
+
+      // Bootstrap Motion.
+      motionIntegrator.bootstrap();
+    });
+  </script>
+
+  
+  
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/lazyload.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#posts").find('img').lazyload({
+        placeholder: "/images/loading.gif",
+        effect: "fadeIn"
+      });
+    });
+  </script>
+</body>
+</html>

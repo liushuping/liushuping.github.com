@@ -4,7 +4,7 @@
   <subtitle><![CDATA[A JavaScript and C# developer]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://blog.liushuping.com/"/>
-  <updated>2016-02-23T17:00:17.000Z</updated>
+  <updated>2016-03-02T16:31:32.000Z</updated>
   <id>http://blog.liushuping.com/</id>
   
   <author>
@@ -13,6 +13,54 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[完成Coursera Machine Learning课程]]></title>
+    <link href="http://blog.liushuping.com/2016/03/01/%E5%AE%8C%E6%88%90Cousera-Machine-Learning%E8%AF%BE%E7%A8%8B/"/>
+    <id>http://blog.liushuping.com/2016/03/01/完成Cousera-Machine-Learning课程/</id>
+    <published>2016-03-01T14:40:57.000Z</published>
+    <updated>2016-03-02T16:31:32.000Z</updated>
+    <content type="html"><![CDATA[<h1 id="完成了一个目标">完成了一个目标</h1><p>经过了十周多的奋斗，我终于完成了<a href="http://baike.baidu.com/view/10853998.htm?fromtitle=Andrew+Ng" target="_blank" rel="external">Andrew Ng</a>的<a href="https://www.coursera.org/learn/machine-learning" target="_blank" rel="external">Machine Learning</a>课程并获得证书，这也是2016年我完成的第一个个人目标。<br><a id="more"></a></p>
+<p><img src="http://78rehp.com1.z0.glb.clouddn.com/blog%2Fcoursera-machine-learning-cert" alt="cert"></p>
+<h1 id="过程值的回忆">过程值的回忆</h1><p>过去的十周内，有多少个夜深人静的夜晚，当他人已经进入梦乡，我仍在观看着视频、调试着程序。期间也经历了突击课程进度的艰难过程，为的是能提前完成春节期间的课程。大多数的课程都开始于下班回家，且给闺女讲完睡前故事之后，通常是晚上9点以后了。</p>
+<p>课程注册之初，大致预测了一下可能会遇到的困难，总结有：数学的障碍，<a href="http://www.gnu.org/software/octave/" target="_blank" rel="external">Octave</a>陌生的语言，时间问题（晚上要先陪闺女玩儿）等等。然而最终的事实证明，这些都不是问题。而最大的问题是：宽带通！（此处预留一个<a href="http://blog.liushuping.com/2016/02/23/I-will-call-you-back/">Callback</a>，待以后详解。）</p>
+<h1 id="目标要以总结结束">目标要以总结结束</h1><p>学完一门课程，做一些简单的总结，总是有好处的。喜欢对一件复杂的事情做一些通俗易懂的描述，让尽可能多的人理解（显然，我无法做到让隔壁的老奶奶也能听懂的极致）。数学公式是尽量避免去用的，虽然它是Machine Learning的灵魂，但是概念性的普及介绍却不必使用它。</p>
+<p>Machine Learning很有趣，很有用，也很有挑战性。它又依赖于系统的软件工程。</p>
+<ul>
+<li>有趣：<a href="http://www.msxiaoice.com/DesktopLanding" target="_blank" rel="external">微软小冰</a>等有趣应用都是Machine Learning的具体应用</li>
+<li>有用：照片、文字识别，自动驾驶等等极大地方便了生活</li>
+<li>挑战：参考Google的<a href="http://baike.baidu.com/item/%E9%98%BF%E5%B0%94%E6%B3%95%E5%9B%B4%E6%A3%8B?fromtitle=AlphaGo" target="_blank" rel="external">阿尔法狗(AlphaGo)</a></li>
+<li>软件工程：只有良好的系统架构、编码才能实现真正的Machine Learning应用</li>
+</ul>
+<p>用简短的话介绍<a href="https://www.coursera.org/" target="_blank" rel="external">Coursera</a>上<a href="http://baike.baidu.com/view/10853998.htm?fromtitle=Andrew+Ng" target="_blank" rel="external">Andrew Ng</a>的<a href="https://www.coursera.org/learn/machine-learning" target="_blank" rel="external">Machine Learning</a>课程。我的片面总结如下：</p>
+<h2 id="Machine_Learning之基本思路">Machine Learning之基本思路</h2><p>Machine Learning用大量的数据，通过一定的学习算法让计算机具有一定的“智能”，比如预测、分类等。在面对大量数据时，计算机不可能一次完成学习任务，因此我们需要设计一个“渐进”的学习方式，让计算机逐渐完善其“智能”水平。这个“渐进”的过程，在程序代码的领域来讲，就是“迭代”。不断地迭代，调整参数，从而达到提高机器“学习”效果的目的。</p>
+<h2 id="Machine_Learning“之学习效果”的评估">Machine Learning“之学习效果”的评估</h2><p>如何在迭代的基本框架下，来评价当前参数下的“学习”效果呢？我们很容易想到的是建立一个误差方程，对已知的输入数据，应用当前的学习算法，得到预测的结果。根据预测的结果和实际结果，计算<a href="http://baike.baidu.com/view/172036.htm" target="_blank" rel="external">方差</a>或<a href="http://baike.baidu.com/view/78339.htm" target="_blank" rel="external">标准差</a>，即可以作为我们的误差方程。这种以已知数据作为参考的“学习”过程被称为<a href="http://baike.baidu.com/view/2759226.htm" target="_blank" rel="external">“监督学习”</a>或<a href="https://en.wikipedia.org/wiki/Supervised_learning" target="_blank" rel="external">“Supervised Learning”</a>。而<a href="http://baike.baidu.com/view/2759226.htm" target="_blank" rel="external">“监督学习”</a>又可分为<a href="http://baike.baidu.com/view/449540.htm" target="_blank" rel="external">“线性回归”</a>(<a href="https://en.wikipedia.org/wiki/Linear_regression" target="_blank" rel="external">“Linear Regression”</a>)和<a href="http://baike.baidu.com/item/logistic%E5%9B%9E%E5%BD%92?fromtitle=%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92&amp;type=syn" target="_blank" rel="external">“逻辑回归”</a>(<a href="https://en.wikipedia.org/wiki/Logistic_regression" target="_blank" rel="external">“Logistic Regression”</a>)等常见类别。</p>
+<h2 id="Machine_Learning之“学习方法”的改善">Machine Learning之“学习方法”的改善</h2><p>通常我们从随机化学习算法的参数开始，因为参数是我们最终要得到的，而开始之初我们并不知道它。因此我们希望每一步迭代都对参数做微小的改动，以使算法结果不断<a href="http://baike.baidu.com/subview/513233/8059330.htm" target="_blank" rel="external">“收敛”</a>，又或者说是使误差方程产生的结果越来越小。那么怎么做呢？</p>
+<p>假如我们把误差方程画出来，以三维的一个曲面为例（高维空间无法绘制，但是具有相同的性质），误差方差结果最小的点就是三维曲面的最低点。我们的目标就是采取一种有效的措施来改变参数使误差方程的结果沿着三维空间坡度最陡的方向向下移动。用数学的概念来介绍，就是<a href="http://baike.baidu.com/view/30958.htm" target="_blank" rel="external">导数</a>，或者更准确一点，<a href="http://baike.baidu.com/view/1029405.htm" target="_blank" rel="external">偏导数</a>。因此，迭代过程内对参数做的微小改动就是对每个参数减去该参数所对应“特征”的<a href="http://baike.baidu.com/view/1029405.htm" target="_blank" rel="external">偏导数</a>。</p>
+<p>参数的这种改变方式从本质上来说是<a href="http://baike.baidu.com/view/150456.htm" target="_blank" rel="external">连续</a>的，它适合被用在<a href="http://baike.baidu.com/view/449540.htm" target="_blank" rel="external">“线性回归”</a>问题上。但当一个问题是<a href="http://baike.baidu.com/item/logistic%E5%9B%9E%E5%BD%92?fromtitle=%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92&amp;type=syn" target="_blank" rel="external">“逻辑回归”</a>（如根据某些数据判断某个操作是否来自于人或机器等这种是非问题的判断）时怎么办呢？其实很简单：只需对<a href="http://baike.baidu.com/view/449540.htm" target="_blank" rel="external">“线性回归”</a>问题的学习方程进行一次转换，使其输出结果只有两种可能：0或1。适合这个问题的一个常用函数是<a href="http://baike.baidu.com/view/1176976.htm" target="_blank" rel="external">sigmoid函数</a>。关于<a href="http://baike.baidu.com/view/1176976.htm" target="_blank" rel="external">sigmoid函数</a>，此处也留一个<a href="http://blog.liushuping.com/2016/02/23/I-will-call-you-back/">Callback</a>。</p>
+<h2 id="Machine_Learning之人工神经网络">Machine Learning之人工神经网络</h2><p><a href="http://baike.baidu.com/view/449540.htm" target="_blank" rel="external">“线性回归”</a>和<a href="http://baike.baidu.com/item/logistic%E5%9B%9E%E5%BD%92" target="_blank" rel="external">“逻辑回归”</a>都是通过建立一个<a href="http://baike.baidu.com/view/6156797.htm" target="_blank" rel="external">多项式函数</a>来实现对训练数据最大程度的拟合，比如最简单的函数 <code>y = ax + b</code>。<a href="http://baike.baidu.com/view/449540.htm" target="_blank" rel="external">“线性回归”</a>和<a href="http://baike.baidu.com/item/logistic%E5%9B%9E%E5%BD%92" target="_blank" rel="external">“逻辑回归”</a>的任务都是通过迭代来不断优化参数<code>a</code>和<code>b</code>(对于一阶方程来说)来实现最大程度地减少误差。然而，有很多问题我们很难找到一个合适的<a href="http://baike.baidu.com/view/6156797.htm" target="_blank" rel="external">多项式函数</a>来对数据进行<a href="http://baike.baidu.com/subview/133261/5033269.htm" target="_blank" rel="external">数学建模</a>，或者是<a href="http://baike.baidu.com/view/6156797.htm" target="_blank" rel="external">多项式函数</a>过于复杂，带来的计算量非常大。这时可以考虑使用<a href="http://baike.baidu.com/view/19743.htm" target="_blank" rel="external">人工神经网络</a>。</p>
+<p>概括地来说，<a href="http://baike.baidu.com/view/19743.htm" target="_blank" rel="external">人工神经网络</a>的<a href="http://baike.baidu.com/subview/133261/5033269.htm" target="_blank" rel="external">数学模型</a>是一个由很多节点组成的网状结构。每个节点都是一个处理单元，能对接收到的数据做计算，其输出结果将是下层网络节点的计算输入。通过调节网络的层数、每层上计算节点的个数，以及对每个节点的参数等来优化<a href="http://baike.baidu.com/subview/133261/5033269.htm" target="_blank" rel="external">数学模型</a>，从而实现对训练数据的模拟，以及对未来数据的分析预测。<a href="http://baike.baidu.com/view/19743.htm" target="_blank" rel="external">人工神经网络</a>是一个很大的话题，本文仅做一般认识性介绍。</p>
+<h2 id="Machine_Learning之聚类分析">Machine Learning之聚类分析</h2><p>然而，并不是所有的问题都是根据历史数据预测未来结果。还有一类问题是：给定一些数据，让计算机智能地对数据进行分类。这类问题叫<a href="http://baike.baidu.com/view/903740.htm" target="_blank" rel="external">“聚类分析”</a>，解决这类问题的一个重要算法是“<a href="http://baike.baidu.com/view/3066906.htm" target="_blank" rel="external">K均数</a>”算法。这个算法是如此简单而有效地应用了基本的数学知识对数据进行了分类！我强烈推荐您了解一下。</p>
+<h2 id="Machine_Learning之主成份分析">Machine Learning之主成份分析</h2><p>对于给定的数据，在有些情况下数据所包涵的众多特征中，仅有几个特征起主导作用。此时，我们可以对数据进行<a href="http://baike.baidu.com/view/45376.htm" target="_blank" rel="external">主成分分析(Principle Component Analysis)</a>，选取几个主要成份来代表数据，从而达到数据压缩的目的。比如，要对某大量数据做Machine Learning分析，但发现由于数据太大，计算过程非常耗时，此时可以尝试用主成份分析来对数据进行压缩。<a href="http://baike.baidu.com/view/45376.htm" target="_blank" rel="external">主成分分析</a>的另外一个应用是图像的压缩，可以通过分析图像的前16种主颜色成份，把图像从256色压缩到16色。</p>
+<h2 id="Machine_Learning之性能优化">Machine Learning之性能优化</h2><p>性能优化永远是Machine Learning领域的一个重要话题，因为数据容量是如此之大，每一点计算过程的优化都有可能带来整体效率上的显著提高。在<a href="http://baike.baidu.com/view/10853998.htm?fromtitle=Andrew+Ng" target="_blank" rel="external">Andrew Ng</a>的<a href="https://www.coursera.org/learn/machine-learning" target="_blank" rel="external">Machine Learning</a>课程中最让人拍案叫绝的一段数学证明是<a href="https://en.wikipedia.org/wiki/Support_vector_machine" target="_blank" rel="external">Support Vector Machine</a>如何有效地改善了<a href="http://baike.baidu.com/view/2759226.htm" target="_blank" rel="external">“监督学习”</a>中的分类算法。</p>
+<p>另一个重要的性能优化则完全来自于计算机科学，那就是<a href="https://en.wikipedia.org/wiki/Array_programming" target="_blank" rel="external">Vectorization</a>。最擅长做<a href="https://en.wikipedia.org/wiki/Array_programming" target="_blank" rel="external">Vectorization</a>的是<a href="https://en.wikipedia.org/wiki/Graphics_processing_unit" target="_blank" rel="external">GPU</a>，当然现如今的大多数<a href="https://en.wikipedia.org/wiki/Central_processing_unit" target="_blank" rel="external">CPU</a>也已经支持<a href="https://en.wikipedia.org/wiki/Array_programming" target="_blank" rel="external">Vectorization</a>了。因此，在代码的实现上，软件工程师时刻牢记<a href="https://en.wikipedia.org/wiki/Array_programming" target="_blank" rel="external">Vectorization</a>的实现方式是至关重要的。</p>
+<p>然而无论如何，超大规模的Machine Learning是不可能在一台机器上完成的，当需要在多台甚至成千上万台机运行时，就需要<a href="http://baike.baidu.com/view/2902.htm" target="_blank" rel="external">MapReduce</a>等类似的分布式框架来帮忙了。</p>
+<h1 id="结论">结论</h1><p>Machine Learning很有趣，它需要一些数学知识、算法和软件工程思想来实现。<a href="http://baike.baidu.com/view/10853998.htm?fromtitle=Andrew+Ng" target="_blank" rel="external">Andrew Ng</a>的<a href="https://www.coursera.org/learn/machine-learning" target="_blank" rel="external">Machine Learning</a>课程深入浅出，循序渐进，有趣，有料！</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<h1 id="完成了一个目标">完成了一个目标</h1><p>经过了十周多的奋斗，我终于完成了<a href="http://baike.baidu.com/view/10853998.htm?fromtitle=Andrew+Ng">Andrew Ng</a>的<a href="https://www.coursera.org/learn/machine-learning">Machine Learning</a>课程并获得证书，这也是2016年我完成的第一个个人目标。<br>]]>
+    
+    </summary>
+    
+      <category term="Coursera" scheme="http://blog.liushuping.com/tags/Coursera/"/>
+    
+      <category term="Machine Learning" scheme="http://blog.liushuping.com/tags/Machine-Learning/"/>
+    
+      <category term="Stanford" scheme="http://blog.liushuping.com/tags/Stanford/"/>
+    
+      <category term="Machine Learning" scheme="http://blog.liushuping.com/categories/Machine-Learning/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[I will call you back]]></title>
@@ -1669,76 +1717,6 @@
       <category term="Abstract" scheme="http://blog.liushuping.com/tags/Abstract/"/>
     
       <category term="Abstract" scheme="http://blog.liushuping.com/categories/Abstract/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[Web API 的URL和HTTP Verb 的使用]]></title>
-    <link href="http://blog.liushuping.com/2014/07/03/http-url-verb-usage-in-web-api/"/>
-    <id>http://blog.liushuping.com/2014/07/03/http-url-verb-usage-in-web-api/</id>
-    <published>2014-07-03T05:52:43.000Z</published>
-    <updated>2015-10-25T10:39:15.000Z</updated>
-    <content type="html"><![CDATA[<p>根据<a href="http://en.m.wikipedia.org/wiki/Web_API" target="_blank" rel="external">维基百科的定义</a>：Web API是指面向Web服务器或者Web浏览器以及其它HTTP客户端的API(应用程序编程接口)。Web API有不同的实现风格，比如常见的RPC和REST风格。而任何一种实现都是在HTTP基础之上的，HTTP消息的结构是Web API构成的主要元素，如HTTP URL，状态码(Status Code)和HTTP 方法(Verb)等。 </p>
-<p>随着Web的蓬勃发展，大量的信息和数据出现在网络。因此，基于资源(Resource)的RESTful Web API变的异常流行。数量众多的关于如何设计优秀的REST API的文章等层出不穷。比如阮一峰的<a href="http://www.ruanyifeng.com/blog/2014/05/restful_api.html" target="_blank" rel="external">RESTful API 设计指南</a> ，其中也提到了一篇不错的文章<a href="http://codeplanet.io/principles-good-restful-api-design/" target="_blank" rel="external">Principle of good RESTful API design</a>。文章都提到了很多关于RESTful API的实用方法和原则。遗憾的是，有一些关于URL和HTTP Verb使用中容易误解的细节都没有被提及。 </p>
-<p>结合我在学习和使用Web API的过程中的一些心得，我想就URL和HTTP Verb的几个小细节谈一下。由于讨论不局限在REST上，因此是Web API的讨论。 </p>
-<a id="more"></a>
-<h2 id="关于URL">关于URL</h2><p>在按照RESTful来设计的Web API中，URL所代表的正是它字面上所描述的意思：统一资源定位。也就是说URL在RESTful Web API中是对资源的位置标识。 </p>
-<p>因此一条规则是：<em>在RESTful  Web API的URL中尽量不要附加跟资源定位无关的信息</em>  </p>
-<p>比如下面示例都是良好的RESTful Web API可能的URL，URL中的所有信息都是用来定位资源的。 </p>
-<pre><code><span class="regexp">/api/</span>books 
-<span class="regexp">/api/</span>books/book-id 
-<span class="regexp">/api/</span>books?author=crockford
-</code></pre><p>而下面的这个例子则可能不是一些优秀的RESTful Web API所具备的URL，因为books资源的定位完全不依赖于访问这个API的用户登录时间。 </p>
-<pre><code>/api/books?user_login_on=<span class="number">2014</span>-<span class="number">07</span>-<span class="number">1</span>
-</code></pre><p>然而以RPC风格设计的Web API中，URL失去了它字面所描述的意思。这时设计者期望的URL更是一个过程(procedure)名字，一个存在于服务器上的过程的名字。这种情况下，过程需要的”参数”都放在HTTP请求的body中。如下面的示例： </p>
-<pre><code>/api/<span class="preprocessor">get</span>-all-<span class="keyword">books </span>
-/api/<span class="preprocessor">get</span>-<span class="keyword">book </span>
-/api/update-<span class="keyword">book</span>
-</code></pre><p>“过程”需要的参数都建议放在HTTP body中。参数若放到URL中，便会破坏以URL来描述过程名的目的。比如下面的代码： </p>
-<pre><code>/api/<span class="keyword">get</span>-book?<span class="property">id</span>=<span class="number">123</span>
-</code></pre><p>从URL的整体来看，这已经不能算是一个过程的描述了，它带有了一些多余的干扰信息。 </p>
-<h2 id="关于HTTP_Verb">关于HTTP Verb</h2><p>合理地配合URL使用HTTP Verb(动词)则可以定义语义良好的Web API。语义良好是用户能直观从API名本身了解其用途的基础，而不需过多地依赖相关解释性文档。 </p>
-<p>在RESTful的Web API中，HTTP Verb的使用是应该尽量按照每一个Verb本身字面的意思来使用的。这样CRUD的做操作很容易映射到POST，GET，PUT，DELETE。当然还有一些其它的Verb也都可以映射到一些相关的操作，比如PATCH可以映射到Resource的局部更新。这儿需要提及一点的是，REST的使用一定要做到实用主义，而不是教条主义。教条主义也许会要求所有的Verb都严格地映射到相关指定的操作，然而受到各种实际情况的限制，这样的要求通常很难达到。比如限制读取操作一定要用GET方法，那么当Resource的描述超过浏览器对URL长度限制的情况时，API的实现就陷入两难境地。因此做为实用主义的RESTful Web API，我们首选RESTful的相关规则，然而在特殊情况下允许变通。 </p>
-<p>下面的示例URL是一下良好的RESTful Web API的URL和Verb组合： </p>
-<pre><code>HTTP <span class="number">1.1</span> GET /api/books  
-HTTP <span class="number">1.1</span> POST /api/books 
-HTTP <span class="number">1.1</span> GET /api/books/<span class="number">123</span> 
-HTTP <span class="number">1.1</span> PUT /api/books/<span class="number">123</span> 
-HTTP <span class="number">1.1</span> DELETE /api/books/<span class="number">123</span>
-</code></pre><p>那么在RPC风格的Web API中Verb的使用有什么规则呢？在前面介绍了，RPC风格的Web API中URL用做描述一个过程的名字，过程就代表了一个“动作”或“方法”。因此，HTTP Verb本身所表示的意思在RPC风格的Web API中也便不再重要，或者说是与URL所描述的“过程”有些冲突。然而，HTTP要求请求中必须有Verb，因此在实现RPC风格的Web API中只要选取一致的Verb即可。 </p>
-<p>下面的示例就是一些不合适的URL和Verb组合，容易给使用者造成困惑： </p>
-<pre><code><span class="label">HTTP</span> <span class="number">1</span>.<span class="number">1</span> <span class="preprocessor">GET</span> /api/<span class="preprocessor">get</span>-<span class="keyword">books </span>
-<span class="label">HTTP</span> <span class="number">1</span>.<span class="number">1</span> <span class="preprocessor">GET</span> /api/<span class="preprocessor">get</span>-<span class="keyword">book </span>
-<span class="label">HTTP</span> <span class="number">1</span>.<span class="number">1</span> PUT /api/update-<span class="keyword">book </span>
-<span class="label">HTTP</span> <span class="number">1</span>.<span class="number">1</span> DELETE /api/delete-<span class="keyword">book</span>
-</code></pre><p>那么选取那个Verb呢？还是在前面的介绍中，建议把“过程”需要的参数放在HTTP body中。因此GET verb就被排除在外了（因为HTTP标准定义GET类型的HTTP请求不带body）。综合分析一下其它Verb后，POST便是一个不错的选择。PUT和DELETE都具有明显的意义，容易让用户产生一定误解。在RPC风格的Web API中，就可以把POST理解成“执行”。发一个HTTP请求就可理解为：执行一个由URL所描述的存在于服务器的远程过程。 </p>
-<p>下面的示例URL就是一些不错的RPC风格的Web API例子： </p>
-<pre><code><span class="label">HTTP</span> <span class="number">1</span>.<span class="number">1</span> POST /api/<span class="preprocessor">get</span>-<span class="keyword">books </span>
-<span class="label">HTTP</span> <span class="number">1</span>.<span class="number">1</span> POST /api/<span class="preprocessor">get</span>-<span class="keyword">book </span>
-<span class="label">HTTP</span> <span class="number">1</span>.<span class="number">1</span> POST /api/update-<span class="keyword">book </span>
-<span class="label">HTTP</span> <span class="number">1</span>.<span class="number">1</span> POST /api/delete-<span class="keyword">book</span>
-</code></pre><h2 id="总结">总结</h2><p>总结有如下几点： </p>
-<ul>
-<li>在RESTful Web API的URL中尽量不要附加跟资源定位无关的信息。</li>
-<li>在RPC风格的Web API中，URL用来描述“过程”的名字，过程需要的参数建议放在HTTP body中。</li>
-<li>在RESTful Web API中，HTTP Verb的使用要尽量保持其本身的语义性，把不同Verb映射到CRUD操作上。</li>
-<li>在RPC风格的Web API中，POST方法是一个不错的选择。可以把POST理解为“执行”。因此一次请求可以理解为：“执行”（POST）一个由URL所描述的存在于服务器的“远程过程”。 </li>
-</ul>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p>根据<a href="http://en.m.wikipedia.org/wiki/Web_API">维基百科的定义</a>：Web API是指面向Web服务器或者Web浏览器以及其它HTTP客户端的API(应用程序编程接口)。Web API有不同的实现风格，比如常见的RPC和REST风格。而任何一种实现都是在HTTP基础之上的，HTTP消息的结构是Web API构成的主要元素，如HTTP URL，状态码(Status Code)和HTTP 方法(Verb)等。 </p>
-<p>随着Web的蓬勃发展，大量的信息和数据出现在网络。因此，基于资源(Resource)的RESTful Web API变的异常流行。数量众多的关于如何设计优秀的REST API的文章等层出不穷。比如阮一峰的<a href="http://www.ruanyifeng.com/blog/2014/05/restful_api.html">RESTful API 设计指南</a> ，其中也提到了一篇不错的文章<a href="http://codeplanet.io/principles-good-restful-api-design/">Principle of good RESTful API design</a>。文章都提到了很多关于RESTful API的实用方法和原则。遗憾的是，有一些关于URL和HTTP Verb使用中容易误解的细节都没有被提及。 </p>
-<p>结合我在学习和使用Web API的过程中的一些心得，我想就URL和HTTP Verb的几个小细节谈一下。由于讨论不局限在REST上，因此是Web API的讨论。 </p>]]>
-    
-    </summary>
-    
-      <category term="HTTP" scheme="http://blog.liushuping.com/tags/HTTP/"/>
-    
-      <category term="REST" scheme="http://blog.liushuping.com/tags/REST/"/>
-    
-      <category term="Web API" scheme="http://blog.liushuping.com/tags/Web-API/"/>
-    
-      <category term="Web API" scheme="http://blog.liushuping.com/categories/Web-API/"/>
     
   </entry>
   
