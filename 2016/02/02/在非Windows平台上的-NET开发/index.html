@@ -36,7 +36,7 @@
 
 
 
-  <meta name="keywords" content="Array," />
+  <meta name="keywords" content=".NET,Cross-Platform," />
 
 
 
@@ -47,22 +47,17 @@
   <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.2" />
 
 
-<meta name="description" content="给定一个有n个元素且n大于1的一维数组nums，计算并返回一个数组output，使其任一元素output[i]的值是数组nums除nums[i]外的其它所有元素的乘积。要求不能使用除法，且在O(n)的时间复杂度和常数空间复杂度内完成计算。
-例如，给定数组[1,2,3,4]，则返回数组[24,12,8,6]
-注：返回数组所占空间不在本题的空间复杂度的计算范围内。">
+<meta name="description" content="长久以来，至少是在.NET4以前，.NET都只能在Windows平台上开发。在其它平台上，如Linux上只能依赖第三方的运行时，例如著名的Mono。但是从.NET 5开始，微软自己发布了真正跨平台的.NET运行环境.NET Core。.NET的跨平台也步入了新的台阶。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LeetCode OJ 238 Product of Array Except Self">
-<meta property="og:url" content="http://blog.liushuping.com/2015/07/26/LeetCode-OJ-238-Product-of-Array-Except-Self/index.html">
+<meta property="og:title" content="在非windows平台上的.NET开发">
+<meta property="og:url" content="http://blog.liushuping.com/2016/02/02/在非Windows平台上的-NET开发/index.html">
 <meta property="og:site_name" content="Shuping LIU">
-<meta property="og:description" content="给定一个有n个元素且n大于1的一维数组nums，计算并返回一个数组output，使其任一元素output[i]的值是数组nums除nums[i]外的其它所有元素的乘积。要求不能使用除法，且在O(n)的时间复杂度和常数空间复杂度内完成计算。
-例如，给定数组[1,2,3,4]，则返回数组[24,12,8,6]
-注：返回数组所占空间不在本题的空间复杂度的计算范围内。">
-<meta property="og:updated_time" content="2015-10-25T10:41:23.000Z">
+<meta property="og:description" content="长久以来，至少是在.NET4以前，.NET都只能在Windows平台上开发。在其它平台上，如Linux上只能依赖第三方的运行时，例如著名的Mono。但是从.NET 5开始，微软自己发布了真正跨平台的.NET运行环境.NET Core。.NET的跨平台也步入了新的台阶。">
+<meta property="og:image" content="http://78rehp.com1.z0.glb.clouddn.com/blog%2Faspnet-sample.gif">
+<meta property="og:updated_time" content="2016-03-17T15:43:15.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="LeetCode OJ 238 Product of Array Except Self">
-<meta name="twitter:description" content="给定一个有n个元素且n大于1的一维数组nums，计算并返回一个数组output，使其任一元素output[i]的值是数组nums除nums[i]外的其它所有元素的乘积。要求不能使用除法，且在O(n)的时间复杂度和常数空间复杂度内完成计算。
-例如，给定数组[1,2,3,4]，则返回数组[24,12,8,6]
-注：返回数组所占空间不在本题的空间复杂度的计算范围内。">
+<meta name="twitter:title" content="在非windows平台上的.NET开发">
+<meta name="twitter:description" content="长久以来，至少是在.NET4以前，.NET都只能在Windows平台上开发。在其它平台上，如Linux上只能依赖第三方的运行时，例如著名的Mono。但是从.NET 5开始，微软自己发布了真正跨平台的.NET运行环境.NET Core。.NET的跨平台也步入了新的台阶。">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -74,7 +69,7 @@
 
 
 
-  <title> LeetCode OJ 238 Product of Array Except Self | Shuping LIU </title>
+  <title> 在非windows平台上的.NET开发 | Shuping LIU </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -209,7 +204,7 @@
             
             
               
-                LeetCode OJ 238 Product of Array Except Self
+                在非windows平台上的.NET开发
               
             
           </h1>
@@ -218,8 +213,8 @@
         <div class="post-meta">
           <span class="post-time">
             发表于
-            <time itemprop="dateCreated" datetime="2015-07-26T22:17:39+08:00" content="2015-07-26">
-              2015-07-26
+            <time itemprop="dateCreated" datetime="2016-02-02T22:25:39+08:00" content="2016-02-02">
+              2016-02-02
             </time>
           </span>
 
@@ -228,20 +223,8 @@
               &nbsp; | &nbsp; 分类于
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/LeetCode/" itemprop="url" rel="index">
-                    <span itemprop="name">LeetCode</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/LeetCode/Algorithm/" itemprop="url" rel="index">
-                    <span itemprop="name">Algorithm</span>
+                  <a href="/categories/NET/" itemprop="url" rel="index">
+                    <span itemprop="name">.NET</span>
                   </a>
                 </span>
 
@@ -256,8 +239,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/07/26/LeetCode-OJ-238-Product-of-Array-Except-Self/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/26/LeetCode-OJ-238-Product-of-Array-Except-Self/" itemprop="commentsCount"></span>
+                <a href="/2016/02/02/在非Windows平台上的-NET开发/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/02/在非Windows平台上的-NET开发/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -276,19 +259,32 @@
       
 
       
-        <span itemprop="articleBody"><p>给定一个有<code>n</code>个元素且<code>n</code>大于<code>1</code>的一维数组<code>nums</code>，计算并返回一个数组<code>output</code>，使其任一元素<code>output[i]</code>的值是数组<code>nums</code>除<code>nums[i]</code>外的其它所有元素的乘积。要求不能使用除法，且在<code>O(n)</code>的时间复杂度和常数空间复杂度内完成计算。</p>
-<p>例如，给定数组<code>[1,2,3,4]</code>，则返回数组<code>[24,12,8,6]</code></p>
-<p>注：返回数组所占空间不在本题的空间复杂度的计算范围内。</p>
+        <span itemprop="articleBody"><p>长久以来，至少是在.NET4以前，.NET都只能在Windows平台上开发。在其它平台上，如Linux上只能依赖第三方的运行时，例如著名的<a href="http://www.mono-project.com/" target="_blank" rel="external">Mono</a>。但是从.NET 5开始，微软自己发布了真正跨平台的.NET运行环境<a href="https://github.com/dotnet/coreclr" target="_blank" rel="external">.NET Core</a>。.NET的跨平台也步入了新的台阶。</p>
 <a id="more"></a>
-<h2 id="问题分析">问题分析</h2><p>按照常规的思维，最直接的计算方式是先对所有元素乘积，然后分别除以数组中的每个元素，其复杂度也在O(n)内。不幸的是，题目要求不能使用除法。然而我们可以从这个思路中尝试分析其它的解决方案。</p>
-<p>首先，假设数组的n个元素分别为：a1, a2, a3, … an, 令P = a1 <em> a2 </em> a3 <em> … an,所以目标结果数组应为P/a1, P/a2, P/a3, … P/an。约掉分母可得：a2</em>a3<em>…an, a1</em>a3<em>…an, … a1</em>a2*…a(n-1).对结果数组的每一个元素的乘法进行分组可得如下形式：</p>
-<p>(1) <em>* (a2</em>a3*…an)</p>
-<p>(a1) <em>* (a3</em>a4*…an)</p>
-<p>(a1<em>a2) </em> (a4<em>a5</em>…an)</p>
-<p>(a1<em>a2</em>…a(n-2)) * (an)</p>
-<p>(a1<em>a2</em>…a(n-1)) * (1)</p>
-<p>以垂直方向看，左侧括号内部分是a1一直到a(n-1)的阶乘，而以垂直方向逆序来看，右侧括号内部分是an到a2的阶乘。 因此问题迎刃而解，可以用两个循环来迭代阶乘，也可以用一个循环分别从首尾迭代两组阶乘。</p>
-<h2 id="代码">代码</h2><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    vector&lt;int&gt; productExceptSelf(vector&lt;int&gt;&amp; nums) &#123;</span><br><span class="line">        // 两个迭代变量，t1从数组低位</span><br><span class="line">        // 向高位迭代；t2从数组高位</span><br><span class="line">        // 向低位迭代。</span><br><span class="line">        int t1(1), t2(1);</span><br><span class="line"></span><br><span class="line">        // 缓存数组的长度</span><br><span class="line">        int size(nums.size());</span><br><span class="line"></span><br><span class="line">        // 初始化返回数组的所有元素为 1</span><br><span class="line">        vector&lt;int&gt; result(size, 1);</span><br><span class="line"></span><br><span class="line">        // 做(数组长度-1)次数的迭代</span><br><span class="line">        for (int i(1); i &lt; size; ++i) &#123;</span><br><span class="line">            // 通过迭代来达到如下赋值</span><br><span class="line">            // result(i) &lt;- ProductOf(nums(0), nums(1) ... nums(i-1))</span><br><span class="line">            // 即返回数组的第i个元素的值等于输入数组的前i个元素的乘积。</span><br><span class="line">            t1 *= nums[i - 1];</span><br><span class="line">            result[i] *= t1;</span><br><span class="line"></span><br><span class="line">            // 在t1迭代计算的结果基础上，t2以反方向进行与t1完全类似的计算，</span><br><span class="line">            // 把计算结果累积乘积到输出数组上。</span><br><span class="line">            t2 *= nums[size - i];</span><br><span class="line">            result[size - 1 - i] *= t2;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        return result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></span>
+<p>本文介绍了如何在Mac上以C#进行.NET Core 5.0程序的开发。</p>
+<h1 id="步骤概述">步骤概述</h1><p>不管是在Windows上，Mac上还是Linux平台上，.NET Core 5.0程序的开发都可以简要的总结为下列几个步骤：</p>
+<ol>
+<li>安装<a href="https://github.com/aspnet/dnvm/" target="_blank" rel="external">DNVM</a> - .NET版本管理器</li>
+<li>通过DNVM安装指定版本的.NET CLR</li>
+<li>创建.NET项目工程并编写代码</li>
+<li>执行命令<code>dnu restore</code> － 安装程序运行依赖包(nuget格式)</li>
+<li>执行<code>dnx &lt;command&gt;</code> － 运行程序</li>
+</ol>
+<h1 id="安装DNVM">安装DNVM</h1><p>DNVM是Dot Net Version Manager的缩写，它有几个脚本文件（Windows上Powershell文件，Linux及Mac OS上是Shell文件）组成。按照<a href="https://docs.asp.net/en/latest/getting-started/installing-on-mac.html" target="_blank" rel="external">ASP官网</a>，通过下列命令来下载并安装DNVM：<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -sSL https://raw.githubusercontent.com/aspnet/Home/dev/dnvminstall.sh | DNX_BRANCH=dev sh &#38;&#38; source ~/.dnx/dnvm/dnvm.sh</span><br></pre></td></tr></table></figure></p>
+<p>安装完成后，可以在Terminal下执行DNVM：<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dnvm</span><br></pre></td></tr></table></figure></p>
+<p>如要列出机器上当前所安装的所有.NET版本：<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dnvm list</span><br></pre></td></tr></table></figure></p>
+<h1 id="安装CLR">安装CLR</h1><p>通过DNVM所管理的.NET可以分为两类：.NET 4.5和.NET 5 Core。.NET 4.5是在Mac上是基于Mono的，本文介绍的.NET 5 Core不依赖Mono。通过面命令安装.NET Core:<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dnvm upgrade -r coreclr</span><br></pre></td></tr></table></figure></p>
+<p>安装完成后，可以通过<code>dnvm list</code>来查看所有已经安装的.NET。例如我的电脑当前安装的版本信息显示如下：<br><figure class="highlight brainfuck"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">Active</span> <span class="comment">Version</span>              <span class="comment">Runtime</span> <span class="comment">Architecture</span> <span class="comment">OperatingSystem</span> <span class="comment">Alias</span></span><br><span class="line"><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span> <span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span>              <span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span> <span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span> <span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span> <span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span></span><br><span class="line">       <span class="comment">1</span><span class="string">.</span><span class="comment">0</span><span class="string">.</span><span class="comment">0</span><span class="literal">-</span><span class="comment">rc1</span><span class="literal">-</span><span class="comment">final</span>      <span class="comment">coreclr</span> <span class="comment">x64</span>          <span class="comment">darwin</span>          </span><br><span class="line">  <span class="comment">*</span>    <span class="comment">1</span><span class="string">.</span><span class="comment">0</span><span class="string">.</span><span class="comment">0</span><span class="literal">-</span><span class="comment">rc1</span><span class="literal">-</span><span class="comment">update1</span>    <span class="comment">coreclr</span> <span class="comment">x64</span>          <span class="comment">darwin</span>          <span class="comment">default</span></span><br></pre></td></tr></table></figure></p>
+<p>第一列标星号的版本是当前默认版本，因此在该机器上的.NET代码会被编译到改目标.NET平台下。如果要切换目标.NET平台，可以通过命令<code>dnvm use</code>来实现。具体使用方式，可以查看DNVM帮助。</p>
+<h1 id="创建-NET项目">创建.NET项目</h1><p>前面的两步完成了对机器能编译运行.NET程序的全部配置，因此可以进行.NET的程序开发。然而从一个完全空白的文件或文件夹开始写源代码是非常不方便的，通常我们需要一个创建项目的模板，或者近几年更流行的名称是“脚手架”。针对.NET 5平台的脚手架的实现上，微软采取了充分利用开源社区资源的做法，既节省了成本又带来了广大开发者的认同度。</p>
+<p>微软采取了通过<a href="https://www.npmjs.com/package/yo" target="_blank" rel="external">Yoeman</a>这个基于Node跨平台的脚手架工具来实现.NET 5项目工程文件创建的目的。具体来说，它是开发了一个Yomean的插件<a href="https://www.npmjs.com/package/generator-aspnet" target="_blank" rel="external">generator-aspnet</a>来实现的。</p>
+<p>在node的提示符下，输入如下命令可以进入.NET 5项目工程生成的引导步骤中：<br><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">yo</span> aspnet</span><br></pre></td></tr></table></figure></p>
+<p>值得一提的是，虽然命令行的参数叫aspnet，但是它却能创建大多数常见的.NET工程类型，如Console, UnitTest等等。</p>
+<h1 id="安装程序依赖包">安装程序依赖包</h1><p>.NET 5的所有依赖项都是通过nuget来进行管理的，而这些依赖项都注册在工程主文件<code>project.json</code>中。通过脚手架生成的工程并没有把工程依赖的所有包安装下载到工程所在目录。因此需要运行下面的命令来加载所有依赖项：<br><figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dnu <span class="built_in">restore</span></span><br></pre></td></tr></table></figure></p>
+<h1 id="运行程序">运行程序</h1><p>运行程序所要执行的命令是<code>dnx</code>，其参数根据项目工程不同而不同，参数可以参考<code>project.json</code>文件中的<code>commands</code>属性。比如Unit Test的项目的<code>commands</code>属性是这样子的:<br><figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"commands"</span>: &#123;</span><br><span class="line">    <span class="string">"test"</span>: <span class="string">"xunit.runner.dnx"</span></span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure></p>
+<p>因此，运行该项目的命令是<code>dnx test</code></p>
+<h1 id="演示">演示</h1><p><img src="http://78rehp.com1.z0.glb.clouddn.com/blog%2Faspnet-sample.gif" alt="demo"></p>
+</span>
       
     </div>
 
@@ -296,7 +292,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Array/" rel="tag">#Array</a>
+            <a href="/tags/NET/" rel="tag">#.NET</a>
+          
+            <a href="/tags/Cross-Platform/" rel="tag">#Cross-Platform</a>
           
         </div>
       
@@ -305,16 +303,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/07/22/NFC-SIM卡的尴尬/" rel="next" title="NFC SIM卡的尴尬">
-                <i class="fa fa-chevron-left"></i> NFC SIM卡的尴尬
+              <a href="/2016/01/23/微软跨平台及开源的执行力之我见/" rel="next" title="微软跨平台及开源的执行力之我见">
+                <i class="fa fa-chevron-left"></i> 微软跨平台及开源的执行力之我见
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/08/09/Backbone-router-demo/" rel="prev" title="Backbone router demo">
-                Backbone router demo <i class="fa fa-chevron-right"></i>
+              <a href="/2016/02/23/I-will-call-you-back/" rel="prev" title="I will call you back">
+                I will call you back <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -330,10 +328,10 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2015/07/26/LeetCode-OJ-238-Product-of-Array-Except-Self/"
-     data-title="LeetCode OJ 238 Product of Array Except Self"
+        <div class="ds-share flat" data-thread-key="2016/02/02/在非Windows平台上的-NET开发/"
+     data-title="在非windows平台上的.NET开发"
      data-content=""
-     data-url="http://blog.liushuping.com/2015/07/26/LeetCode-OJ-238-Product-of-Array-Except-Self/">
+     data-url="http://blog.liushuping.com/2016/02/02/在非Windows平台上的-NET开发/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -359,8 +357,8 @@
         
           <div class="comments" id="comments">
             
-              <div class="ds-thread" data-thread-key="2015/07/26/LeetCode-OJ-238-Product-of-Array-Except-Self/"
-                   data-title="LeetCode OJ 238 Product of Array Except Self" data-url="http://blog.liushuping.com/2015/07/26/LeetCode-OJ-238-Product-of-Array-Except-Self/">
+              <div class="ds-thread" data-thread-key="2016/02/02/在非Windows平台上的-NET开发/"
+                   data-title="在非windows平台上的.NET开发" data-url="http://blog.liushuping.com/2016/02/02/在非Windows平台上的-NET开发/">
               </div>
             
           </div>
@@ -460,7 +458,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#问题分析"><span class="nav-number">1.</span> <span class="nav-text">问题分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码"><span class="nav-number">2.</span> <span class="nav-text">代码</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#步骤概述"><span class="nav-number">1.</span> <span class="nav-text">步骤概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装DNVM"><span class="nav-number">2.</span> <span class="nav-text">安装DNVM</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装CLR"><span class="nav-number">3.</span> <span class="nav-text">安装CLR</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#创建-NET项目"><span class="nav-number">4.</span> <span class="nav-text">创建.NET项目</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装程序依赖包"><span class="nav-number">5.</span> <span class="nav-text">安装程序依赖包</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#运行程序"><span class="nav-number">6.</span> <span class="nav-text">运行程序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#演示"><span class="nav-number">7.</span> <span class="nav-text">演示</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
