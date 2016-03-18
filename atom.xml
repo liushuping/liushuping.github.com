@@ -110,11 +110,11 @@
   </entry>
   
   <entry>
-    <title><![CDATA[在非windows平台上的.NET开发]]></title>
+    <title><![CDATA[非windows平台上的.NET开发]]></title>
     <link href="http://blog.liushuping.com/2016/02/02/%E5%9C%A8%E9%9D%9EWindows%E5%B9%B3%E5%8F%B0%E4%B8%8A%E7%9A%84-NET%E5%BC%80%E5%8F%91/"/>
     <id>http://blog.liushuping.com/2016/02/02/在非Windows平台上的-NET开发/</id>
     <published>2016-02-02T14:25:39.000Z</published>
-    <updated>2016-03-18T00:29:26.000Z</updated>
+    <updated>2016-03-18T00:36:25.000Z</updated>
     <content type="html"><![CDATA[<p>长久以来，开发人员只能在Windows平台上进行.NET开发。在其它平台上，如Linux上只能依赖第三方的运行时，例如著名的<a href="http://www.mono-project.com/" target="_blank" rel="external">Mono</a>。但是从.NET  5开始，微软官方发布了真正跨平台的.NET运行环境<a href="https://github.com/dotnet/coreclr" target="_blank" rel="external">.NET Core</a>。.NET 的跨平台也步入了新的台阶。</p>
 <a id="more"></a>
 <p>本文介绍了如何在Mac上以C#进行.Net Core 5.0程序的开发。</p>
