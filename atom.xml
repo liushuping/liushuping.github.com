@@ -4,7 +4,7 @@
   <subtitle><![CDATA[A JavaScript and C# developer]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://blog.liushuping.com/"/>
-  <updated>2016-03-29T15:50:24.000Z</updated>
+  <updated>2016-04-12T17:17:47.000Z</updated>
   <id>http://blog.liushuping.com/</id>
   
   <author>
@@ -13,6 +13,63 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[map reduce 与 MapReduce]]></title>
+    <link href="http://blog.liushuping.com/2016/04/12/map-reduce-%E4%B8%8E-MapReduce/"/>
+    <id>http://blog.liushuping.com/2016/04/12/map-reduce-与-MapReduce/</id>
+    <published>2016-04-12T14:58:27.000Z</published>
+    <updated>2016-04-12T17:17:47.000Z</updated>
+    <content type="html"><![CDATA[<p>昨天一个偶然的机会跟同事讨论了<a href="https://en.wikipedia.org/wiki/MapReduce" target="_blank" rel="external">MapReduce</a>这个产品和<a href="http://baike.baidu.com/view/1711147.htm" target="_blank" rel="external">函数式编程</a>中最出名的两个函数<a href="https://en.wikipedia.org/wiki/Map_(higher-order_function" target="_blank" rel="external">map</a>和<a href="https://en.wikipedia.org/wiki/Map_(higher-order_function" target="_blank" rel="external">reduce/fold</a>之间的关系。是仅仅的名字巧合吗？还是存在着某种关系？<a id="more"></a><a href="https://en.wikipedia.org/wiki/MapReduce" target="_blank" rel="external">Wikipedia</a>对两者的关系有明确的解释：</p>
+<blockquote>
+<p>The model is inspired by the map and reduce functions commonly used in functional programming,[6] although their purpose in the MapReduce framework is not the same as in their original forms.[7] The key contributions of the MapReduce framework are not the actual map and reduce functions, but the scalability and fault-tolerance achieved for a variety of applications by optimizing the execution engine once. </p>
+</blockquote>
+<p>意思是说，MapReduce的名字受函数式编程中的map和reduce两个函数的名字启发，但是在MapReduce中，”map”和”reduce”不是函数式编程中的map和reduce的本意。</p>
+<p>我们也讨论到MapReduce其实是一个Divide and Conquer的算法，那么它为什么不叫DivideConquer这个名呢？个人认为，就针对这个产品而言，DivideConquer这个名字比MapReduce逊色很多。要了解MapReduce的命名，我们需要从了解函数式编程中的map和reduce(或fold)两个函数入手。</p>
+<h2 id="函数式编程中的map和reduce">函数式编程中的map和reduce</h2><p>map和reduce是函数式编程中两个最出名，最重要的<a href="https://en.wikipedia.org/wiki/Higher-order_function" target="_blank" rel="external">高阶函数(High Order Function)</a>。什么是高阶函数？它和初中时学的高次（高阶）方程同属一个概念。简单来说，一个函数能被称为高阶函数，它应具备下列2个要素中的至少一点：</p>
+<ol>
+<li>它能接受另外一个函数作为参数</li>
+<li>它的返回值可以是另外一个函数</li>
+</ol>
+<p>毫无疑问，map和reduce函数都能满足上述两点。这里又引出了另外一个概念：<a href="https://en.wikipedia.org/wiki/First-class_function" target="_blank" rel="external">函数是一等公民(First-class Function)</a>。此处“一等公民”并非指社会地位高下的概念，而是指First-class Function要求编程语言支持把函数作为参数传递或能作为另外一个函数的返回值。因此，函数式编程语言支持First-class Function，而高阶函数的整套体系是构建在其基础之上的。</p>
+<p>那么为什么高阶函数是函数式编程的一个核心概念？因为高阶提供了高层次的抽象，而<a href="http://blog.liushuping.com/2014/08/19/think-in-abstraction/">抽象是解决复杂问题（比如软件问题）的强有力工具</a>。</p>
+<p>世间函数千千万，那么为什么唯独map，reduce两个函数如此与众不同？这就需要我们去关注一下函数所操作的数据对象，大致可以分为两类：个体或少量几个数据；某类数据的一个集合。对于个体或少量数据，能应用于它们的函数通常各不相同，共性比较少；而可应用于集合类数据的函数，大多具有通用的模式：</p>
+<ul>
+<li>模式一：对集合内每一个数据做某种转换处理，返回具有同等数量的不同类型集合</li>
+<li>模式二：对集合内数据做累积操作，返回一个数据或另外一个不同数量的集合</li>
+</ul>
+<p>很明显的，模式一可以归纳出一个名字叫”map”，即把某种“转换处理”应用到集合中的每一个元素去。而这种“转换处理”有无数种可能，因此我们把“转换处理”这个函数以参数的形式传给map这个高阶函数。</p>
+<p>同理，模式二可以归纳出一个名字叫”reduce”，即把某种“累积操作”逐步应用到集合中的每一个元素去，并最后把累加结果返回。而这种“累积操作”有无数种可能，因为我们把函数以参数的形式传给reduce这个高阶函数。</p>
+<h2 id="MapReduce的命名为何对map和reduce函数情有独钟？">MapReduce的命名为何对map和reduce函数情有独钟？</h2><p>MapReduce是一个基于计算机集群的并行、分布式计算框架。它在很大程度上受函数式编程语言中的map和reduce所启发，对分布式计算进行高阶抽象，去除变化的部分，保留不变的框架。它认为：大多数分布式计算可以归纳为下列两种操作的多种组合：</p>
+<ul>
+<li>对所有数据块（分布于多台计算机上）进行“某种操作”</li>
+<li>对局部或所有数据块做数据“汇总操作”</li>
+</ul>
+<p>看！这是多么的美妙！完全符合之前提到的两个模式。</p>
+<p>Hadoop充分吸纳了map，reduce两个函数的精华：在集群机器间移动数据是很耗费资源的，因为它们选择移动函数，函数是一等公民的绝美应用！</p>
+<h2 id="为什么是MapReduce而不是”DivideConquer”?">为什么是MapReduce而不是”DivideConquer”?</h2><p>从本质上来说MapReduce框架属于Divide Conquer的一种。然而针对这个产品，“DividerConquer” 这个命名比MapReduce逊色很多，主要有两点：</p>
+<ul>
+<li>Divider conquer明确提出了“分而治之”的思路，却没有明确提出“汇总“这个在MapReduce产品中占1/2的思想</li>
+<li>MapReduce更加具体地描述了产品的工作流，属于准确的抽象–既有抽象的高可用性，又不失抽象的准确性与实用性。</li>
+</ul>
+<h2 id="打开另一个世界的大门">打开另一个世界的大门</h2><p>如果您对本文的理解存在困难，我强烈您阅读一些函数式编程的书籍和文章。相信我，一旦您掌握了它，您就打开了一扇通往另一个编程世界的大门（假如面向对象和面向过程是您已经打开的两扇大门）。门的另一侧，是一个美轮美奂的世界。</p>
+<p>如果从来没了解过函数式编程，那么我建议您从最纯正的函数语言<a href="https://www.haskell.org/" target="_blank" rel="external">Haskell</a>开始。</p>
+<p><a href="http://learnyouahaskell.com/" target="_blank" rel="external">Learn You a Haskell for Great Good!</a>一书妙语连珠，妙趣横生，深入浅出，有趣有料。作者自己画的插画更是生动活泼！我一直坚信：会画画的程序员是非常有前途的！(这个以后详细展开来说)。<br><img src="http://78rehp.com1.z0.glb.clouddn.com/blog%2Flearnyouahaskell.png" alt="learn you a haskell for great good!"></p>
+<p>如果您想找一本更加系统详实的Haskell书，那么看<a href="http://book.realworldhaskell.org/" target="_blank" rel="external">Real World Haskell</a>吧。它介绍了Haskell语言的每一个细节，当然你要有足够的耐心和毅力。</p>
+<p>如果您想偏理论角度地研究一下为什么高阶函数很重要，那么我推荐您看一下这篇学术文章：High Order + Polymorphic = Reuse: <a href="http://citeseerx.ist.psu.edu/showciting?cid=577419" target="_blank" rel="external">http://citeseerx.ist.psu.edu/showciting?cid=577419</a></p>
+<p>如果您想理论性地研究一下函数式编程，那么我推荐您看一下这篇神作，神作，神作：Theorems for free：<a href="http://ecee.colorado.edu/ecen5533/fall11/reading/free.pdf" target="_blank" rel="external">http://ecee.colorado.edu/ecen5533/fall11/reading/free.pdf</a> 在这篇文章里您可以学到如何用lambda组合子（或<a href="https://en.wikipedia.org/wiki/Fixed-point_combinator#Fixed_point_combinators_in_lambda_calculus" target="_blank" rel="external">Y Combinator</a>）来实现匿名函数的递归。《黑客与画家》的作者成立的创业孵化公司Y Combinator的名字就是来源于函数式编程。（想想吧，这又是一个美妙的名字)</p>
+<p>好吧，如果您对函数式编程的纯理论性研究感兴趣，这完全超出我的能力了，但您去看<a href="https://en.wikipedia.org/wiki/Lambda_calculus" target="_blank" rel="external">Lambda Caculus</a>一准儿是没错的了。</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>昨天一个偶然的机会跟同事讨论了<a href="https://en.wikipedia.org/wiki/MapReduce">MapReduce</a>这个产品和<a href="http://baike.baidu.com/view/1711147.htm">函数式编程</a>中最出名的两个函数<a href="https://en.wikipedia.org/wiki/Map_(higher-order_function">map</a>和<a href="https://en.wikipedia.org/wiki/Map_(higher-order_function">reduce/fold</a>之间的关系。是仅仅的名字巧合吗？还是存在着某种关系？]]>
+    
+    </summary>
+    
+      <category term="map, reduce, MapReduce" scheme="http://blog.liushuping.com/tags/map-reduce-MapReduce/"/>
+    
+      <category term="Functional Programming" scheme="http://blog.liushuping.com/categories/Functional-Programming/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[伪基站之害]]></title>
@@ -1691,35 +1748,6 @@
     </summary>
     
       <category term="Tree" scheme="http://blog.liushuping.com/tags/Tree/"/>
-    
-      <category term="LeetCode" scheme="http://blog.liushuping.com/categories/LeetCode/"/>
-    
-      <category term="Algorithm" scheme="http://blog.liushuping.com/categories/LeetCode/Algorithm/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[LeetCode OJ 237 - Delete Node in a Linked List]]></title>
-    <link href="http://blog.liushuping.com/2015/07/15/LeetCode-OJ-237-Delete-Node-in-a-Linked-List/"/>
-    <id>http://blog.liushuping.com/2015/07/15/LeetCode-OJ-237-Delete-Node-in-a-Linked-List/</id>
-    <published>2015-07-15T14:00:32.000Z</published>
-    <updated>2015-10-25T10:41:11.000Z</updated>
-    <content type="html"><![CDATA[<p>给定一个链表中的某一个非末尾节点，要求实现一个函数把该节点从链表中删除。</p>
-<p>例如有链表：1-&gt;2-&gt;3-&gt;4，且给定的是值为3的那个节点，要求调用该函数后，链表变为1-&gt;2-&gt;4</p>
-<h2 id="问题分析">问题分析</h2><p>常见的链表节点删除问题是已知某节点的前继节点，通过设置前继节点的后续节点为目标节点的后续节点来到达删除该节点的目标。该题目无法得知目标节点的前继节点，因此该方法不可行。换一种思路，可以采取把目标节点的全部内容（value, next）修改为后续节点相同的内容，从而达到从链表中“删除”该节点的目的。</p>
-<p>题目声明目标节点非末尾节点，因此函数无需对目标节点以及目标节点的直接后续节点做“非空”检查。事实上，在前继节点未知的情况下，是无法删除链表中最后一个节点的。</p>
-<a id="more"></a>
-<h2 id="代码">代码</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line"> * Definition for singly-linked list.</span><br><span class="line"> * struct ListNode &#123;</span><br><span class="line"> *     int val;</span><br><span class="line"> *     ListNode *next;</span><br><span class="line"> *     ListNode(int x) : val(x), next(NULL) &#123;&#125;</span><br><span class="line"> * &#125;;</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">class</span> Solution &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">deleteNode</span><span class="params">(ListNode* node)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 目标节点非末尾节点，因此目标节点及其后续</span></span><br><span class="line">        <span class="comment">// 节点无需做“非空”检查。</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 让目标节点的值等于其后续节点的值</span></span><br><span class="line">        node-&gt;val = node-&gt;next-&gt;val;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 让目标节点的next值等于其后续节点的next值</span></span><br><span class="line">        node-&gt;next = node-&gt;next-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p>给定一个链表中的某一个非末尾节点，要求实现一个函数把该节点从链表中删除。</p>
-<p>例如有链表：1-&gt;2-&gt;3-&gt;4，且给定的是值为3的那个节点，要求调用该函数后，链表变为1-&gt;2-&gt;4</p>
-<h2 id="问题分析">问题分析</h2><p>常见的链表节点删除问题是已知某节点的前继节点，通过设置前继节点的后续节点为目标节点的后续节点来到达删除该节点的目标。该题目无法得知目标节点的前继节点，因此该方法不可行。换一种思路，可以采取把目标节点的全部内容（value, next）修改为后续节点相同的内容，从而达到从链表中“删除”该节点的目的。</p>
-<p>题目声明目标节点非末尾节点，因此函数无需对目标节点以及目标节点的直接后续节点做“非空”检查。事实上，在前继节点未知的情况下，是无法删除链表中最后一个节点的。</p>]]>
-    
-    </summary>
-    
-      <category term="Linked List" scheme="http://blog.liushuping.com/tags/Linked-List/"/>
     
       <category term="LeetCode" scheme="http://blog.liushuping.com/categories/LeetCode/"/>
     
