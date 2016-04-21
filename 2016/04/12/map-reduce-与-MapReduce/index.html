@@ -54,7 +54,7 @@
 <meta property="og:site_name" content="Shuping LIU">
 <meta property="og:description" content="昨天一个偶然的机会跟同事讨论了MapReduce这个产品和函数式编程中最出名的两个函数map和reduce/fold之间的关系。是仅仅的名字巧合吗？还是存在着某种关系？">
 <meta property="og:image" content="http://78rehp.com1.z0.glb.clouddn.com/blog%2Flearnyouahaskell.png">
-<meta property="og:updated_time" content="2016-04-12T17:17:47.000Z">
+<meta property="og:updated_time" content="2016-04-12T17:28:13.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="map reduce 与 MapReduce">
 <meta name="twitter:description" content="昨天一个偶然的机会跟同事讨论了MapReduce这个产品和函数式编程中最出名的两个函数map和reduce/fold之间的关系。是仅仅的名字巧合吗？还是存在着某种关系？">
@@ -285,7 +285,7 @@
 <li>对局部或所有数据块做数据“汇总操作”</li>
 </ul>
 <p>看！这是多么的美妙！完全符合之前提到的两个模式。</p>
-<p>Hadoop充分吸纳了map，reduce两个函数的精华：在集群机器间移动数据是很耗费资源的，因为它们选择移动函数，函数是一等公民的绝美应用！</p>
+<p>Hadoop充分吸纳了map，reduce两个函数的精华：在集群机器间移动数据是很耗费资源的，因此它们选择移动函数，函数是一等公民的绝妙应用！</p>
 <h2 id="为什么是MapReduce而不是”DivideConquer”?">为什么是MapReduce而不是”DivideConquer”?</h2><p>从本质上来说MapReduce框架属于Divide Conquer的一种。然而针对这个产品，“DividerConquer” 这个命名比MapReduce逊色很多，主要有两点：</p>
 <ul>
 <li>Divider conquer明确提出了“分而治之”的思路，却没有明确提出“汇总“这个在MapReduce产品中占1/2的思想</li>
@@ -322,6 +322,10 @@
           </div>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/04/21/Think-Bigger/" rel="prev" title="Think Bigger">
+                Think Bigger <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -409,21 +413,21 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">24</span>
+              <span class="site-state-item-count">25</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
 
           <div class="site-state-item site-state-categories">
             <a href="/categories">
-              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-count">20</span>
               <span class="site-state-item-name">分类</span>
               </a>
           </div>
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">36</span>
+              <span class="site-state-item-count">38</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>
