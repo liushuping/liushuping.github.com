@@ -36,7 +36,7 @@
 
 
 
-  <meta name="keywords" content=".NET,Cross-Platform," />
+  <meta name="keywords" content="Shuping, Blog, Algorithm, Programming" />
 
 
 
@@ -47,17 +47,44 @@
   <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.2" />
 
 
-<meta name="description" content="长久以来，开发人员只能在Windows平台上进行.NET开发。在其它平台上，如Linux上只能依赖第三方的运行时，例如著名的Mono。但是从.NET  5开始，微软官方发布了真正跨平台的.NET运行环境.NET Core。.NET 的跨平台也步入了新的台阶。">
+<meta name="description" content="title: 关于跨域请求一些常见的误解photos:
+
+http://78rehp.com1.z0.glb.clouddn.com/blog%2Fcoffe-and-keyboard.jpgdate: 2016-06-20 22:44:37categories:
+Webtags:
+COR
+
+
+
+自从不做Web前端开发一年多来，发现开始慢慢地遗忘一些前端知识，近来突然发现对跨域请求（同“源”策略）">
 <meta property="og:type" content="article">
-<meta property="og:title" content="非windows平台上的.NET开发">
-<meta property="og:url" content="http://blog.liushuping.com/2016/02/02/在非Windows平台上的-NET开发/index.html">
+<meta property="og:title" content="Shuping LIU">
+<meta property="og:url" content="http://blog.liushuping.com/2016/06/20/关于跨域请求一些常见的误解/index.html">
 <meta property="og:site_name" content="Shuping LIU">
-<meta property="og:description" content="长久以来，开发人员只能在Windows平台上进行.NET开发。在其它平台上，如Linux上只能依赖第三方的运行时，例如著名的Mono。但是从.NET  5开始，微软官方发布了真正跨平台的.NET运行环境.NET Core。.NET 的跨平台也步入了新的台阶。">
-<meta property="og:image" content="http://78rehp.com1.z0.glb.clouddn.com/blog%2Faspnet-sample.gif">
-<meta property="og:updated_time" content="2016-03-18T00:36:25.000Z">
+<meta property="og:description" content="title: 关于跨域请求一些常见的误解photos:
+
+http://78rehp.com1.z0.glb.clouddn.com/blog%2Fcoffe-and-keyboard.jpgdate: 2016-06-20 22:44:37categories:
+Webtags:
+COR
+
+
+
+自从不做Web前端开发一年多来，发现开始慢慢地遗忘一些前端知识，近来突然发现对跨域请求（同“源”策略）">
+<meta property="og:image" content="http://78rehp.com1.z0.glb.clouddn.com/blog%2Fcor_baidu.gif">
+<meta property="og:image" content="http://78rehp.com1.z0.glb.clouddn.com/blog%2Fmixed_request_baidu.gif">
+<meta property="og:image" content="http://78rehp.com1.z0.glb.clouddn.com/blog%2Fcurl-github.gif">
+<meta property="og:image" content="http://78rehp.com1.z0.glb.clouddn.com/blog%2Fcoffe-and-keyboard.jpg">
+<meta property="og:updated_time" content="2016-06-20T14:48:50.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="非windows平台上的.NET开发">
-<meta name="twitter:description" content="长久以来，开发人员只能在Windows平台上进行.NET开发。在其它平台上，如Linux上只能依赖第三方的运行时，例如著名的Mono。但是从.NET  5开始，微软官方发布了真正跨平台的.NET运行环境.NET Core。.NET 的跨平台也步入了新的台阶。">
+<meta name="twitter:title" content="Shuping LIU">
+<meta name="twitter:description" content="title: 关于跨域请求一些常见的误解photos:
+
+http://78rehp.com1.z0.glb.clouddn.com/blog%2Fcoffe-and-keyboard.jpgdate: 2016-06-20 22:44:37categories:
+Webtags:
+COR
+
+
+
+自从不做Web前端开发一年多来，发现开始慢慢地遗忘一些前端知识，近来突然发现对跨域请求（同“源”策略）">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -69,7 +96,7 @@
 
 
 
-  <title> 非windows平台上的.NET开发 | Shuping LIU </title>
+  <title>  | Shuping LIU </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -204,7 +231,7 @@
             
             
               
-                非windows平台上的.NET开发
+                
               
             
           </h1>
@@ -213,34 +240,19 @@
         <div class="post-meta">
           <span class="post-time">
             发表于
-            <time itemprop="dateCreated" datetime="2016-02-02T22:25:39+08:00" content="2016-02-02">
-              2016-02-02
+            <time itemprop="dateCreated" datetime="2016-06-20T22:48:50+08:00" content="2016-06-20">
+              2016-06-20
             </time>
           </span>
 
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp; 分类于
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/NET/" itemprop="url" rel="index">
-                    <span itemprop="name">.NET</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
           
 
           
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/02/02/在非Windows平台上的-NET开发/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/02/在非Windows平台上的-NET开发/" itemprop="commentsCount"></span>
+                <a href="/2016/06/20/关于跨域请求一些常见的误解/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/20/关于跨域请求一些常见的误解/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -259,61 +271,46 @@
       
 
       
-        <span itemprop="articleBody"><p>长久以来，开发人员只能在Windows平台上进行.NET开发。在其它平台上，如Linux上只能依赖第三方的运行时，例如著名的<a href="http://www.mono-project.com/" target="_blank" rel="external">Mono</a>。但是从.NET  5开始，微软官方发布了真正跨平台的.NET运行环境<a href="https://github.com/dotnet/coreclr" target="_blank" rel="external">.NET Core</a>。.NET 的跨平台也步入了新的台阶。</p>
-<a id="more"></a>
-<p>本文介绍了如何在Mac上以C#进行.Net Core 5.0程序的开发。</p>
-<h1 id="步骤概述">步骤概述</h1><p>不论是在Windows，Mac还是Linux平台上，.Net Core 5.0程序的开发都可以简要的总结为下列几个步骤：</p>
-<ol>
-<li>安装<a href="https://github.com/aspnet/dnvm/" target="_blank" rel="external">DNVM</a> - .NET版本管理器</li>
-<li>通过DNVM安装指定版本的.NET CLR</li>
-<li>创建.NET项目工程并编写代码</li>
-<li>执行命令<code>dnu restore</code> － 安装程序运行依赖包(NuGet格式)</li>
-<li>执行<code>dnx &lt;command&gt;</code> － 运行程序</li>
-</ol>
-<h1 id="安装DNVM">安装DNVM</h1><p><code>DNVM</code>是Dot Net Version Manager的缩写，它由几个脚本文件（Windows上PowerShell文件，Linux及Mac OS上是Shell文件）组成。按照<a href="https://docs.asp.net/en/latest/getting-started/installing-on-mac.html" target="_blank" rel="external">ASP官网</a>，通过下列命令来在Mac上下载并安装<code>DNVM</code>：<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -sSL https://raw.githubusercontent.com/aspnet/Home/dev/dnvminstall.sh | DNX_BRANCH=dev sh &#38;&#38; source ~/.dnx/dnvm/dnvm.sh</span><br></pre></td></tr></table></figure></p>
-<p>安装完成后，可以在Terminal下执行<code>DNVM</code>：<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dnvm</span><br></pre></td></tr></table></figure></p>
-<p>如要列出机器上当前所安装的所有.NET 版本：<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dnvm list</span><br></pre></td></tr></table></figure></p>
-<h1 id="安装CLR">安装CLR</h1><p>通过<code>DNVM</code>所管理的.NET 可以分为两类：.NET 4.5和.NET 5 Core。.NET 4.5在Mac上是基于Mono的，本文介绍的.NET 5 Core不依赖Mono，可以通过如下命令安装:<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dnvm upgrade -r coreclr</span><br></pre></td></tr></table></figure></p>
-<p>安装完成后，可以通过<code>dnvm list</code>来查看所有已经安装的.NET 。例如我的电脑当前安装的版本信息显示如下：<br><figure class="highlight brainfuck"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">Active</span> <span class="comment">Version</span>              <span class="comment">Runtime</span> <span class="comment">Architecture</span> <span class="comment">OperatingSystem</span> <span class="comment">Alias</span></span><br><span class="line"><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span> <span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span>              <span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span> <span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span> <span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span> <span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span></span><br><span class="line">       <span class="comment">1</span><span class="string">.</span><span class="comment">0</span><span class="string">.</span><span class="comment">0</span><span class="literal">-</span><span class="comment">rc1</span><span class="literal">-</span><span class="comment">final</span>      <span class="comment">coreclr</span> <span class="comment">x64</span>          <span class="comment">darwin</span>          </span><br><span class="line">  <span class="comment">*</span>    <span class="comment">1</span><span class="string">.</span><span class="comment">0</span><span class="string">.</span><span class="comment">0</span><span class="literal">-</span><span class="comment">rc1</span><span class="literal">-</span><span class="comment">update1</span>    <span class="comment">coreclr</span> <span class="comment">x64</span>          <span class="comment">darwin</span>          <span class="comment">default</span></span><br></pre></td></tr></table></figure></p>
-<p>第一列中标星号的版本代表了当前默认版本，因此在该机器上的.NET 代码会被编译到该目标.NET 平台下。如果要切换目标.NET 平台，可以通过命令<code>dnvm use</code>来实现。具体使用方式，可以查看<code>DNVM</code>帮助。</p>
-<h1 id="创建-NET项目">创建.NET项目</h1><p>前面的两步完成了对机器能编译运行.NET 程序的全部配置，因此可以进行.NET 的程序开发。然而从一个完全空白的文件或文件夹开始写源代码是非常不方便的。通常我们需要一个创建项目的模板，或者近几年更流行的名称是“脚手架”。针对.NET  5平台的脚手架的实现上，微软采取了充分利用开源社区资源的做法，既节省了成本又提高了广大开发者的认同度。</p>
-<p>微软采取了通过<a href="https://www.npmjs.com/package/yo" target="_blank" rel="external">Yoeman</a>这个基于Node跨平台的脚手架工具来实现.NET  5项目工程文件创建的目的。具体地说，它开发了一个Yomean的插件<a href="https://www.npmjs.com/package/generator-aspnet" target="_blank" rel="external">generator-aspnet</a>来作为.NET 5的脚手架。</p>
-<p>在Node的提示符下，输入如下命令可以进入.NET  5项目工程生成的引导步骤中：<br><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">yo</span> aspnet</span><br></pre></td></tr></table></figure></p>
-<p>值得一提的是，虽然命令行的参数叫<code>aspnet</code>，但是它却能创建大多数常见的.NET 工程类型，如<code>Console</code>, <code>UnitTest</code>等等。</p>
-<h1 id="安装程序依赖包">安装程序依赖包</h1><p>.NET  5的所有依赖项都是通过NuGet来进行管理的，而这些依赖项都注册在工程主文件<code>project.json</code>中。通过脚手架生成的工程并没有把所依赖的包安装下载到工程所在目录。因此需要运行下面的命令来加载所有依赖项：<br><figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dnu <span class="built_in">restore</span></span><br></pre></td></tr></table></figure></p>
-<h1 id="运行程序">运行程序</h1><p>运行程序所要执行的命令是<code>dnx</code>，其参数根据项目工程不同而不同，可以参考<code>project.json</code>文件中的<code>commands</code>属性。比如<code>Unit Test</code>的项目的<code>commands</code>属性是这样子的:<br><figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"commands"</span>: &#123;</span><br><span class="line">    <span class="string">"test"</span>: <span class="string">"xunit.runner.dnx"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>因此，运行该工程的命令是<code>dnx test</code>。如果执行<code>dnx</code>命令前并没有执行<code>dnu</code>命令，则<code>dnx</code>会先执行<code>dnu</code>。</p>
-<h1 id="演示">演示</h1><p><img src="http://78rehp.com1.z0.glb.clouddn.com/blog%2Faspnet-sample.gif" alt="demo"></p>
+        <span itemprop="articleBody"><p>title: 关于跨域请求一些常见的误解<br>photos:</p>
+<ul>
+<li><a href="http://78rehp.com1.z0.glb.clouddn.com/blog%2Fcoffe-and-keyboard.jpg" target="_blank" rel="external">http://78rehp.com1.z0.glb.clouddn.com/blog%2Fcoffe-and-keyboard.jpg</a><br>date: 2016-06-20 22:44:37<br>categories:<ul>
+<li>Web<br>tags:</li>
+<li>COR</li>
+</ul>
+</li>
+</ul>
+<p>自从不做Web前端开发一年多来，发现开始慢慢地遗忘一些前端知识，近来突然发现对跨域请求（同“源”策略）的知识遗忘太多，以至于对其基本原理产生了一些误解。借此机会，把容易产生误解的一些知识点写出来，帮助自己加强记忆，也希望能对读者有所帮助。</p>
+<h2 id="跨域请求的实现方式">跨域请求的实现方式</h2><p>跨域请求常见的两种实现方式是：<code>JSONP</code>和<code>COR</code>，<code>JSONP</code>是<code>COR</code>标准出现之前的一种方案，<code>COR</code>出现后<code>JSNOP</code>的应用渐少，本文讨论的范围是<code>COR</code>。</p>
+<h2 id="COR简介">COR简介</h2><p><code>COR</code>的全称是Cross Origin Request，即跨域请求（严格来说应该是跨“源”请求，但本文保留了常见的叫法“跨域请求”），是通过在返回的HTTP响应（response）中加入一些标准定义的头信息（header）来声明该资源允许来自于哪些“源”的请求。而“源”是由<code>scheme</code>，<code>host name</code>和<code>port</code>三部分组成的（有些浏览器，如部分版本IE是不考虑端口号的），如果这三部分中的任何一部分不同则说明两个“域”不同。例如：<code>http://example.com</code>, <code>https://example.com</code>, <code>http://www.example.com</code>和<code>http://example.com:1234</code>分属四个不同的“源”。</p>
+<h2 id="“同源策略”的有效范围">“同源策略”的有效范围</h2><p>标准Uer Agent如标准浏览器，出于安全因素考虑，默认是不允许<code>Ajax</code>异步请求访问不同于当前站点“源”的资源的。需要特别说明的一点是，除<code>Ajax</code>异步请求外，其它方式如通过<code>&lt;script&gt;</code>,<code>&lt;img&gt;</code>等标签是允许访问不同“源”的资源的。因此，说浏览器默认是不允许任何形式的跨域请求是一个误解。</p>
+<p>值得一提的是，<code>JSONP</code>正是基于<code>&lt;script&gt;</code>标签不受“同源策略”限制这个特点来实现的，此处不做详解，感兴趣者，请留言讨论。</p>
+<p>然而，由于复杂业务的需求，很多后台的API等都需要部署在另外一个不同的域名上，或者应用程序需要访问第三方的API，<code>COR</code>的出现就是为了在保证安全的前提下满足这个需求的。<code>COR</code>通过在HTTP响应的头信息中加入一些跨域限制，例如<code>Access-Control-Allow-Origin:http://*.example.com</code>来允许任何来自<code>example.com</code>站点的访问请求。通过严格控制允许访问的域名，是可以保证安全的。</p>
+<h2 id="“同源策略”所保护的对象">“同源策略”所保护的对象</h2><p>另一个容易产生的误解是：“同源策略”保护的是请求者还是被请求者？当把这个问题同<code>XSS</code>等问题混在一起时容易产生误解：<code>XSS</code>是说当站点存在安全缺陷时，容易被注入恶意<code>JavaScript</code>代码，而注入的恶意代码通常会把该站点的信息发回攻击者事先部署好的一个服务器上。在这种情况下，容易把“同源策略”理解成是保护请求发起者，因为假如“同源策略”能限制该站点不能发送任何请求到除自身站点外的任何站点，似乎攻击者的脚本就起不到作用了。不过，事实上“同源策略”的作用是在保证被请求资源的安全下，允许受信的站点访问该资源，所以说它是为了保护被请求资源的。</p>
+<h2 id="跨域请求是否发生">跨域请求是否发生</h2><p>最后一个容易产生的误解是：“不被<code>COR</code>允许的请求是不会被浏览器发出的”。这是一个错误的理解，且很容易从<code>COR</code>的实现方式来推导证明：<code>COR</code>的实现是通过在HTTP响应中加入相应的头信息来声明该资源可以被哪些站点访问，这种实现方式势必决定了浏览器必须发出请求并检查响应才能做出决定。因此，不被<code>COR</code>允许的请求仍然被浏览器发出且被接收了，只是浏览器并没有把结果反馈给JavaScript，而是汇报了一个“同源”错误。</p>
+<p><img src="http://78rehp.com1.z0.glb.clouddn.com/blog%2Fcor_baidu.gif" alt="gif"></p>
+<p>事实上，有一种请求是会被浏览器阻止而不会被发出的，那就是HTTP和HTTPS请求混用的情况，比如在一个HTTPS的站点下尝试<code>Ajax</code>请求HTTP类型的资源。</p>
+<p><img src="http://78rehp.com1.z0.glb.clouddn.com/blog%2Fmixed_request_baidu.gif" alt="gif"></p>
+<h2 id="Access-Control-Allow-Origin:_*">Access-Control-Allow-Origin: *</h2><p>“我”做了一个非常了不起的API，想让任何有权限的客户都能访问我的API，因此我需要完全取消“同源策略”的限制：<code>&quot;Access-Control-Allow-Origin: *&quot;</code> 。这样做我需要注意什么？安全是一个最重要的考虑，例如DDos。“了不起”且已经这样做了的API有很多，GitHub API就是一个例子：</p>
+<p><img src="http://78rehp.com1.z0.glb.clouddn.com/blog%2Fcurl-github.gif" alt="gif"></p>
+<h2 id="咖啡时间">咖啡时间</h2><p>不知从何时起，我喜欢上了喝咖啡。<br><img src="http://78rehp.com1.z0.glb.clouddn.com/blog%2Fcoffe-and-keyboard.jpg" alt="img"></p>
 </span>
       
     </div>
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/NET/" rel="tag">#.NET</a>
-          
-            <a href="/tags/Cross-Platform/" rel="tag">#Cross-Platform</a>
-          
-        </div>
-      
 
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/01/23/微软跨平台及开源的执行力之我见/" rel="next" title="微软跨平台及开源的执行力之我见">
-                <i class="fa fa-chevron-left"></i> 微软跨平台及开源的执行力之我见
+              <a href="/2016/04/21/Think-Bigger/" rel="next" title="Think Bigger">
+                <i class="fa fa-chevron-left"></i> Think Bigger
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/02/23/I-will-call-you-back/" rel="prev" title="I will call you back">
-                I will call you back <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -328,10 +325,10 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2016/02/02/在非Windows平台上的-NET开发/"
-     data-title="非windows平台上的.NET开发"
+        <div class="ds-share flat" data-thread-key="2016/06/20/关于跨域请求一些常见的误解/"
+     data-title=""
      data-content=""
-     data-url="http://blog.liushuping.com/2016/02/02/在非Windows平台上的-NET开发/">
+     data-url="http://blog.liushuping.com/2016/06/20/关于跨域请求一些常见的误解/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -357,8 +354,8 @@
         
           <div class="comments" id="comments">
             
-              <div class="ds-thread" data-thread-key="2016/02/02/在非Windows平台上的-NET开发/"
-                   data-title="非windows平台上的.NET开发" data-url="http://blog.liushuping.com/2016/02/02/在非Windows平台上的-NET开发/">
+              <div class="ds-thread" data-thread-key="2016/06/20/关于跨域请求一些常见的误解/"
+                   data-title="" data-url="http://blog.liushuping.com/2016/06/20/关于跨域请求一些常见的误解/">
               </div>
             
           </div>
@@ -458,7 +455,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#步骤概述"><span class="nav-number">1.</span> <span class="nav-text">步骤概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装DNVM"><span class="nav-number">2.</span> <span class="nav-text">安装DNVM</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装CLR"><span class="nav-number">3.</span> <span class="nav-text">安装CLR</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#创建-NET项目"><span class="nav-number">4.</span> <span class="nav-text">创建.NET项目</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装程序依赖包"><span class="nav-number">5.</span> <span class="nav-text">安装程序依赖包</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#运行程序"><span class="nav-number">6.</span> <span class="nav-text">运行程序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#演示"><span class="nav-number">7.</span> <span class="nav-text">演示</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#跨域请求的实现方式"><span class="nav-number">1.</span> <span class="nav-text">跨域请求的实现方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#COR简介"><span class="nav-number">2.</span> <span class="nav-text">COR简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#“同源策略”的有效范围"><span class="nav-number">3.</span> <span class="nav-text">“同源策略”的有效范围</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#“同源策略”所保护的对象"><span class="nav-number">4.</span> <span class="nav-text">“同源策略”所保护的对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#跨域请求是否发生"><span class="nav-number">5.</span> <span class="nav-text">跨域请求是否发生</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Access-Control-Allow-Origin:_*"><span class="nav-number">6.</span> <span class="nav-text">Access-Control-Allow-Origin: *</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#咖啡时间"><span class="nav-number">7.</span> <span class="nav-text">咖啡时间</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>

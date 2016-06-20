@@ -204,6 +204,110 @@
             
             
               
+                <a class="post-title-link" href="/2016/06/20/关于跨域请求一些常见的误解/" itemprop="url">
+                  未命名
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2016-06-20T22:48:50+08:00" content="2016-06-20">
+              2016-06-20
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/06/20/关于跨域请求一些常见的误解/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/20/关于跨域请求一些常见的误解/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody">
+            
+              <p>title: 关于跨域请求一些常见的误解<br>photos:</p>
+<ul>
+<li><a href="http://78rehp.com1.z0.glb.clouddn.com/blog%2Fcoffe-and-keyboard.jpg" target="_blank" rel="external">http://78rehp.com1.z0.glb.clouddn.com/blog%2Fcoffe-and-keyboard.jpg</a><br>date: 2016-06-20 22:44:37<br>categories:<ul>
+<li>Web<br>tags:</li>
+<li>COR</li>
+</ul>
+</li>
+</ul>
+<p>自从不做Web前端开发一年多来，发现开始慢慢地遗忘一些前端知识，近来突然发现对跨域请求（同“源”策略）的知识遗忘太多，以至于对其基本原理产生了一些误解。借此机会，把容易产生误解的一些知识点写出来，帮助自己加强记忆，也希望能对读者有所帮助。</p>
+<h2 id="跨域请求的实现方式">跨域请求的实现方式</h2><p>跨域请求常见的两种实现方式是：<code>JSONP</code>和<code>COR</code>，<code>JSONP</code>是<code>COR</code>标准出现之前的一种方案，<code>COR</code>出现后<code>JSNOP</code>的应用渐少，本文讨论的范围是<code>COR</code>。</p>
+<h2 id="COR简介">COR简介</h2><p><code>COR</code>的全称是Cross Origin Request，即跨域请求（严格来说应该是跨“源”请求，但本文保留了常见的叫法“跨域请求”），是通过在返回的HTTP响应（response）中加入一些标准定义的头信息（header）来声明该资源允许来自于哪些“源”的请求。而“源”是由<code>scheme</code>，<code>host name</code>和<code>port</code>三部分组成的（有些浏览器，如部分版本IE是不考虑端口号的），如果这三部分中的任何一部分不同则说明两个“域”不同。例如：<code>http://example.com</code>, <code>https://example.com</code>, <code>http://www.example.com</code>和<code>http://example.com:1234</code>分属四个不同的“源”。</p>
+<h2 id="“同源策略”的有效范围">“同源策略”的有效范围</h2><p>标准Uer Agent如标准浏览器，出于安全因素考虑，默认是不允许<code>Ajax</code>异步请求访问不同于当前站点“源”的资源的。需要特别说明的一点是，除<code>Ajax</code>异步请求外，其它方式如通过<code>&lt;script&gt;</code>,<code>&lt;img&gt;</code>等标签是允许访问不同“源”的资源的。因此，说浏览器默认是不允许任何形式的跨域请求是一个误解。</p>
+<p>值得一提的是，<code>JSONP</code>正是基于<code>&lt;script&gt;</code>标签不受“同源策略”限制这个特点来实现的，此处不做详解，感兴趣者，请留言讨论。</p>
+<p>然而，由于复杂业务的需求，很多后台的API等都需要部署在另外一个不同的域名上，或者应用程序需要访问第三方的API，<code>COR</code>的出现就是为了在保证安全的前提下满足这个需求的。<code>COR</code>通过在HTTP响应的头信息中加入一些跨域限制，例如<code>Access-Control-Allow-Origin:http://*.example.com</code>来允许任何来自<code>example.com</code>站点的访问请求。通过严格控制允许访问的域名，是可以保证安全的。</p>
+<h2 id="“同源策略”所保护的对象">“同源策略”所保护的对象</h2><p>另一个容易产生的误解是：“同源策略”保护的是请求者还是被请求者？当把这个问题同<code>XSS</code>等问题混在一起时容易产生误解：<code>XSS</code>是说当站点存在安全缺陷时，容易被注入恶意<code>JavaScript</code>代码，而注入的恶意代码通常会把该站点的信息发回攻击者事先部署好的一个服务器上。在这种情况下，容易把“同源策略”理解成是保护请求发起者，因为假如“同源策略”能限制该站点不能发送任何请求到除自身站点外的任何站点，似乎攻击者的脚本就起不到作用了。不过，事实上“同源策略”的作用是在保证被请求资源的安全下，允许受信的站点访问该资源，所以说它是为了保护被请求资源的。</p>
+<h2 id="跨域请求是否发生">跨域请求是否发生</h2><p>最后一个容易产生的误解是：“不被<code>COR</code>允许的请求是不会被浏览器发出的”。这是一个错误的理解，且很容易从<code>COR</code>的实现方式来推导证明：<code>COR</code>的实现是通过在HTTP响应中加入相应的头信息来声明该资源可以被哪些站点访问，这种实现方式势必决定了浏览器必须发出请求并检查响应才能做出决定。因此，不被<code>COR</code>允许的请求仍然被浏览器发出且被接收了，只是浏览器并没有把结果反馈给JavaScript，而是汇报了一个“同源”错误。</p>
+<p><img src="http://78rehp.com1.z0.glb.clouddn.com/blog%2Fcor_baidu.gif" alt="gif"></p>
+<p>事实上，有一种请求是会被浏览器阻止而不会被发出的，那就是HTTP和HTTPS请求混用的情况，比如在一个HTTPS的站点下尝试<code>Ajax</code>请求HTTP类型的资源。</p>
+<p><img src="http://78rehp.com1.z0.glb.clouddn.com/blog%2Fmixed_request_baidu.gif" alt="gif"></p>
+<h2 id="Access-Control-Allow-Origin:_*">Access-Control-Allow-Origin: *</h2><p>“我”做了一个非常了不起的API，想让任何有权限的客户都能访问我的API，因此我需要完全取消“同源策略”的限制：<code>&quot;Access-Control-Allow-Origin: *&quot;</code> 。这样做我需要注意什么？安全是一个最重要的考虑，例如DDos。“了不起”且已经这样做了的API有很多，GitHub API就是一个例子：</p>
+<p><img src="http://78rehp.com1.z0.glb.clouddn.com/blog%2Fcurl-github.gif" alt="gif"></p>
+<h2 id="咖啡时间">咖啡时间</h2><p>不知从何时起，我喜欢上了喝咖啡。<br><img src="http://78rehp.com1.z0.glb.clouddn.com/blog%2Fcoffe-and-keyboard.jpg" alt="img"></p>
+
+            
+          </span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
                 <a class="post-title-link" href="/2016/04/21/Think-Bigger/" itemprop="url">
                   Think Bigger
                 </a>
@@ -563,7 +667,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="http://78rehp.com1.z0.glb.clouddn.com/coursera-machine-learning-logo.png" rel="gallery_cinaj87nj00108ucnefdngydr"
+                 href="http://78rehp.com1.z0.glb.clouddn.com/coursera-machine-learning-logo.png" rel="gallery_cipo50u9g0010fhcn6y7ttd81"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="http://78rehp.com1.z0.glb.clouddn.com/coursera-machine-learning-logo.png" itemprop="contentUrl"/>
               </a>
@@ -875,7 +979,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="http://78rehp.com1.z0.glb.clouddn.com/blog%2Fwindows_linux.png" rel="gallery_cinaj87nf000t8ucn4344qqxf"
+                 href="http://78rehp.com1.z0.glb.clouddn.com/blog%2Fwindows_linux.png" rel="gallery_cipo50u9d000tfhcnnnu2qp2w"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="http://78rehp.com1.z0.glb.clouddn.com/blog%2Fwindows_linux.png" itemprop="contentUrl"/>
               </a>
@@ -1117,104 +1221,6 @@
 
 
     
-      
-
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                <a class="post-title-link" href="/2015/11/09/C-算法笔记－常用头文件/" itemprop="url">
-                  C++算法笔记－常用头文件
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            发表于
-            <time itemprop="dateCreated" datetime="2015-11-09T21:53:43+08:00" content="2015-11-09">
-              2015-11-09
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp; 分类于
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/C-算法笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">C++算法笔记</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/11/09/C-算法笔记－常用头文件/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/09/C-算法笔记－常用头文件/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <p>C＋+有非常非常多的库文件，很多常见的功能都可在其中找到了解常用的库文件可以让我们清楚地知道有哪些系统已有功能可以使用，有哪些功能是我们需要实现的。本文列出了算法程序常用库的头文件。</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/11/09/C-算法笔记－常用头文件/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1257,7 +1263,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">25</span>
+              <span class="site-state-item-count">26</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
