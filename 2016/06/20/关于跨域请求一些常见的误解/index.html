@@ -36,7 +36,7 @@
 
 
 
-  <meta name="keywords" content="Shuping, Blog, Algorithm, Programming" />
+  <meta name="keywords" content="COR," />
 
 
 
@@ -47,44 +47,17 @@
   <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.2" />
 
 
-<meta name="description" content="title: 关于跨域请求一些常见的误解photos:
-
-http://78rehp.com1.z0.glb.clouddn.com/blog%2Fcoffe-and-keyboard.jpgdate: 2016-06-20 22:44:37categories:
-Webtags:
-COR
-
-
-
-自从不做Web前端开发一年多来，发现开始慢慢地遗忘一些前端知识，近来突然发现对跨域请求（同“源”策略）">
+<meta name="description" content="自从不做Web前端开发一年多来，发现开始慢慢地遗忘一些前端知识，近来突然发现对跨域请求（同“源”策略）的知识遗忘太多，以至于对其基本原理产生了一些误解。借此机会，把容易产生误解的一些知识点写出来，帮助自己加强记忆，也希望能对读者有所帮助。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Shuping LIU">
+<meta property="og:title" content="关于跨域请求一些常见的误解">
 <meta property="og:url" content="http://blog.liushuping.com/2016/06/20/关于跨域请求一些常见的误解/index.html">
 <meta property="og:site_name" content="Shuping LIU">
-<meta property="og:description" content="title: 关于跨域请求一些常见的误解photos:
-
-http://78rehp.com1.z0.glb.clouddn.com/blog%2Fcoffe-and-keyboard.jpgdate: 2016-06-20 22:44:37categories:
-Webtags:
-COR
-
-
-
-自从不做Web前端开发一年多来，发现开始慢慢地遗忘一些前端知识，近来突然发现对跨域请求（同“源”策略）">
-<meta property="og:image" content="http://78rehp.com1.z0.glb.clouddn.com/blog%2Fcor_baidu.gif">
-<meta property="og:image" content="http://78rehp.com1.z0.glb.clouddn.com/blog%2Fmixed_request_baidu.gif">
-<meta property="og:image" content="http://78rehp.com1.z0.glb.clouddn.com/blog%2Fcurl-github.gif">
+<meta property="og:description" content="自从不做Web前端开发一年多来，发现开始慢慢地遗忘一些前端知识，近来突然发现对跨域请求（同“源”策略）的知识遗忘太多，以至于对其基本原理产生了一些误解。借此机会，把容易产生误解的一些知识点写出来，帮助自己加强记忆，也希望能对读者有所帮助。">
 <meta property="og:image" content="http://78rehp.com1.z0.glb.clouddn.com/blog%2Fcoffe-and-keyboard.jpg">
-<meta property="og:updated_time" content="2016-06-20T14:48:50.000Z">
+<meta property="og:updated_time" content="2016-06-20T14:51:55.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Shuping LIU">
-<meta name="twitter:description" content="title: 关于跨域请求一些常见的误解photos:
-
-http://78rehp.com1.z0.glb.clouddn.com/blog%2Fcoffe-and-keyboard.jpgdate: 2016-06-20 22:44:37categories:
-Webtags:
-COR
-
-
-
-自从不做Web前端开发一年多来，发现开始慢慢地遗忘一些前端知识，近来突然发现对跨域请求（同“源”策略）">
+<meta name="twitter:title" content="关于跨域请求一些常见的误解">
+<meta name="twitter:description" content="自从不做Web前端开发一年多来，发现开始慢慢地遗忘一些前端知识，近来突然发现对跨域请求（同“源”策略）的知识遗忘太多，以至于对其基本原理产生了一些误解。借此机会，把容易产生误解的一些知识点写出来，帮助自己加强记忆，也希望能对读者有所帮助。">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -96,7 +69,7 @@ COR
 
 
 
-  <title>  | Shuping LIU </title>
+  <title> 关于跨域请求一些常见的误解 | Shuping LIU </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -231,7 +204,7 @@ COR
             
             
               
-                
+                关于跨域请求一些常见的误解
               
             
           </h1>
@@ -240,11 +213,26 @@ COR
         <div class="post-meta">
           <span class="post-time">
             发表于
-            <time itemprop="dateCreated" datetime="2016-06-20T22:48:50+08:00" content="2016-06-20">
+            <time itemprop="dateCreated" datetime="2016-06-20T22:44:37+08:00" content="2016-06-20">
               2016-06-20
             </time>
           </span>
 
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Web/" itemprop="url" rel="index">
+                    <span itemprop="name">Web</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
           
 
           
@@ -269,18 +257,27 @@ COR
 
       
       
+        <div class="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
+          
+          
+            <div class="post-gallery-row">
+              <a class="post-gallery-img fancybox"
+                 href="http://78rehp.com1.z0.glb.clouddn.com/blog%2Fcoffe-and-keyboard.jpg" rel="gallery_cipo5bkx9001fm7cnimuosvfe"
+                 itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
+                <img src="http://78rehp.com1.z0.glb.clouddn.com/blog%2Fcoffe-and-keyboard.jpg" itemprop="contentUrl"/>
+              </a>
+            
+          
+
+          
+          </div>
+        </div>
+      
 
       
-        <span itemprop="articleBody"><p>title: 关于跨域请求一些常见的误解<br>photos:</p>
-<ul>
-<li><a href="http://78rehp.com1.z0.glb.clouddn.com/blog%2Fcoffe-and-keyboard.jpg" target="_blank" rel="external">http://78rehp.com1.z0.glb.clouddn.com/blog%2Fcoffe-and-keyboard.jpg</a><br>date: 2016-06-20 22:44:37<br>categories:<ul>
-<li>Web<br>tags:</li>
-<li>COR</li>
-</ul>
-</li>
-</ul>
-<p>自从不做Web前端开发一年多来，发现开始慢慢地遗忘一些前端知识，近来突然发现对跨域请求（同“源”策略）的知识遗忘太多，以至于对其基本原理产生了一些误解。借此机会，把容易产生误解的一些知识点写出来，帮助自己加强记忆，也希望能对读者有所帮助。</p>
-<h2 id="跨域请求的实现方式">跨域请求的实现方式</h2><p>跨域请求常见的两种实现方式是：<code>JSONP</code>和<code>COR</code>，<code>JSONP</code>是<code>COR</code>标准出现之前的一种方案，<code>COR</code>出现后<code>JSNOP</code>的应用渐少，本文讨论的范围是<code>COR</code>。</p>
+        <span itemprop="articleBody"><p>自从不做Web前端开发一年多来，发现开始慢慢地遗忘一些前端知识，近来突然发现对跨域请求（同“源”策略）的知识遗忘太多，以至于对其基本原理产生了一些误解。借此机会，把容易产生误解的一些知识点写出来，帮助自己加强记忆，也希望能对读者有所帮助。</p>
+<a id="more"></a>
+<h2 id="跨域请求的实现方式">跨域请求的实现方式</h2><p>跨域请求常见的两种实现方式是：<code>JSONP</code>和<code>COR</code>，<code>JSONP</code>是<code>COR</code>标准出现之前的一种方案，<code>COR</code>出现后<code>JSONP</code>的应用渐少，本文讨论的范围是<code>COR</code>。</p>
 <h2 id="COR简介">COR简介</h2><p><code>COR</code>的全称是Cross Origin Request，即跨域请求（严格来说应该是跨“源”请求，但本文保留了常见的叫法“跨域请求”），是通过在返回的HTTP响应（response）中加入一些标准定义的头信息（header）来声明该资源允许来自于哪些“源”的请求。而“源”是由<code>scheme</code>，<code>host name</code>和<code>port</code>三部分组成的（有些浏览器，如部分版本IE是不考虑端口号的），如果这三部分中的任何一部分不同则说明两个“域”不同。例如：<code>http://example.com</code>, <code>https://example.com</code>, <code>http://www.example.com</code>和<code>http://example.com:1234</code>分属四个不同的“源”。</p>
 <h2 id="“同源策略”的有效范围">“同源策略”的有效范围</h2><p>标准Uer Agent如标准浏览器，出于安全因素考虑，默认是不允许<code>Ajax</code>异步请求访问不同于当前站点“源”的资源的。需要特别说明的一点是，除<code>Ajax</code>异步请求外，其它方式如通过<code>&lt;script&gt;</code>,<code>&lt;img&gt;</code>等标签是允许访问不同“源”的资源的。因此，说浏览器默认是不允许任何形式的跨域请求是一个误解。</p>
 <p>值得一提的是，<code>JSONP</code>正是基于<code>&lt;script&gt;</code>标签不受“同源策略”限制这个特点来实现的，此处不做详解，感兴趣者，请留言讨论。</p>
@@ -298,6 +295,12 @@ COR
     </div>
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/COR/" rel="tag">#COR</a>
+          
+        </div>
       
 
       
@@ -326,7 +329,7 @@ COR
     <div class="post-spread">
       
         <div class="ds-share flat" data-thread-key="2016/06/20/关于跨域请求一些常见的误解/"
-     data-title=""
+     data-title="关于跨域请求一些常见的误解"
      data-content=""
      data-url="http://blog.liushuping.com/2016/06/20/关于跨域请求一些常见的误解/">
   <div class="ds-share-inline">
@@ -355,7 +358,7 @@ COR
           <div class="comments" id="comments">
             
               <div class="ds-thread" data-thread-key="2016/06/20/关于跨域请求一些常见的误解/"
-                   data-title="" data-url="http://blog.liushuping.com/2016/06/20/关于跨域请求一些常见的误解/">
+                   data-title="关于跨域请求一些常见的误解" data-url="http://blog.liushuping.com/2016/06/20/关于跨域请求一些常见的误解/">
               </div>
             
           </div>
@@ -405,14 +408,14 @@ COR
 
           <div class="site-state-item site-state-categories">
             <a href="/categories">
-              <span class="site-state-item-count">20</span>
+              <span class="site-state-item-count">21</span>
               <span class="site-state-item-name">分类</span>
               </a>
           </div>
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">38</span>
+              <span class="site-state-item-count">39</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>

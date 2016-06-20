@@ -4,7 +4,7 @@
   <subtitle><![CDATA[A JavaScript and C# developer]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://blog.liushuping.com/"/>
-  <updated>2016-06-20T14:48:50.000Z</updated>
+  <updated>2016-06-20T14:51:55.000Z</updated>
   <id>http://blog.liushuping.com/</id>
   
   <author>
@@ -15,21 +15,14 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title></title>
+    <title><![CDATA[关于跨域请求一些常见的误解]]></title>
     <link href="http://blog.liushuping.com/2016/06/20/%E5%85%B3%E4%BA%8E%E8%B7%A8%E5%9F%9F%E8%AF%B7%E6%B1%82%E4%B8%80%E4%BA%9B%E5%B8%B8%E8%A7%81%E7%9A%84%E8%AF%AF%E8%A7%A3/"/>
     <id>http://blog.liushuping.com/2016/06/20/关于跨域请求一些常见的误解/</id>
-    <published>2016-06-20T14:48:50.000Z</published>
-    <updated>2016-06-20T14:48:50.000Z</updated>
-    <content type="html"><![CDATA[<p>title: 关于跨域请求一些常见的误解<br>photos:</p>
-<ul>
-<li><a href="http://78rehp.com1.z0.glb.clouddn.com/blog%2Fcoffe-and-keyboard.jpg" target="_blank" rel="external">http://78rehp.com1.z0.glb.clouddn.com/blog%2Fcoffe-and-keyboard.jpg</a><br>date: 2016-06-20 22:44:37<br>categories:<ul>
-<li>Web<br>tags:</li>
-<li>COR</li>
-</ul>
-</li>
-</ul>
-<p>自从不做Web前端开发一年多来，发现开始慢慢地遗忘一些前端知识，近来突然发现对跨域请求（同“源”策略）的知识遗忘太多，以至于对其基本原理产生了一些误解。借此机会，把容易产生误解的一些知识点写出来，帮助自己加强记忆，也希望能对读者有所帮助。</p>
-<h2 id="跨域请求的实现方式">跨域请求的实现方式</h2><p>跨域请求常见的两种实现方式是：<code>JSONP</code>和<code>COR</code>，<code>JSONP</code>是<code>COR</code>标准出现之前的一种方案，<code>COR</code>出现后<code>JSNOP</code>的应用渐少，本文讨论的范围是<code>COR</code>。</p>
+    <published>2016-06-20T14:44:37.000Z</published>
+    <updated>2016-06-20T14:51:55.000Z</updated>
+    <content type="html"><![CDATA[<p>自从不做Web前端开发一年多来，发现开始慢慢地遗忘一些前端知识，近来突然发现对跨域请求（同“源”策略）的知识遗忘太多，以至于对其基本原理产生了一些误解。借此机会，把容易产生误解的一些知识点写出来，帮助自己加强记忆，也希望能对读者有所帮助。</p>
+<a id="more"></a>
+<h2 id="跨域请求的实现方式">跨域请求的实现方式</h2><p>跨域请求常见的两种实现方式是：<code>JSONP</code>和<code>COR</code>，<code>JSONP</code>是<code>COR</code>标准出现之前的一种方案，<code>COR</code>出现后<code>JSONP</code>的应用渐少，本文讨论的范围是<code>COR</code>。</p>
 <h2 id="COR简介">COR简介</h2><p><code>COR</code>的全称是Cross Origin Request，即跨域请求（严格来说应该是跨“源”请求，但本文保留了常见的叫法“跨域请求”），是通过在返回的HTTP响应（response）中加入一些标准定义的头信息（header）来声明该资源允许来自于哪些“源”的请求。而“源”是由<code>scheme</code>，<code>host name</code>和<code>port</code>三部分组成的（有些浏览器，如部分版本IE是不考虑端口号的），如果这三部分中的任何一部分不同则说明两个“域”不同。例如：<code>http://example.com</code>, <code>https://example.com</code>, <code>http://www.example.com</code>和<code>http://example.com:1234</code>分属四个不同的“源”。</p>
 <h2 id="“同源策略”的有效范围">“同源策略”的有效范围</h2><p>标准Uer Agent如标准浏览器，出于安全因素考虑，默认是不允许<code>Ajax</code>异步请求访问不同于当前站点“源”的资源的。需要特别说明的一点是，除<code>Ajax</code>异步请求外，其它方式如通过<code>&lt;script&gt;</code>,<code>&lt;img&gt;</code>等标签是允许访问不同“源”的资源的。因此，说浏览器默认是不允许任何形式的跨域请求是一个误解。</p>
 <p>值得一提的是，<code>JSONP</code>正是基于<code>&lt;script&gt;</code>标签不受“同源策略”限制这个特点来实现的，此处不做详解，感兴趣者，请留言讨论。</p>
@@ -44,10 +37,13 @@
 <h2 id="咖啡时间">咖啡时间</h2><p>不知从何时起，我喜欢上了喝咖啡。<br><img src="http://78rehp.com1.z0.glb.clouddn.com/blog%2Fcoffe-and-keyboard.jpg" alt="img"></p>
 ]]></content>
     <summary type="html">
-    <![CDATA[<p>title: 关于跨域请求一些常见的误解<br>photos:</p>
-<ul>
-<li><a href="http://78rehp.com1.z0.glb.clouddn.com/blog%2Fcoffe-and-keyboard.jpg" target="_blank]]>
+    <![CDATA[<p>自从不做Web前端开发一年多来，发现开始慢慢地遗忘一些前端知识，近来突然发现对跨域请求（同“源”策略）的知识遗忘太多，以至于对其基本原理产生了一些误解。借此机会，把容易产生误解的一些知识点写出来，帮助自己加强记忆，也希望能对读者有所帮助。</p>]]>
+    
     </summary>
+    
+      <category term="COR" scheme="http://blog.liushuping.com/tags/COR/"/>
+    
+      <category term="Web" scheme="http://blog.liushuping.com/categories/Web/"/>
     
   </entry>
   
