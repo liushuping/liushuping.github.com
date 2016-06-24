@@ -36,7 +36,7 @@
 
 
 
-  <meta name="keywords" content="Async,C#," />
+  <meta name="keywords" content="Machine Learning,Math," />
 
 
 
@@ -47,18 +47,26 @@
   <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.2" />
 
 
-<meta name="description" content="《C#中特别的无限循环》一文提到了无限循环内以await的方式异步调用其它方法的例子，然而程序开发中这样的情况并不多，更容易碰到有限循环中的异步调用，例如下面的代码：">
+<meta name="description" content="本文介绍的是机器学习中频繁出现的一个函数Sigmoid, 但不了解机器学习并不影响您对本文的理解。
+如果您对机器学习有些涉猎，您会发现Sigmoid是一个应用频繁的函数。在逻辑回归分析和神经网络计算中都有它的身影。那么为什么选取这么个函数呢？首先来看一下它的公式：">
 <meta property="og:type" content="article">
-<meta property="og:title" content="循环内的await是你想象的运行方式吗?">
-<meta property="og:url" content="http://blog.liushuping.com/2016/06/22/循环内的await是你想象的运行方式吗/index.html">
+<meta property="og:title" content="Sigmoid什么鬼?">
+<meta property="og:url" content="http://blog.liushuping.com/2016/06/24/Sigmoid什么鬼/index.html">
 <meta property="og:site_name" content="Shuping LIU">
-<meta property="og:description" content="《C#中特别的无限循环》一文提到了无限循环内以await的方式异步调用其它方法的例子，然而程序开发中这样的情况并不多，更容易碰到有限循环中的异步调用，例如下面的代码：">
-<meta property="og:image" content="http://78rehp.com1.z0.glb.clouddn.com/blog%2Fasync-foreach.gif">
-<meta property="og:image" content="http://78rehp.com1.z0.glb.clouddn.com/blog%2Fshouwangxianfeng.JPG">
-<meta property="og:updated_time" content="2016-06-22T14:26:12.000Z">
+<meta property="og:description" content="本文介绍的是机器学习中频繁出现的一个函数Sigmoid, 但不了解机器学习并不影响您对本文的理解。
+如果您对机器学习有些涉猎，您会发现Sigmoid是一个应用频繁的函数。在逻辑回归分析和神经网络计算中都有它的身影。那么为什么选取这么个函数呢？首先来看一下它的公式：">
+<meta property="og:image" content="http://78rehp.com1.z0.glb.clouddn.com/blog%2Fsigmoid_equation.png">
+<meta property="og:image" content="http://78rehp.com1.z0.glb.clouddn.com/blog%2Fsigmoid_curve.png">
+<meta property="og:image" content="http://78rehp.com1.z0.glb.clouddn.com/blog%2Fnorm_distribution_equation.png">
+<meta property="og:image" content="http://78rehp.com1.z0.glb.clouddn.com/blog%2FNormal_Distribution_PDF.png">
+<meta property="og:image" content="http://78rehp.com1.z0.glb.clouddn.com/blog%2FNormal_Distribution_CDF.png">
+<meta property="og:image" content="http://78rehp.com1.z0.glb.clouddn.com/blog%2Fsigmoid_deri_equation.png">
+<meta property="og:image" content="http://78rehp.com1.z0.glb.clouddn.com/blog%2Ffurongjiejie.jpg">
+<meta property="og:updated_time" content="2016-06-24T13:49:51.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="循环内的await是你想象的运行方式吗?">
-<meta name="twitter:description" content="《C#中特别的无限循环》一文提到了无限循环内以await的方式异步调用其它方法的例子，然而程序开发中这样的情况并不多，更容易碰到有限循环中的异步调用，例如下面的代码：">
+<meta name="twitter:title" content="Sigmoid什么鬼?">
+<meta name="twitter:description" content="本文介绍的是机器学习中频繁出现的一个函数Sigmoid, 但不了解机器学习并不影响您对本文的理解。
+如果您对机器学习有些涉猎，您会发现Sigmoid是一个应用频繁的函数。在逻辑回归分析和神经网络计算中都有它的身影。那么为什么选取这么个函数呢？首先来看一下它的公式：">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -70,7 +78,7 @@
 
 
 
-  <title> 循环内的await是你想象的运行方式吗? | Shuping LIU </title>
+  <title> Sigmoid什么鬼? | Shuping LIU </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -205,7 +213,7 @@
             
             
               
-                循环内的await是你想象的运行方式吗?
+                Sigmoid什么鬼?
               
             
           </h1>
@@ -214,8 +222,8 @@
         <div class="post-meta">
           <span class="post-time">
             发表于
-            <time itemprop="dateCreated" datetime="2016-06-22T22:15:52+08:00" content="2016-06-22">
-              2016-06-22
+            <time itemprop="dateCreated" datetime="2016-06-24T21:48:37+08:00" content="2016-06-24">
+              2016-06-24
             </time>
           </span>
 
@@ -224,8 +232,8 @@
               &nbsp; | &nbsp; 分类于
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/C/" itemprop="url" rel="index">
-                    <span itemprop="name">C#</span>
+                  <a href="/categories/Math/" itemprop="url" rel="index">
+                    <span itemprop="name">Math</span>
                   </a>
                 </span>
 
@@ -240,8 +248,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/06/22/循环内的await是你想象的运行方式吗/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/22/循环内的await是你想象的运行方式吗/" itemprop="commentsCount"></span>
+                <a href="/2016/06/24/Sigmoid什么鬼/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/24/Sigmoid什么鬼/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -260,15 +268,30 @@
       
 
       
-        <span itemprop="articleBody"><p><a href="/2016/06/22/C-中特别的无限循环/">《C#中特别的无限循环》</a>一文提到了无限循环内以<code>await</code>的方式异步调用其它方法的例子，然而程序开发中这样的情况并不多，更容易碰到有限循环中的异步调用，例如下面的代码：</p>
-<a id="more"></a>
-<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"></span>)</span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">var</span> task = <span class="keyword">new</span> Task(Check);</span><br><span class="line">    task.Start();</span><br><span class="line">    Console.ReadLine();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">async</span> <span class="keyword">void</span> <span class="title">Check</span>(<span class="params"></span>)</span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">var</span> sites = <span class="keyword">new</span>[]</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="string">"http://www.baidu.com"</span>,</span><br><span class="line">        <span class="string">"http://www.qq.com"</span>,</span><br><span class="line">        <span class="string">"http://www.jd.com"</span>,</span><br><span class="line">        <span class="string">"http://www.mi.com"</span></span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">foreach</span> (<span class="keyword">var</span> site <span class="keyword">in</span> sites)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">var</span> client = <span class="keyword">new</span> HttpClient();</span><br><span class="line">        <span class="keyword">await</span> client.GetAsync(site);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>相信不少C#开发人员写过类似结构的代码，但并非所有的人这都清楚该代码的执行方式是否符合其真正意图。如果这样问代码的作者：“<code>foreach</code>循环内代码是同步还是异步的？” 这个问题本身就是很“微妙”（tricky）的，或者说它存在严重的歧义。这种问法所得到的回答通常是“对的，是异步的”，但提问者和回答者存在理解的不同。</p>
-<p>所以，要把问题描述清楚：“你期望代码中被<code>foreach</code>所遍历的四个站点是依次先后被访问，还是并发同时被访问？” 有很大比例的情况是代码的作者希望四个站点被同时异步访问，然而不幸的是，四个站点是依次先后顺序被访问的。为了验证，我们先在代码中加入输出信息标记代码的执行顺序，如下：<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"></span>)</span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">var</span> task = <span class="keyword">new</span> Task(Check);</span><br><span class="line">    task.Start();</span><br><span class="line">    Console.ReadLine();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">async</span> <span class="keyword">void</span> <span class="title">Check</span>(<span class="params"></span>)</span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">var</span> sites = <span class="keyword">new</span>[]</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="string">"http://www.baidu.com"</span>,</span><br><span class="line">        <span class="string">"http://www.qq.com"</span>,</span><br><span class="line">        <span class="string">"http://www.jd.com"</span>,</span><br><span class="line">        <span class="string">"http://www.mi.com"</span></span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">foreach</span> (<span class="keyword">var</span> site <span class="keyword">in</span> sites)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">var</span> client = <span class="keyword">new</span> HttpClient();</span><br><span class="line">        Console.WriteLine($<span class="string">"&#123;site&#125; start"</span>);</span><br><span class="line">        <span class="keyword">await</span> client.GetAsync(site);</span><br><span class="line">        Console.WriteLine($<span class="string">"&#123;site&#125; end"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>然后可以看到这样的运行效果：<br><img src="http://78rehp.com1.z0.glb.clouddn.com/blog%2Fasync-foreach.gif" alt="gif"><br>因此，代码并没有按照（不正确）“预期”去执行，更悲剧的是程序员有可能一直认为它是并发执行了，所以一个问题就隐藏在那儿了。</p>
-<p>其实 <code>await</code>关键字后面的方法是异步执行了的，但不能把这种异步执行理解成整个<code>foreach</code>代码块内部是异步不等待的，而<code>await</code>正是告诉<code>foreach</code>说：“请等待当前所正在异步执行的代码，完成后再进入下一次循环”。换一句话说，被调用的<code>XXXAsync</code>方法无论如何都是异步发生了，而加不加<code>await</code>关键字是告诉程序是否等待这个异步代码完成而进入下一条语句。</p>
-<p>当然，如果把代码中的<code>await</code>去掉就会达到预期效果了，但一定要注意分析整个程序代码的设计结构，要考略上层代码是否还需要<code>await</code>这一段代码，如果需要则不能轻易去掉。</p>
-<h2 id="咖啡时间">咖啡时间</h2><p>咖啡和游戏已经准备就绪，缺一台电脑，谁借我一用？<br><img src="http://78rehp.com1.z0.glb.clouddn.com/blog%2Fshouwangxianfeng.JPG" alt="img"></p>
+        <span itemprop="articleBody"><p>本文介绍的是机器学习中频繁出现的一个函数Sigmoid, 但不了解机器学习并不影响您对本文的理解。</p>
+<p>如果您对机器学习有些涉猎，您会发现Sigmoid是一个应用频繁的函数。在逻辑回归分析和神经网络计算中都有它的身影。那么为什么选取这么个函数呢？首先来看一下它的公式：<br><a id="more"></a></p>
+<p><img src="http://78rehp.com1.z0.glb.clouddn.com/blog%2Fsigmoid_equation.png" alt="img"></p>
+<p>恩，看起来没啥特别的，公式中的<code>e</code>是自然常数（约为2.71828）。把它画到笛卡尔坐标系下是这个样子的：</p>
+<p><img src="http://78rehp.com1.z0.glb.clouddn.com/blog%2Fsigmoid_curve.png" alt="img"></p>
+<p>它的取值范围在0到1之间，且绝大部分值分布在0或者1附近，中间为过渡部分。那么为什么这个形式的函数会用在机器学习的逻辑回归分析和神经网络中呢？ 这需要从逻辑回归分析的需求谈起。</p>
+<p>逻辑回归分析是说通过已有的历史数据来建立一个数学模型，以达到该模型能预测未来数据的目的。预测时，输入未来数据的特征值，计算未来数据，而由于是逻辑回归，所以结果只有两种情况：是和否也即0和1。从结果取值范围的角度来看，Sigmoid是符合逻辑回归需求的。逻辑回归分析又可以称为对未来“事件”是否会发生的一种预测，而预测通常不会完全分布在100%的发生和100%的不发生上，更多的预测会给出事件发生的概率。如果预测说该事件发生的概率是60%，我们则认为它可能会发生；如果概率是95%，我们则认为它极有可能发生。50%的概率是事件发生与不发生的一个临界点。从这个临界点来看，Sigmoid也符合需求，曲线基于0.5值处中心对称。</p>
+<p>Sigmoid虽然符合了逻辑回归分析的需求，但是取值在0-1之间且以0.5值处中心对称的曲线函数有无数种，为啥唯独选取Sigmoid呢？</p>
+<p>这需要去了解我们如何去看待一个事件的概率分布。大多数情况下，并没有办法知道未知事件的概率分布形式，而在无法得知的情况下，正态分布是一个最好的选择，因为它是所有概率分布中最可能的表现形式。</p>
+<p>概率的正态分布又叫高斯分布，它的函数是这个样子的：</p>
+<p><img src="http://78rehp.com1.z0.glb.clouddn.com/blog%2Fnorm_distribution_equation.png" alt="img"></p>
+<p>吓死宝宝了，好复杂！简单解释一下里面的几个参数，<code>e</code>就是自然常数；<code>μ</code>是统计平均值，又叫数学期望；<code>σ^2</code>是方差。不了解这些概念也没关系，不影响接下来内容的理解:-)</p>
+<p>在笛卡尔坐标系下，正态分布的函数呈现出“钟”形，如下图。图中四条曲线代表参数不同的四个正态分布。<br><img src="http://78rehp.com1.z0.glb.clouddn.com/blog%2FNormal_Distribution_PDF.png" alt="img"><br>[图片来自维基百科]</p>
+<p>在假定某个事件的概率分布符合正态分布的规律后，要分析其可能发生的概率，就要看它的积分形式。我尝试着做了一下积分，没算出来 :-(。 上网查了一下，正态分布的积分形式是一个超越函数，普通高等数学能积出来才怪呢。。。</p>
+<p>好吧，那只能看曲线的样子了：</p>
+<p><img src="http://78rehp.com1.z0.glb.clouddn.com/blog%2FNormal_Distribution_CDF.png" alt="img"><br>[图片来自维基百科]</p>
+<p>到这里应该发现什么了吧！Sigmoid函数和正态分布函数的积分形式形状非常类似。所以说，如果在需要大规模数值计算的机器学习领域中计算正态分布的积分函数，计算代价是很大的，而Sigmoid的形式跟它相似，却由于其公式简单，计算量非常的小，因此被选为替代函数。</p>
+<p>在机器学习计算中，还需要大量计算一个函数的微分形式，当然了正态分布函数的积分形式的微分形式（有点儿绕…)就是正态分布函数本身，它的公式如上面所示有点而复杂，所以计算代价也有点儿高。 用Sigmoid作为替代的另外一个重要原因是它的微分形式非常简单，完全可以用Sigmoid本身通过代数运算得到，公式如下：</p>
+<p><img src="http://78rehp.com1.z0.glb.clouddn.com/blog%2Fsigmoid_deri_equation.png" alt="img"></p>
+<p>这个可以很容易地被推导证明。</p>
+<p>Sigmoid的这些优点可以使大规模计算节省很多时间。</p>
+<p>在神经网络的模型训练中，为了让网络更加智能，对不同数据是否能通过某个节点要做限制。这个限制函数通常叫做激活函数，它也是一个返回是与否的函数，因此Sigmoid也是一个不错的选择。</p>
+<p>现在了解了为什么Sigmoid会被用在机器学习中了吧？ :-)</p>
+<h2 id="咖啡时间">咖啡时间</h2><p>Sigmoid还有个别名，叫S型函数或S型曲线。而一想到S曲线，我首先想到的居然是芙蓉姐姐。<br><img src="http://78rehp.com1.z0.glb.clouddn.com/blog%2Ffurongjiejie.jpg" alt="img"></p>
 </span>
       
     </div>
@@ -277,9 +300,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Async/" rel="tag">#Async</a>
+            <a href="/tags/Machine-Learning/" rel="tag">#Machine Learning</a>
           
-            <a href="/tags/C/" rel="tag">#C#</a>
+            <a href="/tags/Math/" rel="tag">#Math</a>
           
         </div>
       
@@ -288,17 +311,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/06/22/C-中特别的无限循环/" rel="next" title="C# 中特别的无限循环">
-                <i class="fa fa-chevron-left"></i> C# 中特别的无限循环
+              <a href="/2016/06/23/Anti-Gravity/" rel="next" title="Anti Gravity">
+                <i class="fa fa-chevron-left"></i> Anti Gravity
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/06/23/Anti-Gravity/" rel="prev" title="Anti Gravity">
-                Anti Gravity <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -313,10 +332,10 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2016/06/22/循环内的await是你想象的运行方式吗/"
-     data-title="循环内的await是你想象的运行方式吗?"
+        <div class="ds-share flat" data-thread-key="2016/06/24/Sigmoid什么鬼/"
+     data-title="Sigmoid什么鬼?"
      data-content=""
-     data-url="http://blog.liushuping.com/2016/06/22/循环内的await是你想象的运行方式吗/">
+     data-url="http://blog.liushuping.com/2016/06/24/Sigmoid什么鬼/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -342,8 +361,8 @@
         
           <div class="comments" id="comments">
             
-              <div class="ds-thread" data-thread-key="2016/06/22/循环内的await是你想象的运行方式吗/"
-                   data-title="循环内的await是你想象的运行方式吗?" data-url="http://blog.liushuping.com/2016/06/22/循环内的await是你想象的运行方式吗/">
+              <div class="ds-thread" data-thread-key="2016/06/24/Sigmoid什么鬼/"
+                   data-title="Sigmoid什么鬼?" data-url="http://blog.liushuping.com/2016/06/24/Sigmoid什么鬼/">
               </div>
             
           </div>

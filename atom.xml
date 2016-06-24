@@ -4,7 +4,7 @@
   <subtitle><![CDATA[A JavaScript and C# developer]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://blog.liushuping.com/"/>
-  <updated>2016-06-23T14:16:30.000Z</updated>
+  <updated>2016-06-24T13:49:51.000Z</updated>
   <id>http://blog.liushuping.com/</id>
   
   <author>
@@ -13,6 +13,51 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[Sigmoid什么鬼?]]></title>
+    <link href="http://blog.liushuping.com/2016/06/24/Sigmoid%E4%BB%80%E4%B9%88%E9%AC%BC/"/>
+    <id>http://blog.liushuping.com/2016/06/24/Sigmoid什么鬼/</id>
+    <published>2016-06-24T13:48:37.000Z</published>
+    <updated>2016-06-24T13:49:51.000Z</updated>
+    <content type="html"><![CDATA[<p>本文介绍的是机器学习中频繁出现的一个函数Sigmoid, 但不了解机器学习并不影响您对本文的理解。</p>
+<p>如果您对机器学习有些涉猎，您会发现Sigmoid是一个应用频繁的函数。在逻辑回归分析和神经网络计算中都有它的身影。那么为什么选取这么个函数呢？首先来看一下它的公式：<br><a id="more"></a></p>
+<p><img src="http://78rehp.com1.z0.glb.clouddn.com/blog%2Fsigmoid_equation.png" alt="img"></p>
+<p>恩，看起来没啥特别的，公式中的<code>e</code>是自然常数（约为2.71828）。把它画到笛卡尔坐标系下是这个样子的：</p>
+<p><img src="http://78rehp.com1.z0.glb.clouddn.com/blog%2Fsigmoid_curve.png" alt="img"></p>
+<p>它的取值范围在0到1之间，且绝大部分值分布在0或者1附近，中间为过渡部分。那么为什么这个形式的函数会用在机器学习的逻辑回归分析和神经网络中呢？ 这需要从逻辑回归分析的需求谈起。</p>
+<p>逻辑回归分析是说通过已有的历史数据来建立一个数学模型，以达到该模型能预测未来数据的目的。预测时，输入未来数据的特征值，计算未来数据，而由于是逻辑回归，所以结果只有两种情况：是和否也即0和1。从结果取值范围的角度来看，Sigmoid是符合逻辑回归需求的。逻辑回归分析又可以称为对未来“事件”是否会发生的一种预测，而预测通常不会完全分布在100%的发生和100%的不发生上，更多的预测会给出事件发生的概率。如果预测说该事件发生的概率是60%，我们则认为它可能会发生；如果概率是95%，我们则认为它极有可能发生。50%的概率是事件发生与不发生的一个临界点。从这个临界点来看，Sigmoid也符合需求，曲线基于0.5值处中心对称。</p>
+<p>Sigmoid虽然符合了逻辑回归分析的需求，但是取值在0-1之间且以0.5值处中心对称的曲线函数有无数种，为啥唯独选取Sigmoid呢？</p>
+<p>这需要去了解我们如何去看待一个事件的概率分布。大多数情况下，并没有办法知道未知事件的概率分布形式，而在无法得知的情况下，正态分布是一个最好的选择，因为它是所有概率分布中最可能的表现形式。</p>
+<p>概率的正态分布又叫高斯分布，它的函数是这个样子的：</p>
+<p><img src="http://78rehp.com1.z0.glb.clouddn.com/blog%2Fnorm_distribution_equation.png" alt="img"></p>
+<p>吓死宝宝了，好复杂！简单解释一下里面的几个参数，<code>e</code>就是自然常数；<code>μ</code>是统计平均值，又叫数学期望；<code>σ^2</code>是方差。不了解这些概念也没关系，不影响接下来内容的理解:-)</p>
+<p>在笛卡尔坐标系下，正态分布的函数呈现出“钟”形，如下图。图中四条曲线代表参数不同的四个正态分布。<br><img src="http://78rehp.com1.z0.glb.clouddn.com/blog%2FNormal_Distribution_PDF.png" alt="img"><br>[图片来自维基百科]</p>
+<p>在假定某个事件的概率分布符合正态分布的规律后，要分析其可能发生的概率，就要看它的积分形式。我尝试着做了一下积分，没算出来 :-(。 上网查了一下，正态分布的积分形式是一个超越函数，普通高等数学能积出来才怪呢。。。</p>
+<p>好吧，那只能看曲线的样子了：</p>
+<p><img src="http://78rehp.com1.z0.glb.clouddn.com/blog%2FNormal_Distribution_CDF.png" alt="img"><br>[图片来自维基百科]</p>
+<p>到这里应该发现什么了吧！Sigmoid函数和正态分布函数的积分形式形状非常类似。所以说，如果在需要大规模数值计算的机器学习领域中计算正态分布的积分函数，计算代价是很大的，而Sigmoid的形式跟它相似，却由于其公式简单，计算量非常的小，因此被选为替代函数。</p>
+<p>在机器学习计算中，还需要大量计算一个函数的微分形式，当然了正态分布函数的积分形式的微分形式（有点儿绕…)就是正态分布函数本身，它的公式如上面所示有点而复杂，所以计算代价也有点儿高。 用Sigmoid作为替代的另外一个重要原因是它的微分形式非常简单，完全可以用Sigmoid本身通过代数运算得到，公式如下：</p>
+<p><img src="http://78rehp.com1.z0.glb.clouddn.com/blog%2Fsigmoid_deri_equation.png" alt="img"></p>
+<p>这个可以很容易地被推导证明。</p>
+<p>Sigmoid的这些优点可以使大规模计算节省很多时间。</p>
+<p>在神经网络的模型训练中，为了让网络更加智能，对不同数据是否能通过某个节点要做限制。这个限制函数通常叫做激活函数，它也是一个返回是与否的函数，因此Sigmoid也是一个不错的选择。</p>
+<p>现在了解了为什么Sigmoid会被用在机器学习中了吧？ :-)</p>
+<h2 id="咖啡时间">咖啡时间</h2><p>Sigmoid还有个别名，叫S型函数或S型曲线。而一想到S曲线，我首先想到的居然是芙蓉姐姐。<br><img src="http://78rehp.com1.z0.glb.clouddn.com/blog%2Ffurongjiejie.jpg" alt="img"></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>本文介绍的是机器学习中频繁出现的一个函数Sigmoid, 但不了解机器学习并不影响您对本文的理解。</p>
+<p>如果您对机器学习有些涉猎，您会发现Sigmoid是一个应用频繁的函数。在逻辑回归分析和神经网络计算中都有它的身影。那么为什么选取这么个函数呢？首先来看一下它的公式：<br>]]>
+    
+    </summary>
+    
+      <category term="Machine Learning" scheme="http://blog.liushuping.com/tags/Machine-Learning/"/>
+    
+      <category term="Math" scheme="http://blog.liushuping.com/tags/Math/"/>
+    
+      <category term="Math" scheme="http://blog.liushuping.com/categories/Math/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[Anti Gravity]]></title>
@@ -1728,47 +1773,6 @@
       <category term="LeetCode" scheme="http://blog.liushuping.com/categories/LeetCode/"/>
     
       <category term="Algorithm" scheme="http://blog.liushuping.com/categories/LeetCode/Algorithm/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[NFC SIM卡的尴尬]]></title>
-    <link href="http://blog.liushuping.com/2015/07/22/NFC-SIM%E5%8D%A1%E7%9A%84%E5%B0%B4%E5%B0%AC/"/>
-    <id>http://blog.liushuping.com/2015/07/22/NFC-SIM卡的尴尬/</id>
-    <published>2015-07-22T15:50:39.000Z</published>
-    <updated>2015-10-25T10:41:38.000Z</updated>
-    <content type="html"><![CDATA[<p>近日NFC又一次出现在新闻中，如<em>今日头条</em>的<a href="http://toutiao.com/a4762553742/" target="_blank" rel="external">千万不要忽略了手机上NFC功能，你会后悔的</a>。我终于觉得有必要介绍一下自己几个月来NFC使用的体验了。</p>
-<p>首先，NFC是一项重要的技术，在我们的日常生活中扮演着重要的作用。公交，地铁，饭卡等等很多近距离通信设备都是使用的NFC技术。</p>
-<p>手机在我们的日常生活中同样扮演着越来越重要的作用，智能手机已成为大多数人时刻带在身上的设备，甚至包含上厕所的时间。因此，让手机具备NFC的功能也就是理所应该的了。在现阶段，具备NFC功能的手机还需要一张NFC SIM卡，这也是可以理解的。然而在使用了几个月的手机NFC功能后，其中的尴尬还是不少的。</p>
-<a id="more"></a>
-<h2 id="NFC标签">NFC标签</h2><p>听起来很酷炫的功能，但目前阶段看来，除了炫耀一下似乎没有什么其它务实的应用场景。然而，当把手机和钱包放在一起时，麻烦也便来了: 钱包里通常放各种银行卡，会员卡等等，或多或少的总有那么一两张卡有NFC功能。所以，当手机和钱包在一起时，手机立马会跳出对话框询问用什么程序访问当前NFC设备，并伴随着声音的提示。 然而多数时候我们并无此意，仅仅是把两者放在一起而已。什么？你问我为什么把手机和钱包放在一起？当两者变成人们寸步不离的个人物品时，放在一起的机会总是很多的。</p>
-<h2 id="NFC乘坐公交地铁">NFC乘坐公交地铁</h2><p>此处下所述都是我在北京交通的体会，不代表其它城市的状态。先来一句猜测性的话阐述观点：北京的公交和地铁读卡设备在投入生产之前可能没有对非公交卡片之外的其它设备做足够的质量验收测试(仅代表个人猜测)。</p>
-<p><strong>先说地铁</strong></p>
-<p>几个月的使用体验结论是：地铁的读卡设备比公交上的读卡设备迟钝，且容易出错。当我以帅气的姿势在闸机上刷手机并期待吸引目光的时候，通常会有很大几率(大概三分之一吧)把自己陷入尴尬的境地：机器会无情地回以尖锐的错误声音，错误通常有以下几类：</p>
-<ol>
-<li>无效的卡片</li>
-<li>错误，多张卡片</li>
-<li>错误，0x12cf02…</li>
-</ol>
-<p>此刻只能尴尬地漫无目的地在手机上操作一番，然后重试。幸运的是通常重试后会成功，且地铁内有足够的空闲闸机及时间供我重试。</p>
-<p><strong>再说公交</strong> </p>
-<p>前面说了，地铁的读卡设备没有公交的读卡设备敏感，是不是说公交上就没问题了呢？恰恰相反，公交上容易造成多扣票款(在几个月的使用中，地铁没却发生过)，粗略估计有五分之一的概率发生吧。</p>
-<p>这要从手机刷公交的“姿势”说起。不同于地铁闸机的刷卡处是一个倾斜的台面，公交的刷卡设备大多悬空且表面垂直于地面。因此，需要把公交卡贴近刷卡，这对有韧性的塑料卡来说不是难事。然而，用手机刷的体验就大不相同了。手机不具备韧性(什么？柔性屏？呵呵)，且手机有比较大的质量，比较大的体积(大屏手机变为主流), 还有手机卡在手机内部因此拉大了刷卡的距离。这些都要求手机刷公交要有一定的“姿势”，且要在人流拥挤，空间狭窄的公交车上，更要命的是后面的乘客还看着你并等着你，给你无形中造成了压力。好吧，在这些压力下，你的手在刷手机的时候抖了一下，或者是你觉得刷的“姿势”不对，微微地调节了一下。清脆的刷卡成功声音响起，然而在未来得及高兴前，你却听到了紧接着的第二声响起。这就是敏感的设备在你手抖的那一瞬间两次读取了你的卡，并扣取了你的钱。</p>
-<p>第二天，面对公交拥挤的人群，狭小的空间，担心着手机掉落的可能，颤抖着双手刷下去了手机。</p>
-<p>滴-滴。</p>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p>近日NFC又一次出现在新闻中，如<em>今日头条</em>的<a href="http://toutiao.com/a4762553742/">千万不要忽略了手机上NFC功能，你会后悔的</a>。我终于觉得有必要介绍一下自己几个月来NFC使用的体验了。</p>
-<p>首先，NFC是一项重要的技术，在我们的日常生活中扮演着重要的作用。公交，地铁，饭卡等等很多近距离通信设备都是使用的NFC技术。</p>
-<p>手机在我们的日常生活中同样扮演着越来越重要的作用，智能手机已成为大多数人时刻带在身上的设备，甚至包含上厕所的时间。因此，让手机具备NFC的功能也就是理所应该的了。在现阶段，具备NFC功能的手机还需要一张NFC SIM卡，这也是可以理解的。然而在使用了几个月的手机NFC功能后，其中的尴尬还是不少的。</p>]]>
-    
-    </summary>
-    
-      <category term="Mobile" scheme="http://blog.liushuping.com/tags/Mobile/"/>
-    
-      <category term="NFC" scheme="http://blog.liushuping.com/tags/NFC/"/>
-    
-      <category term="New Tech" scheme="http://blog.liushuping.com/categories/New-Tech/"/>
     
   </entry>
   
