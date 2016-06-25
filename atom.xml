@@ -4,7 +4,7 @@
   <subtitle><![CDATA[A JavaScript and C# developer]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://blog.liushuping.com/"/>
-  <updated>2016-06-24T13:49:51.000Z</updated>
+  <updated>2016-06-25T15:26:58.000Z</updated>
   <id>http://blog.liushuping.com/</id>
   
   <author>
@@ -13,6 +13,72 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[反推Sigmoid公式的形成]]></title>
+    <link href="http://blog.liushuping.com/2016/06/25/%E5%8F%8D%E6%8E%A8Sigmoid%E5%85%AC%E5%BC%8F%E7%9A%84%E5%BD%A2%E6%88%90/"/>
+    <id>http://blog.liushuping.com/2016/06/25/反推Sigmoid公式的形成/</id>
+    <published>2016-06-25T12:55:18.000Z</published>
+    <updated>2016-06-25T15:26:58.000Z</updated>
+    <content type="html"><![CDATA[<p><a href="2016/06/24/Sigmoid什么鬼/">[Sigmoid什么鬼？]</a>一文介绍了Sigmoid函数因其公式简单，形状同正态分布函数的积分函数形状类似，从而被用在了机器学习中。那么这个函数是如何被构造出来的呢？其原始过程无从得知，但ghost同学愿意从个人的理解出发，尝试反推一下Sigmoid函数的构造形成。</p>
+<a id="more"></a>
+<p>我们对Sigmoid有这些特性要求</p>
+<ol>
+<li>值范围在(0, 1)内</li>
+<li>自变量取值范围在(-∞, +∞)</li>
+<li>函数曲线经过(x=0, y=0.5)点，且以该点中心对称</li>
+<li>函数单调递增，连续可导（光滑)</li>
+<li>随着自变量的增大，函数快速接近1；随着自变量的变小，函数快速接近0</li>
+</ol>
+<p>逐项解释一下每项特性要求的原因。</p>
+<ol>
+<li>取值(0, 1)是为了满足逻辑分析的需求（是与否的问题）。取值是一个区间而不是0和1两个离散值，是因为期望以概率的形式分析逻辑问题，这比离散值更有应用意义。</li>
+<li>自变量的取值范围可以是任何实数。</li>
+<li>曲线经过(x=0, y=0.5)点，是为了保证50%的概率是曲线的中心位置。正态分布的函数的积分函数形状是中心对称。</li>
+<li>单调递增，无需解释；连续可导反映了事件的发生过程是个累积过程，而不是一个突变过程。可导也保证了计算的简单性。</li>
+<li>最后一条也是模拟了正态函数的积分函数形状的。</li>
+</ol>
+<p>接下来ghost尝试按照上面的要求，从最简单的公式开始，一步步推导出Sigmoid函数方程。</p>
+<p>首先第1，2条要求的数学表达式为：</p>
+<p><img src="http://78rehp.com1.z0.glb.clouddn.com/blog%2Fsigmoid_f1.png" alt="img"></p>
+<p>要把自变量从（-∞,∞)映射到（0,1)的范围，并没有很直接的办法。因此，可以把问题分解为多个步骤。</p>
+<p>第一步可以把自变量映射到非负值范围内，最容易想到的是绝对值函数:</p>
+<p><img src="http://78rehp.com1.z0.glb.clouddn.com/blog%2Fsigmoid_f2.png" alt="img"></p>
+<p>但绝对值函数不符合第4条要求，因为在所有实数的取值空间范围内，绝对值函数不光滑。</p>
+<p>从最简单的函数挑选起，只能选指数函数了：</p>
+<p><img src="http://78rehp.com1.z0.glb.clouddn.com/blog%2Fsigmoid_f3.png" alt="img"></p>
+<p>恩，指数函数可以完美地把自变量从（-∞,∞)映射到（0, ∞)区间。</p>
+<p>接下里要把映射空间从(0,∞)缩小到(0,1)内。把一个半无限空间映射到一个小的有限空间的有效办法是：对映射关系取倒数：</p>
+<p><img src="http://78rehp.com1.z0.glb.clouddn.com/blog%2Fsigmoid_f4.png" alt="img"></p>
+<p>然而由于半无限空间的下限是0,对其取倒数会使映射结果重新回到无穷大值。一个简单有效的办法是对其进行平移一个合适的值，从而可以把值空间缩放到需要的范围内。对于我们的例子，只需水平右移1个单位即可：</p>
+<p><img src="http://78rehp.com1.z0.glb.clouddn.com/blog%2Fsigmoid_f5.png" alt="img"></p>
+<p>但是这个函数是单调递减的，不符合第4条要求。解决的办法非常简单，只需要调换自变量x的符号即可：</p>
+<p><img src="http://78rehp.com1.z0.glb.clouddn.com/blog%2Fsigmoid_f6.png" alt="img"></p>
+<p>对着之前的五条要求验证一下，现在我们的函数符合所有条件，可以划上等号了：</p>
+<p><img src="http://78rehp.com1.z0.glb.clouddn.com/blog%2Fsigmoid_f7.png" alt="img"></p>
+<p>解释一下第5条要求：指数函数能很好地保证函数曲线快速接近0和1的要求。</p>
+<p>最后还有一个问题，常数a取值多少好呢？这个问题没有标准的答案，然而当取值多少都可以时，我们应该取一个能让函数导数计算最为方便的值。</p>
+<p>函数f(x)导数计算的复杂度完全取决于函数内指数函数部分。而所有指数函数的导数计算中，自然常数e的导数计算最为简单（是其本身）。于是我们的Sigmoid函数最终成了这个样子：</p>
+<p><img src="http://78rehp.com1.z0.glb.clouddn.com/blog%2Fsigmoid_f8.png" alt="img"></p>
+<p>当然了，您可以练习证明一下Sigmoid函数的导数公式，5-10分钟的事情，对思维训练还是有好处的。</p>
+<p><img src="http://78rehp.com1.z0.glb.clouddn.com/blog%2Fsigmoid_f9.png" alt="img"></p>
+<p>本文所有的公式都是通过<a href="http://latex.codecogs.com/" target="_blank" rel="external">http://latex.codecogs.com/</a> 网站编辑生成的，在此特别致谢！</p>
+<h2 id="咖啡时间">咖啡时间</h2><p><img src="http://78rehp.com1.z0.glb.clouddn.com/blog%2Fsigmoid_10.png" alt="img"></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p><a href="2016/06/24/Sigmoid什么鬼/">[Sigmoid什么鬼？]</a>一文介绍了Sigmoid函数因其公式简单，形状同正态分布函数的积分函数形状类似，从而被用在了机器学习中。那么这个函数是如何被构造出来的呢？其原始过程无从得知，但ghost同学愿意从个人的理解出发，尝试反推一下Sigmoid函数的构造形成。</p>]]>
+    
+    </summary>
+    
+      <category term="Machine Learning" scheme="http://blog.liushuping.com/tags/Machine-Learning/"/>
+    
+      <category term="Math" scheme="http://blog.liushuping.com/tags/Math/"/>
+    
+      <category term="Sigmoid" scheme="http://blog.liushuping.com/tags/Sigmoid/"/>
+    
+      <category term="Math" scheme="http://blog.liushuping.com/categories/Math/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[Sigmoid什么鬼?]]></title>
@@ -1739,40 +1805,6 @@
       <category term="Route" scheme="http://blog.liushuping.com/tags/Route/"/>
     
       <category term="Backbone" scheme="http://blog.liushuping.com/categories/Backbone/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[LeetCode OJ 238 Product of Array Except Self]]></title>
-    <link href="http://blog.liushuping.com/2015/07/26/LeetCode-OJ-238-Product-of-Array-Except-Self/"/>
-    <id>http://blog.liushuping.com/2015/07/26/LeetCode-OJ-238-Product-of-Array-Except-Self/</id>
-    <published>2015-07-26T14:17:39.000Z</published>
-    <updated>2015-10-25T10:41:23.000Z</updated>
-    <content type="html"><![CDATA[<p>给定一个有<code>n</code>个元素且<code>n</code>大于<code>1</code>的一维数组<code>nums</code>，计算并返回一个数组<code>output</code>，使其任一元素<code>output[i]</code>的值是数组<code>nums</code>除<code>nums[i]</code>外的其它所有元素的乘积。要求不能使用除法，且在<code>O(n)</code>的时间复杂度和常数空间复杂度内完成计算。</p>
-<p>例如，给定数组<code>[1,2,3,4]</code>，则返回数组<code>[24,12,8,6]</code></p>
-<p>注：返回数组所占空间不在本题的空间复杂度的计算范围内。</p>
-<a id="more"></a>
-<h2 id="问题分析">问题分析</h2><p>按照常规的思维，最直接的计算方式是先对所有元素乘积，然后分别除以数组中的每个元素，其复杂度也在O(n)内。不幸的是，题目要求不能使用除法。然而我们可以从这个思路中尝试分析其它的解决方案。</p>
-<p>首先，假设数组的n个元素分别为：a1, a2, a3, … an, 令P = a1 <em> a2 </em> a3 <em> … an,所以目标结果数组应为P/a1, P/a2, P/a3, … P/an。约掉分母可得：a2</em>a3<em>…an, a1</em>a3<em>…an, … a1</em>a2*…a(n-1).对结果数组的每一个元素的乘法进行分组可得如下形式：</p>
-<p>(1) <em>* (a2</em>a3*…an)</p>
-<p>(a1) <em>* (a3</em>a4*…an)</p>
-<p>(a1<em>a2) </em> (a4<em>a5</em>…an)</p>
-<p>(a1<em>a2</em>…a(n-2)) * (an)</p>
-<p>(a1<em>a2</em>…a(n-1)) * (1)</p>
-<p>以垂直方向看，左侧括号内部分是a1一直到a(n-1)的阶乘，而以垂直方向逆序来看，右侧括号内部分是an到a2的阶乘。 因此问题迎刃而解，可以用两个循环来迭代阶乘，也可以用一个循环分别从首尾迭代两组阶乘。</p>
-<h2 id="代码">代码</h2><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    vector&lt;int&gt; productExceptSelf(vector&lt;int&gt;&amp; nums) &#123;</span><br><span class="line">        // 两个迭代变量，t1从数组低位</span><br><span class="line">        // 向高位迭代；t2从数组高位</span><br><span class="line">        // 向低位迭代。</span><br><span class="line">        int t1(1), t2(1);</span><br><span class="line"></span><br><span class="line">        // 缓存数组的长度</span><br><span class="line">        int size(nums.size());</span><br><span class="line"></span><br><span class="line">        // 初始化返回数组的所有元素为 1</span><br><span class="line">        vector&lt;int&gt; result(size, 1);</span><br><span class="line"></span><br><span class="line">        // 做(数组长度-1)次数的迭代</span><br><span class="line">        for (int i(1); i &lt; size; ++i) &#123;</span><br><span class="line">            // 通过迭代来达到如下赋值</span><br><span class="line">            // result(i) &lt;- ProductOf(nums(0), nums(1) ... nums(i-1))</span><br><span class="line">            // 即返回数组的第i个元素的值等于输入数组的前i个元素的乘积。</span><br><span class="line">            t1 *= nums[i - 1];</span><br><span class="line">            result[i] *= t1;</span><br><span class="line"></span><br><span class="line">            // 在t1迭代计算的结果基础上，t2以反方向进行与t1完全类似的计算，</span><br><span class="line">            // 把计算结果累积乘积到输出数组上。</span><br><span class="line">            t2 *= nums[size - i];</span><br><span class="line">            result[size - 1 - i] *= t2;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        return result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
-    <summary type="html">
-    <![CDATA[<p>给定一个有<code>n</code>个元素且<code>n</code>大于<code>1</code>的一维数组<code>nums</code>，计算并返回一个数组<code>output</code>，使其任一元素<code>output[i]</code>的值是数组<code>nums</code>除<code>nums[i]</code>外的其它所有元素的乘积。要求不能使用除法，且在<code>O(n)</code>的时间复杂度和常数空间复杂度内完成计算。</p>
-<p>例如，给定数组<code>[1,2,3,4]</code>，则返回数组<code>[24,12,8,6]</code></p>
-<p>注：返回数组所占空间不在本题的空间复杂度的计算范围内。</p>]]>
-    
-    </summary>
-    
-      <category term="Array" scheme="http://blog.liushuping.com/tags/Array/"/>
-    
-      <category term="LeetCode" scheme="http://blog.liushuping.com/categories/LeetCode/"/>
-    
-      <category term="Algorithm" scheme="http://blog.liushuping.com/categories/LeetCode/Algorithm/"/>
     
   </entry>
   
