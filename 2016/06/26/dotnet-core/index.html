@@ -47,12 +47,12 @@
   <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.2" />
 
 
-<meta name="description" content="2016年初的时候ghost在非Windows平台上的.NET开发一文中介绍了基于DNX的.NET Core跨平台开发。而现在，微软正式发布了.NET Core，而不是依赖DNX，因此我觉得有必要更新一下文章了。">
+<meta name="description" content="2016年初的时候ghost在非Windows平台上的.NET开发一文中介绍了基于DNX的.NET Core跨平台开发。而现在，微软正式发布了.NET Core，而不是依赖DNX，因此ghost觉得有必要更新一下文章了。">
 <meta property="og:type" content="article">
 <meta property="og:title" content=".NET Core">
 <meta property="og:url" content="http://blog.liushuping.com/2016/06/26/dotnet-core/index.html">
 <meta property="og:site_name" content="Shuping LIU">
-<meta property="og:description" content="2016年初的时候ghost在非Windows平台上的.NET开发一文中介绍了基于DNX的.NET Core跨平台开发。而现在，微软正式发布了.NET Core，而不是依赖DNX，因此我觉得有必要更新一下文章了。">
+<meta property="og:description" content="2016年初的时候ghost在非Windows平台上的.NET开发一文中介绍了基于DNX的.NET Core跨平台开发。而现在，微软正式发布了.NET Core，而不是依赖DNX，因此ghost觉得有必要更新一下文章了。">
 <meta property="og:image" content="http://78rehp.com1.z0.glb.clouddn.com/blog%2Fdnvm-list.gif">
 <meta property="og:image" content="http://78rehp.com1.z0.glb.clouddn.com/blog%2Fremove-dnxs.gif">
 <meta property="og:image" content="http://78rehp.com1.z0.glb.clouddn.com/blog%2Fdotnet-demo.gif">
@@ -60,10 +60,10 @@
 <meta property="og:image" content="http://78rehp.com1.z0.glb.clouddn.com/blog%2Fcode-c%23.gif">
 <meta property="og:image" content="http://78rehp.com1.z0.glb.clouddn.com/blog%2Fcode-cs-fulldemo.gif">
 <meta property="og:image" content="http://78rehp.com1.z0.glb.clouddn.com/blog%2FFather-and-Daughter.jpg">
-<meta property="og:updated_time" content="2016-06-26T15:24:54.000Z">
+<meta property="og:updated_time" content="2016-06-26T15:26:31.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content=".NET Core">
-<meta name="twitter:description" content="2016年初的时候ghost在非Windows平台上的.NET开发一文中介绍了基于DNX的.NET Core跨平台开发。而现在，微软正式发布了.NET Core，而不是依赖DNX，因此我觉得有必要更新一下文章了。">
+<meta name="twitter:description" content="2016年初的时候ghost在非Windows平台上的.NET开发一文中介绍了基于DNX的.NET Core跨平台开发。而现在，微软正式发布了.NET Core，而不是依赖DNX，因此ghost觉得有必要更新一下文章了。">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -265,7 +265,7 @@
       
 
       
-        <span itemprop="articleBody"><p>2016年初的时候ghost<a href="2016/02/02/在非Windows平台上的-NET开发/">在非Windows平台上的.NET开发</a>一文中介绍了基于DNX的.NET Core跨平台开发。而现在，微软正式发布了.NET Core，而不是依赖DNX，因此我觉得有必要更新一下文章了。</p>
+        <span itemprop="articleBody"><p>2016年初的时候ghost<a href="2016/02/02/在非Windows平台上的-NET开发/">在非Windows平台上的.NET开发</a>一文中介绍了基于DNX的.NET Core跨平台开发。而现在，微软正式发布了.NET Core，而不是依赖DNX，因此ghost觉得有必要更新一下文章了。</p>
 <a id="more"></a>
 <p>首先，.NET Core相关信息的网站有如下几个，快速浏览一下对您的理解会有很好的帮助：</p>
 <ul>
@@ -273,7 +273,7 @@
 <li>.NET Core Github: <a href="https://dotnet.github.io/" target="_blank" rel="external">https://dotnet.github.io/</a></li>
 </ul>
 <p>本文介绍的重点是跨平台.NET Core的开发，因此以非Windows平台为主介绍。 在windows平台下使用.NET Core，对于广大.NET开发者来说完全不是问题。</p>
-<p>本文所有的操作都以MacOS X为例，Linux平台下虽有略微差异，但过程大致相同。如您有任何在Linux平台操作.NET Core的困难，欢迎随时联系我。</p>
+<p>本文所有的操作都以MacOS X为例，Linux平台下虽有略微差异，但过程大致相同。如您有任何在Linux平台操作.NET Core的困难，欢迎随时联系ghost。</p>
 <p>第一件事情不是如何安装.NET Core，而是如何卸载老的DNX和DNVM。DNX的存在并不影响新的.NET Core的使用，但是为了不占硬盘您可以考虑删除。</p>
 <h2 id="删除DNX">删除DNX</h2><p>DNVM可能在电脑中安装多个DNX版本，可以通过<code>dnvm list</code>命来来进行查看</p>
 <p><img src="http://78rehp.com1.z0.glb.clouddn.com/blog%2Fdnvm-list.gif" alt="img"></p>
