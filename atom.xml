@@ -4,7 +4,7 @@
   <subtitle><![CDATA[A JavaScript and C# developer]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://blog.liushuping.com/"/>
-  <updated>2016-06-26T15:24:09.000Z</updated>
+  <updated>2016-06-26T15:24:54.000Z</updated>
   <id>http://blog.liushuping.com/</id>
   
   <author>
@@ -15,11 +15,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title><![CDATA[dotnet core]]></title>
+    <title><![CDATA[.NET Core]]></title>
     <link href="http://blog.liushuping.com/2016/06/26/dotnet-core/"/>
     <id>http://blog.liushuping.com/2016/06/26/dotnet-core/</id>
     <published>2016-06-26T13:36:33.000Z</published>
-    <updated>2016-06-26T15:24:09.000Z</updated>
+    <updated>2016-06-26T15:24:54.000Z</updated>
     <content type="html"><![CDATA[<p>2016年初的时候ghost<a href="2016/02/02/在非Windows平台上的-NET开发/">在非Windows平台上的.NET开发</a>一文中介绍了基于DNX的.NET Core跨平台开发。而现在，微软正式发布了.NET Core，而不是依赖DNX，因此我觉得有必要更新一下文章了。</p>
 <a id="more"></a>
 <p>首先，.NET Core相关信息的网站有如下几个，快速浏览一下对您的理解会有很好的帮助：</p>
