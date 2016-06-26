@@ -36,7 +36,7 @@
 
 
 
-  <meta name="keywords" content="Algorithm,Math," />
+  <meta name="keywords" content=".NET,C#," />
 
 
 
@@ -47,31 +47,35 @@
   <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.2" />
 
 
-<meta name="description" content="一个好的创意一定要配一个牛B闪闪的名字。
-一个好的算法或模型一定要足够简单。
-Anti Gravity就是一个。
-单纯从名字上看，Anti Gravity也许是一个航天计划的一部分，事实上它却没有这么高大上，而是仅仅来源于一个编程游戏里面非常简单的一个算法。前些日子公司举行了一场编程游戏竞赛，题目用的就是IBM一个非常非常老的个人项目Robocode。如果你很熟悉这个项目，那么你就暴露年龄了。">
+<meta name="description" content="2016年初的时候ghost在非Windows平台上的.NET开发一文中介绍了基于DNX的.NET Core跨平台开发。而现在，微软正式发布了.NET Core，而不是依赖DNX，因此我觉得有必要更新一下文章了。
+首先，.NET Core相关信息的网站有如下几个，快速浏览一下对您的理解会有很好的帮助：
+
+.NET Core: https://www.microsoft.com/net/core
+.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Anti Gravity">
-<meta property="og:url" content="http://blog.liushuping.com/2016/06/23/Anti-Gravity/index.html">
+<meta property="og:title" content="dotnet core">
+<meta property="og:url" content="http://blog.liushuping.com/2016/06/26/dotnet-core/index.html">
 <meta property="og:site_name" content="Shuping LIU">
-<meta property="og:description" content="一个好的创意一定要配一个牛B闪闪的名字。
-一个好的算法或模型一定要足够简单。
-Anti Gravity就是一个。
-单纯从名字上看，Anti Gravity也许是一个航天计划的一部分，事实上它却没有这么高大上，而是仅仅来源于一个编程游戏里面非常简单的一个算法。前些日子公司举行了一场编程游戏竞赛，题目用的就是IBM一个非常非常老的个人项目Robocode。如果你很熟悉这个项目，那么你就暴露年龄了。">
-<meta property="og:image" content="http://78rehp.com1.z0.glb.clouddn.com/blog%2Fgravity_in_region.png">
-<meta property="og:image" content="http://78rehp.com1.z0.glb.clouddn.com/blog%2Fmove_force.png">
-<meta property="og:image" content="http://78rehp.com1.z0.glb.clouddn.com/blog%2Fdestruct_force.png">
-<meta property="og:image" content="http://78rehp.com1.z0.glb.clouddn.com/blog%2Fdestruct_all_forces.png">
-<meta property="og:image" content="http://78rehp.com1.z0.glb.clouddn.com/blog%2Fvectors_calc.png">
-<meta property="og:image" content="http://78rehp.com1.z0.glb.clouddn.com/blog%2Fman_on_moon.jpg">
-<meta property="og:updated_time" content="2016-06-23T14:16:30.000Z">
+<meta property="og:description" content="2016年初的时候ghost在非Windows平台上的.NET开发一文中介绍了基于DNX的.NET Core跨平台开发。而现在，微软正式发布了.NET Core，而不是依赖DNX，因此我觉得有必要更新一下文章了。
+首先，.NET Core相关信息的网站有如下几个，快速浏览一下对您的理解会有很好的帮助：
+
+.NET Core: https://www.microsoft.com/net/core
+.">
+<meta property="og:image" content="http://78rehp.com1.z0.glb.clouddn.com/blog%2Fdnvm-list.gif">
+<meta property="og:image" content="http://78rehp.com1.z0.glb.clouddn.com/blog%2Fremove-dnxs.gif">
+<meta property="og:image" content="http://78rehp.com1.z0.glb.clouddn.com/blog%2Fdotnet-demo.gif">
+<meta property="og:image" content="http://78rehp.com1.z0.glb.clouddn.com/blog%2Fcode-shell.gif">
+<meta property="og:image" content="http://78rehp.com1.z0.glb.clouddn.com/blog%2Fcode-c%23.gif">
+<meta property="og:image" content="http://78rehp.com1.z0.glb.clouddn.com/blog%2Fcode-cs-fulldemo.gif">
+<meta property="og:image" content="http://78rehp.com1.z0.glb.clouddn.com/blog%2FFather-and-Daughter.jpg">
+<meta property="og:updated_time" content="2016-06-26T15:20:06.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Anti Gravity">
-<meta name="twitter:description" content="一个好的创意一定要配一个牛B闪闪的名字。
-一个好的算法或模型一定要足够简单。
-Anti Gravity就是一个。
-单纯从名字上看，Anti Gravity也许是一个航天计划的一部分，事实上它却没有这么高大上，而是仅仅来源于一个编程游戏里面非常简单的一个算法。前些日子公司举行了一场编程游戏竞赛，题目用的就是IBM一个非常非常老的个人项目Robocode。如果你很熟悉这个项目，那么你就暴露年龄了。">
+<meta name="twitter:title" content="dotnet core">
+<meta name="twitter:description" content="2016年初的时候ghost在非Windows平台上的.NET开发一文中介绍了基于DNX的.NET Core跨平台开发。而现在，微软正式发布了.NET Core，而不是依赖DNX，因此我觉得有必要更新一下文章了。
+首先，.NET Core相关信息的网站有如下几个，快速浏览一下对您的理解会有很好的帮助：
+
+.NET Core: https://www.microsoft.com/net/core
+.">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -83,7 +87,7 @@ Anti Gravity就是一个。
 
 
 
-  <title> Anti Gravity | Shuping LIU </title>
+  <title> dotnet core | Shuping LIU </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -218,7 +222,7 @@ Anti Gravity就是一个。
             
             
               
-                Anti Gravity
+                dotnet core
               
             
           </h1>
@@ -227,8 +231,8 @@ Anti Gravity就是一个。
         <div class="post-meta">
           <span class="post-time">
             发表于
-            <time itemprop="dateCreated" datetime="2016-06-23T22:14:31+08:00" content="2016-06-23">
-              2016-06-23
+            <time itemprop="dateCreated" datetime="2016-06-26T21:36:33+08:00" content="2016-06-26">
+              2016-06-26
             </time>
           </span>
 
@@ -237,8 +241,8 @@ Anti Gravity就是一个。
               &nbsp; | &nbsp; 分类于
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Math/" itemprop="url" rel="index">
-                    <span itemprop="name">Math</span>
+                  <a href="/categories/NET/" itemprop="url" rel="index">
+                    <span itemprop="name">.NET</span>
                   </a>
                 </span>
 
@@ -253,8 +257,8 @@ Anti Gravity就是一个。
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/06/23/Anti-Gravity/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/23/Anti-Gravity/" itemprop="commentsCount"></span>
+                <a href="/2016/06/26/dotnet-core/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/26/dotnet-core/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -273,30 +277,47 @@ Anti Gravity就是一个。
       
 
       
-        <span itemprop="articleBody"><p>一个好的创意一定要配一个牛B闪闪的名字。</p>
-<p>一个好的算法或模型一定要足够简单。</p>
-<p>Anti Gravity就是一个。</p>
-<p>单纯从名字上看，Anti Gravity也许是一个航天计划的一部分，事实上它却没有这么高大上，而是仅仅来源于一个编程游戏里面非常简单的一个算法。前些日子公司举行了一场编程游戏竞赛，题目用的就是IBM一个非常非常老的个人项目<a href="http://robocode.sourceforge.net/" target="_blank" rel="external">Robocode</a>。如果你很熟悉这个项目，那么你就暴露年龄了。</p>
-<a id="more"></a>
-<p>游戏的大致规则：根据游戏平台提供的接口，编程实现一个坦克类，然后比赛双方把坦克放到一个矩形区域范围内的战场中，坦克移动、扫描、射击对方。游戏中涉及到很多策略和技巧，几何学的，统计概率学的等等。坦克在移动过程中，有可能碰到对方坦克，也有可能碰撞到墙壁，任何碰撞都会损失能量，因此如何有效地躲避墙壁是游戏中众多策略中的一个，也是非常简单的一个。</p>
-<p>Anti Gravity是实现躲避墙壁的算法之一，而之所以介绍它，是因为它虽然只利用了简单的数学公式，却充分体现了数学之美。由于各种原因，这个算法最终并没有用在我的游戏策略实现中，但是它却是我在整个活动中最大的收获。</p>
-<h2 id="Anti_Gravity基本原理">Anti Gravity基本原理</h2><p>Anti Gravity的核心原理就是万有引力定律和向量运算。</p>
-<p>万有引力定律是说任意两个物体之间的引力与质量成正比，与距离成反比。在一个矩形围墙围起的区域内，坦克受到四面墙的引力作用，其大小和方向如下图示意。</p>
-<p><img src="http://78rehp.com1.z0.glb.clouddn.com/blog%2Fgravity_in_region.png" alt="img"></p>
-<p>在这个系统中坦克出于追击敌人，躲避子弹等目的需要沿不同方向移动，这种移动的需求可以转化为某个方向的力的大小。比如下图中，箭头所指的方向代表坦克移动的方向，而箭头的长度代表沿该方向移动“意愿”的强弱，我们用力的大小来表示。</p>
-<p><img src="http://78rehp.com1.z0.glb.clouddn.com/blog%2Fmove_force.png" alt="img"></p>
-<p>因此我们把坦克的期望移动、墙壁对坦克可能的作用等都“正规化”到笛卡尔坐标系下力的作用了。在这个系统下，如果期望坦克的移动避开墙壁，则只需要在坦克上定义四个“反引力”用来抵销来自四面墙壁的引力，然后把代表坦克移动方向的力与之叠加，结果就是坦克真正应该移动的方向和力度了。在一个矩形的区域内，四个“反引力”都落在笛卡尔坐标系的坐标轴方向上，只需把坦克的移动力投影分解到坐标轴上，然后和“反引力”代数求和，即可最后求出总和。</p>
-<p><img src="http://78rehp.com1.z0.glb.clouddn.com/blog%2Fdestruct_force.png" alt="img"></p>
-<p>在这个模型下，要保证坦克不撞墙还需要一个条件：当坦克很接近墙壁时所需要的反引力（或引力）要非常大，以至于它能主导坦克的运动方向。一个很简单的数学公式可以达成这个目的：<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">force = constant / distance</span><br></pre></td></tr></table></figure></p>
-<p>或者其它形式<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">force = constant / (distance ^ power)</span><br></pre></td></tr></table></figure></p>
-<p>在距离接近于<code>0</code>时，产生的反引力会接近无穷大，足够使坦克避开。</p>
-<p>需要注意的是，避开墙壁通常是次要目的，主要目的是追击敌人或躲避子弹，因此不能让反引力对坦克原有的运行轨道产生过大的影响，这就是数学模型的参数选取和调节的问题了。把坦克自身的移动力定义的足够大，如此这样只有在坦克足够靠近墙壁时反引力才能对原运行轨道产生比较大的影响。</p>
-<p>当墙壁是非矩形的情况下，或者考虑其它非墙壁产生的反引力时，施加在坦克上的力通常不会落在坐标轴方向上，此时只需要把所有的力分解到坐标轴方向，做代数计算最后合成即可。</p>
-<p><img src="http://78rehp.com1.z0.glb.clouddn.com/blog%2Fdestruct_all_forces.png" alt="img"></p>
-<p>当然了，这其实是一个多矢量的叠加计算。</p>
-<p><img src="http://78rehp.com1.z0.glb.clouddn.com/blog%2Fvectors_calc.png" alt="img"></p>
-<h2 id="咖啡时间">咖啡时间</h2><p>打开python解释器，输入并运行<code>import anti-gravity</code>，你就可以做到下图中的事情了。</p>
-<p><img src="http://78rehp.com1.z0.glb.clouddn.com/blog%2Fman_on_moon.jpg" alt="img"></p>
+        <span itemprop="articleBody"><p>2016年初的时候ghost<a href="2016/02/02/在非Windows平台上的-NET开发/">在非Windows平台上的.NET开发</a>一文中介绍了基于DNX的.NET Core跨平台开发。而现在，微软正式发布了.NET Core，而不是依赖DNX，因此我觉得有必要更新一下文章了。</p>
+<p>首先，.NET Core相关信息的网站有如下几个，快速浏览一下对您的理解会有很好的帮助：</p>
+<ul>
+<li>.NET Core: <a href="https://www.microsoft.com/net/core" target="_blank" rel="external">https://www.microsoft.com/net/core</a></li>
+<li>.NET Core Github: <a href="https://dotnet.github.io/" target="_blank" rel="external">https://dotnet.github.io/</a></li>
+</ul>
+<p>本文介绍的重点是跨平台.NET Core的开发，因此以非Windows平台为主介绍。 在windows平台下使用.NET Core，对于广大.NET开发者来说完全不是问题。</p>
+<p>本文所有的操作都以MacOS X为例，Linux平台下虽有略微差异，但过程大致相同。如您有任何在Linux平台操作.NET Core的困难，欢迎随时联系我。</p>
+<p>第一件事情不是如何安装.NET Core，而是如何卸载老的DNX和DNVM。DNX的存在并不影响新的.NET Core的使用，但是为了不占硬盘您可以考虑删除。</p>
+<h2 id="删除DNX">删除DNX</h2><p>DNVM可能在电脑中安装多个DNX版本，可以通过<code>dnvm list</code>命来来进行查看</p>
+<p><img src="http://78rehp.com1.z0.glb.clouddn.com/blog%2Fdnvm-list.gif" alt="img"></p>
+<p>可以看到，ghost的电脑中安装有两个不同版本的DNX。要删除它们可以用<code>DNVM uninstall</code>命令来完成，但是那个命令实在是太难用了。事实上，所有的DNX版本都安装在<code>~/.dnx</code>目录下，只需把这个目录删除就达到目的了。</p>
+<p><img src="http://78rehp.com1.z0.glb.clouddn.com/blog%2Fremove-dnxs.gif" alt="img"></p>
+<p>虽然我们还能从Terminal中看到DNVM命令能执行，但那只是当前会话中的一个缓存，重启Terminal就完成了DNVM和DNX的删除了。</p>
+<p>##.NET Core的安装<br>链接<a href="https://www.microsoft.com/net/core" target="_blank" rel="external">https://www.microsoft.com/net/core</a> 对不同平台下.NET Core的安装有了详细的说明，ghost就不需要再重复了. :-)</p>
+<p>安装完.NET Core后，所有的功能都是通过<code>dotnet</code>这个命令来完成的。快来体验一下吧。</p>
+<h2 id="dotnet的体验">dotnet的体验</h2><p>在demo之前，先简要介绍一下dotnet的常用命令：</p>
+<ul>
+<li><code>dotnet --help</code> dotnet的命令帮助</li>
+<li><code>dotnet new</code> 新建一个.NET Core的工程</li>
+<li><code>dotnet restore</code> .NET Core的工程是通过nuget来管理包的依赖关系的，通过这个命令来下载所有的依赖包。</li>
+<li><code>dotnet run</code> 运行当前.NET Core工程</li>
+</ul>
+<p>想查看更多命令？快去查看<code>dotnet --help</code>吧。现在让我们来看Demo吧。</p>
+<p><img src="http://78rehp.com1.z0.glb.clouddn.com/blog%2Fdotnet-demo.gif" alt="img"></p>
+<p>恩，就这么简单，基于.NET Core的Hello World程序就在MacOS X上完成了。</p>
+<h2 id="从玩具到项目工程">从玩具到项目工程</h2><p>写一个Hello World的程序那只是一个玩具，不代表有能力进行项目工程的开发。微软当然理解这一点，于是派出了设计模式之父Eric Gamma开发出了神一样的产品Visual Studio Code。</p>
+<p>有了完全跨平台产品Visual Studio Code的支持，.NET Core在跨平台下的开发具备了重要的功能：</p>
+<ul>
+<li>调试</li>
+<li>智能感知</li>
+<li>代码分析</li>
+</ul>
+<p>有了这些功能，开发一个项目还难吗？</p>
+<p>顺便提一下，Visual Studio Code的功能完善真是日新月异啊，不久前在Mac平台上安装后还要手动运行脚本才能把Code添加到Path里，而现在可以直接从Code中设置了，真是体贴啊！</p>
+<p><img src="http://78rehp.com1.z0.glb.clouddn.com/blog%2Fcode-shell.gif" alt="img"></p>
+<p>智能感知和代码分析功能来自于插件C#，安装过程Demo如下。</p>
+<p><img src="http://78rehp.com1.z0.glb.clouddn.com/blog%2Fcode-c%23.gif" alt="img"></p>
+<p>插件的安装过程比较长，要耐心等待哦！安装完成后，来看一下激动人心的Demo</p>
+<p><img src="http://78rehp.com1.z0.glb.clouddn.com/blog%2Fcode-cs-fulldemo.gif" alt="img"></p>
+<h2 id="咖啡时间">咖啡时间</h2><p>有那么一段时间，Amy同学坐在ghost同学的大腿上，就那么静静地看着ghost写这篇文章。<br><img src="http://78rehp.com1.z0.glb.clouddn.com/blog%2FFather-and-Daughter.jpg" alt="img"></p>
 </span>
       
     </div>
@@ -305,9 +326,9 @@ Anti Gravity就是一个。
       
         <div class="post-tags">
           
-            <a href="/tags/Algorithm/" rel="tag">#Algorithm</a>
+            <a href="/tags/NET/" rel="tag">#.NET</a>
           
-            <a href="/tags/Math/" rel="tag">#Math</a>
+            <a href="/tags/C/" rel="tag">#C#</a>
           
         </div>
       
@@ -316,17 +337,13 @@ Anti Gravity就是一个。
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/06/22/循环内的await是你想象的运行方式吗/" rel="next" title="循环内的await是你想象的运行方式吗?">
-                <i class="fa fa-chevron-left"></i> 循环内的await是你想象的运行方式吗?
+              <a href="/2016/06/25/反推Sigmoid公式的形成/" rel="next" title="反推Sigmoid公式的形成">
+                <i class="fa fa-chevron-left"></i> 反推Sigmoid公式的形成
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/06/24/Sigmoid什么鬼/" rel="prev" title="Sigmoid什么鬼?">
-                Sigmoid什么鬼? <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -341,10 +358,10 @@ Anti Gravity就是一个。
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2016/06/23/Anti-Gravity/"
-     data-title="Anti Gravity"
+        <div class="ds-share flat" data-thread-key="2016/06/26/dotnet-core/"
+     data-title="dotnet core"
      data-content=""
-     data-url="http://blog.liushuping.com/2016/06/23/Anti-Gravity/">
+     data-url="http://blog.liushuping.com/2016/06/26/dotnet-core/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -370,8 +387,8 @@ Anti Gravity就是一个。
         
           <div class="comments" id="comments">
             
-              <div class="ds-thread" data-thread-key="2016/06/23/Anti-Gravity/"
-                   data-title="Anti Gravity" data-url="http://blog.liushuping.com/2016/06/23/Anti-Gravity/">
+              <div class="ds-thread" data-thread-key="2016/06/26/dotnet-core/"
+                   data-title="dotnet core" data-url="http://blog.liushuping.com/2016/06/26/dotnet-core/">
               </div>
             
           </div>
@@ -471,7 +488,7 @@ Anti Gravity就是一个。
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Anti_Gravity基本原理"><span class="nav-number">1.</span> <span class="nav-text">Anti Gravity基本原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#咖啡时间"><span class="nav-number">2.</span> <span class="nav-text">咖啡时间</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#删除DNX"><span class="nav-number">1.</span> <span class="nav-text">删除DNX</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dotnet的体验"><span class="nav-number">2.</span> <span class="nav-text">dotnet的体验</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#从玩具到项目工程"><span class="nav-number">3.</span> <span class="nav-text">从玩具到项目工程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#咖啡时间"><span class="nav-number">4.</span> <span class="nav-text">咖啡时间</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>

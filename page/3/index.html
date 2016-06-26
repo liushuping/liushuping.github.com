@@ -204,6 +204,105 @@
             
             
               
+                <a class="post-title-link" href="/2015/08/09/Backbone-router-demo/" itemprop="url">
+                  Backbone router demo
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2015-08-09T22:48:36+08:00" content="2015-08-09">
+              2015-08-09
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Backbone/" itemprop="url" rel="index">
+                    <span itemprop="name">Backbone</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/08/09/Backbone-router-demo/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/08/09/Backbone-router-demo/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <p>这是一个简单的关于Backbone router的演示，下面的例子演示了，通过Backbone的router和pushState来达到省略URL中的Hash符号的目的。</p>
+<p>首先定义一个App需要的router，例如：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> AppRouter = Backbone.Router.extend(&#123;  </span><br><span class="line">    routes : &#123;  </span><br><span class="line">        <span class="string">'help'</span>: <span class="string">'help'</span>,  </span><br><span class="line">        <span class="string">'search/:query'</span>: <span class="string">'search'</span>, </span><br><span class="line">        <span class="string">'search/:query/:page'</span>: <span class="string">'search'</span></span><br><span class="line">    &#125;,   </span><br><span class="line"></span><br><span class="line">    search: <span class="function"><span class="keyword">function</span>(<span class="params">query, page</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (page == <span class="literal">null</span>) &#123;</span><br><span class="line">          alert(<span class="string">'query: '</span> + query);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          alert(<span class="string">'query: '</span> + query + <span class="string">', page: '</span> + page);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/08/09/Backbone-router-demo/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
                 <a class="post-title-link" href="/2015/07/26/LeetCode-OJ-238-Product-of-Array-Except-Self/" itemprop="url">
                   LeetCode OJ 238 Product of Array Except Self
                 </a>
@@ -376,7 +475,7 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="http://78rehp.com1.z0.glb.clouddn.com/blog/nfc_sim.jpg" rel="gallery_cipvbm4nc003t3tcnhg6abfv4"
+                 href="http://78rehp.com1.z0.glb.clouddn.com/blog/nfc_sim.jpg" rel="gallery_cipwqvyi3003xoycnh6jc3bi1"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="http://78rehp.com1.z0.glb.clouddn.com/blog/nfc_sim.jpg" itemprop="contentUrl"/>
               </a>
@@ -384,7 +483,7 @@
           
             
               <a class="post-gallery-img fancybox"
-                 href="http://78rehp.com1.z0.glb.clouddn.com/blog/nfc_metro.jpg" rel="gallery_cipvbm4nc003t3tcnhg6abfv4"
+                 href="http://78rehp.com1.z0.glb.clouddn.com/blog/nfc_metro.jpg" rel="gallery_cipwqvyi3003xoycnh6jc3bi1"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="http://78rehp.com1.z0.glb.clouddn.com/blog/nfc_metro.jpg" itemprop="contentUrl"/>
               </a>
@@ -1198,106 +1297,6 @@
 
 
     
-      
-
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                <a class="post-title-link" href="/2014/08/19/think-in-abstraction/" itemprop="url">
-                  抽象的思考
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            发表于
-            <time itemprop="dateCreated" datetime="2014-08-19T21:12:02+08:00" content="2014-08-19">
-              2014-08-19
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp; 分类于
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Abstract/" itemprop="url" rel="index">
-                    <span itemprop="name">Abstract</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2014/08/19/think-in-abstraction/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2014/08/19/think-in-abstraction/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <p>抽象是人类在解决复杂问题，尤其是逻辑相关问题时的一个强有力的工具。在今天，在计算机科学和软件工程领域里，抽象更是解决复杂系统的有力方法之一。没有抽象，就不可能有今天众多复杂软件的产生。</p>
-<p>人类文明的发展，少不了抽象的重要作用。比如人类数字的发明就是一个重要的抽象。数字是什么？是一种物体吗？当然不是。那么是一种精神状态吗？也不是。它是一个符号，一个代表了某种抽象逻辑的符号。那么这种抽象逻辑是什么？不难得出，代表的是对某种事物的数量计数的一种逻辑。之所以叫抽象逻辑，是因为它并不关心被计数的是什么具体事物，事实上它更像一种“模板”可以应用到任何事物上。</p>
-<p>近日学习<a href="http://book.douban.com/subject/1148282/">《计算机程序的构造和解释》</a>一书，对抽象有了些许进一步的理解，在此从计算机程序的角度上，以数字的表示这个例子对抽象的力量做一下不全面的分析。</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2014/08/19/think-in-abstraction/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1340,7 +1339,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">31</span>
+              <span class="site-state-item-count">32</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
