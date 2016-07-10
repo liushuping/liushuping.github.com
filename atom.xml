@@ -3,9 +3,9 @@
   <title><![CDATA[Shuping LIU]]></title>
   <subtitle><![CDATA[A JavaScript and C# developer]]></subtitle>
   <link href="/atom.xml" rel="self"/>
-  <link href="http://blog.liushuping.com/"/>
+  <link href="http://liushuping.com/"/>
   <updated>2016-06-26T15:26:31.000Z</updated>
-  <id>http://blog.liushuping.com/</id>
+  <id>http://liushuping.com/</id>
   
   <author>
     <name><![CDATA[Shuping LIU]]></name>
@@ -16,8 +16,8 @@
   
   <entry>
     <title><![CDATA[.NET Core]]></title>
-    <link href="http://blog.liushuping.com/2016/06/26/dotnet-core/"/>
-    <id>http://blog.liushuping.com/2016/06/26/dotnet-core/</id>
+    <link href="http://liushuping.com/2016/06/26/dotnet-core/"/>
+    <id>http://liushuping.com/2016/06/26/dotnet-core/</id>
     <published>2016-06-26T13:36:33.000Z</published>
     <updated>2016-06-26T15:26:31.000Z</updated>
     <content type="html"><![CDATA[<p>2016年初的时候ghost<a href="2016/02/02/在非Windows平台上的-NET开发/">在非Windows平台上的.NET开发</a>一文中介绍了基于DNX的.NET Core跨平台开发。而现在，微软正式发布了.NET Core，而不是依赖DNX，因此ghost觉得有必要更新一下文章了。</p>
@@ -68,18 +68,18 @@
     
     </summary>
     
-      <category term=".NET" scheme="http://blog.liushuping.com/tags/NET/"/>
+      <category term=".NET" scheme="http://liushuping.com/tags/NET/"/>
     
-      <category term="C#" scheme="http://blog.liushuping.com/tags/C/"/>
+      <category term="C#" scheme="http://liushuping.com/tags/C/"/>
     
-      <category term=".NET" scheme="http://blog.liushuping.com/categories/NET/"/>
+      <category term=".NET" scheme="http://liushuping.com/categories/NET/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[反推Sigmoid公式的形成]]></title>
-    <link href="http://blog.liushuping.com/2016/06/25/%E5%8F%8D%E6%8E%A8Sigmoid%E5%85%AC%E5%BC%8F%E7%9A%84%E5%BD%A2%E6%88%90/"/>
-    <id>http://blog.liushuping.com/2016/06/25/反推Sigmoid公式的形成/</id>
+    <link href="http://liushuping.com/2016/06/25/%E5%8F%8D%E6%8E%A8Sigmoid%E5%85%AC%E5%BC%8F%E7%9A%84%E5%BD%A2%E6%88%90/"/>
+    <id>http://liushuping.com/2016/06/25/反推Sigmoid公式的形成/</id>
     <published>2016-06-25T12:55:18.000Z</published>
     <updated>2016-06-25T15:26:58.000Z</updated>
     <content type="html"><![CDATA[<p><a href="2016/06/24/Sigmoid什么鬼/">[Sigmoid什么鬼？]</a>一文介绍了Sigmoid函数因其公式简单，形状同正态分布函数的积分函数形状类似，从而被用在了机器学习中。那么这个函数是如何被构造出来的呢？其原始过程无从得知，但ghost同学愿意从个人的理解出发，尝试反推一下Sigmoid函数的构造形成。</p>
@@ -132,20 +132,20 @@
     
     </summary>
     
-      <category term="Machine Learning" scheme="http://blog.liushuping.com/tags/Machine-Learning/"/>
+      <category term="Machine Learning" scheme="http://liushuping.com/tags/Machine-Learning/"/>
     
-      <category term="Math" scheme="http://blog.liushuping.com/tags/Math/"/>
+      <category term="Math" scheme="http://liushuping.com/tags/Math/"/>
     
-      <category term="Sigmoid" scheme="http://blog.liushuping.com/tags/Sigmoid/"/>
+      <category term="Sigmoid" scheme="http://liushuping.com/tags/Sigmoid/"/>
     
-      <category term="Math" scheme="http://blog.liushuping.com/categories/Math/"/>
+      <category term="Math" scheme="http://liushuping.com/categories/Math/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[Sigmoid什么鬼?]]></title>
-    <link href="http://blog.liushuping.com/2016/06/24/Sigmoid%E4%BB%80%E4%B9%88%E9%AC%BC/"/>
-    <id>http://blog.liushuping.com/2016/06/24/Sigmoid什么鬼/</id>
+    <link href="http://liushuping.com/2016/06/24/Sigmoid%E4%BB%80%E4%B9%88%E9%AC%BC/"/>
+    <id>http://liushuping.com/2016/06/24/Sigmoid什么鬼/</id>
     <published>2016-06-24T13:48:37.000Z</published>
     <updated>2016-06-24T13:49:51.000Z</updated>
     <content type="html"><![CDATA[<p>本文介绍的是机器学习中频繁出现的一个函数Sigmoid, 但不了解机器学习并不影响您对本文的理解。</p>
@@ -179,18 +179,18 @@
     
     </summary>
     
-      <category term="Machine Learning" scheme="http://blog.liushuping.com/tags/Machine-Learning/"/>
+      <category term="Machine Learning" scheme="http://liushuping.com/tags/Machine-Learning/"/>
     
-      <category term="Math" scheme="http://blog.liushuping.com/tags/Math/"/>
+      <category term="Math" scheme="http://liushuping.com/tags/Math/"/>
     
-      <category term="Math" scheme="http://blog.liushuping.com/categories/Math/"/>
+      <category term="Math" scheme="http://liushuping.com/categories/Math/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[Anti Gravity]]></title>
-    <link href="http://blog.liushuping.com/2016/06/23/Anti-Gravity/"/>
-    <id>http://blog.liushuping.com/2016/06/23/Anti-Gravity/</id>
+    <link href="http://liushuping.com/2016/06/23/Anti-Gravity/"/>
+    <id>http://liushuping.com/2016/06/23/Anti-Gravity/</id>
     <published>2016-06-23T14:14:31.000Z</published>
     <updated>2016-06-23T14:16:30.000Z</updated>
     <content type="html"><![CDATA[<p>一个好的创意一定要配一个牛B闪闪的名字。</p>
@@ -226,18 +226,18 @@
     
     </summary>
     
-      <category term="Algorithm" scheme="http://blog.liushuping.com/tags/Algorithm/"/>
+      <category term="Algorithm" scheme="http://liushuping.com/tags/Algorithm/"/>
     
-      <category term="Math" scheme="http://blog.liushuping.com/tags/Math/"/>
+      <category term="Math" scheme="http://liushuping.com/tags/Math/"/>
     
-      <category term="Math" scheme="http://blog.liushuping.com/categories/Math/"/>
+      <category term="Math" scheme="http://liushuping.com/categories/Math/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[循环内的await是你想象的运行方式吗?]]></title>
-    <link href="http://blog.liushuping.com/2016/06/22/%E5%BE%AA%E7%8E%AF%E5%86%85%E7%9A%84await%E6%98%AF%E4%BD%A0%E6%83%B3%E8%B1%A1%E7%9A%84%E8%BF%90%E8%A1%8C%E6%96%B9%E5%BC%8F%E5%90%97/"/>
-    <id>http://blog.liushuping.com/2016/06/22/循环内的await是你想象的运行方式吗/</id>
+    <link href="http://liushuping.com/2016/06/22/%E5%BE%AA%E7%8E%AF%E5%86%85%E7%9A%84await%E6%98%AF%E4%BD%A0%E6%83%B3%E8%B1%A1%E7%9A%84%E8%BF%90%E8%A1%8C%E6%96%B9%E5%BC%8F%E5%90%97/"/>
+    <id>http://liushuping.com/2016/06/22/循环内的await是你想象的运行方式吗/</id>
     <published>2016-06-22T14:15:52.000Z</published>
     <updated>2016-06-22T14:26:12.000Z</updated>
     <content type="html"><![CDATA[<p><a href="/2016/06/22/C-中特别的无限循环/">《C#中特别的无限循环》</a>一文提到了无限循环内以<code>await</code>的方式异步调用其它方法的例子，然而程序开发中这样的情况并不多，更容易碰到有限循环中的异步调用，例如下面的代码：</p>
@@ -255,18 +255,18 @@
     
     </summary>
     
-      <category term="Async" scheme="http://blog.liushuping.com/tags/Async/"/>
+      <category term="Async" scheme="http://liushuping.com/tags/Async/"/>
     
-      <category term="C#" scheme="http://blog.liushuping.com/tags/C/"/>
+      <category term="C#" scheme="http://liushuping.com/tags/C/"/>
     
-      <category term="C#" scheme="http://blog.liushuping.com/categories/C/"/>
+      <category term="C#" scheme="http://liushuping.com/categories/C/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[C# 中特别的无限循环]]></title>
-    <link href="http://blog.liushuping.com/2016/06/22/C-%E4%B8%AD%E7%89%B9%E5%88%AB%E7%9A%84%E6%97%A0%E9%99%90%E5%BE%AA%E7%8E%AF/"/>
-    <id>http://blog.liushuping.com/2016/06/22/C-中特别的无限循环/</id>
+    <link href="http://liushuping.com/2016/06/22/C-%E4%B8%AD%E7%89%B9%E5%88%AB%E7%9A%84%E6%97%A0%E9%99%90%E5%BE%AA%E7%8E%AF/"/>
+    <id>http://liushuping.com/2016/06/22/C-中特别的无限循环/</id>
     <published>2016-06-22T14:13:42.000Z</published>
     <updated>2016-06-22T14:23:33.000Z</updated>
     <content type="html"><![CDATA[<p>通常来说无限循环主要用在一个程序的主方法内，用来实现该程序重复不断地执行特定的操作，比如Windows程序的消息轮询机制，比如<code>REPL</code>类型程序的重复流程。这种无限循环程序的结构一般是这个样子的：</p>
@@ -295,18 +295,18 @@
     
     </summary>
     
-      <category term="Async" scheme="http://blog.liushuping.com/tags/Async/"/>
+      <category term="Async" scheme="http://liushuping.com/tags/Async/"/>
     
-      <category term="C#" scheme="http://blog.liushuping.com/tags/C/"/>
+      <category term="C#" scheme="http://liushuping.com/tags/C/"/>
     
-      <category term="C#" scheme="http://blog.liushuping.com/categories/C/"/>
+      <category term="C#" scheme="http://liushuping.com/categories/C/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[关于跨域请求一些常见的误解]]></title>
-    <link href="http://blog.liushuping.com/2016/06/20/%E5%85%B3%E4%BA%8E%E8%B7%A8%E5%9F%9F%E8%AF%B7%E6%B1%82%E4%B8%80%E4%BA%9B%E5%B8%B8%E8%A7%81%E7%9A%84%E8%AF%AF%E8%A7%A3/"/>
-    <id>http://blog.liushuping.com/2016/06/20/关于跨域请求一些常见的误解/</id>
+    <link href="http://liushuping.com/2016/06/20/%E5%85%B3%E4%BA%8E%E8%B7%A8%E5%9F%9F%E8%AF%B7%E6%B1%82%E4%B8%80%E4%BA%9B%E5%B8%B8%E8%A7%81%E7%9A%84%E8%AF%AF%E8%A7%A3/"/>
+    <id>http://liushuping.com/2016/06/20/关于跨域请求一些常见的误解/</id>
     <published>2016-06-20T14:44:37.000Z</published>
     <updated>2016-06-20T14:51:55.000Z</updated>
     <content type="html"><![CDATA[<p>自从不做Web前端开发一年多来，发现开始慢慢地遗忘一些前端知识，近来突然发现对跨域请求（同“源”策略）的知识遗忘太多，以至于对其基本原理产生了一些误解。借此机会，把容易产生误解的一些知识点写出来，帮助自己加强记忆，也希望能对读者有所帮助。</p>
@@ -330,16 +330,16 @@
     
     </summary>
     
-      <category term="COR" scheme="http://blog.liushuping.com/tags/COR/"/>
+      <category term="COR" scheme="http://liushuping.com/tags/COR/"/>
     
-      <category term="Web" scheme="http://blog.liushuping.com/categories/Web/"/>
+      <category term="Web" scheme="http://liushuping.com/categories/Web/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[Think Bigger]]></title>
-    <link href="http://blog.liushuping.com/2016/04/21/Think-Bigger/"/>
-    <id>http://blog.liushuping.com/2016/04/21/Think-Bigger/</id>
+    <link href="http://liushuping.com/2016/04/21/Think-Bigger/"/>
+    <id>http://liushuping.com/2016/04/21/Think-Bigger/</id>
     <published>2016-04-21T14:00:09.000Z</published>
     <updated>2016-04-21T16:56:53.000Z</updated>
     <content type="html"><![CDATA[<h1 id="变形金刚">变形金刚</h1><p>《变形金刚》是我童年最喜欢的一部动画片，对它的疯狂追捧活动贯穿了我整个小学生涯。我喜欢它片中众多性格鲜明的角色，喜欢它恢弘的剧情，更喜欢它无尽的创意。今天说一下我记忆中印象深刻的一个创意。</p>
@@ -385,18 +385,18 @@
     
     </summary>
     
-      <category term="IoT" scheme="http://blog.liushuping.com/tags/IoT/"/>
+      <category term="IoT" scheme="http://liushuping.com/tags/IoT/"/>
     
-      <category term="智能家居" scheme="http://blog.liushuping.com/tags/%E6%99%BA%E8%83%BD%E5%AE%B6%E5%B1%85/"/>
+      <category term="智能家居" scheme="http://liushuping.com/tags/%E6%99%BA%E8%83%BD%E5%AE%B6%E5%B1%85/"/>
     
-      <category term="IoT" scheme="http://blog.liushuping.com/categories/IoT/"/>
+      <category term="IoT" scheme="http://liushuping.com/categories/IoT/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[map reduce 与 MapReduce]]></title>
-    <link href="http://blog.liushuping.com/2016/04/12/map-reduce-%E4%B8%8E-MapReduce/"/>
-    <id>http://blog.liushuping.com/2016/04/12/map-reduce-与-MapReduce/</id>
+    <link href="http://liushuping.com/2016/04/12/map-reduce-%E4%B8%8E-MapReduce/"/>
+    <id>http://liushuping.com/2016/04/12/map-reduce-与-MapReduce/</id>
     <published>2016-04-12T14:58:27.000Z</published>
     <updated>2016-04-12T17:28:13.000Z</updated>
     <content type="html"><![CDATA[<p>昨天一个偶然的机会跟同事讨论了<a href="https://en.wikipedia.org/wiki/MapReduce" target="_blank" rel="external">MapReduce</a>这个产品和<a href="http://baike.baidu.com/view/1711147.htm" target="_blank" rel="external">函数式编程</a>中最出名的两个函数<a href="https://en.wikipedia.org/wiki/Map_(higher-order_function" target="_blank" rel="external">map</a>和<a href="https://en.wikipedia.org/wiki/Map_(higher-order_function" target="_blank" rel="external">reduce/fold</a>之间的关系。是仅仅的名字巧合吗？还是存在着某种关系？<a id="more"></a><a href="https://en.wikipedia.org/wiki/MapReduce" target="_blank" rel="external">Wikipedia</a>对两者的关系有明确的解释：</p>
@@ -411,7 +411,7 @@
 <li>它的返回值可以是另外一个函数</li>
 </ol>
 <p>毫无疑问，map和reduce函数都能满足上述两点。这里又引出了另外一个概念：<a href="https://en.wikipedia.org/wiki/First-class_function" target="_blank" rel="external">函数是一等公民(First-class Function)</a>。此处“一等公民”并非指社会地位高下的概念，而是指First-class Function要求编程语言支持把函数作为参数传递或能作为另外一个函数的返回值。因此，函数式编程语言支持First-class Function，而高阶函数的整套体系是构建在其基础之上的。</p>
-<p>那么为什么高阶函数是函数式编程的一个核心概念？因为高阶提供了高层次的抽象，而<a href="http://blog.liushuping.com/2014/08/19/think-in-abstraction/">抽象是解决复杂问题（比如软件问题）的强有力工具</a>。</p>
+<p>那么为什么高阶函数是函数式编程的一个核心概念？因为高阶提供了高层次的抽象，而<a href="http://blog.liushuping.com/2014/08/19/think-in-abstraction/" target="_blank" rel="external">抽象是解决复杂问题（比如软件问题）的强有力工具</a>。</p>
 <p>世间函数千千万，那么为什么唯独map，reduce两个函数如此与众不同？这就需要我们去关注一下函数所操作的数据对象，大致可以分为两类：个体或少量几个数据；某类数据的一个集合。对于个体或少量数据，能应用于它们的函数通常各不相同，共性比较少；而可应用于集合类数据的函数，大多具有通用的模式：</p>
 <ul>
 <li>模式一：对集合内每一个数据做某种转换处理，返回具有同等数量的不同类型集合</li>
@@ -444,16 +444,16 @@
     
     </summary>
     
-      <category term="map, reduce, MapReduce" scheme="http://blog.liushuping.com/tags/map-reduce-MapReduce/"/>
+      <category term="map, reduce, MapReduce" scheme="http://liushuping.com/tags/map-reduce-MapReduce/"/>
     
-      <category term="Functional Programming" scheme="http://blog.liushuping.com/categories/Functional-Programming/"/>
+      <category term="Functional Programming" scheme="http://liushuping.com/categories/Functional-Programming/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[伪基站之害]]></title>
-    <link href="http://blog.liushuping.com/2016/03/29/%E4%BC%AA%E5%9F%BA%E7%AB%99%E4%B9%8B%E5%AE%B3/"/>
-    <id>http://blog.liushuping.com/2016/03/29/伪基站之害/</id>
+    <link href="http://liushuping.com/2016/03/29/%E4%BC%AA%E5%9F%BA%E7%AB%99%E4%B9%8B%E5%AE%B3/"/>
+    <id>http://liushuping.com/2016/03/29/伪基站之害/</id>
     <published>2016-03-29T13:44:51.000Z</published>
     <updated>2016-03-29T15:50:24.000Z</updated>
     <content type="html"><![CDATA[<p>或许你不清楚什么是伪基站，但你一定遭受过伪基站的骚扰或者欺骗（希望你没有蒙受损失），因为大多数手机诈骗短信都来自于伪基站。</p>
@@ -488,22 +488,22 @@
     
     </summary>
     
-      <category term="Security" scheme="http://blog.liushuping.com/tags/Security/"/>
+      <category term="Security" scheme="http://liushuping.com/tags/Security/"/>
     
-      <category term="Security" scheme="http://blog.liushuping.com/categories/Security/"/>
+      <category term="Security" scheme="http://liushuping.com/categories/Security/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[完成Coursera Machine Learning课程]]></title>
-    <link href="http://blog.liushuping.com/2016/03/01/%E5%AE%8C%E6%88%90Cousera-Machine-Learning%E8%AF%BE%E7%A8%8B/"/>
-    <id>http://blog.liushuping.com/2016/03/01/完成Cousera-Machine-Learning课程/</id>
+    <link href="http://liushuping.com/2016/03/01/%E5%AE%8C%E6%88%90Cousera-Machine-Learning%E8%AF%BE%E7%A8%8B/"/>
+    <id>http://liushuping.com/2016/03/01/完成Cousera-Machine-Learning课程/</id>
     <published>2016-03-01T14:40:57.000Z</published>
     <updated>2016-03-02T16:45:46.000Z</updated>
     <content type="html"><![CDATA[<h1 id="完成了一个目标">完成了一个目标</h1><p>经过了十周多的奋斗，我终于完成了<a href="http://baike.baidu.com/view/10853998.htm?fromtitle=Andrew+Ng" target="_blank" rel="external">Andrew Ng</a>的<a href="https://www.coursera.org/learn/machine-learning" target="_blank" rel="external">Machine Learning</a>课程并获得证书，这也是2016年我完成的第一个个人目标。<br><a id="more"></a></p>
 <p><img src="http://78rehp.com1.z0.glb.clouddn.com/blog%2Fcoursera-machine-learning-cert" alt="cert"></p>
 <h1 id="过程值的回忆">过程值的回忆</h1><p>过去的十周内，有多少个夜深人静的夜晚，当他人已经进入梦乡，我仍在观看着视频、调试着程序。期间也经历了突击课程进度的艰难过程，为的是能提前完成春节期间的课程。大多数的课程都开始于下班回家，且给闺女讲完睡前故事之后，通常是晚上9点以后了。</p>
-<p>课程注册之初，大致预测了一下可能会遇到的困难，总结有：数学的障碍，<a href="http://www.gnu.org/software/octave/" target="_blank" rel="external">Octave</a>陌生的语言，时间问题（晚上要先陪闺女玩儿）等等。然而最终的事实证明，这些都不是问题。而最大的问题是：宽带通！（此处预留一个<a href="http://blog.liushuping.com/2016/02/23/I-will-call-you-back/">Callback</a>，待以后详解。）</p>
+<p>课程注册之初，大致预测了一下可能会遇到的困难，总结有：数学的障碍，<a href="http://www.gnu.org/software/octave/" target="_blank" rel="external">Octave</a>陌生的语言，时间问题（晚上要先陪闺女玩儿）等等。然而最终的事实证明，这些都不是问题。而最大的问题是：宽带通！（此处预留一个<a href="http://blog.liushuping.com/2016/02/23/I-will-call-you-back/" target="_blank" rel="external">Callback</a>，待以后详解。）</p>
 <h1 id="目标要以总结结束">目标要以总结结束</h1><p>学完一门课程，做一些简单的总结，总是有好处的。喜欢对一件复杂的事情做一些通俗易懂的描述，让尽可能多的人理解（显然，我无法做到让隔壁的老奶奶也能听懂的极致）。数学公式是尽量避免去用的，虽然它是Machine Learning的灵魂，但是概念性的普及介绍却不必使用它。</p>
 <p>Machine Learning很有趣，很有用，也很有挑战性。它又依赖于系统的软件工程。</p>
 <ul>
@@ -517,7 +517,7 @@
 <h2 id="Machine_Learning“之学习效果”的评估">Machine Learning“之学习效果”的评估</h2><p>如何在迭代的基本框架下，来评价当前参数下的“学习”效果呢？我们很容易想到的是建立一个误差函数，对已知的输入数据，应用当前的学习算法，得到预测的结果。根据预测的结果和实际结果，计算<a href="http://baike.baidu.com/view/172036.htm" target="_blank" rel="external">方差</a>或<a href="http://baike.baidu.com/view/78339.htm" target="_blank" rel="external">标准差</a>，即可以作为我们的误差函数。这种以已知数据作为参考的“学习”过程被称为<a href="http://baike.baidu.com/view/2759226.htm" target="_blank" rel="external">“监督学习”</a>或<a href="https://en.wikipedia.org/wiki/Supervised_learning" target="_blank" rel="external">“Supervised Learning”</a>。而<a href="http://baike.baidu.com/view/2759226.htm" target="_blank" rel="external">“监督学习”</a>又可分为<a href="http://baike.baidu.com/view/449540.htm" target="_blank" rel="external">“线性回归”</a>(<a href="https://en.wikipedia.org/wiki/Linear_regression" target="_blank" rel="external">“Linear Regression”</a>)和<a href="http://baike.baidu.com/item/logistic%E5%9B%9E%E5%BD%92?fromtitle=%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92&amp;type=syn" target="_blank" rel="external">“逻辑回归”</a>(<a href="https://en.wikipedia.org/wiki/Logistic_regression" target="_blank" rel="external">“Logistic Regression”</a>)等常见类别。</p>
 <h2 id="Machine_Learning之“学习方法”的改善">Machine Learning之“学习方法”的改善</h2><p>通常我们从随机化学习算法的参数开始，因为参数是我们最终要得到的，而开始之初我们并不知道它。因此我们希望每一步迭代都对参数做微小的改动，以使算法结果不断<a href="http://baike.baidu.com/subview/513233/8059330.htm" target="_blank" rel="external">“收敛”</a>，又或者说是使误差函数产生的结果越来越小。那么怎么做呢？</p>
 <p>假如我们把误差函数画出来，以三维的一个曲面为例（高维空间无法绘制，但是具有相同的性质），误差函数结果最小的点就是三维曲面的最低点。我们的目标就是采取一种有效的措施来改变参数使误差函数的结果沿着三维空间坡度最陡的方向向下移动。用数学的概念来介绍，就是<a href="http://baike.baidu.com/view/30958.htm" target="_blank" rel="external">导数</a>，或者更准确一点，<a href="http://baike.baidu.com/view/1029405.htm" target="_blank" rel="external">偏导数</a>。因此，迭代过程内对参数做的微小改动就是对每个参数减去该参数所对应“特征”的<a href="http://baike.baidu.com/view/1029405.htm" target="_blank" rel="external">偏导数</a>。</p>
-<p>参数的这种改变方式从本质上来说是<a href="http://baike.baidu.com/view/150456.htm" target="_blank" rel="external">连续</a>的，它适合被用在<a href="http://baike.baidu.com/view/449540.htm" target="_blank" rel="external">“线性回归”</a>问题上。但当一个问题是<a href="http://baike.baidu.com/item/logistic%E5%9B%9E%E5%BD%92?fromtitle=%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92&amp;type=syn" target="_blank" rel="external">“逻辑回归”</a>（如根据某些数据判断某个操作是否来自于人或机器等这种是非问题的判断）时怎么办呢？其实很简单：只需对<a href="http://baike.baidu.com/view/449540.htm" target="_blank" rel="external">“线性回归”</a>问题的学习方程进行一次转换，使其输出结果只有两种可能：0或1。适合这个问题的一个常用函数是<a href="http://baike.baidu.com/view/1176976.htm" target="_blank" rel="external">sigmoid函数</a>。关于<a href="http://baike.baidu.com/view/1176976.htm" target="_blank" rel="external">sigmoid函数</a>，此处也留一个<a href="http://blog.liushuping.com/2016/02/23/I-will-call-you-back/">Callback</a>。</p>
+<p>参数的这种改变方式从本质上来说是<a href="http://baike.baidu.com/view/150456.htm" target="_blank" rel="external">连续</a>的，它适合被用在<a href="http://baike.baidu.com/view/449540.htm" target="_blank" rel="external">“线性回归”</a>问题上。但当一个问题是<a href="http://baike.baidu.com/item/logistic%E5%9B%9E%E5%BD%92?fromtitle=%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92&amp;type=syn" target="_blank" rel="external">“逻辑回归”</a>（如根据某些数据判断某个操作是否来自于人或机器等这种是非问题的判断）时怎么办呢？其实很简单：只需对<a href="http://baike.baidu.com/view/449540.htm" target="_blank" rel="external">“线性回归”</a>问题的学习方程进行一次转换，使其输出结果只有两种可能：0或1。适合这个问题的一个常用函数是<a href="http://baike.baidu.com/view/1176976.htm" target="_blank" rel="external">sigmoid函数</a>。关于<a href="http://baike.baidu.com/view/1176976.htm" target="_blank" rel="external">sigmoid函数</a>，此处也留一个<a href="http://blog.liushuping.com/2016/02/23/I-will-call-you-back/" target="_blank" rel="external">Callback</a>。</p>
 <h2 id="Machine_Learning之人工神经网络">Machine Learning之人工神经网络</h2><p><a href="http://baike.baidu.com/view/449540.htm" target="_blank" rel="external">“线性回归”</a>和<a href="http://baike.baidu.com/item/logistic%E5%9B%9E%E5%BD%92" target="_blank" rel="external">“逻辑回归”</a>都是通过建立一个<a href="http://baike.baidu.com/view/6156797.htm" target="_blank" rel="external">多项式函数</a>来实现对训练数据最大程度的拟合，比如最简单的函数 <code>y = ax + b</code>。<a href="http://baike.baidu.com/view/449540.htm" target="_blank" rel="external">“线性回归”</a>和<a href="http://baike.baidu.com/item/logistic%E5%9B%9E%E5%BD%92" target="_blank" rel="external">“逻辑回归”</a>的任务都是通过迭代来不断优化参数<code>a</code>和<code>b</code>(对于一阶方程来说)来实现最大程度地减少误差。然而，有很多问题我们很难找到一个合适的<a href="http://baike.baidu.com/view/6156797.htm" target="_blank" rel="external">多项式函数</a>来对数据进行<a href="http://baike.baidu.com/subview/133261/5033269.htm" target="_blank" rel="external">数学建模</a>，或者是<a href="http://baike.baidu.com/view/6156797.htm" target="_blank" rel="external">多项式函数</a>过于复杂，带来的计算量非常大。这时可以考虑使用<a href="http://baike.baidu.com/view/19743.htm" target="_blank" rel="external">人工神经网络</a>。</p>
 <p>概括地来说，<a href="http://baike.baidu.com/view/19743.htm" target="_blank" rel="external">人工神经网络</a>的<a href="http://baike.baidu.com/subview/133261/5033269.htm" target="_blank" rel="external">数学模型</a>是一个由很多节点组成的网状结构。每个节点都是一个处理单元，能对接收到的数据做计算，其输出结果将是下层网络节点的计算输入。通过调节网络的层数、每层上计算节点的个数，以及对每个节点的参数等来优化<a href="http://baike.baidu.com/subview/133261/5033269.htm" target="_blank" rel="external">数学模型</a>，从而实现对训练数据的模拟，以及对未来数据的分析预测。<a href="http://baike.baidu.com/view/19743.htm" target="_blank" rel="external">人工神经网络</a>是一个很大的话题，本文仅做一般认识性介绍。</p>
 <h2 id="Machine_Learning之聚类分析">Machine Learning之聚类分析</h2><p>然而，并不是所有的问题都是根据历史数据预测未来结果。还有一类问题是：给定一些数据，让计算机智能地对数据进行分类。这类问题叫<a href="http://baike.baidu.com/view/903740.htm" target="_blank" rel="external">“聚类分析”</a>，解决这类问题的一个重要算法是“<a href="http://baike.baidu.com/view/3066906.htm" target="_blank" rel="external">K均数</a>”算法。这个算法是如此简单而有效地应用了基本的数学知识对数据进行了分类！我强烈推荐您了解一下。</p>
@@ -532,20 +532,20 @@
     
     </summary>
     
-      <category term="Coursera" scheme="http://blog.liushuping.com/tags/Coursera/"/>
+      <category term="Coursera" scheme="http://liushuping.com/tags/Coursera/"/>
     
-      <category term="Machine Learning" scheme="http://blog.liushuping.com/tags/Machine-Learning/"/>
+      <category term="Machine Learning" scheme="http://liushuping.com/tags/Machine-Learning/"/>
     
-      <category term="Stanford" scheme="http://blog.liushuping.com/tags/Stanford/"/>
+      <category term="Stanford" scheme="http://liushuping.com/tags/Stanford/"/>
     
-      <category term="Machine Learning" scheme="http://blog.liushuping.com/categories/Machine-Learning/"/>
+      <category term="Machine Learning" scheme="http://liushuping.com/categories/Machine-Learning/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[I will call you back]]></title>
-    <link href="http://blog.liushuping.com/2016/02/23/I-will-call-you-back/"/>
-    <id>http://blog.liushuping.com/2016/02/23/I-will-call-you-back/</id>
+    <link href="http://liushuping.com/2016/02/23/I-will-call-you-back/"/>
+    <id>http://liushuping.com/2016/02/23/I-will-call-you-back/</id>
     <published>2016-02-23T15:05:38.000Z</published>
     <updated>2016-02-23T17:00:17.000Z</updated>
     <content type="html"><![CDATA[<p>春节前夕，一个偶然的机会我粗略地研究了一下ES6里异步代码的实现方式－－生成器（Generator），过程很是烧脑。决定首先重新审视一下JavaScript原有的异步代码实现方式－－回调（CallBack）。审视之初，大脑不由自主地发挥想象，滑稽却有趣。</p>
@@ -581,18 +581,18 @@
     
     </summary>
     
-      <category term="Async" scheme="http://blog.liushuping.com/tags/Async/"/>
+      <category term="Async" scheme="http://liushuping.com/tags/Async/"/>
     
-      <category term="JavaScript" scheme="http://blog.liushuping.com/tags/JavaScript/"/>
+      <category term="JavaScript" scheme="http://liushuping.com/tags/JavaScript/"/>
     
-      <category term="Software" scheme="http://blog.liushuping.com/categories/Software/"/>
+      <category term="Software" scheme="http://liushuping.com/categories/Software/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[非windows平台上的.NET开发]]></title>
-    <link href="http://blog.liushuping.com/2016/02/02/%E5%9C%A8%E9%9D%9EWindows%E5%B9%B3%E5%8F%B0%E4%B8%8A%E7%9A%84-NET%E5%BC%80%E5%8F%91/"/>
-    <id>http://blog.liushuping.com/2016/02/02/在非Windows平台上的-NET开发/</id>
+    <link href="http://liushuping.com/2016/02/02/%E5%9C%A8%E9%9D%9EWindows%E5%B9%B3%E5%8F%B0%E4%B8%8A%E7%9A%84-NET%E5%BC%80%E5%8F%91/"/>
+    <id>http://liushuping.com/2016/02/02/在非Windows平台上的-NET开发/</id>
     <published>2016-02-02T14:25:39.000Z</published>
     <updated>2016-03-18T00:36:25.000Z</updated>
     <content type="html"><![CDATA[<p>长久以来，开发人员只能在Windows平台上进行.NET开发。在其它平台上，如Linux上只能依赖第三方的运行时，例如著名的<a href="http://www.mono-project.com/" target="_blank" rel="external">Mono</a>。但是从.NET  5开始，微软官方发布了真正跨平台的.NET运行环境<a href="https://github.com/dotnet/coreclr" target="_blank" rel="external">.NET Core</a>。.NET 的跨平台也步入了新的台阶。</p>
@@ -626,18 +626,18 @@
     
     </summary>
     
-      <category term=".NET" scheme="http://blog.liushuping.com/tags/NET/"/>
+      <category term=".NET" scheme="http://liushuping.com/tags/NET/"/>
     
-      <category term="Cross-Platform" scheme="http://blog.liushuping.com/tags/Cross-Platform/"/>
+      <category term="Cross-Platform" scheme="http://liushuping.com/tags/Cross-Platform/"/>
     
-      <category term=".NET" scheme="http://blog.liushuping.com/categories/NET/"/>
+      <category term=".NET" scheme="http://liushuping.com/categories/NET/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[微软跨平台及开源的执行力之我见]]></title>
-    <link href="http://blog.liushuping.com/2016/01/23/%E5%BE%AE%E8%BD%AF%E8%B7%A8%E5%B9%B3%E5%8F%B0%E5%8F%8A%E5%BC%80%E6%BA%90%E7%9A%84%E6%89%A7%E8%A1%8C%E5%8A%9B%E4%B9%8B%E6%88%91%E8%A7%81/"/>
-    <id>http://blog.liushuping.com/2016/01/23/微软跨平台及开源的执行力之我见/</id>
+    <link href="http://liushuping.com/2016/01/23/%E5%BE%AE%E8%BD%AF%E8%B7%A8%E5%B9%B3%E5%8F%B0%E5%8F%8A%E5%BC%80%E6%BA%90%E7%9A%84%E6%89%A7%E8%A1%8C%E5%8A%9B%E4%B9%8B%E6%88%91%E8%A7%81/"/>
+    <id>http://liushuping.com/2016/01/23/微软跨平台及开源的执行力之我见/</id>
     <published>2016-01-23T13:18:04.000Z</published>
     <updated>2016-01-29T12:54:36.000Z</updated>
     <content type="html"><![CDATA[<p>首先说明，本文不是给微软写的软文，而是对微软近些年在跨平台以及开源社区等领域所做努力的一些个人所见。好多人说微软做的越来越不行了，好多产品越来越不好用或者不明白为啥那样做等等。然而，我却看到了不太一样的微软。</p>
@@ -697,18 +697,18 @@
     
     </summary>
     
-      <category term="Microsoft" scheme="http://blog.liushuping.com/tags/Microsoft/"/>
+      <category term="Microsoft" scheme="http://liushuping.com/tags/Microsoft/"/>
     
-      <category term="OSS" scheme="http://blog.liushuping.com/tags/OSS/"/>
+      <category term="OSS" scheme="http://liushuping.com/tags/OSS/"/>
     
-      <category term="Microsoft" scheme="http://blog.liushuping.com/categories/Microsoft/"/>
+      <category term="Microsoft" scheme="http://liushuping.com/categories/Microsoft/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[数据正规化]]></title>
-    <link href="http://blog.liushuping.com/2016/01/04/%E6%95%B0%E6%8D%AE%E6%AD%A3%E8%A7%84%E5%8C%96/"/>
-    <id>http://blog.liushuping.com/2016/01/04/数据正规化/</id>
+    <link href="http://liushuping.com/2016/01/04/%E6%95%B0%E6%8D%AE%E6%AD%A3%E8%A7%84%E5%8C%96/"/>
+    <id>http://liushuping.com/2016/01/04/数据正规化/</id>
     <published>2016-01-04T14:23:06.000Z</published>
     <updated>2016-01-04T16:00:13.000Z</updated>
     <content type="html"><![CDATA[<p>当对包含不同指标的数据样本进行分析时，数值较高的指标容易在分析中突显作用，而数值较低的指标的作用易被削弱。因此在对数据进行分析之前，需要对数据进行去量纲的正规化处理，使数据分布在相同的区间内。正规化的方法有很多，本文列出三种常用的方法。</p>
@@ -731,18 +731,18 @@
     
     </summary>
     
-      <category term="Data" scheme="http://blog.liushuping.com/tags/Data/"/>
+      <category term="Data" scheme="http://liushuping.com/tags/Data/"/>
     
-      <category term="Machine Learning" scheme="http://blog.liushuping.com/tags/Machine-Learning/"/>
+      <category term="Machine Learning" scheme="http://liushuping.com/tags/Machine-Learning/"/>
     
-      <category term="Data" scheme="http://blog.liushuping.com/categories/Data/"/>
+      <category term="Data" scheme="http://liushuping.com/categories/Data/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[nanopi2系统配置]]></title>
-    <link href="http://blog.liushuping.com/2016/01/02/nanopi2%E7%B3%BB%E7%BB%9F%E9%85%8D%E7%BD%AE/"/>
-    <id>http://blog.liushuping.com/2016/01/02/nanopi2系统配置/</id>
+    <link href="http://liushuping.com/2016/01/02/nanopi2%E7%B3%BB%E7%BB%9F%E9%85%8D%E7%BD%AE/"/>
+    <id>http://liushuping.com/2016/01/02/nanopi2系统配置/</id>
     <published>2016-01-02T03:58:04.000Z</published>
     <updated>2016-01-02T12:36:11.000Z</updated>
     <content type="html"><![CDATA[<p>本文介绍了在nanopi2上安装Debian系统的简要步骤以及安装后的必要配置。</p>
@@ -797,16 +797,16 @@
     
     </summary>
     
-      <category term="nanopi2" scheme="http://blog.liushuping.com/tags/nanopi2/"/>
+      <category term="nanopi2" scheme="http://liushuping.com/tags/nanopi2/"/>
     
-      <category term="nanopi2" scheme="http://blog.liushuping.com/categories/nanopi2/"/>
+      <category term="nanopi2" scheme="http://liushuping.com/categories/nanopi2/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[C++算法笔记－常用头文件]]></title>
-    <link href="http://blog.liushuping.com/2015/11/09/C-%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0%EF%BC%8D%E5%B8%B8%E7%94%A8%E5%A4%B4%E6%96%87%E4%BB%B6/"/>
-    <id>http://blog.liushuping.com/2015/11/09/C-算法笔记－常用头文件/</id>
+    <link href="http://liushuping.com/2015/11/09/C-%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0%EF%BC%8D%E5%B8%B8%E7%94%A8%E5%A4%B4%E6%96%87%E4%BB%B6/"/>
+    <id>http://liushuping.com/2015/11/09/C-算法笔记－常用头文件/</id>
     <published>2015-11-09T13:53:43.000Z</published>
     <updated>2015-11-14T15:16:58.000Z</updated>
     <content type="html"><![CDATA[<p>C＋+有非常非常多的库文件，很多常见的功能都可在其中找到了解常用的库文件可以让我们清楚地知道有哪些系统已有功能可以使用，有哪些功能是我们需要实现的。本文列出了算法程序常用库的头文件。</p>
@@ -1123,18 +1123,18 @@
     
     </summary>
     
-      <category term="C++" scheme="http://blog.liushuping.com/tags/C/"/>
+      <category term="C++" scheme="http://liushuping.com/tags/C/"/>
     
-      <category term="算法" scheme="http://blog.liushuping.com/tags/%E7%AE%97%E6%B3%95/"/>
+      <category term="算法" scheme="http://liushuping.com/tags/%E7%AE%97%E6%B3%95/"/>
     
-      <category term="C++算法笔记" scheme="http://blog.liushuping.com/categories/C-%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/"/>
+      <category term="C++算法笔记" scheme="http://liushuping.com/categories/C-%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[算法的思维之沿着右手边的墙往前走就一定能走出迷宫]]></title>
-    <link href="http://blog.liushuping.com/2015/11/01/%E7%AE%97%E6%B3%95%E7%9A%84%E6%80%9D%E7%BB%B4%E4%B9%8B%E6%B2%BF%E7%9D%80%E5%8F%B3%E6%89%8B%E8%BE%B9%E7%9A%84%E5%A2%99%E5%BE%80%E5%89%8D%E8%B5%B0%E5%B0%B1%E4%B8%80%E5%AE%9A%E8%83%BD%E8%B5%B0%E5%87%BA%E8%BF%B7%E5%AE%AB/"/>
-    <id>http://blog.liushuping.com/2015/11/01/算法的思维之沿着右手边的墙往前走就一定能走出迷宫/</id>
+    <link href="http://liushuping.com/2015/11/01/%E7%AE%97%E6%B3%95%E7%9A%84%E6%80%9D%E7%BB%B4%E4%B9%8B%E6%B2%BF%E7%9D%80%E5%8F%B3%E6%89%8B%E8%BE%B9%E7%9A%84%E5%A2%99%E5%BE%80%E5%89%8D%E8%B5%B0%E5%B0%B1%E4%B8%80%E5%AE%9A%E8%83%BD%E8%B5%B0%E5%87%BA%E8%BF%B7%E5%AE%AB/"/>
+    <id>http://liushuping.com/2015/11/01/算法的思维之沿着右手边的墙往前走就一定能走出迷宫/</id>
     <published>2015-11-01T10:25:27.000Z</published>
     <updated>2015-11-09T13:47:06.000Z</updated>
     <content type="html"><![CDATA[<p>迷宫是一种老少咸宜的游戏，可以是画在纸上的迷宫游戏，也可以是以隔墙或树木修建在公园或游乐场的迷宫游戏。</p>
@@ -1194,20 +1194,20 @@
     
     </summary>
     
-      <category term="几何" scheme="http://blog.liushuping.com/tags/%E5%87%A0%E4%BD%95/"/>
+      <category term="几何" scheme="http://liushuping.com/tags/%E5%87%A0%E4%BD%95/"/>
     
-      <category term="算法" scheme="http://blog.liushuping.com/tags/%E7%AE%97%E6%B3%95/"/>
+      <category term="算法" scheme="http://liushuping.com/tags/%E7%AE%97%E6%B3%95/"/>
     
-      <category term="逻辑" scheme="http://blog.liushuping.com/tags/%E9%80%BB%E8%BE%91/"/>
+      <category term="逻辑" scheme="http://liushuping.com/tags/%E9%80%BB%E8%BE%91/"/>
     
-      <category term="C++算法笔记" scheme="http://blog.liushuping.com/categories/C-%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/"/>
+      <category term="C++算法笔记" scheme="http://liushuping.com/categories/C-%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[算法的思维之鸡兔同笼问题的分析]]></title>
-    <link href="http://blog.liushuping.com/2015/11/01/%E7%AE%97%E6%B3%95%E7%9A%84%E6%80%9D%E7%BB%B4%E4%B9%8B%E9%B8%A1%E5%85%94%E5%90%8C%E7%AC%BC%E9%97%AE%E9%A2%98%E7%9A%84%E5%88%86%E6%9E%90/"/>
-    <id>http://blog.liushuping.com/2015/11/01/算法的思维之鸡兔同笼问题的分析/</id>
+    <link href="http://liushuping.com/2015/11/01/%E7%AE%97%E6%B3%95%E7%9A%84%E6%80%9D%E7%BB%B4%E4%B9%8B%E9%B8%A1%E5%85%94%E5%90%8C%E7%AC%BC%E9%97%AE%E9%A2%98%E7%9A%84%E5%88%86%E6%9E%90/"/>
+    <id>http://liushuping.com/2015/11/01/算法的思维之鸡兔同笼问题的分析/</id>
     <published>2015-11-01T10:24:25.000Z</published>
     <updated>2015-11-09T13:41:21.000Z</updated>
     <content type="html"><![CDATA[<p>约1500年前，《孙子算经》中有如下的问题描述：</p>
@@ -1248,22 +1248,22 @@
     
     </summary>
     
-      <category term="数学" scheme="http://blog.liushuping.com/tags/%E6%95%B0%E5%AD%A6/"/>
+      <category term="数学" scheme="http://liushuping.com/tags/%E6%95%B0%E5%AD%A6/"/>
     
-      <category term="数论" scheme="http://blog.liushuping.com/tags/%E6%95%B0%E8%AE%BA/"/>
+      <category term="数论" scheme="http://liushuping.com/tags/%E6%95%B0%E8%AE%BA/"/>
     
-      <category term="算法" scheme="http://blog.liushuping.com/tags/%E7%AE%97%E6%B3%95/"/>
+      <category term="算法" scheme="http://liushuping.com/tags/%E7%AE%97%E6%B3%95/"/>
     
-      <category term="逻辑" scheme="http://blog.liushuping.com/tags/%E9%80%BB%E8%BE%91/"/>
+      <category term="逻辑" scheme="http://liushuping.com/tags/%E9%80%BB%E8%BE%91/"/>
     
-      <category term="C++算法笔记" scheme="http://blog.liushuping.com/categories/C-%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/"/>
+      <category term="C++算法笔记" scheme="http://liushuping.com/categories/C-%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[C++算法笔记－基本输入输出]]></title>
-    <link href="http://blog.liushuping.com/2015/10/28/C++%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0%EF%BC%8D%E5%9F%BA%E6%9C%AC%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA/"/>
-    <id>http://blog.liushuping.com/2015/10/28/C++算法笔记－基本输入输出/</id>
+    <link href="http://liushuping.com/2015/10/28/C++%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0%EF%BC%8D%E5%9F%BA%E6%9C%AC%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA/"/>
+    <id>http://liushuping.com/2015/10/28/C++算法笔记－基本输入输出/</id>
     <published>2015-10-28T15:24:51.000Z</published>
     <updated>2015-11-09T13:40:23.000Z</updated>
     <content type="html"><![CDATA[<p>算法题目都是要求对于给定的输入，在规定时间内把结果输出到指定的设备上。因此输入输出是做算法的最基本条件。</p>
@@ -1830,11 +1830,11 @@
     
     </summary>
     
-      <category term="C++" scheme="http://blog.liushuping.com/tags/C/"/>
+      <category term="C++" scheme="http://liushuping.com/tags/C/"/>
     
-      <category term="算法" scheme="http://blog.liushuping.com/tags/%E7%AE%97%E6%B3%95/"/>
+      <category term="算法" scheme="http://liushuping.com/tags/%E7%AE%97%E6%B3%95/"/>
     
-      <category term="C++算法笔记" scheme="http://blog.liushuping.com/categories/C-%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/"/>
+      <category term="C++算法笔记" scheme="http://liushuping.com/categories/C-%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
